@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailuserbar %}
+
+{% load static %}
+
+{% block app_extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
+{% endblock %}
+
+{% block app %}
+<div id="birdapp657">
+    {% block section_top %}
+    <div class="section_top">
+
+        {% if section_root_page.get_children.live.in_menu %}
+        <div class="section_menu">
+            <ul class="section_menu_child_list">
+            {% for child in section_root_page.get_children.live.in_menu %}
+                <li class="section_menu_child">
+                    {% if child.title == page.title %}
+                    <a href="{% pageurl child %}" class="active" >{{ child }}</a>
+                    {% else %}
+                    <a href="{% pageurl child %}">{{ child }}</a>
+                    {% endif %}
+                    {% if False %}
+                        <ul class="section_menu_grand_child_list">
+                        {% for grandchild in child.get_children.live.in_menu %}
+                            <li  class="section_menu_grandchild">
+                                {% if page.title == grandchild.title %}
+                                    <a href="{% pageurl grandchild %}" class="active" >{{ grandchild }}</a>
+                                {% else %}
+                                    <a href="{% pageurl grandchild %}" >{{ grandchild }}</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+    {% endblock %}
+
+    {% block contant %}
+    {% endblock %}
+
+    {% wagtailuserbar %}
+
+</div>
+{% endblock %}

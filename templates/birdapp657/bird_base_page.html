@@ -1,0 +1,28 @@
+{% extends "bird_base.html" %}
+
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+
+{% block contant %}
+<div class="content">
+
+    {% if page.get_children.live %}
+    <div class="collection_page">
+        {% for post in page.get_children.live %}
+            <div class="collection_item">
+                <a href="{% pageurl post %}">
+                    {% if post.specific.coverImage %}
+                    {% image post.specific.coverImage original as tmp_photo %}
+                    <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="cover_image" />
+                    {% endif %}
+                    <h3>{{ post.title }}</h3>
+                </a>
+                {{ post.first_published_at }} / {{ post.specific.author }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

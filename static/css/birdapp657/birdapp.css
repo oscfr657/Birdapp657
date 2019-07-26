@@ -1,0 +1,86 @@
+#birdapp657 .section_top {
+    text-align: center;
+    margin: auto;
+    width: 600px;
+    max-width: 100%;
+}
+#birdapp657 .section_top .section_menu {
+    padding: 0px 0px;
+}
+#birdapp657 .section_top .section_menu_child_list {
+    margin: auto;
+    padding: 0;
+    display: block;
+}
+#birdapp657 .section_top .section_menu_child {
+    display: inline-block;
+    font-size: larger;
+    padding: 7px 0px;
+}
+#birdapp657 .section_top .section_menu_child:hover .section_menu_grand_child_list {
+    display: block;
+}
+#birdapp657 .section_top .section_menu_grand_child_list {
+    display: none;
+    position: absolute;
+    padding: 0 0px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 600px;
+}
+#birdapp657 .section_top .section_menu_grandchild {
+    display: inline;
+}
+#birdapp657 .section_top .section_menu a {
+    text-decoration: none;
+    color: black;
+    border: solid black 1px;
+    padding: 3px 15px;
+    margin: 0 1px;
+    white-space: nowrap;
+}
+#birdapp657 .section_top .section_menu a.active,
+#birdapp657 .section_top .section_menu a:hover,
+#birdapp657 .section_top .section_menu a:active {
+    color: white;
+    background-color: black;
+}
+
+
+#birdapp657 .content {
+    margin: auto;
+    width: 1200px;
+    max-width: 100%;
+}
+#birdapp657 .content .collection_page .collection_item {
+    width: 30%;
+}
+#birdapp657 .content .collection_page .collection_item  img.cover_image {
+    max-width: 100%;
+}
+
+#birdapp657 .content.boxed {
+    width: 600px;
+    max-width: 100%;
+}
+#birdapp657 .content.boxed .collection_page .collection_item {
+    width: 360;
+}
+
+#birdapp657 .content.wide {
+    width: 100%;
+}
+#birdapp657 .content.wide .collection_page .collection_item {
+    width: 360;
+}
+
+
+
+#birdapp657 .content .cover img.top_cover_image {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    width: 600px;
+    border: solid 1px;
+}

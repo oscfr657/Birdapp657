@@ -1,0 +1,22 @@
+{% extends "bird_base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+{% block contant %}
+<div class="content">
+    
+    <div class="cover">
+        {% if page.specific.coverImage %}
+            {% image page.specific.coverImage original as tmp_photo %}
+            <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="top_cover_image" />
+        {% endif %}
+        <h2>{{ page.title }}</h2>
+    </div>
+
+    {{ page.first_published_at }} / {{ page.specific.author }}
+
+    {{ page.specific.body }}
+
+</div>
+{% endblock %}
