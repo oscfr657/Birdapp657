@@ -13,10 +13,12 @@
         {% endif %}
         <h2>{{ page.title }}</h2>
     </div>
-
-    {{ page.first_published_at }} / {{ page.specific.author }}
-
+    <div class="meta">
+    {{ page.first_published_at|date:"d M Y" }} / {{ page.specific.author }}
+    </div>
+    <div class="body">
     {{ page.specific.body }}
-
+    </div>
+    
 </div>
 {% endblock %}
