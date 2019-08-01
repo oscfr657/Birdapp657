@@ -67,10 +67,22 @@
 #birdapp657 .content .collection_page .collection_item {
     width: 30%;
     float: left;
+    padding: 0 10px;
 }
 #birdapp657 .content .collection_page .collection_item  img.cover_image {
     max-width: 100%;
+    border: solid 1px black;
 }
+
+#birdapp657 .content .cover h2,
+#birdapp657 .content .collection_page .collection_item h3,
+#birdapp657 .content .collection_page .collection_item .meta,
+#birdapp657 .content .meta,
+#birdapp657 .content .body {
+    padding: 0 10px;
+}
+
+
 
 #birdapp657 .content.boxed {
     width: 600px;
@@ -95,4 +107,21 @@
     max-width: 100%;
     width: 600px;
     border: solid 1px;
+}
+
+
+
+@media (max-width: 1200px) {
+    #birdapp657 .content .collection_page .collection_item {
+        width: calc(50% - 20px);
+        float: left;
+    }
+}
+
+
+@media (max-width: 600px) {
+    #birdapp657 .content .collection_page .collection_item {
+        width: calc(100% - 20px);
+        float: left;
+    }
 }
