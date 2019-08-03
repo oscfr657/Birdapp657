@@ -9,6 +9,9 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 
+from .blocks import BirdCodeBlock
+
+
 class BirdBasePage(Page):
     author = models.CharField(max_length=255, blank=True, null=True)
     coverImage = models.ForeignKey(
@@ -24,7 +27,7 @@ class BirdBasePage(Page):
             'bold', 'italic',
             'superscript', 'subscript', 'strikethrough'
             'ol', 'ul', 'hr',
-            'link', 'document-link', 'blockquote', 'code']
+            'link', 'document-link', 'blockquote']
             )
 
     content_panels = Page.content_panels + [
@@ -53,8 +56,9 @@ class BirdPage(BirdBasePage):
                 'bold', 'italic',
                 'superscript', 'subscript', 'strikethrough'
                 'ol', 'ul', 'hr',
-                'link', 'document-link', 'blockquote', 'code'])),
+                'link', 'document-link', 'blockquote'])),
         ('image', ImageChooserBlock(required=False, null=True)),
+        ('code', BirdCodeBlock(required=False, null=True)),
     ], blank=True, null=True)
 
     content_panels = BirdBasePage.content_panels + [

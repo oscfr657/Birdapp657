@@ -100,13 +100,15 @@
     margin: auto;
     max-width: 100%;
     width: 600px;
+    height: auto;
 }
 
-#birdapp657 .content .body .block-paragraph code {
+#birdapp657 .content .body .block-code {
     background-color: #aeaeae;
     padding: 1em;
     margin-bottom: 1em;
     color: #230253;
+    width: max-content;
 }
 
 
