@@ -17,7 +17,15 @@ class BirdBasePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    intro = RichTextField(blank=True, null=True)
+    intro = RichTextField(
+        blank=True, null=True,
+        features=[
+            'h2', 'h3', 'h4',
+            'bold', 'italic',
+            'superscript', 'subscript', 'strikethrough'
+            'ol', 'ul', 'hr',
+            'link', 'document-link', 'blockquote', 'code']
+            )
 
     content_panels = Page.content_panels + [
         FieldPanel('author'),
@@ -38,7 +46,14 @@ class BirdBasePage(Page):
 class BirdPage(BirdBasePage):
     body = StreamField([
         # ? ('heading', blocks.CharBlock(classname="full title",required=False,null=True)),
-        ('paragraph', blocks.RichTextBlock(required=False, null=True)),
+        ('paragraph', blocks.RichTextBlock(
+            required=False, null=True,
+            features=[
+                'h2', 'h3', 'h4',
+                'bold', 'italic',
+                'superscript', 'subscript', 'strikethrough'
+                'ol', 'ul', 'hr',
+                'link', 'document-link', 'blockquote', 'code'])),
         ('image', ImageChooserBlock(required=False, null=True)),
     ], blank=True, null=True)
 

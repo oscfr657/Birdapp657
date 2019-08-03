@@ -1,11 +1,10 @@
 
-#birdapp657 h3 {
+#birdapp657  {
     color: black;
 }
 
 #birdapp657 a {
     color: black;
-    text-decoration: none;
 }
 
 
@@ -74,7 +73,7 @@
     border: solid 1px black;
 }
 
-#birdapp657 .content .cover h2,
+#birdapp657 .content .cover,
 #birdapp657 .content .collection_page .collection_item h3,
 #birdapp657 .content .collection_page .collection_item .meta,
 #birdapp657 .content .meta,
@@ -82,6 +81,33 @@
     padding: 0 10px;
 }
 
+#birdapp657 .content .cover img.top_cover_image {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    width: 900px;
+    border: solid 1px;
+}
+
+#birdapp657 .content .body {
+    color: #505050;
+    text-align: left;
+    font-size: 18px;
+}
+
+#birdapp657 .content .body .block-image img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    width: 600px;
+}
+
+#birdapp657 .content .body .block-paragraph code {
+    background-color: #aeaeae;
+    padding: 1em;
+    margin-bottom: 1em;
+    color: #230253;
+}
 
 
 #birdapp657 .content.boxed {
@@ -98,17 +124,6 @@
 #birdapp657 .content.wide .collection_page .collection_item {
     width: 360;
 }
-
-
-
-#birdapp657 .content .cover img.top_cover_image {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    width: 600px;
-    border: solid 1px;
-}
-
 
 
 @media (max-width: 1200px) {
