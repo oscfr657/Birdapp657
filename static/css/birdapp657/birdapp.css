@@ -1,36 +1,72 @@
 
 #birdapp657  {
     color: black;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #birdapp657 a {
     color: black;
 }
 
-
-#birdapp657 .section_top {
+#birdapp657 .bird_top {
     text-align: center;
     margin: auto;
     width: 600px;
     max-width: 100%;
+    height: 3em;
 }
-#birdapp657 .section_top .section_menu {
+#birdapp657 .bird_top.wagtail_only {
+    height: 6.5em;
+}
+
+#birdapp657 .bird_top .bird_logo {
+    float: left;
+    transform: translateY(-25%);
+}
+#birdapp657 .bird_top.wagtail_only .bird_logo {
+    transform: translateY(0);
+}
+#birdapp657 .bird_top .bird_logo a {
+    text-decoration: None;
+}
+#birdapp657 .bird_top .bird_logo a h1 {
+    font-size: 3.9em;
+    line-height: 0.7em;
+    margin: 10px 0px;
+}
+#birdapp657 .bird_top.wagtail_only .bird_logo a h1 {
+    margin: 18px 0px;
+}
+
+#birdapp657 .bird_top .bird_menu {
     padding: 0px 0px;
 }
-#birdapp657 .section_top .section_menu_child_list {
+#birdapp657 .bird_top.wagtail_only .bird_menu {
+    float: right;
+    margin: 27px 0px;
+}
+
+#birdapp657 .bird_top .bird_menu_child_list {
     margin: auto;
     padding: 0;
     display: block;
 }
-#birdapp657 .section_top .section_menu_child {
+#birdapp657 .bird_top.wagtail_only .bird_menu_child_list  {
+    margin: 4px auto;
+}
+
+#birdapp657 .bird_top .bird_menu_child {
     display: inline-block;
     font-size: larger;
-    padding: 7px 0px;
+    padding: 4px 0px;
 }
-#birdapp657 .section_top .section_menu_child:hover .section_menu_grand_child_list {
+#birdapp657 .bird_top .bird_menu_child:hover .bird_menu_grand_child_list {
     display: block;
 }
-#birdapp657 .section_top .section_menu_grand_child_list {
+#birdapp657 .bird_top .bird_menu_child:hover .bird_menu_grand_child_list:hover {
+    display: block;
+}
+#birdapp657 .bird_top .bird_menu_grand_child_list {
     display: none;
     position: absolute;
     padding: 0 0px;
@@ -38,21 +74,24 @@
     left: 0;
     right: 0;
     width: 600px;
+    height: 2em;
 }
-#birdapp657 .section_top .section_menu_grandchild {
+#birdapp657 .bird_top .bird_menu_grandchild {
     display: inline;
+    margin: 14px 0 0 5px;
+    float: right;
 }
-#birdapp657 .section_top .section_menu a {
+#birdapp657 .bird_top .bird_menu a {
     text-decoration: none;
     color: black;
     border: solid black 1px;
     padding: 3px 15px;
-    margin: 0 1px;
+    margin: 2.5em 1px;
     white-space: nowrap;
 }
-#birdapp657 .section_top .section_menu a.active,
-#birdapp657 .section_top .section_menu a:hover,
-#birdapp657 .section_top .section_menu a:active {
+#birdapp657 .bird_top .bird_menu a.active,
+#birdapp657 .bird_top .bird_menu a:hover,
+#birdapp657 .bird_top .bird_menu a:active {
     color: white;
     background-color: black;
 }
