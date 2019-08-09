@@ -56,11 +56,20 @@ class BirdPage(BirdBasePage):
                 'bold', 'italic',
                 'superscript', 'subscript', 'strikethrough'
                 'ol', 'ul', 'hr',
-                'link', 'document-link', 'blockquote'])),
+                'link', 'document-link',
+                'blockquote', 'embed', 'image'])),
         ('image', ImageChooserBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
     ], blank=True, null=True)
 
     content_panels = BirdBasePage.content_panels + [
         StreamFieldPanel('body'),
+    ]
+
+
+class RawBirdPage(BirdBasePage):
+    html = models.TextField(blank=True, null=True)
+    
+    content_panels = BirdBasePage.content_panels + [
+        FieldPanel('html', classname="full"),
     ]

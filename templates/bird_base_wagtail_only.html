@@ -1,58 +1,90 @@
-
 {% load wagtailcore_tags wagtailuserbar %}
-
+{% load staticfiles %}
 {% load static %}
 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="shortcut icon" type="image/png" href="{% static 'img/logo.png' %}">
+
+{% if request.site.site_name %}
+    <meta name="description" content="Site for {{ request.site.site_name }}">
+{% elif request.site.name %}
+    <meta name="description" content="Site for {{ request.site.name }}">
+{% endif %}
+
+{% if request.site.site_name %}
+    <meta name="author" content="{{ request.site.site_name }}">
+{% elif request.site.name %}
+    <meta name="author" content="{{ request.site.name }}">
+{% endif %}
+
+
+{% block app_extra_head %}
+{% endblock %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
 
+{% if request.site.site_name %}
+<title >{{ request.site.site_name }}</title>
+{% elif request.site.name %}
+<title >{{ request.site.name }}</title>
+{% endif %}
 
-<div id="birdapp657">
-    {% block bird_top %}
-    <div class="bird_top wagtail_only">
+<div id="wagtail_wrapper" >
+    {% block app %}
+    <div id="birdapp657">
+        {% block bird_top %}
+        <div class="bird_top wagtail_only">
 
-        <div class="bird_logo">
-            <a href="{% pageurl request.site.root_page %}" >
-                <h1 >
-                    {{ request.site.site_name }}
-                </h1>
-            </a>
+            <div class="bird_logo">
+                <a href="{% pageurl request.site.root_page %}" >
+                    <h1 >
+                        {{ request.site.site_name }}
+                    </h1>
+                </a>
+            </div>
+
+            {% if request.site.root_page.get_children.live.in_menu %}
+            <div class="bird_menu">
+                <ul class="bird_menu_child_list">
+                {% for child in request.site.root_page.get_children.live.in_menu %}
+                    <li class="bird_menu_child">
+                        {% if child.title == page.title %}
+                        <a href="{% pageurl child %}" class="active" >{{ child }}</a>
+                        {% else %}
+                        <a href="{% pageurl child %}">{{ child }}</a>
+                        {% endif %}
+                        {% if child.get_children.live.in_menu %}
+                            <ul class="bird_menu_grand_child_list">
+                            {% for grandchild in child.get_children.live.in_menu %}
+                                <li  class="bird_menu_grand_child">
+                                    {% if page.title == grandchild.title %}
+                                        <a href="{% pageurl grandchild %}" class="active" >{{ grandchild }}</a>
+                                    {% else %}
+                                        <a href="{% pageurl grandchild %}" >{{ grandchild }}</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        {% endblock %}
+
+        <div class="content_wrapper wagtail_only">
+            {% block content %}
+            {% endblock %}
         </div>
 
-        {% if request.site.root_page.get_children.live.in_menu %}
-        <div class="bird_menu">
-            <ul class="bird_menu_child_list">
-            {% for child in request.site.root_page.get_children.live.in_menu %}
-                <li class="bird_menu_child">
-                    {% if child.title == page.title %}
-                    <a href="{% pageurl child %}" class="active" >{{ child }}</a>
-                    {% else %}
-                    <a href="{% pageurl child %}">{{ child }}</a>
-                    {% endif %}
-                    {% if child.get_children.live.in_menu %}
-                        <ul class="bird_menu_grand_child_list">
-                        {% for grandchild in child.get_children.live.in_menu %}
-                            <li  class="bird_menu_grandchild">
-                                {% if page.title == grandchild.title %}
-                                    <a href="{% pageurl grandchild %}" class="active" >{{ grandchild }}</a>
-                                {% else %}
-                                    <a href="{% pageurl grandchild %}" >{{ grandchild }}</a>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                </li>
-            {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
+        {% wagtailuserbar %}
+
     </div>
     {% endblock %}
-
-    {% block content %}
-    {% endblock %}
-
-    {% wagtailuserbar %}
-
 </div>
+
+<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" lazyload>

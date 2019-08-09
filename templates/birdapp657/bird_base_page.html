@@ -7,6 +7,12 @@
 {% block content %}
 <div class="content">
 
+    {% if page.specific.intro %}
+        <div class="collection_intro">
+            {{ page.specific.intro|richtext }}
+        </div>
+    {% endif %}
+
     {% if page.get_descendants.live.not_in_menu %}
     <div class="collection_page">
         {% for post in page.get_descendants.live.not_in_menu %}

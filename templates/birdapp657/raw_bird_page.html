@@ -1,0 +1,16 @@
+{% extends "bird_base.html" %}
+
+{% load wagtailcore_tags %}
+
+
+{% block content %}
+<div class="content">
+    
+    <div class="raw_bird">
+        {% if page.specific.html %}
+            {{ page.specific.html|safe  }}
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

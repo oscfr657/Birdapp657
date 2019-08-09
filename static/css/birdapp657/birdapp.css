@@ -1,3 +1,12 @@
+#wagtail_wrapper {
+    position: fixed;
+    overflow: hidden;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
 
 #birdapp657  {
     color: black;
@@ -17,6 +26,11 @@
 }
 #birdapp657 .bird_top.wagtail_only {
     height: 6.5em;
+    position: fixed;
+    margin: auto;
+    width: 600px;
+    left: 0;
+    right: 0;
 }
 
 #birdapp657 .bird_top .bird_logo {
@@ -35,15 +49,16 @@
     margin: 10px 0px;
 }
 #birdapp657 .bird_top.wagtail_only .bird_logo a h1 {
-    margin: 18px 0px;
+    margin: 10px 0px;
 }
 
 #birdapp657 .bird_top .bird_menu {
     padding: 0px 0px;
+    margin: 3px auto;
 }
 #birdapp657 .bird_top.wagtail_only .bird_menu {
     float: right;
-    margin: 27px 0px;
+    margin: 27px 14px 0 0;
 }
 
 #birdapp657 .bird_top .bird_menu_child_list {
@@ -52,13 +67,12 @@
     display: block;
 }
 #birdapp657 .bird_top.wagtail_only .bird_menu_child_list  {
-    margin: 4px auto;
+    margin: 3px auto;
 }
 
 #birdapp657 .bird_top .bird_menu_child {
     display: inline-block;
-    font-size: larger;
-    padding: 4px 0px;
+    margin: 0 0 0 4px;
 }
 #birdapp657 .bird_top .bird_menu_child:hover .bird_menu_grand_child_list {
     display: block;
@@ -69,25 +83,28 @@
 #birdapp657 .bird_top .bird_menu_grand_child_list {
     display: none;
     position: absolute;
-    padding: 0 0px;
-    margin: auto;
+    padding: 0 0 0 500px;
+    margin: 0 14px 0 auto;
     left: 0;
     right: 0;
-    width: 600px;
-    height: 2em;
+    width: max-content;
+    height: 3em;
 }
-#birdapp657 .bird_top .bird_menu_grandchild {
+#birdapp657 .bird_top .bird_menu_grand_child {
     display: inline;
     margin: 14px 0 0 5px;
+}
+#birdapp657 .bird_top .bird_menu_child .bird_menu_grand_child_list .bird_menu_grand_child {
     float: right;
 }
 #birdapp657 .bird_top .bird_menu a {
     text-decoration: none;
     color: black;
     border: solid black 1px;
-    padding: 3px 15px;
-    margin: 2.5em 1px;
+    padding: 2px 15px;
+    margin: 1.7em 0px;
     white-space: nowrap;
+    font-size: 1.3em;
 }
 #birdapp657 .bird_top .bird_menu a.active,
 #birdapp657 .bird_top .bird_menu a:hover,
@@ -99,8 +116,56 @@
 
 #birdapp657 .content {
     margin: auto;
-    width: 1200px;
+    width: 900px;
     max-width: 100%;
+}
+#birdapp657 .content_wrapper.wagtail_only {
+    position: absolute;
+    top: 7em;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}
+
+
+
+/** Ugly remove **/
+#birdapp657 .content .rich-text img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+#birdapp657 .content .richtext-image.right {
+    margin: 0 0 0 auto;
+}
+#birdapp657 .content .richtext-image.full-width {
+    width: 100%;
+}
+
+#birdapp657 .content .responsive-object {
+    position: relative;
+    padding-bottom: 0px !important;
+    width: 600px;
+    height: 337px;
+    max-width: 100%;
+    margin: auto;
+}
+#birdapp657 .content .responsive-object iframe,
+#birdapp657 .content .responsive-object object,
+#birdapp657 .content .responsive-object embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/** ^ End Ugly ^ **/
+
+
+
+#birdapp657 .content .collection_intro {
+    margin: 0 10px;
 }
 #birdapp657 .content .collection_page .collection_item {
     width: 30%;
@@ -116,7 +181,7 @@
 #birdapp657 .content .collection_page .collection_item h3,
 #birdapp657 .content .collection_page .collection_item .meta,
 #birdapp657 .content .meta,
-#birdapp657 .content .body {
+#birdapp657 .content .content_body {
     padding: 0 10px;
 }
 
@@ -128,13 +193,13 @@
     border: solid 1px;
 }
 
-#birdapp657 .content .body {
+#birdapp657 .content .content_body {
     color: #505050;
     text-align: left;
     font-size: 18px;
 }
 
-#birdapp657 .content .body .block-image img {
+#birdapp657 .content .content_body .block-image img {
     display: block;
     margin: auto;
     max-width: 100%;
@@ -142,13 +207,14 @@
     height: auto;
 }
 
-#birdapp657 .content .body .block-code {
+#birdapp657 .content .content_body .block-code {
     background-color: #aeaeae;
     padding: 1em;
     margin-bottom: 1em;
     color: #230253;
     width: max-content;
 }
+
 
 
 #birdapp657 .content.boxed {
@@ -179,5 +245,57 @@
     #birdapp657 .content .collection_page .collection_item {
         width: calc(100% - 20px);
         float: left;
+    }
+
+    #birdapp657 .bird_top.wagtail_only {
+        margin: auto 4px;
+    }
+
+    #birdapp657 .bird_top.wagtail_only .bird_logo {
+        text-align: left;
+        margin: 0 3px;
+    }
+    #birdapp657 .bird_top.wagtail_only .bird_logo a h1 {
+        margin: 13px 0px;
+    }
+
+    #birdapp657 .bird_top.wagtail_only .bird_menu {
+        text-align: left;
+        float: left;
+        margin: 0;
+    }
+    #birdapp657 .bird_top.wagtail_only .bird_menu_grand_child_list {
+        padding: 0 500px 0 0;
+        margin: 0 0 0 0;
+    }
+    #birdapp657 .content_wrapper.wagtail_only {
+        top: 9em;
+    }
+}
+
+@media (max-width: 500px) {
+    #birdapp657 .content .responsive-object {
+        height: 277px;
+    }
+
+    #birdapp657 .bird_top.wagtail_only .bird_menu {
+        text-align: left;
+        float: left;
+        margin: 0;
+    }
+    #birdapp657 .bird_top.wagtail_only .bird_menu_child {
+        margin: 0px 0 15px 4px;
+    }
+    #birdapp657 .bird_top.wagtail_only .bird_menu_grand_child_list {
+        margin: 3px 0 0 0;
+        background-color: white;
+    }
+    #birdapp657 .bird_top.wagtail_only .bird_menu_grand_child {
+        margin: 11px 0 0 5px;
+    }
+}
+@media (max-width: 400px) {
+    #birdapp657 .content .responsive-object {
+        height: 217px;
     }
 }

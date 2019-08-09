@@ -26,7 +26,7 @@
                     {% if False %}
                         <ul class="bird_menu_grand_child_list">
                         {% for grandchild in child.get_children.live.in_menu %}
-                            <li  class="bird_menu_grandchild">
+                            <li  class="bird_menu_grand_child">
                                 {% if page.title == grandchild.title %}
                                     <a href="{% pageurl grandchild %}" class="active" >{{ grandchild }}</a>
                                 {% else %}
