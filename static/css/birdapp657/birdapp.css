@@ -128,7 +128,42 @@
     overflow: auto;
 }
 
+#birdapp657 .content .search {
+    text-align: center;
+    border-bottom: solid 1px black;
+    width: 600px;
+    margin: auto;
+}
+#birdapp657 .content .search_result {
+    width: 600px;
+    margin: auto;
+}
+#birdapp657 .content .search_result ul {
+    display: block;
+    text-align: center;
+    padding: 0;
+}
+#birdapp657 .content .search_result li {
+    display: block;
+/*    max-width: max-content;*/
+}
 
+#birdapp657 .content .search_result li h3 {
+    margin: 0 0 1em 0;
+}
+#birdapp657 .content .search_result li .search_result_item_cover {
+    margin: auto;
+    width: 200px;
+    overflow: hidden;
+    border: solid 1px black;
+}
+#birdapp657 .content .search_result li .search_result_item_cover img {
+    width: 100%;
+    transition: all 1s ease;
+}
+#birdapp657 .content .search_result li .search_result_item_cover img:hover {
+    transform: scale(1.25);
+}
 
 /** Ugly remove **/
 #birdapp657 .content .rich-text img {
@@ -172,14 +207,27 @@
     float: left;
     padding: 0 10px;
 }
+
+#birdapp657 .content .collection_page .collection_item .collection_item_cover{
+    border: solid 1px black;
+    overflow: hidden;
+}
+
 #birdapp657 .content .collection_page .collection_item  img.cover_image {
     max-width: 100%;
-    border: solid 1px black;
+    transition: all 1s ease;
+}
+#birdapp657 .content .collection_page .collection_item  img.cover_image:hover {
+    transform: scale(1.25);
+}
+#birdapp657 .content .collection_page .collection_item h3 {
+    margin: 0 0 1em 0;
 }
 
 #birdapp657 .content .cover,
 #birdapp657 .content .collection_page .collection_item h3,
 #birdapp657 .content .collection_page .collection_item .meta,
+#birdapp657 .content .collection_page .collection_item .intro,
 #birdapp657 .content .meta,
 #birdapp657 .content .content_body {
     padding: 0 10px;

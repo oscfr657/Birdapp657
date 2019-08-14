@@ -1,14 +1,17 @@
 
 from django.db import models
+from django.shortcuts import render
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
+from wagtail.search.models import Query
+from wagtail.search import index
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-
+from .forms import SearchBirdForm
 from .blocks import BirdCodeBlock
 
 
@@ -29,6 +32,11 @@ class BirdBasePage(Page):
             'ol', 'ul', 'hr',
             'link', 'document-link', 'blockquote']
             )
+
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+        #index.FilterField('author'),
+    ]
 
     content_panels = Page.content_panels + [
         FieldPanel('author'),
@@ -73,3 +81,28 @@ class RawBirdPage(BirdBasePage):
     content_panels = BirdBasePage.content_panels + [
         FieldPanel('html', classname="full"),
     ]
+
+
+class SearchBirdPage(Page):
+    
+    def serve(self, request):
+        if request.method == 'POST':
+            form = SearchBirdForm(request.POST)
+            if form.is_valid():
+                search_query = form.cleaned_data['search_query']
+                search_results = self.get_parent().get_descendants().live().search(search_query)
+
+                Query.get(search_query).add_hit()
+
+                form = SearchBirdForm()
+            else:
+                search_results = Page.objects.none()
+        else:
+            form = SearchBirdForm()
+            search_results = Page.objects.none()
+
+        return render(request, 'birdapp657/search_bird_page.html', {
+            'page': self,
+            'form': form,
+            'search_results': search_results,
+        })

@@ -29,6 +29,7 @@ add to the INSTALLED_APPS
     'wagtail.snippets',
     'wagtail.documents',
     'wagtail.images',
+    'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
     'modelcluster',
@@ -36,6 +37,8 @@ add to the INSTALLED_APPS
 
     # custom
     'birdapp657',
+    # birdapp657 default search backend
+    'wagtail.contrib.postgres_search',
 
 ```
 
@@ -46,10 +49,23 @@ add to the  MIDDLEWARE settings
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',  # wagtail
 ```
 
+add the search backend settings
+
+``` python
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.contrib.postgres_search.backend',
+    },
+}
+```
+
 ### Database configuration ###
 
 > python manage.py migrate
-  
+
+### Search Index setup ###
+>  python manage.py update_index
+
 ### Django url ###
 
 To the django projects' url.py add
@@ -82,6 +98,7 @@ urlpatterns = [
 
     #  Wagtail
     re_path(r'^birdapp/', include(wagtailadmin_urls)),
+    re_path(r'^documents/', include(wagtaildocs_urls)),
     re_path(r'', include(wagtail_urls)),
     
   ]

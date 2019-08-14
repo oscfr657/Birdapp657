@@ -31,6 +31,9 @@
                 <div class="meta">
                 {{ post.first_published_at|date:"d M Y" }} / {{ post.specific.author }}
                 </div>
+                <div class="intro">
+                {{ post.specific.intro|richtext }}
+                </div>
             </div>
         {% endfor %}
     </div>

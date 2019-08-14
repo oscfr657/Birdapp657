@@ -1,0 +1,39 @@
+{% extends "bird_base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+
+{% block content %}
+    <div class="content">
+        <div class="search">
+            <form action="." method="POST">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                {{ form.search_query.errors }}
+                {{ form.search_query }}
+            </form>
+        </div>
+        {% if search_results %}
+        <div class="search_result">
+            <ul>
+                {% for result in search_results %}
+                    <li>
+                        <a href="{% pageurl result %}">
+                            {% if result.specific.coverImage %}
+                            {% image result.specific.coverImage original as tmp_photo %}
+                            <div class="search_result_item_cover">
+                                <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="cover_image" />
+                            </div>
+                            {% endif %}
+                            <h3>{{ result }}</h3>
+                        </a>
+                        {% if result.search_description %}
+                            {{ result.search_description|richtext }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
