@@ -25,11 +25,8 @@
                                 <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="cover_image" />
                             </div>
                             {% endif %}
-                            <h3>{{ result }}</h3>
+                            <h3>{{ result.title }}</h3>
                         </a>
-                        {% if result.search_description %}
-                            {{ result.search_description|richtext }}
-                        {% endif %}
                     </li>
                 {% endfor %}
             </ul>

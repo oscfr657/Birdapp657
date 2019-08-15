@@ -70,6 +70,10 @@ class BirdPage(BirdBasePage):
         ('code', BirdCodeBlock(required=False, null=True)),
     ], blank=True, null=True)
 
+    search_fields = BirdBasePage.search_fields + [
+        index.SearchField('body'),
+        #index.FilterField('author'),
+    ]
     content_panels = BirdBasePage.content_panels + [
         StreamFieldPanel('body'),
     ]
