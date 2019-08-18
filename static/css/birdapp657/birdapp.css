@@ -20,15 +20,13 @@
 #birdapp657 .bird_top {
     text-align: center;
     margin: auto;
-    width: 600px;
+    width: 700px;
     max-width: 100%;
     height: 3em;
 }
 #birdapp657 .bird_top.wagtail_only {
     height: 6.5em;
     position: fixed;
-    margin: auto;
-    width: 600px;
     left: 0;
     right: 0;
 }
@@ -126,17 +124,16 @@
     left: 0;
     right: 0;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 #birdapp657 .content .search {
     text-align: center;
     border-bottom: solid 1px black;
-    width: 600px;
     max-width: 100%;
     margin: auto;
 }
 #birdapp657 .content .search_result {
-    width: 600px;
     margin: auto;
     max-width: 100%;
 }
@@ -182,8 +179,7 @@
 #birdapp657 .content .responsive-object {
     position: relative;
     padding-bottom: 0px !important;
-    width: 600px;
-    height: 337px;
+    height: 494px;
     max-width: 100%;
     margin: auto;
 }
@@ -251,11 +247,13 @@
     font-size: 18px;
 }
 
-#birdapp657 .content .content_body .block-image img {
+#birdapp657 .content_wrapper .content .content_body .block-image {
+    padding: 1em 0;
+}
+#birdapp657 .content_wrapper .content .content_body .block-image img {
     display: block;
     margin: auto;
     max-width: 100%;
-    width: 600px;
     height: auto;
 }
 
@@ -267,7 +265,53 @@
     width: max-content;
 }
 
+#birdapp657 .content .content_body .block-racer {
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    display: flex;
+    margin-left: -50vw;
+    /*background-color: coral;*/
+}
+#birdapp657 .content .content_body .block-racer .racer {
+    width: 100%;
+    min-height: 10em;
+}
+#birdapp657 .content .content_body .block-racer .racer .inner_racer {
+    width: calc(900px - 1em);
+    margin: auto;
+    padding: 1em;
+    max-width: calc(100% - 2em);
+    display: flex;
+    flex-wrap: wrap;
+}
+#birdapp657 .content .content_body .block-racer .racer .inner_racer.right {
+    flex-wrap: wrap-reverse;
 
+}
+#birdapp657 .content .content_body .block-racer .racer .racer_text {
+    max-width: 100%;
+    width: calc(450px - 1em);
+    margin: auto;
+}
+#birdapp657 .content .content_body .block-racer .racer .racer_text .rich-text {
+    top: 50%;
+    max-width: calc(100% - 2em);
+    margin: auto;
+}
+#birdapp657 .content .content_body .block-racer .racer .racer_text h2, 
+#birdapp657 .content .content_body .block-racer .racer .racer_text h3, 
+#birdapp657 .content .content_body .block-racer .racer .racer_text h4,
+#birdapp657 .content .content_body .block-racer .racer .racer_text h5 {
+    text-align: center;
+}
+#birdapp657 .content .content_body .block-racer .racer .racer_image {
+    width: calc(450px - 1em);
+    margin: auto;
+}
+#birdapp657 .content .content_body .block-racer .racer .racer_image img {
+    width: 100%;
+}
 
 #birdapp657 .content.boxed {
     width: 600px;
@@ -294,11 +338,6 @@
 
 
 @media (max-width: 600px) {
-    #birdapp657 .content .collection_page .collection_item {
-        width: 100%;
-        float: left;
-    }
-
     #birdapp657 .bird_top.wagtail_only {
         margin: auto 4px;
     }
@@ -317,19 +356,38 @@
         margin: 0;
     }
     #birdapp657 .bird_top.wagtail_only .bird_menu_grand_child_list {
-        padding: 0 500px 0 0;
+        padding: 0 700px 0 0;
         margin: 0 0 0 0;
+    }
+    #birdapp657 .content .responsive-object {
+        height: 320px;
     }
     #birdapp657 .content_wrapper.wagtail_only {
         top: 9em;
     }
+    #birdapp657 .content .collection_page .collection_item {
+        width: 100%;
+        float: left;
+    }
+    #birdapp657 .content .content_body .block-racer .racer .racer_text {
+        width: 100%;
+    }
+    #birdapp657 .content .content_body .block-racer .racer .racer_text .rich-text {
+        position: relative;
+        transform: none;
+        top: 50%;
+        width: calc(100% - 2em);
+    }
+    #birdapp657 .content .content_body .block-racer .racer .racer_image {
+        width: 100%;
+    }
+    #birdapp657 .content .content_body .block-racer .racer .racer_image.right {
+        margin: 0 0 1em 0;
+    }
+    
 }
 
 @media (max-width: 500px) {
-    #birdapp657 .content .responsive-object {
-        height: 277px;
-    }
-
     #birdapp657 .bird_top.wagtail_only .bird_menu {
         text-align: left;
         float: left;
@@ -345,6 +403,10 @@
     #birdapp657 .bird_top.wagtail_only .bird_menu_grand_child {
         margin: 12px 2px 0 5px;
     }
+    #birdapp657 .content .responsive-object {
+        height: 277px;
+    }
+
 }
 @media (max-width: 400px) {
     #birdapp657 .content .responsive-object {

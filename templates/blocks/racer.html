@@ -1,0 +1,32 @@
+
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<div class="racer" 
+    style="background-color:{{ value.bg_color }}; color:{{ value.text_color }}">
+    {% if value.right %}
+    <div class="inner_racer right" >
+        {% if value.text %}
+            <div class="racer_text" >{{ value.text|richtext }}</div>
+        {% endif %}
+        {% if value.image %}
+            <div class="racer_image">
+                    {% image value.image original as tmp_img %}
+                <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+            </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="inner_racer left" >
+        {% if value.image %}
+            <div class="racer_image">
+                {% image value.image original as tmp_img %}
+                <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}"  />
+            </div>
+        {% endif %}
+        {% if value.text %}
+            <div class="racer_text right">{{ value.text|richtext }}</div>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>

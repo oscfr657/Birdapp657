@@ -12,10 +12,10 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from .forms import SearchBirdForm
-from .blocks import BirdCodeBlock
+from .blocks import BirdCodeBlock, RacerBirdBlock
 
 
-class BirdBasePage(Page):
+class BirdBasePage(Page):  # TODO: Rename to BaseBirdPage
     author = models.CharField(max_length=255, blank=True, null=True)
     coverImage = models.ForeignKey(
         'wagtailimages.Image',
@@ -68,6 +68,7 @@ class BirdPage(BirdBasePage):
                 'blockquote', 'embed', 'image'])),
         ('image', ImageChooserBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
+        ('racer', RacerBirdBlock(required=False, null=True)),
     ], blank=True, null=True)
 
     search_fields = BirdBasePage.search_fields + [
