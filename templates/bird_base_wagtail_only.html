@@ -35,6 +35,7 @@
     {% block app %}
     <div id="birdapp657">
         {% block bird_top %}
+        <div class="bird_top_wraper wagtail_only">
         <div class="bird_top wagtail_only">
 
             <div class="bird_logo">
@@ -48,31 +49,32 @@
             {% if request.site.root_page.get_children.live.in_menu %}
             <div class="bird_menu">
                 <ul class="bird_menu_child_list">
-                {% for child in request.site.root_page.get_children.live.in_menu %}
+                    {% for child in request.site.root_page.get_children.live.in_menu %}
                     <li class="bird_menu_child">
-                        {% if child.title == page.title %}
+                    {% if child.title == page.title %}
                         <a href="{% pageurl child %}" class="active" >{{ child }}</a>
-                        {% else %}
+                    {% else %}
                         <a href="{% pageurl child %}">{{ child }}</a>
-                        {% endif %}
-                        {% if child.get_children.live.in_menu %}
-                            <ul class="bird_menu_grand_child_list">
-                            {% for grandchild in child.get_children.live.in_menu %}
-                                <li  class="bird_menu_grand_child">
-                                    {% if page.title == grandchild.title %}
-                                        <a href="{% pageurl grandchild %}" class="active" >{{ grandchild }}</a>
-                                    {% else %}
-                                        <a href="{% pageurl grandchild %}" >{{ grandchild }}</a>
-                                    {% endif %}
-                                </li>
-                            {% endfor %}
-                            </ul>
+                    {% endif %}
+                    {% if child.get_children.live.in_menu %}
+                        <ul class="bird_menu_grand_child_list">
+                        {% for grandchild in child.get_children.live.in_menu %}
+                            <li  class="bird_menu_grand_child">
+                                {% if page.title == grandchild.title %}
+                                    <a href="{% pageurl grandchild %}" class="active" >{{ grandchild }}</a>
+                                {% else %}
+                                    <a href="{% pageurl grandchild %}" >{{ grandchild }}</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                        </ul>
                         {% endif %}
                     </li>
-                {% endfor %}
+                    {% endfor %}
                 </ul>
             </div>
             {% endif %}
+        </div>
         </div>
         {% endblock %}
 
