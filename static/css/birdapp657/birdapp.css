@@ -201,9 +201,14 @@
 #birdapp657 .content .collection_intro {
     margin: 0 10px;
 }
+
+#birdapp657 .content .collection_page {
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+}
 #birdapp657 .content .collection_page .collection_item {
     width: 30%;
-    float: left;
 }
 
 #birdapp657 .content .collection_page .collection_item .collection_item_cover{
@@ -323,8 +328,7 @@
 
 @media (max-width: 1200px) {
     #birdapp657 .content .collection_page .collection_item {
-        width: 50%;
-        float: left;
+        width: 40%;
     }
 }
 

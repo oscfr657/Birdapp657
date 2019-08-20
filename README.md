@@ -64,7 +64,7 @@ WAGTAILSEARCH_BACKENDS = {
 > python manage.py migrate
 
 ### Search Index setup ###
->  python manage.py update_index
+> python manage.py update_index
 
 ### Django url ###
 
