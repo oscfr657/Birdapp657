@@ -14,7 +14,11 @@
         <h2>{{ page.title }}</h2>
     </div>
     <div class="meta">
-    {{ page.first_published_at|date:"d M Y" }} / {{ page.specific.author }}
+        {% if page.go_live_at %}
+            {{ page.go_live_at|date:"d M Y" }} / {{ page.specific.author }}
+        {% else %}
+            {{ page.first_published_at|date:"d M Y" }} / {{ page.specific.author }}
+        {% endif %}
     </div>
     <div class="content_body">
     {{ page.specific.body }}

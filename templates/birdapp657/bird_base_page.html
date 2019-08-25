@@ -29,7 +29,11 @@
                     </div>
                 </a>
                 <div class="meta">
-                {{ post.first_published_at|date:"d M Y" }} / {{ post.specific.author }}
+                {% if post.go_live_at %}
+                    {{ post.go_live_at|date:"d M Y" }} / {{ post.specific.author }}
+                {% else %}
+                    {{ post.first_published_at|date:"d M Y" }} / {{ post.specific.author }}
+                {% endif %}
                 </div>
                 <div class="intro">
                 {{ post.specific.intro|richtext }}

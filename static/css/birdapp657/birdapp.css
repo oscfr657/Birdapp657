@@ -57,7 +57,7 @@
     margin: 10px 0px;
 }
 #birdapp657 .bird_top.wagtail_only .bird_logo a h1 {
-    margin: 10px 0px;
+    margin: 10px -3px;
 }
 #birdapp657 .bird_top .bird_menu {
     padding: 0px 0px;
@@ -293,14 +293,11 @@
 }
 #birdapp657 .content .content_body .block-racer .racer .racer_text .rich-text {
     top: 50%;
-    max-width: calc(100% - 2em);
+    max-width: 100%;
     margin: auto;
 }
-#birdapp657 .content .content_body .block-racer .racer .racer_text h2, 
-#birdapp657 .content .content_body .block-racer .racer .racer_text h3, 
-#birdapp657 .content .content_body .block-racer .racer .racer_text h4,
-#birdapp657 .content .content_body .block-racer .racer .racer_text h5 {
-    text-align: center;
+#birdapp657 .content .content_body .block-racer .racer .racer_text.right .rich-text {
+    padding: 0 0 0 1em;
 }
 #birdapp657 .content .content_body .block-racer .racer .racer_image {
     width: 450px;
@@ -345,6 +342,10 @@
     }
     #birdapp657 .content_wrapper.wagtail_only {
         top: 7em;
+    }
+
+    #birdapp657 .content .content_body .block-racer .racer .racer_text.right .rich-text {
+        padding: 0;
     }
 }
 

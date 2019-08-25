@@ -1,0 +1,33 @@
+{% extends "bird_base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block content %}
+<div class="content">
+    <h2>{{ page.title }}</h2>
+    {{ page.intro|richtext }}
+    <form action="{% pageurl page %}" method="POST">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+            {% if field.name == 'bird_pot' %}
+            <div style='display: none;'>
+            {% else %}
+            <div >
+            {% endif %}
+                {{ field.errors }}
+                <h4>{{ field.label }}</h4>
+                {% if field.help_text %}
+                <p>{{ field.help_text|safe }}</p>
+                {% endif %}
+                {{ field }}
+            </div>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}

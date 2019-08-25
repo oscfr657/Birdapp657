@@ -1,0 +1,9 @@
+{% extends "bird_base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block content %}
+<div class="content">
+    {{ page.thank_you_text|richtext }}
+</div>
+{% endblock %}
