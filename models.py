@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from django.db import models
 from django.shortcuts import render
@@ -54,7 +55,8 @@ class BirdMixin(models.Model):
         FieldPanel('intro', classname="full")
     ]
 
-class BirdBasePage(Page, BirdMixin):  # TODO: Rename to CollectionBirdPage ?
+
+class BirdBasePage(Page, BirdMixin):  # TODO: Remove to CollectionBirdPage ?
     search_fields = Page.search_fields + BirdMixin.search_fields
 
     content_panels = Page.content_panels + BirdMixin.content_panels
@@ -69,7 +71,22 @@ class BirdBasePage(Page, BirdMixin):  # TODO: Rename to CollectionBirdPage ?
         return context
 
 
-class BirdPage(BirdBasePage):
+class CollectionBirdPage(Page, BirdMixin):
+    search_fields = Page.search_fields + BirdMixin.search_fields
+
+    content_panels = Page.content_panels + BirdMixin.content_panels
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        try:
+            section_root_page = Page.objects.ancestor_of(self)[2]
+        except IndexError:
+            section_root_page = self
+        context['section_root_page'] = section_root_page
+        return context
+
+
+class SoloBirdPage(Page, BirdMixin):
     body = StreamField([
         # ? ('heading', blocks.CharBlock(classname="full title",required=False,null=True)),
         ('paragraph', blocks.RichTextBlock(
@@ -95,12 +112,47 @@ class BirdPage(BirdBasePage):
     ]
 
 
-class RawBirdPage(BirdBasePage):
+class BirdPage(BirdBasePage):  # Remove
+    body = StreamField([
+        # ? ('heading', blocks.CharBlock(classname="full title",required=False,null=True)),
+        ('paragraph', blocks.RichTextBlock(
+            required=False, null=True,
+            features=[
+                'h2', 'h3', 'h4',
+                'bold', 'italic',
+                'superscript', 'subscript', 'strikethrough'
+                'ol', 'ul', 'hr',
+                'link', 'document-link',
+                'blockquote', 'embed', 'image'])),
+        ('image', ImageChooserBlock(required=False, null=True)),
+        ('code', BirdCodeBlock(required=False, null=True)),
+        ('racer', RacerBirdBlock(required=False, null=True)),
+    ], blank=True, null=True)
+
+    search_fields = Page.search_fields + BirdMixin.search_fields + [
+        index.SearchField('body'),
+        #index.FilterField('author'),
+    ]
+    content_panels = Page.content_panels + BirdMixin.content_panels +[
+        StreamFieldPanel('body'),
+    ]
+
+
+class RawBirdPage(BirdBasePage):  # Remove
     html = models.TextField(blank=True, null=True)
     
     content_panels = Page.content_panels + BirdMixin.content_panels + [
         FieldPanel('html', classname="full"),
     ]
+
+
+class TempRawBirdPage(Page, BirdMixin):
+    html = models.TextField(blank=True, null=True)
+    
+    content_panels = Page.content_panels + BirdMixin.content_panels + [
+        FieldPanel('html', classname="full"),
+    ]
+    template = 'birdapp657/raw_bird_page.html'
 
 
 class SearchBirdPage(Page):

@@ -23,7 +23,6 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 2;
     background-color: white;
     overflow: scroll;
     overflow-x: hidden;
@@ -114,11 +113,12 @@
 
 
 #birdapp657 .content_wrapper.wagtail_only {
-    position: relative;
+    position: fixed;
     top: 8em;
     bottom: 0;
     left: 0;
     right: 0;
+    overflow-x: hidden;
 }
 #birdapp657 .content {
     margin: auto;

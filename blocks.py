@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
+
 
 class BirdCodeBlock(blocks.StructBlock):  # TODO: Rename to CodeBirdBlock ?
 
