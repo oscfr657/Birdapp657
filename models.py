@@ -146,13 +146,12 @@ class RawBirdPage(BirdBasePage):  # Remove
     ]
 
 
-class TempRawBirdPage(Page, BirdMixin):
+class HTMLBirdPage(Page, BirdMixin):
     html = models.TextField(blank=True, null=True)
     
     content_panels = Page.content_panels + BirdMixin.content_panels + [
         FieldPanel('html', classname="full"),
     ]
-    template = 'birdapp657/raw_bird_page.html'
 
 
 class SearchBirdPage(Page):
