@@ -1,0 +1,47 @@
+{% extends "bird_base.html" %}
+
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+
+{% block content %}
+<div class="content">
+
+    {% if page.specific.intro %}
+        <div class="collection_intro">
+            {{ page.specific.intro|richtext }}
+        </div>
+    {% endif %}
+
+    {% if page.get_descendants.live.not_in_menu %}
+    <div class="collection_page">
+        {% for post in page.get_descendants.live.not_in_menu %}
+            <div class="collection_item">
+                <a href="{% pageurl post %}">
+                    {% if post.specific.coverImage %}
+                    {% image post.specific.coverImage original as tmp_img %}
+                    <div class="collection_item_cover">
+                        <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" />
+                    </div>
+                    {% endif %}
+                    <div class="collection_item_title">
+                        <h3>{{ post.title }}</h3>
+                    </div>
+                </a>
+                <div class="meta">
+                {% if post.go_live_at %}
+                    {{ post.go_live_at|date:"d M Y" }} / {{ post.specific.author }}
+                {% else %}
+                    {{ post.first_published_at|date:"d M Y" }} / {{ post.specific.author }}
+                {% endif %}
+                </div>
+                <div class="intro">
+                {{ post.specific.intro|richtext }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
