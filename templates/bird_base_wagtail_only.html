@@ -5,18 +5,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
 <link rel="shortcut icon" type="image/png" href="{% static 'img/logo.png' %}">
+
+{% if request.site.site_name %}
+    <meta name="title" content="{{ request.site.site_name }} {{ page.seo_title }}">
+{% elif request.site.name %}
+    <meta name="title" content="{{ request.site.name }} {{ page.seo_title }}">
+{% endif %}
 
 {% if request.site.site_name %}
     <meta name="description" content="Site for {{ request.site.site_name }}">
 {% elif request.site.name %}
     <meta name="description" content="Site for {{ request.site.name }}">
-{% endif %}
-
-{% if request.site.site_name %}
-    <meta name="author" content="{{ request.site.site_name }}">
-{% elif request.site.name %}
-    <meta name="author" content="{{ request.site.name }}">
 {% endif %}
 
 
@@ -26,9 +27,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
 
 {% if request.site.site_name %}
-<title >{{ request.site.site_name }}</title>
+<title >{{ request.site.site_name }} - {{ page.seo_title }}</title>
 {% elif request.site.name %}
-<title >{{ request.site.name }}</title>
+<title >{{ request.site.name }} - {{ page.seo_title }}</title>
 {% endif %}
 
 <div id="wagtail_wrapper" >
