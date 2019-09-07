@@ -1,9 +1,24 @@
 {% extends "bird_base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 <div class="content">
+    <div class="cover">
+        {% if page.specific.coverImage  and page.specific.show_coverImage %}
+            {% image page.specific.coverImage original as tmp_photo %}
+            <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="top_cover_image" />
+        {% endif %}
+        <h2>{{ page.title }}</h2>
+    </div>
+    <div class="meta">
+        {% if page.go_live_at and page.show_date %}
+            {{ page.go_live_at|date:"d M Y" }} 
+        {% elif page.show_date %}
+            {{ page.first_published_at|date:"d M Y" }}
+        {% endif %}
+        {% if page.show_author  %} / {{ page.specific.author }}{% endif %}
+    </div>
     {{ page.thank_you_text|richtext }}
 </div>
 {% endblock %}

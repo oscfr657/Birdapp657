@@ -211,11 +211,6 @@ body {
 /** ^ End Ugly ^ **/
 
 
-
-#birdapp657 .content .collection_intro {
-    margin: 0 10px;
-}
-
 #birdapp657 .content .collection_page {
     justify-content: space-between;
     display: flex;
