@@ -40,6 +40,10 @@ class BirdMixin(models.Model):
             'ol', 'ul', 'hr',
             'link', 'document-link', 'blockquote']
             )
+    show_breadcrumbs = models.BooleanField(default=False)
+    show_coverImage = models.BooleanField(default=False)
+    show_author = models.BooleanField(default=False)
+    show_date = models.BooleanField(default=False)
 
     class Meta:
         abstract = True
@@ -52,7 +56,11 @@ class BirdMixin(models.Model):
     content_panels = [
         FieldPanel('author'),
         ImageChooserPanel('coverImage'),
-        FieldPanel('intro', classname="full")
+        FieldPanel('intro', classname="full"),
+        FieldPanel('show_breadcrumbs'),
+        FieldPanel('show_coverImage'),
+        FieldPanel('show_author'),
+        FieldPanel('show_date'),
     ]
 
 
@@ -61,12 +69,17 @@ class CollectionBirdPage(Page, BirdMixin):
 
     content_panels = Page.content_panels + BirdMixin.content_panels
 
+    # subpage_types = ['SoloBirdPage']
+
     def get_context(self, request):
         context = super().get_context(request)
         try:
+            posts = self.get_descendants().live().not_in_menu().order_by(
+                '-go_live_at')
             section_root_page = Page.objects.ancestor_of(self)[2]
         except IndexError:
             section_root_page = self
+        context['posts'] = posts
         context['section_root_page'] = section_root_page
         return context
 

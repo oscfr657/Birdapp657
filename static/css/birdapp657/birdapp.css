@@ -1,4 +1,6 @@
-#wagtail_wrapper {
+body {
+    margin: 0;
+    padding: 0;
     position: fixed;
     overflow: scroll;
     top: 0px;
@@ -6,7 +8,6 @@
     height: 100%;
     width: 100%;
 }
-
 
 #birdapp657  {
     color: black;
@@ -118,6 +119,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    overflow: scroll;
     overflow-x: hidden;
 }
 #birdapp657 .content {
@@ -127,6 +129,17 @@
     padding: 0 1em;
 }
 
+#birdapp657 .breadcrumbs_wraper {
+    position: absolute;
+    bottom: 0em;
+    width: 100%;
+}
+
+#birdapp657 .breadcrumbs {
+    margin: auto;
+    width: 900px;
+    padding: 0em 1em;
+}
 
 #birdapp657 .content .search {
     text-align: center;
@@ -206,6 +219,7 @@
     justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
+    padding: 2em 0em;
 }
 #birdapp657 .content .collection_page .collection_item {
     width: 30%;

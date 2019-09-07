@@ -35,5 +35,5 @@ class RacerBirdBlock(blocks.StructBlock):
 
     class Meta:
         label = 'Racer'
-        icon = 'picture'
+        icon = 'image'
         template = 'blocks/racer.html'

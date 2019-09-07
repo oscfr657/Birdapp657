@@ -32,7 +32,6 @@
 <title >{{ request.site.name }} - {{ page.seo_title }}</title>
 {% endif %}
 
-<div id="wagtail_wrapper" >
     {% block app %}
     <div id="birdapp657">
         {% block bird_top %}
@@ -76,6 +75,17 @@
             </div>
             {% endif %}
         </div>
+
+        {% if page.show_breadcrumbs %}
+        <div class="breadcrumbs_wraper">
+            <div class="breadcrumbs">
+                {% for ancestor in page.get_ancestors.public|slice:"2:" %}
+                <a href="{% pageurl ancestor %}">{{ ancestor.title }}</a> /
+                {% endfor %}
+                {{ page.title  }}
+            </div>
+        </div>
+        {% endif %}
         </div>
         {% endblock %}
 
@@ -88,6 +98,5 @@
 
     </div>
     {% endblock %}
-</div>
 
 <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" lazyload>
