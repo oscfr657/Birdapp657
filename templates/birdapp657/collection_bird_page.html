@@ -29,12 +29,12 @@
                     </div>
                 </a>
                 <span class="meta">
-                {% if post.go_live_at and page.show_date %}
+                {% if post.go_live_at and post.show_date and page.show_date %}
                     {{ post.go_live_at|date:"d M Y" }} 
-                {% elif page.show_date %}
+                {% elif post.show_date and page.show_date %}
                     {{ post.first_published_at|date:"d M Y" }}
                 {% endif %}
-                {% if page.show_author  %} / {{ post.specific.author }}{% endif %}
+                {% if post.show_author and page.show_author %} / {{ post.specific.author }}{% endif %}
                 </span>
                 <div class="intro">
                 {{ post.specific.intro|richtext }}

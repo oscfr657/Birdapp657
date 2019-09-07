@@ -88,6 +88,7 @@ body {
     padding: 0;
     margin: auto;
     width: max-content;
+    z-index: 1;
 }
 #birdapp657 .bird_top .bird_menu_grand_child {
     display: inline;
