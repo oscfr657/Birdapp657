@@ -37,3 +37,14 @@ class RacerBirdBlock(blocks.StructBlock):
         label = 'Racer'
         icon = 'image'
         template = 'blocks/racer.html'
+
+
+class HTMLBirdBlock(blocks.StructBlock):
+
+    html = blocks.RawHTMLBlock()
+
+    class Meta:
+        label = 'HTML'
+        icon = 'code'
+        template = 'blocks/html_bird_block.html'
+

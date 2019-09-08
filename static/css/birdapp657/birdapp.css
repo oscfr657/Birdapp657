@@ -317,6 +317,9 @@ body {
 #birdapp657 .content .content_body .block-racer .racer .racer_image img {
     width: 100%;
 }
+#birdapp657 .block-html {
+    padding: 1em 0;
+}
 
 #birdapp657 .content.boxed {
     width: 600px;
@@ -403,7 +406,7 @@ body {
 
 @media (max-width: 571px) {
     #birdapp657 .bird_top.wagtail_only {
-        height: 8em;
+        height: 8.5em;
     }
     #birdapp657 .bird_top.wagtail_only .bird_logo {
         text-align: left;
@@ -419,29 +422,15 @@ body {
     }
     #birdapp657 .bird_top.wagtail_only .bird_menu_grand_child_list {
         padding: 0 25vw 0 0;
-        margin: 0 0 0 0;
+        margin: 3px 0 0 0;
+        background-color: white;
     }
     #birdapp657 .content_wrapper.wagtail_only {
         top: 8.5em;
     }
-}
-
-@media (max-width: 571px) {
-    #birdapp657 .bird_top.wagtail_only {
-        height: 8.5em;
-    }
-    #birdapp657 .bird_top.wagtail_only .bird_menu {
-        text-align: left;
-        float: left;
-        margin: 0;
-    }
     #birdapp657 .bird_top .bird_menu_child {
         padding: 3px 4px 0 0;
         margin: 5px 0px;
-    }
-    #birdapp657 .bird_top.wagtail_only .bird_menu_grand_child_list {
-        margin: 3px 0 0 0;
-        background-color: white;
     }
     #birdapp657 .bird_top.wagtail_only .bird_menu_grand_child {
         margin: 10px 0 0 0;

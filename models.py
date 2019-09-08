@@ -20,7 +20,7 @@ from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
 from modelcluster.fields import ParentalKey
 
 from .forms import SearchBirdForm
-from .blocks import BirdCodeBlock, RacerBirdBlock
+from .blocks import BirdCodeBlock, RacerBirdBlock, HTMLBirdBlock
 
 
 class BirdMixin(models.Model):
@@ -42,6 +42,8 @@ class BirdMixin(models.Model):
             )
     show_breadcrumbs = models.BooleanField(default=False)
     show_coverImage = models.BooleanField(default=False)
+    show_title = models.BooleanField(default=True)
+    show_meta = models.BooleanField(default=False)
     show_author = models.BooleanField(default=False)
     show_date = models.BooleanField(default=False)
 
@@ -59,6 +61,8 @@ class BirdMixin(models.Model):
         FieldPanel('intro', classname="full"),
         FieldPanel('show_breadcrumbs'),
         FieldPanel('show_coverImage'),
+        FieldPanel('show_title'),
+        FieldPanel('show_meta'),
         FieldPanel('show_author'),
         FieldPanel('show_date'),
     ]
@@ -99,6 +103,7 @@ class SoloBirdPage(Page, BirdMixin):
         ('image', ImageChooserBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
         ('racer', RacerBirdBlock(required=False, null=True)),
+        ('html', HTMLBirdBlock(required=False, null=True)),
     ], blank=True, null=True)
 
     search_fields = Page.search_fields + BirdMixin.search_fields + [
@@ -118,7 +123,7 @@ class HTMLBirdPage(Page, BirdMixin):
     ]
 
 
-class SearchBirdPage(Page):
+class SearchBirdPage(Page, BirdMixin):
     
     def serve(self, request):
         if request.method == 'POST':
