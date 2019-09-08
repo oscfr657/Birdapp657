@@ -78,7 +78,7 @@ class CollectionBirdPage(Page, BirdMixin):
     def get_context(self, request):
         context = super().get_context(request)
         try:
-            posts = self.get_descendants().live().not_in_menu().order_by(
+            posts = self.get_descendants().live().public().not_in_menu().order_by(
                 '-go_live_at')
             section_root_page = Page.objects.ancestor_of(self)[2]
         except IndexError:
@@ -130,7 +130,7 @@ class SearchBirdPage(Page, BirdMixin):
             form = SearchBirdForm(request.POST)
             if form.is_valid():
                 search_query = form.cleaned_data['search_query']
-                search_results = self.get_parent().get_descendants().live().search(search_query)
+                search_results = self.get_parent().get_descendants().live().public().search(search_query)
 
                 Query.get(search_query).add_hit()
 
