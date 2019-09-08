@@ -17,14 +17,6 @@
         <h2>{{ page.title }}</h2>
     </div>
     {% endif %}
-    <div class="meta">
-        {% if page.go_live_at and page.show_date %}
-            {{ page.go_live_at|date:"d M Y" }} 
-        {% elif page.show_date %}
-            {{ page.first_published_at|date:"d M Y" }}
-        {% endif %}
-        {% if page.show_author  %} / {{ page.specific.author }}{% endif %}
-    </div>
     {% if page.specific.intro %}
         <div class="collection_intro">
             {{ page.specific.intro|richtext }}
@@ -36,7 +28,7 @@
         {% for post in posts %}
             <div class="collection_item">
                 <a href="{% pageurl post %}">
-                    {% if post.specific.coverImage and page.show_coverImage %}
+                    {% if post.specific.coverImage %}
                     {% image post.specific.coverImage original as tmp_img %}
                     <div class="collection_item_cover">
                         <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" />
