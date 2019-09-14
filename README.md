@@ -1,7 +1,7 @@
 
 # Birdapp 657 #
 
-A small Django wagtail app
+A small Django Wagtail app
 
 ## Installation ###
   
@@ -37,6 +37,8 @@ add to the INSTALLED_APPS
 
     # custom
     'birdapp657',
+    # birdapp657 video and audio block
+    'wagtailmedia',
     # birdapp657 default search backend
     'wagtail.contrib.postgres_search',
 
@@ -85,22 +87,17 @@ from wagtail.contrib.sitemaps.views import sitemap
 and
 ``` python
 SITEMAPS = {
-
     'wagtail': Sitemap,
-
 }
 ```
 and
 ``` python
 urlpatterns = [
-    
     path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}),
-
     #  Wagtail
     re_path(r'^birdapp/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
     re_path(r'', include(wagtail_urls)),
-    
   ]
 ```
 

@@ -320,6 +320,13 @@ body {
 #birdapp657 .block-html {
     padding: 1em 0;
 }
+#birdapp657 .block-media {
+    padding: 1em 0;
+}
+#birdapp657 .block-media audio,
+#birdapp657 .block-media video {
+    width: 100%;
+}
 
 #birdapp657 .content.boxed {
     width: 600px;

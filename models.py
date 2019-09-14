@@ -20,7 +20,7 @@ from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
 from modelcluster.fields import ParentalKey
 
 from .forms import SearchBirdForm
-from .blocks import BirdCodeBlock, RacerBirdBlock, HTMLBirdBlock
+from .blocks import BirdCodeBlock, RacerBirdBlock, HTMLBirdBlock, MediaFileBirdBlock
 
 
 class BirdMixin(models.Model):
@@ -101,6 +101,7 @@ class SoloBirdPage(Page, BirdMixin):
                 'link', 'document-link',
                 'blockquote', 'embed', 'image'])),
         ('image', ImageChooserBlock(required=False, null=True)),
+        ('media', MediaFileBirdBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
         ('racer', RacerBirdBlock(required=False, null=True)),
         ('html', HTMLBirdBlock(required=False, null=True)),
