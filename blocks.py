@@ -72,7 +72,7 @@ class MediaFileBirdBlock(AbstractMediaChooserBlock):
         if value.type == 'video':
             player_code = '''
             <div>
-                <video muted autoplay controls >
+                <video muted autoplay loop controls >
                     <source src="{0}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>

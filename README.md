@@ -8,6 +8,7 @@ A small Django Wagtail app
 ### Pip requirements ###
 
 > pip install wagtail
+> pip install wagtailmedia
 
 ### Django settings ###
 
@@ -37,7 +38,7 @@ add to the INSTALLED_APPS
 
     # custom
     'birdapp657',
-    # birdapp657 video and audio block
+    # birdapp657 media file block
     'wagtailmedia',
     # birdapp657 default search backend
     'wagtail.contrib.postgres_search',
@@ -59,6 +60,12 @@ WAGTAILSEARCH_BACKENDS = {
         'BACKEND': 'wagtail.contrib.postgres_search.backend',
     },
 }
+```
+
+set the admin title
+
+``` python
+WAGTAIL_SITE_NAME = 'Birdapp657'
 ```
 
 ### Database configuration ###
@@ -100,6 +107,10 @@ urlpatterns = [
     re_path(r'', include(wagtail_urls)),
   ]
 ```
+
+### Collectstatic ###
+
+> python manage.py collectstatic
 
 ## For development ##
 

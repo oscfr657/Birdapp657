@@ -40,6 +40,7 @@ class BirdMixin(models.Model):
             'ol', 'ul', 'hr',
             'link', 'document-link', 'blockquote']
             )
+    show_menu = models.BooleanField(default=True)
     show_breadcrumbs = models.BooleanField(default=False)
     show_coverImage = models.BooleanField(default=False)
     show_title = models.BooleanField(default=True)
@@ -59,6 +60,7 @@ class BirdMixin(models.Model):
         FieldPanel('author'),
         ImageChooserPanel('coverImage'),
         FieldPanel('intro', classname="full"),
+        FieldPanel('show_menu'),
         FieldPanel('show_breadcrumbs'),
         FieldPanel('show_coverImage'),
         FieldPanel('show_title'),
@@ -126,6 +128,8 @@ class HTMLBirdPage(Page, BirdMixin):
 
 class SearchBirdPage(Page, BirdMixin):
     
+    content_panels = Page.content_panels + BirdMixin.content_panels
+
     def serve(self, request):
         if request.method == 'POST':
             form = SearchBirdForm(request.POST)
