@@ -77,12 +77,9 @@
     width: max-content;
 }
 #birdapp657 .bird_top .bird_menu_grand_child {
-    display: block;
-    margin: 10px 5px 0 0px;
+    display: inline-block;
+    margin: 10px 0px 0 0px;
     z-index: 1;
-}
-#birdapp657 .bird_top .bird_menu_child_list:hover .bird_menu_grand_child:hover {
-    display: block;
 }
 #birdapp657 .bird_top .bird_menu a {
     text-decoration: none;
