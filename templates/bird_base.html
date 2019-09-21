@@ -1,24 +1,28 @@
 {% load wagtailcore_tags wagtailuserbar %}
 {% load staticfiles %}
 {% load static %}
+<!DOCTYPE html>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+{% if page.seo_title %}
+<title >{{ page.seo_title }} - {{ request.site.site_name }}</title>
+{% elif page.title %}
+<title >{{ page.title }} - {{ request.site.site_name }}</title>
+{% endif %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
 <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
 <link rel="shortcut icon" type="image/png" href="{% static 'img/logo.png' %}">
 
-{% if request.site.site_name %}
-    <meta name="title" content="{{ request.site.site_name }} {{ page.seo_title }}">
+{% if page.search_description %}
+    <meta name="description" content="{{ page.search_description }}">
 {% elif request.site.name %}
-    <meta name="title" content="{{ request.site.name }} {{ page.seo_title }}">
+    <meta name="description" content="{{ request.site.name }} - {{ page.description }}">
 {% endif %}
 
-{% if request.site.site_name %}
-    <meta name="description" content="Site for {{ request.site.site_name }}">
-{% elif request.site.name %}
-    <meta name="description" content="Site for {{ request.site.name }}">
-{% endif %}
+<meta name="keywords" content="">
+<meta name="author" content="{{ request.site.name }}">
 
 
 {% block app_extra_head %}
@@ -26,11 +30,6 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
 
-{% if request.site.site_name %}
-<title >{{ request.site.site_name }} - {{ page.seo_title }}</title>
-{% elif request.site.name %}
-<title >{{ request.site.name }} - {{ page.seo_title }}</title>
-{% endif %}
 
     {% block app %}
     <div id="birdapp657">

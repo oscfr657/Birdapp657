@@ -8,6 +8,7 @@ A small Django Wagtail app
 ### Pip requirements ###
 
 > pip install wagtail
+
 > pip install wagtailmedia
 
 ### Django settings ###
@@ -111,6 +112,14 @@ urlpatterns = [
 ### Collectstatic ###
 
 > python manage.py collectstatic
+
+### [Management commands](https://docs.wagtail.io/en/stable/reference/management_commands.html) ###
+
+This commands can be good to have in a cron script to run once every hour.
+
+> python manage.py publish_scheduled_pages
+
+> python manage.py search_garbage_collect
 
 ## For development ##
 
