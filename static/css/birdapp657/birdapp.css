@@ -23,12 +23,14 @@
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    right: 9px;
     background-color: white;
-    overflow: scroll;
-    overflow-x: hidden;
-    height: 9em;
+    z-index: 2;
 }
+#birdapp657 .bird_top_wraper.transparent{
+    background-color: transparent;
+}
+
 #birdapp657 .bird_top {
     text-align: center;
     margin: auto;
@@ -67,7 +69,8 @@
     padding: 3px 0 0 0;
 }
 #birdapp657 .bird_top .bird_menu_child:hover .bird_menu_child_list {
-    display: block;
+    display: grid;
+    text-align: left;
 }
 #birdapp657 .bird_top .bird_menu_child_list {
     display: none;
@@ -107,14 +110,17 @@
 
 
 #birdapp657 .content_wrapper {
-    position: fixed;
-    top: 9em;
     bottom: 0;
     left: 0;
     right: 0;
-    overflow: scroll;
-    overflow-x: hidden;
 }
+#birdapp657 .content_wrapper .content_head_block {
+    height: 143px;
+}
+#birdapp657 .content_wrapper .content_head_block.transparent {
+    height: 0;
+}
+
 #birdapp657 .content {
     margin: auto;
     width: 900px;
@@ -229,7 +235,7 @@
     display: block;
     margin: auto;
     max-width: 100%;
-    width: 900px;
+    width: 898px;
     border: solid 1px;
 }
 #birdapp657 .content .content_body {
@@ -333,29 +339,22 @@
 
 
 @media (max-width: 900px) {
-    #birdapp657 .bird_top_wraper {
-        height: 8.5em;
-    }
     #birdapp657 .bird_top .bird_logo h1 {
         font-size: 5em;
     }
-    #birdapp657 .content_wrapper {
-        top: 8.5em;
+    #birdapp657 .content_wrapper .content_head_block {
+        height: 131px;
     }
-
     #birdapp657 .content .content_body .block-racer .racer .racer_text.right .rich-text {
         padding: 0;
     }
 }
 
 @media (max-width: 600px) {
-    #birdapp657 .bird_top_wraper {
-        height: 11.7em;
+    #birdapp657 .content .collection_page .collection_item {
+        width: 100%;
+        float: left;
     }
-    #birdapp657 .content_wrapper {
-        top: 11.6em;
-    }
-
     #birdapp657 .content .content_body .block-racer .racer .racer_text {
         width: 100%;
     }
@@ -374,10 +373,6 @@
     }
     #birdapp657 .content .responsive-object {
         height: 320px;
-    }
-    #birdapp657 .content .collection_page .collection_item {
-        width: 100%;
-        float: left;
     }
 }
 

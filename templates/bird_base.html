@@ -34,7 +34,7 @@
     {% block app %}
     <div id="birdapp657">
         {% block bird_top %}
-        <div class="bird_top_wraper">
+        <div class="bird_top_wraper {% if page.transparent_header %}transparent{% endif %}">
         <div class="bird_top">
 
             <div class="bird_logo">
@@ -89,6 +89,7 @@
         {% endblock %}
 
         <div class="content_wrapper">
+            <div class="content_head_block {% if page.transparent_header %}transparent{% endif %}"></div>
             {% block content %}
             {% endblock %}
         </div>

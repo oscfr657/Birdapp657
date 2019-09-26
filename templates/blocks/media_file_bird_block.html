@@ -1,4 +1,21 @@
 
 <div class="video">
-    {{ value }}
+    {% if value %}
+        {% if value.type == 'video' %}
+        <!--#TODO: But what about webm and ogg ? sad_face -->
+            <div>
+                <video muted autoplay loop controls >
+                    <source src="{{ value.file.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        {% else %}
+            <div>
+                <audio muted autoplay loop controls>
+                    <source src="{{ value.file.url }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        {% endif %}
+    {% endif %}
 </div>

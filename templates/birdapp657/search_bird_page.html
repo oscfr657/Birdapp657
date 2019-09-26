@@ -29,7 +29,8 @@
                 {% csrf_token %}
                 {{ form.non_field_errors }}
                 {{ form.search_query.errors }}
-                {{ form.search_query }}
+                <input type="text" id="id_search_query" name="search_query" 
+                    required="" placeholder="Search">
             </form>
         </div>
         {% if search_results %}

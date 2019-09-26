@@ -63,28 +63,4 @@ class MediaFileBirdBlock(AbstractMediaChooserBlock):
     class Meta:
         label = 'MediaFile'
         icon = 'media'
-        #template = 'blocks/media_file_bird_block.html'
-
-    def render_basic(self, value, context=None):
-        #TODO: But what about webm and ogg ? sad_face
-        if not value:
-            return ''
-        if value.type == 'video':
-            player_code = '''
-            <div>
-                <video muted autoplay loop controls >
-                    <source src="{0}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            '''
-        else:
-            player_code = '''
-            <div>
-                <audio controls>
-                    <source src="{0}" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-            '''
-        return format_html(player_code, value.file.url)
+        template = 'blocks/media_file_bird_block.html'

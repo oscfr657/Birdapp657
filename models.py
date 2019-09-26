@@ -118,14 +118,6 @@ class SoloBirdPage(Page, BirdMixin):
     ]
 
 
-class HTMLBirdPage(Page, BirdMixin):
-    html = models.TextField(blank=True, null=True)
-    
-    content_panels = Page.content_panels + BirdMixin.content_panels + [
-        FieldPanel('html', classname="full"),
-    ]
-
-
 class SearchBirdPage(Page, BirdMixin):
     
     content_panels = Page.content_panels + BirdMixin.content_panels
