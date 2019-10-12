@@ -21,9 +21,15 @@
     <meta name="description" content="{{ request.site.name }} - {{ page.description }}">
 {% endif %}
 
-<meta name="keywords" content="">
-<meta name="author" content="{{ request.site.name }}">
+{% if page.specific.tags.count > 1 %}
+<meta name="keywords" content="{% for tag in page.specific.tags.all %}{% if forloop.last %}{{ tag }}{% else %}{{ tag }}, {% endif %}{% endfor %}">
+{% elif page.specific.tags.exists %}
+<meta name="keywords" content="{% for tag in page.specific.tags.all %}{{ tag }}{% endfor %}">
+{% endif %}
 
+{% if page.specific.author %}
+<meta name="author" content="{{ page.specific.author }}">
+{% endif %}
 
 {% block app_extra_head %}
 {% endblock %}

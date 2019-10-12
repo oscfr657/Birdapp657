@@ -18,6 +18,8 @@ from wagtail.contrib.forms.models import AbstractForm, AbstractFormField
 from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
 
 from modelcluster.fields import ParentalKey
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
 
 from .forms import SearchBirdForm
 from .blocks import (BirdCodeBlock, RacerBirdBlock,
@@ -102,6 +104,10 @@ class CollectionBirdPage(Page, BirdMixin):
             return super(CollectionBirdPage, self).get_sitemap_urls(request=request)
 
 
+class SoloBirdPageTag(TaggedItemBase):
+    content_object = ParentalKey('SoloBirdPage', on_delete=models.CASCADE, related_name='tagged_items')
+
+
 class SoloBirdPage(Page, BirdMixin):
     body = StreamField([
         # ? ('heading', blocks.CharBlock(classname="full title",required=False,null=True)),
@@ -122,13 +128,19 @@ class SoloBirdPage(Page, BirdMixin):
         ('feed', FeedBirdBlock(required=False)),
     ], blank=True, null=True)
 
+    tags = ClusterTaggableManager(through=SoloBirdPageTag, blank=True)
+    
     search_fields = Page.search_fields + BirdMixin.search_fields + [
         index.SearchField('body'),
         #index.FilterField('author'),
-    ]
+        ]
+    
     content_panels = Page.content_panels + BirdMixin.content_panels + [
         StreamFieldPanel('body'),
-    ]
+        ]
+    promote_panels = Page.promote_panels + [
+        FieldPanel('tags'),
+        ]
     settings_panels = Page.settings_panels + BirdMixin.settings_panels
 
     def get_sitemap_urls(self, request=None):
@@ -225,4 +237,4 @@ class FormBirdPage(AbstractForm, BirdMixin):
             request,
             self.get_template(request),
             context
-        )
+            )
