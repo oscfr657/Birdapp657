@@ -64,3 +64,32 @@ class MediaFileBirdBlock(AbstractMediaChooserBlock):
         label = 'MediaFile'
         icon = 'media'
         template = 'blocks/media_file_bird_block.html'
+
+
+class FeedBirdBlock(blocks.StructBlock):
+    children = blocks.ChoiceBlock(choices=[
+            ('c', 'Children'),
+            ('d', 'Descendants'),
+        ],
+        icon='arrow-down',
+        required=True)
+    
+    parent_page = blocks.PageChooserBlock(label='parent page')
+
+    def get_context(self, value):
+        context = super(FeedBirdBlock, self).get_context(value)
+        if value['children'] == 'c':
+            context['feed_posts'] = value[
+                'parent_page'].get_children().live().public().not_in_menu().order_by(
+                    '-go_live_at')
+        elif value['children'] == 'd':
+            context['feed_posts'] = value[
+                'parent_page'].get_descendants().live().public().not_in_menu().order_by(
+                    '-go_live_at')
+            print(context)
+        return context
+    
+    class Meta:
+        label = 'FeedBlock'
+        icon = 'grip'
+        template = 'blocks/feed_bird_block.html'

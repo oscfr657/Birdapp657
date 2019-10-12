@@ -1,53 +1,14 @@
 {% extends "base.html" %}
 
 {% load wagtailcore_tags wagtailuserbar %}
-
 {% load static %}
 
-{% block app_extra_head %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
+
+
+{% block content %}
 {% endblock %}
 
-{% block app %}
-<div id="birdapp657">
-    
-    {% if section_root_page.get_children.live.in_menu %}
-    {% block bird_top %}
-    <div class="bird_top">
-        <div class="bird_menu">
-            <ul class="bird_menu_child_list">
-            {% for child in section_root_page.get_children.live.in_menu %}
-                <li class="bird_menu_child">
-                    {% if child.title == page.title %}
-                    <a href="{% pageurl child %}" class="active" >{{ child }}</a>
-                    {% else %}
-                    <a href="{% pageurl child %}">{{ child }}</a>
-                    {% endif %}
-                    {% if False %}
-                        <ul class="bird_menu_grand_child_list">
-                        {% for grandchild in child.get_children.live.in_menu %}
-                            <li  class="bird_menu_grand_child">
-                                {% if page.title == grandchild.title %}
-                                    <a href="{% pageurl grandchild %}" class="active" >{{ grandchild }}</a>
-                                {% else %}
-                                    <a href="{% pageurl grandchild %}" >{{ grandchild }}</a>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                </li>
-            {% endfor %}
-            </ul>
-        </div>
-    </div>
-    {% endblock %}
-    {% endif %}
 
-    {% block content %}
-    {% endblock %}
-
-    {% wagtailuserbar %}
-
-</div>
-{% endblock %}
+{% wagtailuserbar %}

@@ -23,7 +23,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    right: 9px;
+    right: 11px;
     background-color: white;
     z-index: 2;
 }
@@ -36,7 +36,7 @@
     margin: auto;
     width: 900px;
     max-width: calc(100% - 2em);
-    padding: 0px 1em 3px 1em;
+    padding: 0px 14px 2px 12px;
     left: 0;
     right: 0;
 }
@@ -52,6 +52,7 @@
     margin: 0 0 0 -3px;
     text-align: left;
 }
+
 
 #birdapp657 .bird_top .bird_menu {
     padding: 0 0 1px 0;
@@ -125,7 +126,20 @@
     margin: auto;
     width: 900px;
     max-width: calc(100% - 2em);
-    padding: 0 1em;
+    padding: 0px 0em 0px 1px;
+}
+#birdapp657 .content.boxed {
+    width: 600px;
+    max-width: 100%;
+}
+#birdapp657 .content.boxed .collection_page .collection_item {
+    width: 360;
+}
+#birdapp657 .content.wide {
+    width: 100%;
+}
+#birdapp657 .content.wide .collection_page .collection_item {
+    width: 360;
 }
 
 #birdapp657 .content .search {
@@ -165,6 +179,56 @@
 }
 
 
+#birdapp657 .content .collection_page {
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em 0 0 0;
+}
+#birdapp657 .content .collection_page .collection_item {
+    width: 30%;
+}
+
+#birdapp657 .content .collection_page .collection_item .collection_item_cover{
+    border: solid 1px black;
+    overflow: hidden;
+}
+
+#birdapp657 .content .collection_page .collection_item  img.cover_image {
+    max-width: 100%;
+    transition: all 1s ease;
+    margin: -4px 0;
+}
+#birdapp657 .content .collection_page .collection_item  img.cover_image:hover {
+    transform: scale(1.25);
+    margin: -4px 0;
+}
+#birdapp657 .content .collection_page .collection_item h3 {
+    margin: 0 0 1em 0;
+}
+#birdapp657 .content .collection_page .collection_item .intro {
+    margin: 1em 0;
+}
+
+
+#birdapp657 .content.solo {
+    padding: 0;
+}
+#birdapp657 .content .cover img.top_cover_image {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    width: 898px;
+    border: solid 1px;
+}
+#birdapp657 .content .content_body {
+    color: #505050;
+    text-align: left;
+    font-size: 18px;
+}
+
+
+/* blocks */
 /** Ugly remove **/
 #birdapp657 .content .rich-text img {
     display: block;
@@ -194,88 +258,44 @@
     width: 100%;
     height: 100%;
 }
+#birdapp657 .content .rich-text iframe {
+    margin: 0px auto!important;
+}
 /** ^ End Ugly ^ **/
 
-
-#birdapp657 .content .collection_page {
-    justify-content: space-between;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1em 0 0 0;
-}
-#birdapp657 .content .collection_page .collection_item {
-    width: 30%;
-}
-
-#birdapp657 .content .collection_page .collection_item .collection_item_cover{
-    border: solid 1px black;
-    overflow: hidden;
-}
-
-#birdapp657 .content .collection_page .collection_item  img.cover_image {
-    max-width: 100%;
-    transition: all 1s ease;
-}
-#birdapp657 .content .collection_page .collection_item  img.cover_image:hover {
-    transform: scale(1.25);
-}
-#birdapp657 .content .collection_page .collection_item h3 {
-    margin: 0 0 1em 0;
-}
-#birdapp657 .content .collection_page .collection_item .intro {
-    margin: 1em 0;
-}
-
-
-
-#birdapp657 .content.solo {
-    padding: 0;
-}
-#birdapp657 .content .cover img.top_cover_image {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    width: 898px;
-    border: solid 1px;
-}
-#birdapp657 .content .content_body {
-    color: #505050;
-    text-align: left;
-    font-size: 18px;
-}
-
-/* blocks */
-#birdapp657 .content_wrapper .content .content_body .block-image {
+#birdapp657 .content .content_body .block-image {
     padding: 1em 0;
 }
-#birdapp657 .content_wrapper .content .content_body .block-image img {
+#birdapp657 .content .content_body .block-image img {
     display: block;
     margin: auto;
     max-width: 100%;
     height: auto;
 }
-#birdapp657 .content .content_body .block-code {
+
+#birdapp657 .content .block-code {
     background-color: #aeaeae;
     padding: 1em;
     margin-bottom: 1em;
     color: #230253;
     width: max-content;
 }
+
 #birdapp657 .content .content_body .block-racer {
     position: relative;
     left: 50%;
-    width: 100vw;
+    width: calc(100vw - 6px);
     display: flex;
     margin-left: -50vw;
 }
 #birdapp657 .content .content_body .block-racer .racer {
     width: 100%;
-    min-height: 10em;
+    min-height: 5em;
 }
 #birdapp657 .content .content_body .block-racer .racer .inner_racer {
     width: 900px;
     margin: auto;
-    padding: 1em 0;
+    padding: 1em 0px 1em 6px;
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -304,30 +324,13 @@
 #birdapp657 .content .content_body .block-racer .racer .racer_image img {
     width: 100%;
 }
-#birdapp657 .block-html {
-    padding: 1em 0;
-}
+
 #birdapp657 .block-media {
     padding: 1em 0;
 }
 #birdapp657 .block-media audio,
 #birdapp657 .block-media video {
     width: 100%;
-}
-
-#birdapp657 .content.boxed {
-    width: 600px;
-    max-width: 100%;
-}
-#birdapp657 .content.boxed .collection_page .collection_item {
-    width: 360;
-}
-
-#birdapp657 .content.wide {
-    width: 100%;
-}
-#birdapp657 .content.wide .collection_page .collection_item {
-    width: 360;
 }
 
 

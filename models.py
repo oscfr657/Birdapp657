@@ -20,7 +20,8 @@ from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
 from modelcluster.fields import ParentalKey
 
 from .forms import SearchBirdForm
-from .blocks import BirdCodeBlock, RacerBirdBlock, HTMLBirdBlock, MediaFileBirdBlock
+from .blocks import (BirdCodeBlock, RacerBirdBlock,
+    HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock)
 
 
 class BirdMixin(models.Model):
@@ -47,6 +48,7 @@ class BirdMixin(models.Model):
     show_meta = models.BooleanField(default=False)
     show_author = models.BooleanField(default=False)
     show_date = models.BooleanField(default=False)
+    exclude_from_sitemap = models.BooleanField(default=False)
 
     class Meta:
         abstract = True
@@ -60,6 +62,9 @@ class BirdMixin(models.Model):
         FieldPanel('author'),
         ImageChooserPanel('coverImage'),
         FieldPanel('intro', classname="full"),
+    ]
+
+    settings_panels = [
         FieldPanel('show_menu'),
         FieldPanel('show_breadcrumbs'),
         FieldPanel('show_coverImage'),
@@ -67,13 +72,14 @@ class BirdMixin(models.Model):
         FieldPanel('show_meta'),
         FieldPanel('show_author'),
         FieldPanel('show_date'),
+        FieldPanel('exclude_from_sitemap'),
     ]
 
 
 class CollectionBirdPage(Page, BirdMixin):
     search_fields = Page.search_fields + BirdMixin.search_fields
-
     content_panels = Page.content_panels + BirdMixin.content_panels
+    settings_panels = Page.settings_panels + BirdMixin.settings_panels
 
     # subpage_types = ['SoloBirdPage']
 
@@ -88,6 +94,12 @@ class CollectionBirdPage(Page, BirdMixin):
         context['posts'] = posts
         context['section_root_page'] = section_root_page
         return context
+
+    def get_sitemap_urls(self, request=None):
+        if self.exclude_from_sitemap:
+            return []
+        else:
+            return super(CollectionBirdPage, self).get_sitemap_urls(request=request)
 
 
 class SoloBirdPage(Page, BirdMixin):
@@ -107,6 +119,7 @@ class SoloBirdPage(Page, BirdMixin):
         ('code', BirdCodeBlock(required=False, null=True)),
         ('racer', RacerBirdBlock(required=False, null=True)),
         ('html', HTMLBirdBlock(required=False, null=True)),
+        ('feed', FeedBirdBlock(required=False)),
     ], blank=True, null=True)
 
     search_fields = Page.search_fields + BirdMixin.search_fields + [
@@ -116,11 +129,19 @@ class SoloBirdPage(Page, BirdMixin):
     content_panels = Page.content_panels + BirdMixin.content_panels + [
         StreamFieldPanel('body'),
     ]
+    settings_panels = Page.settings_panels + BirdMixin.settings_panels
+
+    def get_sitemap_urls(self, request=None):
+        if self.exclude_from_sitemap:
+            return []
+        else:
+            return super(SoloBirdPage, self).get_sitemap_urls(request=request)
 
 
 class SearchBirdPage(Page, BirdMixin):
     
     content_panels = Page.content_panels + BirdMixin.content_panels
+    settings_panels = Page.settings_panels + BirdMixin.settings_panels
 
     def serve(self, request):
         if request.method == 'POST':
@@ -143,6 +164,12 @@ class SearchBirdPage(Page, BirdMixin):
             'form': form,
             'search_results': search_results,
         })
+    
+    def get_sitemap_urls(self, request=None):
+        if self.exclude_from_sitemap:
+            return []
+        else:
+            return super(SearchBirdPage, self).get_sitemap_urls(request=request)
 
 
 class FormField(AbstractFormField):
@@ -169,6 +196,13 @@ class FormBirdPage(AbstractForm, BirdMixin):
             InlinePanel('form_fields', label="Form fields"),
             FieldPanel('thank_you_text', classname="full"),
         ]
+    settings_panels = Page.settings_panels + BirdMixin.settings_panels
+
+    def get_sitemap_urls(self, request=None):
+        if self.exclude_from_sitemap:
+            return []
+        else:
+            return super(FormBirdPage, self).get_sitemap_urls(request=request)
 
     def serve(self, request, *args, **kwargs):
         if request.method == 'POST':
