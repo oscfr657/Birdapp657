@@ -173,6 +173,7 @@
 #birdapp657 .content .search_result li .search_result_item_cover img {
     width: 100%;
     transition: all 1s ease;
+    margin: 0 0 -4px 0;
 }
 #birdapp657 .content .search_result li .search_result_item_cover img:hover {
     transform: scale(1.25);
@@ -325,9 +326,12 @@
     width: 100%;
 }
 
+#birdapp657 .block-extended_media,
 #birdapp657 .block-media {
     padding: 1em 0;
 }
+#birdapp657 .block-extended_media audio,
+#birdapp657 .block-extended_media video,
 #birdapp657 .block-media audio,
 #birdapp657 .block-media video {
     width: 100%;

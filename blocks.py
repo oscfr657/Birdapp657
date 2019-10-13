@@ -54,16 +54,25 @@ class HTMLBirdBlock(blocks.StructBlock):
 
 
 class MediaFileBirdBlock(AbstractMediaChooserBlock):
-    # TODO: Implement muted autoplay loop controls ?
-    #muted = blocks.BooleanBlock(default=True, help_text='Muted')
-    #autoplay = blocks.BooleanBlock(default=False, help_text='Autoplay')
-    #loop = blocks.BooleanBlock(default=False, help_text='Loop')
-    #controls = blocks.BooleanBlock(default=True, help_text='Controls')
 
     class Meta:
         label = 'MediaFile'
         icon = 'media'
         template = 'blocks/media_file_bird_block.html'
+
+
+class ExtendendMediaFileBirdBlock(blocks.StructBlock):
+    # TODO: Implement muted autoplay loop controls ?
+    muted = blocks.BooleanBlock(required=False, default=True, help_text='Muted')
+    autoplay = blocks.BooleanBlock(required=False, default=False, help_text='Autoplay')
+    loop = blocks.BooleanBlock(required=False, default=False, help_text='Loop')
+    controls = blocks.BooleanBlock(required=False, default=True, help_text='Controls')
+    block_media = AbstractMediaChooserBlock()
+
+    class Meta:
+        label = 'ExtendedMediaFile'
+        icon = 'media'
+        template = 'blocks/extended_media_file_bird_block.html'
 
 
 class FeedBirdBlock(blocks.StructBlock):
@@ -86,7 +95,6 @@ class FeedBirdBlock(blocks.StructBlock):
             context['feed_posts'] = value[
                 'parent_page'].get_descendants().live().public().not_in_menu().order_by(
                     '-go_live_at')
-            print(context)
         return context
     
     class Meta:
