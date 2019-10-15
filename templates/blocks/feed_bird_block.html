@@ -7,7 +7,7 @@
 <div class="collection_page">
     {% for post in feed_posts %}
         <div class="collection_item">
-            <a href="{{ post.get_url }}">
+            <a href="{% pageurl post %}">
                 {% if post.specific.coverImage %}
                 {% image post.specific.coverImage original as tmp_img %}
                 <div class="collection_item_cover">

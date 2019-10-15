@@ -56,20 +56,18 @@
                 <ul class="bird_menu_list">
                     {% for child in request.site.root_page.get_children.live.in_menu %}
                     <li class="bird_menu_child">
-                    {% if child.title == page.title %}
-                        <a href="{% pageurl child %}" class="active" >{{ child }}</a>
-                    {% else %}
-                        <a href="{% pageurl child %}">{{ child }}</a>
-                    {% endif %}
+                        <a href="{% pageurl child %}"
+                            class="{% if child.title == page.title or child in page.get_ancestors %}active{% endif %}" >
+                        {{ child }}
+                        </a>
                     {% if child.get_children.live.in_menu %}
                         <ul class="bird_menu_child_list">
                         {% for grandchild in child.get_children.live.in_menu %}
                             <li  class="bird_menu_grand_child">
-                                {% if page.title == grandchild.title %}
-                                    <a href="{% pageurl grandchild %}" class="active" >{{ grandchild }}</a>
-                                {% else %}
-                                    <a href="{% pageurl grandchild %}" >{{ grandchild }}</a>
-                                {% endif %}
+                                <a href="{% pageurl grandchild %}"
+                                    class="{% if page.title == grandchild.title or grandchild in page.get_ancestors %}active{% endif %}" >
+                                {{ grandchild }}
+                                </a>
                             </li>
                         {% endfor %}
                         </ul>

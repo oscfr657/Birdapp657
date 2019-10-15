@@ -59,13 +59,11 @@ class BirdMixin(models.Model):
         index.SearchField('intro'),
         #index.FilterField('author'),
     ]
-
     content_panels = [
         FieldPanel('author'),
         ImageChooserPanel('coverImage'),
         FieldPanel('intro', classname="full"),
     ]
-
     settings_panels = [
         FieldPanel('show_menu'),
         FieldPanel('show_breadcrumbs'),
@@ -110,7 +108,6 @@ class SoloBirdPageTag(TaggedItemBase):
 
 class SoloBirdPage(Page, BirdMixin):
     body = StreamField([
-        # ? ('heading', blocks.CharBlock(classname="full title",required=False,null=True)),
         ('paragraph', blocks.RichTextBlock(
             required=False, null=True,
             features=[
@@ -133,7 +130,6 @@ class SoloBirdPage(Page, BirdMixin):
     
     search_fields = Page.search_fields + BirdMixin.search_fields + [
         index.SearchField('body'),
-        #index.FilterField('author'),
         ]
     
     content_panels = Page.content_panels + BirdMixin.content_panels + [
