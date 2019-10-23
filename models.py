@@ -23,7 +23,7 @@ from taggit.models import TaggedItemBase
 
 from .forms import SearchBirdForm
 from .blocks import (BirdCodeBlock, RacerBirdBlock,
-    HTMLBirdBlock, MediaFileBirdBlock, ExtendendMediaFileBirdBlock, FeedBirdBlock)
+    HTMLBirdBlock, MediaFileBirdBlock, ExtendedMediaFileBirdBlock, FeedBirdBlock)
 
 
 class BirdMixin(models.Model):
@@ -39,7 +39,7 @@ class BirdMixin(models.Model):
         features=[
             'h2', 'h3', 'h4',
             'bold', 'italic',
-            'superscript', 'subscript', 'strikethrough'
+            'superscript', 'subscript', 'strikethrough',
             'ol', 'ul', 'hr',
             'link', 'document-link', 'blockquote']
             )
@@ -76,32 +76,6 @@ class BirdMixin(models.Model):
     ]
 
 
-class CollectionBirdPage(Page, BirdMixin):
-    search_fields = Page.search_fields + BirdMixin.search_fields
-    content_panels = Page.content_panels + BirdMixin.content_panels
-    settings_panels = Page.settings_panels + BirdMixin.settings_panels
-
-    # subpage_types = ['SoloBirdPage']
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        try:
-            posts = self.get_descendants().live().public().not_in_menu().order_by(
-                '-go_live_at')
-            section_root_page = Page.objects.ancestor_of(self)[2]
-        except IndexError:
-            section_root_page = self
-        context['posts'] = posts
-        context['section_root_page'] = section_root_page
-        return context
-
-    def get_sitemap_urls(self, request=None):
-        if self.exclude_from_sitemap:
-            return []
-        else:
-            return super(CollectionBirdPage, self).get_sitemap_urls(request=request)
-
-
 class SoloBirdPageTag(TaggedItemBase):
     content_object = ParentalKey('SoloBirdPage', on_delete=models.CASCADE, related_name='tagged_items')
 
@@ -113,13 +87,13 @@ class SoloBirdPage(Page, BirdMixin):
             features=[
                 'h2', 'h3', 'h4',
                 'bold', 'italic',
-                'superscript', 'subscript', 'strikethrough'
+                'superscript', 'subscript', 'strikethrough',
                 'ol', 'ul', 'hr',
                 'link', 'document-link',
                 'blockquote', 'embed', 'image'])),
         ('image', ImageChooserBlock(required=False, null=True)),
         ('media', MediaFileBirdBlock(required=False, null=True)),
-        ('extended_media', ExtendendMediaFileBirdBlock(required=False, null=True)),
+        ('extended_media', ExtendedMediaFileBirdBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
         ('racer', RacerBirdBlock(required=False, null=True)),
         ('html', HTMLBirdBlock(required=False, null=True)),
@@ -131,7 +105,7 @@ class SoloBirdPage(Page, BirdMixin):
     search_fields = Page.search_fields + BirdMixin.search_fields + [
         index.SearchField('body'),
         ]
-    
+
     content_panels = Page.content_panels + BirdMixin.content_panels + [
         StreamFieldPanel('body'),
         ]
@@ -194,7 +168,7 @@ class FormBirdPage(AbstractForm, BirdMixin):
         features=[
             'h2', 'h3', 'h4',
             'bold', 'italic',
-            'superscript', 'subscript', 'strikethrough'
+            'superscript', 'subscript', 'strikethrough',
             'ol', 'ul', 'hr',
             'link', 'document-link',
             'blockquote', 'embed', 'image']

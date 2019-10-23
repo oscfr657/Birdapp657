@@ -61,8 +61,7 @@ class MediaFileBirdBlock(AbstractMediaChooserBlock):
         template = 'blocks/media_file_bird_block.html'
 
 
-class ExtendendMediaFileBirdBlock(blocks.StructBlock):
-    # TODO: Implement muted autoplay loop controls ?
+class ExtendedMediaFileBirdBlock(blocks.StructBlock):
     muted = blocks.BooleanBlock(required=False, default=True, help_text='Muted')
     autoplay = blocks.BooleanBlock(required=False, default=False, help_text='Autoplay')
     loop = blocks.BooleanBlock(required=False, default=False, help_text='Loop')
