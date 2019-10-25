@@ -58,7 +58,7 @@
                     <li class="bird_menu_child">
                         <a href="{% pageurl child %}"
                             class="{% if child.title == page.title or child in page.get_ancestors %}active{% endif %}" >
-                        {{ child }}
+                        {{ child.title }}
                         </a>
                     {% if child.get_children.live.in_menu %}
                         <ul class="bird_menu_child_list">
@@ -66,7 +66,7 @@
                             <li  class="bird_menu_grand_child">
                                 <a href="{% pageurl grandchild %}"
                                     class="{% if page.title == grandchild.title or grandchild in page.get_ancestors %}active{% endif %}" >
-                                {{ grandchild }}
+                                {{ grandchild.title }}
                                 </a>
                             </li>
                         {% endfor %}

@@ -115,7 +115,7 @@ urlpatterns = [
 
 ### [Management commands](https://docs.wagtail.io/en/stable/reference/management_commands.html) ###
 
-This commands can be good to have in a cron script to run once every hour.
+These commands can be good to have in a cron script to run once every hour.
 
 > python manage.py publish_scheduled_pages
 
