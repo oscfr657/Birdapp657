@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailuserbar %}
+{% load wagtailcore_tags wagtailuserbar wagtailimages_tags %}
 {% load staticfiles %}
 {% load static %}
 <!DOCTYPE html>
@@ -55,11 +55,18 @@
             <div class="bird_menu">
                 <ul class="bird_menu_list">
                     {% for child in request.site.root_page.get_children.live.in_menu %}
-                    <li class="bird_menu_child">
+                    <li class="bird_menu_child test">
+                        {% if child.specific.menu_icon %}
                         <a href="{% pageurl child %}"
-                            class="{% if child.title == page.title or child in page.get_ancestors %}active{% endif %}" >
-                        {{ child.title }}
+                            class="icon {% if child.title == page.title or child in page.get_ancestors %}active{% endif %}" >
+                            {% image child.specific.menu_icon fill-24x24 %}
                         </a>
+                        {% else %}
+                            <a href="{% pageurl child %}"
+                                class="{% if child.title == page.title or child in page.get_ancestors %}active{% endif %}" >
+                            {{ child.title }}
+                            </a>
+                        {% endif %}
                     {% if child.get_children.live.in_menu %}
                         <ul class="bird_menu_child_list">
                         {% for grandchild in child.get_children.live.in_menu %}

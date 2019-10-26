@@ -99,6 +99,14 @@
     color: white;
     background-color: black;
 }
+#birdapp657 .bird_top .bird_menu a.icon {
+    padding: 2px 15px;
+    margin: 0;
+}
+#birdapp657 .bird_top .bird_menu a.icon  img {
+    margin: -5px 0px;
+}
+
 #birdapp657 .breadcrumbs_wraper {
     width: 100%;
     background-color: #f2f2f2;
