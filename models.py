@@ -23,7 +23,7 @@ from taggit.models import TaggedItemBase
 
 from .forms import SearchBirdForm
 from .blocks import (BirdCodeBlock, RacerBirdBlock,
-    HTMLBirdBlock, MediaFileBirdBlock, ExtendedMediaFileBirdBlock, FeedBirdBlock)
+    HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock)
 
 
 class BirdMixin(models.Model):
@@ -99,7 +99,6 @@ class SoloBirdPage(Page, BirdMixin):
                 'blockquote', 'embed', 'image'])),
         ('image', ImageChooserBlock(required=False, null=True)),
         ('media', MediaFileBirdBlock(required=False, null=True)),
-        ('extended_media', ExtendedMediaFileBirdBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
         ('racer', RacerBirdBlock(required=False, null=True)),
         ('html', HTMLBirdBlock(required=False, null=True)),

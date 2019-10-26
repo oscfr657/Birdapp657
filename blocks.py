@@ -53,15 +53,7 @@ class HTMLBirdBlock(blocks.StructBlock):
         template = 'blocks/html_bird_block.html'
 
 
-class MediaFileBirdBlock(AbstractMediaChooserBlock):
-
-    class Meta:
-        label = 'MediaFile'
-        icon = 'media'
-        template = 'blocks/media_file_bird_block.html'
-
-
-class ExtendedMediaFileBirdBlock(blocks.StructBlock):
+class MediaFileBirdBlock(blocks.StructBlock):
     muted = blocks.BooleanBlock(required=False, default=True, help_text='Muted')
     autoplay = blocks.BooleanBlock(required=False, default=False, help_text='Autoplay')
     loop = blocks.BooleanBlock(required=False, default=False, help_text='Loop')
@@ -69,9 +61,9 @@ class ExtendedMediaFileBirdBlock(blocks.StructBlock):
     block_media = AbstractMediaChooserBlock()
 
     class Meta:
-        label = 'ExtendedMediaFile'
+        label = 'MediaFile'
         icon = 'media'
-        template = 'blocks/extended_media_file_bird_block.html'
+        template = 'blocks/media_file_bird_block.html'
 
 
 class FeedBirdBlock(blocks.StructBlock):
