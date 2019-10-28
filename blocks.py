@@ -72,20 +72,30 @@ class FeedBirdBlock(blocks.StructBlock):
             ('d', 'Descendants'),
         ],
         icon='arrow-down',
-        required=True)
-    
+        required=True
+        )
     parent_page = blocks.PageChooserBlock(label='parent page')
+    show_title = blocks.BooleanBlock(required=False, default=True)
+    show_intro = blocks.BooleanBlock(required=False, default=False)
+    show_meta = blocks.BooleanBlock(required=False, default=False)
+    show_author = blocks.BooleanBlock(required=False, default=False)
+    show_date = blocks.BooleanBlock(required=False, default=False)
+    number = blocks.IntegerBlock(required=False)
 
     def get_context(self, value):
         context = super(FeedBirdBlock, self).get_context(value)
         if value['children'] == 'c':
-            context['feed_posts'] = value[
+            feed_posts = value[
                 'parent_page'].get_children().live().public().not_in_menu().order_by(
                     '-go_live_at')
         elif value['children'] == 'd':
-            context['feed_posts'] = value[
+            feed_posts = value[
                 'parent_page'].get_descendants().live().public().not_in_menu().order_by(
                     '-go_live_at')
+        number = value['number']
+        if number:
+            feed_posts = feed_posts[:number]
+        context['feed_posts'] = feed_posts
         return context
     
     class Meta:
