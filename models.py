@@ -24,6 +24,27 @@ from taggit.models import TaggedItemBase
 from .forms import SearchBirdForm
 from .blocks import (BirdCodeBlock, RacerBirdBlock,
     HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock)
+from wagtail.contrib.settings.models import BaseSetting, register_setting
+
+
+@register_setting
+class BrandingSettings(BaseSetting):
+    icon = models.ForeignKey(
+        'wagtailimages.Image',
+        blank=True, null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+        )
+    logo = models.ForeignKey(
+        'wagtailimages.Image',
+        blank=True, null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+        )
+    panels = [
+        ImageChooserPanel('icon'),
+        ImageChooserPanel('logo'),
+    ]
 
 
 class BirdMixin(models.Model):

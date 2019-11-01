@@ -4,21 +4,24 @@
 <!DOCTYPE html>
 
 {% if page.seo_title %}
-<title >{{ page.seo_title }} - {{ request.site.site_name }}</title>
+<title >{{ page.seo_title }} - {{ request.site.site_name|default:'' }}</title>
 {% elif page.title %}
-<title >{{ page.title }} - {{ request.site.site_name }}</title>
+<title >{{ page.title }} - {{ request.site.site_name|default:'' }}</title>
 {% endif %}
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 
-<link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
-<link rel="shortcut icon" type="image/png" href="{% static 'img/logo.png' %}">
+{% if settings.birdapp657.BrandingSettings.icon %}
+    {% image settings.birdapp657.BrandingSettings.icon fill-64x64 as site_icon %}
+    <link rel="icon" type="image/png" href="{{ site_icon.url }}">
+    <link rel="shortcut icon" type="image/png" href="{{ site_icon.url }}">
+{% endif %}
 
 {% if page.search_description %}
     <meta name="description" content="{{ page.search_description }}">
 {% elif request.site.name %}
-    <meta name="description" content="{{ request.site.name }} - {{ page.description }}">
+    <meta name="description" content="{{ request.site.name|default:'' }} - {{ page.description }}">
 {% endif %}
 
 {% if page.specific.tags.count > 1 %}
@@ -44,11 +47,15 @@
         <div class="bird_top">
 
             <div class="bird_logo">
-                <h1 >
-                    <a href="{% pageurl request.site.root_page %}" >
-                        {{ request.site.site_name }}
-                    </a>
-                </h1>
+                <a href="{% pageurl request.site.root_page %}" >
+                    <h1 >
+                    {% if settings.birdapp657.BrandingSettings.logo %}
+                        {% image settings.birdapp657.BrandingSettings.logo height-64 as site_logo %}
+                        <img src="{{ site_logo.url }}" alt="{{ site_logo.alt }}" class="logo_img" />
+                    {% endif %}
+                        {{ request.site.site_name|default:'' }}
+                    </h1>
+                </a>
             </div>
 
             {% if request.site.root_page.get_children.live.in_menu and page.show_menu %}

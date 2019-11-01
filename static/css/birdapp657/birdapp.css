@@ -52,7 +52,10 @@
     margin: 0 0 0 -3px;
     text-align: left;
 }
-
+#birdapp657 .bird_top .bird_logo h1 img {
+    margin: 0 -25px 0 3px;
+    height: 66px;
+}
 
 #birdapp657 .bird_top .bird_menu {
     padding: 0 0 1px 0;
@@ -356,6 +359,10 @@
 @media (max-width: 900px) {
     #birdapp657 .bird_top .bird_logo h1 {
         font-size: 5em;
+    }
+    #birdapp657 .bird_top .bird_logo h1 img {
+        margin: 0 -21px 0 3px;
+        height: 56px;
     }
     #birdapp657 .content_wrapper .content_head_block {
         height: 131px;
