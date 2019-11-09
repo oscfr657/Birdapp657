@@ -25,6 +25,7 @@ add to the INSTALLED_APPS
     # wagtail
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
+    'wagtail.contrib.settings',  # extra
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -46,11 +47,24 @@ add to the INSTALLED_APPS
 
 ```
 
-add to the  MIDDLEWARE settings
+add to the MIDDLEWARE settings
 
 ``` python
     'wagtail.core.middleware.SiteMiddleware',  # wagtail
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',  # wagtail
+```
+
+add to the TEMPLATES settings
+
+``` python
+    TEMPLATES = [
+        {
+            'OPTIONS': {
+                'context_processors': [
+                    'wagtail.contrib.settings.context_processors.settings',  # Extra
+            },
+        },
+    ]
 ```
 
 add the search backend settings
