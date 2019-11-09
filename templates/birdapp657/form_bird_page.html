@@ -3,7 +3,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-<div class="content">
+<div class="content {{ page.specific.content_with|default:'' }}">
     {% if page.specific.coverImage and page.specific.show_coverImage %}
     <div class="cover">
         {% image page.specific.coverImage original as tmp_photo %}

@@ -70,6 +70,7 @@ class BirdMixin(models.Model):
         on_delete=models.SET_NULL,
         related_name='+'
         )
+    content_with = models.CharField(max_length=50, blank=True, null=True)
     show_menu = models.BooleanField(default=True)
     show_breadcrumbs = models.BooleanField(default=False)
     show_coverImage = models.BooleanField(default=False)
@@ -92,6 +93,7 @@ class BirdMixin(models.Model):
         FieldPanel('intro', classname="full"),
     ]
     settings_panels = [
+        FieldPanel('content_with'),
         FieldPanel('show_menu'),
         ImageChooserPanel('menu_icon'),
         FieldPanel('show_breadcrumbs'),
