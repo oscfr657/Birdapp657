@@ -1,15 +1,13 @@
 
 # Birdapp 657 #
 
-A small Django Wagtail app
+A small Wagtail app
 
 ## Installation ###
   
 ### Pip requirements ###
 
-> pip install wagtail
-
-> pip install wagtailmedia
+> pip install -r requirements.txt
 
 ### Django settings ###
 

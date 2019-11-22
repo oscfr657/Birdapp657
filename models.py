@@ -41,9 +41,11 @@ class BrandingSettings(BaseSetting):
         on_delete=models.SET_NULL,
         related_name='+'
         )
+    show_name = models.BooleanField(default=True)
     panels = [
         ImageChooserPanel('icon'),
         ImageChooserPanel('logo'),
+        FieldPanel('show_name'),
     ]
 
 

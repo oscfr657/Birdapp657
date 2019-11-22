@@ -51,6 +51,7 @@
     line-height: 0.7em;
     margin: 0 0 0 -3px;
     text-align: left;
+    min-height: 67.2px;
 }
 #birdapp657 .bird_top .bird_logo h1 img {
     margin: 0 -25px 0 3px;
@@ -144,6 +145,10 @@
     max-width: 100%;
 }
 #birdapp657 .content.wide {
+    width: 1200px;
+    max-width: 100%;
+}
+#birdapp657 .content.full {
     width: 100%;
 }
 
@@ -152,6 +157,7 @@
     border-bottom: solid 1px black;
     max-width: 100%;
     margin: auto;
+    padding: 0 0 2em 0;
 }
 #birdapp657 .content .search_result {
     margin: auto;

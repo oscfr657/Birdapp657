@@ -34,8 +34,6 @@
 <meta name="author" content="{{ page.specific.author }}">
 {% endif %}
 
-{% block app_extra_head %}
-{% endblock %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
 
@@ -53,7 +51,9 @@
                         {% image settings.birdapp657.BrandingSettings.logo height-64 as site_logo %}
                         <img src="{{ site_logo.url }}" alt="{{ site_logo.alt }}" class="logo_img" />
                     {% endif %}
+                    {% if settings.birdapp657.BrandingSettings.show_name %}
                         {{ request.site.site_name|default:'' }}
+                    {% endif %}
                     </h1>
                 </a>
             </div>
