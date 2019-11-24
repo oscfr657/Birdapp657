@@ -42,10 +42,24 @@ class BrandingSettings(BaseSetting):
         related_name='+'
         )
     show_name = models.BooleanField(default=True)
+    footer = StreamField([
+        ('paragraph', blocks.RichTextBlock(
+            required=False, null=True,
+            features=[
+                'h2', 'h3', 'h4',
+                'bold', 'italic',
+                'superscript', 'subscript', 'strikethrough',
+                'ol', 'ul', 'hr',
+                'link', 'document-link',
+                'blockquote',])),
+        ('html', HTMLBirdBlock(required=False, null=True)),
+    ], blank=True, null=True)
+
     panels = [
         ImageChooserPanel('icon'),
         ImageChooserPanel('logo'),
         FieldPanel('show_name'),
+        StreamFieldPanel('footer'),
     ]
 
 

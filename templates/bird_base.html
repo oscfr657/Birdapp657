@@ -116,6 +116,18 @@
 
         {% wagtailuserbar %}
 
+        {% block footer %}
+        <div class="footer">
+            <div class="footer-row">
+                {% if settings.birdapp657.BrandingSettings.footer %}
+                    {% for block in settings.birdapp657.BrandingSettings.footer %}
+                        <div class="footer-column">{% include_block block %}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        {% endblock %}
+
     </div>
     {% endblock %}
 

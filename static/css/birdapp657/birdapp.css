@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     position: fixed;
-    overflow: scroll;
+    overflow: hidden scroll;
     top: 0px;
     left: 0px;
     height: 100%;
@@ -258,6 +258,26 @@
     font-size: 18px;
 }
 
+#birdapp657 .footer {
+    width: 100%;
+    border: solid 1px black;
+    background: black;
+    color: white;
+    margin: 2em 0 0 0;
+    padding: 0 0 1em 0;
+}
+#birdapp657 .footer a {
+    color: whitesmoke;
+}
+#birdapp657 .footer-row {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 10px;
+    margin: auto;
+    width: 900px;
+    max-width: calc(100% - 2em);
+}
+
 
 /* blocks */
 /** Ugly remove **/
@@ -384,6 +404,12 @@
     #birdapp657 .content_wrapper .content_head_block {
         height: 131px;
     }
+
+    #birdapp657 .footer-row {
+        grid-auto-flow: dense;
+        grid-template-columns: 1fr 1fr;
+    }
+
     #birdapp657 .content .collection_page {
         grid-template-columns: 1fr 1fr;
     }
@@ -393,6 +419,12 @@
 }
 
 @media (max-width: 600px) {
+
+    #birdapp657 .footer-row {
+        grid-auto-flow: dense;
+        grid-template-columns: 1fr;
+    }
+
     #birdapp657 .content .collection_page {
         grid-template-columns: 1fr;
     }
