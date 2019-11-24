@@ -72,8 +72,15 @@ class BirdMixin(models.Model):
         on_delete=models.SET_NULL,
         related_name='+'
         )
+    hover_menu_icon = models.ForeignKey(
+        'wagtailimages.Image',
+        blank=True, null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+        )
     content_with = models.CharField(max_length=50, blank=True, null=True)
     show_menu = models.BooleanField(default=True)
+    hover_over_menu = models.BooleanField(default=False)
     show_breadcrumbs = models.BooleanField(default=False)
     show_coverImage = models.BooleanField(default=False)
     show_title = models.BooleanField(default=True)
@@ -98,6 +105,8 @@ class BirdMixin(models.Model):
         FieldPanel('content_with'),
         FieldPanel('show_menu'),
         ImageChooserPanel('menu_icon'),
+        ImageChooserPanel('hover_menu_icon'),
+        FieldPanel('hover_over_menu'),
         FieldPanel('show_breadcrumbs'),
         FieldPanel('show_coverImage'),
         FieldPanel('show_title'),

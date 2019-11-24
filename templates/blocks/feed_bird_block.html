@@ -8,7 +8,7 @@
         <div class="collection_item">
             <a href="{% pageurl p %}">
                 {% if p.specific.coverImage %}
-                {% image p.specific.coverImage original as tmp_img %}
+                {% image p.specific.coverImage min-400x400 as tmp_img %}
                 <div class="collection_item_cover">
                     <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" />
                 </div>
@@ -21,7 +21,7 @@
             </a>
             {% if value.show_meta %}
             <span class="meta">
-            {% if p.go_live_at and post.specific.show_date and value.show_date %}
+            {% if p.go_live_at and p.specific.show_date and value.show_date %}
                 {{ p.go_live_at|date:"d M Y" }} 
             {% elif p.specific.show_date and value.show_date %}
                 {{ p.first_published_at|date:"d M Y" }}

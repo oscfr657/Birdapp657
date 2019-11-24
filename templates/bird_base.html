@@ -3,14 +3,14 @@
 {% load static %}
 <!DOCTYPE html>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 {% if page.seo_title %}
 <title >{{ page.seo_title }} - {{ request.site.site_name|default:'' }}</title>
 {% elif page.title %}
 <title >{{ page.title }} - {{ request.site.site_name|default:'' }}</title>
 {% endif %}
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
 
 {% if settings.birdapp657.BrandingSettings.icon %}
     {% image settings.birdapp657.BrandingSettings.icon fill-64x64 as site_icon %}
@@ -33,9 +33,6 @@
 {% if page.specific.author %}
 <meta name="author" content="{{ page.specific.author }}">
 {% endif %}
-
-
-<link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
 
 
     {% block app %}
@@ -65,8 +62,13 @@
                     <li class="bird_menu_child test">
                         {% if child.specific.menu_icon %}
                         <a href="{% pageurl child %}"
-                            class="icon {% if child.title == page.title or child in page.get_ancestors %}active{% endif %}" >
-                            {% image child.specific.menu_icon fill-24x24 %}
+                            class="icon {% if child.title == page.title or child in page.get_ancestors %}active{% endif %} {% if child.specific.hover_over_menu %}hover{% endif %}" >
+                            {% if child.specific.hover_menu_icon %}
+                                {% image child.specific.menu_icon fill-24x24 class="no_hover" %}
+                                {% image child.specific.hover_menu_icon fill-24x24 class="hover" %}
+                            {% else %}
+                                {% image child.specific.menu_icon fill-24x24 %}
+                            {% endif %}
                         </a>
                         {% else %}
                             <a href="{% pageurl child %}"
@@ -116,5 +118,7 @@
 
     </div>
     {% endblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
 
 <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" lazyload>

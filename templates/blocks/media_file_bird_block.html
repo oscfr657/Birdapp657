@@ -12,7 +12,7 @@
         {% else %}
             <div>
                 <audio {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} {% if value.controls %}controls{% endif %}>
-                    <source src="{{ block_media.file.url }}" type="audio/mpeg">
+                    <source src="{{ value.block_media.file.url }}" >
                     Your browser does not support the audio element.
                 </audio>
             </div>
