@@ -116,12 +116,14 @@
 #birdapp657 .bird_top .bird_menu a.icon img {
     margin: -5px 0px;
 }
+#birdapp657 .bird_top .bird_menu a.icon.active.hover img.no_hover,
 #birdapp657 .bird_top .bird_menu a.icon:hover img.no_hover {
     display: none;
 }
 #birdapp657 .bird_top .bird_menu a.icon img.hover {
     display: none;
 }
+#birdapp657 .bird_top .bird_menu a.icon.active.hover img.hover,
 #birdapp657 .bird_top .bird_menu a.icon:hover img.hover {
     display: inline-block;
 }
