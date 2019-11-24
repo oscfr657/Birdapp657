@@ -143,6 +143,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    min-height: 90%;
 }
 #birdapp657 .content_wrapper .content_head_block {
     height: 143px;
