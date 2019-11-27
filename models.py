@@ -7,24 +7,30 @@ from django import forms
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
+
 from wagtail.search.models import Query
 from wagtail.search import index
+
 from wagtail.admin.edit_handlers import (
-    FieldPanel, StreamFieldPanel, InlinePanel )
+    FieldPanel, StreamFieldPanel, InlinePanel,
+    PageChooserPanel )
+
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from wagtail.contrib.forms.models import AbstractForm, AbstractFormField
 from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
 
+from wagtail.contrib.settings.models import BaseSetting, register_setting
+
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
+
 from taggit.models import TaggedItemBase
 
 from .forms import SearchBirdForm
 from .blocks import (BirdCodeBlock, RacerBirdBlock,
     HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock)
-from wagtail.contrib.settings.models import BaseSetting, register_setting
 
 
 @register_setting
@@ -42,6 +48,13 @@ class BrandingSettings(BaseSetting):
         related_name='+'
         )
     show_name = models.BooleanField(default=True)
+    mobile_menu_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
     footer = StreamField([
         ('paragraph', blocks.RichTextBlock(
             required=False, null=True,
@@ -59,6 +72,7 @@ class BrandingSettings(BaseSetting):
         ImageChooserPanel('icon'),
         ImageChooserPanel('logo'),
         FieldPanel('show_name'),
+        PageChooserPanel('mobile_menu_page'),
         StreamFieldPanel('footer'),
     ]
 

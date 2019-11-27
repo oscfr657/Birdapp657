@@ -54,6 +54,12 @@
                     </h1>
                 </a>
             </div>
+            {% if settings.birdapp657.BrandingSettings.mobile_menu_page %}
+            <a href="{% pageurl settings.birdapp657.BrandingSettings.mobile_menu_page %}">
+                <div class="bird_mobile_menu {% if page.title == settings.birdapp657.BrandingSettings.mobile_menu_page.title %}active{% endif %}">        
+                </div>
+            </a>
+            {% endif %}
 
             {% if request.site.root_page.get_children.live.in_menu and page.show_menu %}
             <div class="bird_menu">

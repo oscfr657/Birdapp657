@@ -58,6 +58,9 @@
     height: 66px;
 }
 
+#birdapp657 .bird_mobile_menu {
+    display: none;
+}
 #birdapp657 .bird_top .bird_menu {
     padding: 0 0 1px 0;
     margin: 0 auto;
@@ -401,6 +404,26 @@
     #birdapp657 .bird_top .bird_logo h1 img {
         margin: 0 -21px 0 3px;
         height: 56px;
+    }
+    #birdapp657 .bird_top {
+        display: grid;
+        grid-auto-columns: auto auto;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+    }
+    #birdapp657 .bird_mobile_menu {
+        display: block;
+        width: 2em;
+        height: 2em;
+        margin: 1em 0 0 3em;
+        border: solid 10px black;
+        background-color: white;
+    }
+    #birdapp657 .bird_mobile_menu.active {
+        background-color: black;
+    }
+    #birdapp657 .bird_menu {
+        display: none;
     }
     #birdapp657 .content_wrapper .content_head_block {
         height: 131px;
