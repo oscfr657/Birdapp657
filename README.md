@@ -3,6 +3,15 @@
 
 A small Wagtail app
 
+## Compatible ##
+
+### Tested for ###
+
+```
+Wagtail >= 2.6
+Wagtailmedia >= 0.3.1
+```
+
 ## Installation ###
   
 ### Pip requirements ###
