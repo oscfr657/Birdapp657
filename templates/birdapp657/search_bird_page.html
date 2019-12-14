@@ -1,6 +1,5 @@
 {% extends "bird_base_content.html" %}
-{% load wagtailcore_tags %}
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailsearchpromotions_tags wagtailimages_tags %}
 
 
 {% block content %}
@@ -33,6 +32,28 @@
                     required="" placeholder="Search">
             </form>
         </div>
+        
+        {% get_search_promotions search_query as search_promotions %}
+        {% if search_promotions %}
+        <div class="search_result">
+            <ul>
+                {% for search_promotion in search_promotions %}
+                    <li>
+                        <a href="{% pageurl search_promotion.page %}">
+                            {% if search_promotion.page.specific.coverImage %}
+                            {% image search_promotion.page.specific.coverImage original as tmp_photo %}
+                            <div class="search_result_item_cover">
+                                <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="cover_image" />
+                            </div>
+                            {% endif %}
+                            <h3>{{ search_promotion.page.title }}</h3>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
         {% if search_results %}
         <div class="search_result">
             <ul>

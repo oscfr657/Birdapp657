@@ -172,6 +172,7 @@ class SoloBirdPage(Page, BirdMixin):
     
     search_fields = Page.search_fields + BirdMixin.search_fields + [
         index.SearchField('body'),
+        index.SearchField('tags'),
         ]
 
     content_panels = Page.content_panels + BirdMixin.content_panels + [
@@ -195,11 +196,15 @@ class SearchBirdPage(Page, BirdMixin):
     settings_panels = Page.settings_panels + BirdMixin.settings_panels
 
     def serve(self, request):
+        search_query = ''
         if request.method == 'POST':
             form = SearchBirdForm(request.POST)
             if form.is_valid():
                 search_query = form.cleaned_data['search_query']
-                search_results = self.get_parent().get_descendants().live().public().search(search_query)
+                search_results = self.get_parent().get_descendants().live().public().exclude(
+                    show_in_menus=True).order_by(
+                        'first_published_at').search(
+                            search_query, order_by_relevance=False)
 
                 Query.get(search_query).add_hit()
 
@@ -213,6 +218,7 @@ class SearchBirdPage(Page, BirdMixin):
         return render(request, 'birdapp657/search_bird_page.html', {
             'page': self,
             'form': form,
+            'search_query': search_query,
             'search_results': search_results,
         })
     
@@ -277,3 +283,47 @@ class FormBirdPage(AbstractForm, BirdMixin):
             self.get_template(request),
             context
             )
+
+
+"""
+class TiberiusBirdPageTag(TaggedItemBase):
+    content_object = ParentalKey('TiberiusBirdPage', on_delete=models.CASCADE, related_name='tagged_items')
+
+
+class TiberiusBirdPage(Page, BirdMixin):
+    header = blocks.StructBlock([
+        ('media', MediaFileBirdBlock(required=False, null=True)),
+        ('image', ImageChooserBlock(required=False, null=True)),
+        ('title', blocks.CharBlock(required=False, null=True)),
+        ('sub_title', blocks.CharBlock(required=False, null=True)),
+        ('font_color', blocks.CharBlock(required=False, null=True)),
+    ], blank=True, null=True)
+    body = StreamField([
+        ('media', MediaFileBirdBlock(required=False, null=True)),
+        ('html', HTMLBirdBlock(required=False, null=True)),
+        ('code', BirdCodeBlock(required=False, null=True)),
+        ('racer', RacerBirdBlock(required=False, null=True)),
+        ('feed', FeedBirdBlock(required=False)),
+    ], blank=True, null=True)
+
+    tags = ClusterTaggableManager(through=TiberiusBirdPageTag, blank=True)
+    
+    search_fields = Page.search_fields + BirdMixin.search_fields + [
+        index.SearchField('body'),
+        index.SearchField('tags'),
+        ]
+
+    content_panels = Page.content_panels + BirdMixin.content_panels + [
+        StreamFieldPanel('body'),
+        ]
+    promote_panels = Page.promote_panels + [
+        FieldPanel('tags'),
+        ]
+    settings_panels = Page.settings_panels + BirdMixin.settings_panels
+
+    def get_sitemap_urls(self, request=None):
+        if self.exclude_from_sitemap:
+            return []
+        else:
+            return super(TiberiusBirdPage, self).get_sitemap_urls(request=request)
+"""
