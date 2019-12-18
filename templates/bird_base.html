@@ -115,14 +115,16 @@
         </div>
         {% endblock bird_top %}
 
-        <div class="content_head_block {% if page.transparent_header %}transparent{% endif %}"></div>
+
+        <div class="content {{ page.specific.content_width|default:'' }} {% if page.specific.transparent_header %}transparent{% endif %}">
         {% block content %}
         {% endblock %}
+        </div>
 
 
         {% block footer %}
         {% if settings.birdapp657.BrandingSettings.footer %}
-        <div class="footer">
+        <div class="footer {% if page.specific.transparent_header %}transparent{% endif %}">
             <div class="footer-row">
                     {% for block in settings.birdapp657.BrandingSettings.footer %}
                         <div class="footer-column">{% include_block block %}</div>

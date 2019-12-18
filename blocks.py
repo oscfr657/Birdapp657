@@ -54,6 +54,7 @@ class HTMLBirdBlock(blocks.StructBlock):
 
 
 class MediaFileBirdBlock(blocks.StructBlock):
+    block_width = blocks.CharBlock(required=False, help_text='Block width class')
     muted = blocks.BooleanBlock(required=False, default=True, help_text='Muted')
     autoplay = blocks.BooleanBlock(required=False, default=False, help_text='Autoplay')
     loop = blocks.BooleanBlock(required=False, default=False, help_text='Loop')
@@ -67,6 +68,7 @@ class MediaFileBirdBlock(blocks.StructBlock):
 
 
 class FeedBirdBlock(blocks.StructBlock):
+    block_width = blocks.CharBlock(required=False, help_text='Block width class')
     children = blocks.ChoiceBlock(choices=[
             ('c', 'Children'),
             ('d', 'Descendants'),
@@ -77,6 +79,7 @@ class FeedBirdBlock(blocks.StructBlock):
     parent_page = blocks.PageChooserBlock(label='parent page')
     show_title = blocks.BooleanBlock(required=False, default=True)
     show_intro = blocks.BooleanBlock(required=False, default=False)
+    show_content = blocks.BooleanBlock(required=False, default=False)
     show_meta = blocks.BooleanBlock(required=False, default=False)
     show_author = blocks.BooleanBlock(required=False, default=False)
     show_date = blocks.BooleanBlock(required=False, default=False)

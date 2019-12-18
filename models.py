@@ -106,7 +106,7 @@ class BirdMixin(models.Model):
         on_delete=models.SET_NULL,
         related_name='+'
         )
-    content_with = models.CharField(max_length=50, blank=True, null=True)
+    content_width = models.CharField(max_length=50, blank=True, null=True)
     show_menu = models.BooleanField(default=True)
     hover_over_menu = models.BooleanField(default=False)
     show_breadcrumbs = models.BooleanField(default=False)
@@ -130,7 +130,7 @@ class BirdMixin(models.Model):
         FieldPanel('intro', classname="full"),
     ]
     settings_panels = [
-        FieldPanel('content_with'),
+        FieldPanel('content_width'),
         FieldPanel('show_menu'),
         ImageChooserPanel('menu_icon'),
         ImageChooserPanel('hover_menu_icon'),
@@ -203,7 +203,7 @@ class SearchBirdPage(Page, BirdMixin):
                 search_query = form.cleaned_data['search_query']
                 search_results = self.get_parent().get_descendants().live().public().exclude(
                     show_in_menus=True).order_by(
-                        'first_published_at').search(
+                        '-first_published_at').search(
                             search_query, order_by_relevance=False)
 
                 Query.get(search_query).add_hit()

@@ -3,18 +3,18 @@
 
 
 {% if feed_posts %}
-<div class="collection_page">
+<div class="feed_block {{ value.block_width }}">
     {% for p in feed_posts %}
-        <div class="collection_item">
+        <div class="feed_item">
             <a href="{% pageurl p %}">
                 {% if p.specific.coverImage %}
                 {% image p.specific.coverImage min-400x400 as tmp_img %}
-                <div class="collection_item_cover">
+                <div class="feed_item_cover">
                     <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" />
                 </div>
                 {% endif %}
                 {% if value.show_title %}
-                <div class="collection_item_title">
+                <div class="feed_item_title">
                     <h3>{{ p.title }}</h3>
                 </div>
                 {% endif %}
@@ -32,6 +32,11 @@
             {% if value.show_intro %}
             <div class="intro">
             {{ p.specific.intro|richtext }}
+            </div>
+            {% endif %}
+            {% if value.show_content %}
+            <div class="intro">
+            {{ p.specific.body }}
             </div>
             {% endif %}
         </div>
