@@ -5,7 +5,7 @@
 <div class="racer" 
     style="background-color:{{ value.bg_color }}; color:{{ value.text_color }}">
     {% if value.right %}
-    <div class="inner_racer right" >
+    <div class="inner_racer" >
         {% if value.text %}
             <div class="racer_text" >{{ value.text|richtext }}</div>
         {% endif %}
@@ -17,7 +17,7 @@
         {% endif %}
     </div>
     {% else %}
-    <div class="inner_racer left" >
+    <div class="inner_racer" >
         {% if value.image %}
             <div class="racer_image">
                 {% image value.image original as tmp_img %}
@@ -25,7 +25,7 @@
             </div>
         {% endif %}
         {% if value.text %}
-            <div class="racer_text right">{{ value.text|richtext }}</div>
+            <div class="racer_text">{{ value.text|richtext }}</div>
         {% endif %}
     </div>
     {% endif %}

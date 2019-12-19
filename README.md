@@ -8,6 +8,7 @@ A small Wagtail app
 ### Tested for ###
 
 ```
+Django < 2.3, >= 2.0
 Wagtail >= 2.6
 Wagtailmedia >= 0.3.1
 ```

@@ -30,7 +30,7 @@ from taggit.models import TaggedItemBase
 
 from .forms import SearchBirdForm
 from .blocks import (BirdCodeBlock, RacerBirdBlock,
-    HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock)
+    HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock, PageGridBirdBlock)
 
 
 @register_setting
@@ -110,6 +110,7 @@ class BirdMixin(models.Model):
     show_menu = models.BooleanField(default=True)
     hover_over_menu = models.BooleanField(default=False)
     show_breadcrumbs = models.BooleanField(default=False)
+    transparent_header = models.BooleanField(default=False)
     show_coverImage = models.BooleanField(default=False)
     show_title = models.BooleanField(default=True)
     show_meta = models.BooleanField(default=False)
@@ -136,6 +137,7 @@ class BirdMixin(models.Model):
         ImageChooserPanel('hover_menu_icon'),
         FieldPanel('hover_over_menu'),
         FieldPanel('show_breadcrumbs'),
+        FieldPanel('transparent_header'),
         FieldPanel('show_coverImage'),
         FieldPanel('show_title'),
         FieldPanel('show_meta'),
@@ -166,6 +168,7 @@ class SoloBirdPage(Page, BirdMixin):
         ('racer', RacerBirdBlock(required=False, null=True)),
         ('html', HTMLBirdBlock(required=False, null=True)),
         ('feed', FeedBirdBlock(required=False)),
+        ('page_grid', PageGridBirdBlock(required=False)),
     ], blank=True, null=True)
 
     tags = ClusterTaggableManager(through=SoloBirdPageTag, blank=True)

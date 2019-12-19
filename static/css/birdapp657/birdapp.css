@@ -151,6 +151,7 @@ h2 {
 }
 .content.transparent {
     top:0;
+    max-width: 100%;
 }
 .content.boxed {
     width: 600px;
@@ -162,6 +163,7 @@ h2 {
 }
 .content.full {
     width: 100%;
+    max-width: 100%;
 }
 
 .content.solo {
@@ -171,7 +173,6 @@ h2 {
     display: block;
     margin: auto;
     max-width: 100%;
-    border: solid 1px;
 }
 .content .content_body {
     color: #505050;
@@ -280,6 +281,7 @@ h2 {
 /** ^ End Ugly ^ **/
 
 
+.grid_block,
 .feed_block {
     width: 900px;
     max-width: 100%;
@@ -287,49 +289,75 @@ h2 {
     display: grid;
     grid-template-columns: 1fr;
     padding: 0.5rem 0 0 0;
-    grid-row-gap: 1rem;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 1.5rem;
 }
+.grid_block {
+    grid-template-columns: repeat(3, 1fr);
+}
+.grid_block.boxed,
 .feed_block.boxed {
     width: 600px;
 }
+.grid_block.wide,
 .feed_block.wide {
     width: 1200px;
 }
+.grid_block.full,
 .feed_block.full {
     width: 100%;
 }
+.grid_block .grid_page,
 .feed_block .feed_item {
     padding: 0;
 }
+.grid_block .grid_page .grid_page_cover,
 .feed_block .feed_item .feed_item_cover {
     border: solid 1px black;
 }
+.grid_block .grid_page .grid_page_cover {
+    overflow: hidden;
+}
+.grid_block .grid_page img.cover_image,
 .feed_block .feed_item img.cover_image {
     width: 100%;
     margin: 0 0 -4px 0;
+}
+.grid_block .grid_page img.cover_image {
+    transition: all 1s ease;
+}
+.grid_block .grid_page img.cover_image:hover {
+    transform: scale(1.25);
+}
+.grid_block .grid_page .grid_page_title h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.4rem;
 }
 .feed_block .feed_item .feed_item_title h3 {
     margin: 0 0 0.5rem 0;
     font-size: 2rem;
 }
+.grid_block .grid_page > span,
 .feed_block .feed_item > span {
     margin: 0 0 0.5rem 0;
 }
+.grid_block .grid_page .intro,
 .feed_block .feed_item .intro {
     margin: 1em 0;
 }
 
-.content .content_body .block-image {
+
+.block-image {
     padding: 1em 0;
 }
-.content .content_body .block-image img {
+.block-image img {
     display: block;
     margin: auto;
     max-width: 100%;
     height: auto;
 }
 
-.content .block-code {
+.block-code {
     background-color: #aeaeae;
     padding: 1em;
     margin-bottom: 1em;
@@ -337,53 +365,33 @@ h2 {
     width: max-content;
 }
 
-.content .content_body .block-racer {
-    position: relative;
-    left: 50%;
-    width: calc(100vw - 6px);
-    display: flex;
-    margin-left: -50vw;
-}
-.content .content_body .block-racer .racer {
-    width: 100%;
+
+.block-racer .racer {
+    margin: auto;
     min-height: 5em;
 }
-.content .content_body .block-racer .racer .inner_racer {
-    width: 900px;
-    margin: auto;
-    padding: 1em 0px 1em 6px;
-    max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+.block-racer .racer .inner_racer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
-.content .content_body .block-racer .racer .inner_racer.right {
-    flex-wrap: wrap-reverse;
-
-}
-.content .content_body .block-racer .racer .racer_text {
-    max-width: 100%;
-    width: 450px;
-    margin: auto;
-}
-.content .content_body .block-racer .racer .racer_text .rich-text {
-    top: 50%;
-    max-width: 100%;
-    margin: auto;
-}
-.content .content_body .block-racer .racer .racer_text.right .rich-text {
-    padding: 0 0 0 1em;
-}
-.content .content_body .block-racer .racer .racer_image {
-    width: 450px;
-    margin: auto;
-}
-.content .content_body .block-racer .racer .racer_image img {
+.block-racer .racer .racer_image img {
     width: 100%;
 }
 
-.block-extended_media,
-.block-media {
-    padding: 1em 0;
+
+.block-media .media {
+    width: 900px;
+    max-width: 100%;
+    margin: auto;
+}
+.block-media .media.boxed {
+    width: 600px;
+}
+.block-media .media.wide {
+    width: 1200px;
+}
+.block-media .media.full {
+    width: 100%;
 }
 .block-extended_media audio,
 .block-extended_media video,
@@ -442,7 +450,16 @@ h2 {
         width: auto;
     }
 
-    .content .content_body .block-racer .racer .racer_text.right .rich-text {
+    .grid_block,
+    .feed_block {
+        width: 900px;
+        max-width: 100%;
+    }
+    .grid_block {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .block-racer .racer .racer_text.right .rich-text {
         padding: 0;
     }
 }
