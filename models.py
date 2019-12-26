@@ -29,7 +29,7 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 from .forms import SearchBirdForm
-from .blocks import (BirdCodeBlock, RacerBirdBlock,
+from .blocks import (HeaderBirdBlock, BirdCodeBlock, RacerBirdBlock,
     HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock, PageGridBirdBlock)
 
 
@@ -152,6 +152,9 @@ class SoloBirdPageTag(TaggedItemBase):
 
 
 class SoloBirdPage(Page, BirdMixin):
+    header = StreamField([
+        ('header', HeaderBirdBlock(required=False, null=True)),
+    ], blank=True, null=True)
     body = StreamField([
         ('paragraph', blocks.RichTextBlock(
             required=False, null=True,
@@ -179,6 +182,7 @@ class SoloBirdPage(Page, BirdMixin):
         ]
 
     content_panels = Page.content_panels + BirdMixin.content_panels + [
+        StreamFieldPanel('header'),
         StreamFieldPanel('body'),
         ]
     promote_panels = Page.promote_panels + [
@@ -294,12 +298,8 @@ class TiberiusBirdPageTag(TaggedItemBase):
 
 
 class TiberiusBirdPage(Page, BirdMixin):
-    header = blocks.StructBlock([
-        ('media', MediaFileBirdBlock(required=False, null=True)),
-        ('image', ImageChooserBlock(required=False, null=True)),
-        ('title', blocks.CharBlock(required=False, null=True)),
-        ('sub_title', blocks.CharBlock(required=False, null=True)),
-        ('font_color', blocks.CharBlock(required=False, null=True)),
+    header = StreamField([
+        ('header', HeaderBirdBlock(required=False, null=True)),
     ], blank=True, null=True)
     body = StreamField([
         ('media', MediaFileBirdBlock(required=False, null=True)),
@@ -317,6 +317,7 @@ class TiberiusBirdPage(Page, BirdMixin):
         ]
 
     content_panels = Page.content_panels + BirdMixin.content_panels + [
+        StreamFieldPanel('header'),
         StreamFieldPanel('body'),
         ]
     promote_panels = Page.promote_panels + [

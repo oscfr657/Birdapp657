@@ -4,6 +4,43 @@
 
 
 {% block content %}
+    {% for header in page.specific.header %}
+    <div class="header" style="color: {{ header.value.font_color }};">
+        {% if header.value.block_media.type == 'video' %}
+        <!--#TODO: But what about webm and ogg ? sad_face -->
+        <video {% if header.value.muted %}muted{% endif %} {% if header.value.autoplay %}autoplay{% endif %} {% if header.value.loop %}loop{% endif %} {% if header.value.controls %}controls{% endif %} >
+            <source src="{{ header.value.block_media.file.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        {% elif header.value.block_media.type == 'audio' %}
+        <div class="bg_area">
+        <audio {% if header.value.muted %}muted{% endif %} {% if header.value.autoplay %}autoplay{% endif %} {% if header.value.loop %}loop{% endif %} {% if header.value.controls %}controls{% endif %}>
+            <source src="{{ header.value.block_media.file.url }}" >
+            Your browser does not support the audio element.
+        </audio>
+        </div>
+        {% elif header.value.image %}
+        {% image header.value.image original as header_photo %}
+        <div class="bg_area" style="background-image: url('{{ header_photo.url }}');">
+        </div>
+        {% else %}
+            <div class="bg_area">
+
+            </div>
+        {% endif %}
+        {% if header.value.title %}
+        <h2>
+            {{ header.value.title }}
+        </h2>
+        {% endif %}
+        {% if header.value.sub_title %}
+        <h3>
+            {{ header.value.sub_title }}
+        </h3>
+        {% endif %}
+    </div>
+    {% endfor %}
+
     {% if page.specific.coverImage and page.specific.show_coverImage %}
     <div class="cover">
         {% image page.specific.coverImage original as tmp_photo %}

@@ -8,6 +8,24 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 
 
+class HeaderBirdBlock(blocks.StructBlock):
+    muted = blocks.BooleanBlock(required=False, default=True, help_text='Muted')
+    autoplay = blocks.BooleanBlock(required=False, default=False, help_text='Autoplay')
+    loop = blocks.BooleanBlock(required=False, default=False, help_text='Loop')
+    controls = blocks.BooleanBlock(required=False, default=True, help_text='Controls')
+    block_media = AbstractMediaChooserBlock(required=False, null=True)
+    
+    image = ImageChooserBlock(required=False, null=True)
+    
+    title = blocks.CharBlock(required=False, null=True)
+    sub_title = blocks.CharBlock(required=False, null=True)
+    font_color = blocks.CharBlock(required=False, null=True)
+
+    class Meta:
+        label = 'Header'
+        icon = 'image'
+
+
 class BirdCodeBlock(blocks.StructBlock):  # TODO: Rename to CodeBirdBlock ?
 
     code = blocks.TextBlock(required=True)

@@ -8,6 +8,7 @@ body  {
     height: 100vh;
     width: 100%;
     color: black;
+    /*font-family: Impact, Charcoal, sans-serif;*/
     font-family: Arial, Helvetica, sans-serif;
 }
 a {
@@ -36,7 +37,6 @@ h2 {
     margin: auto;
     width: 900px;
     max-width: calc(100% - 2em);
-    padding: 0px 14px 2px 12px;
     left: 0;
     right: 0;
 }
@@ -246,7 +246,7 @@ h2 {
 
 
 /* blocks */
-/** Ugly remove **/
+/** Ugly **/
 .content .rich-text img {
     display: block;
     max-width: 100%;
@@ -279,6 +279,67 @@ h2 {
     margin: 0px auto!important;
 }
 /** ^ End Ugly ^ **/
+
+
+.header {
+    text-align: center;
+    height: 500px;
+    overflow: hidden;
+    margin: 0 0 2rem 0;
+}
+.content.transparent .header {
+    height: 100vh;
+    width: 100vw;
+}
+.header video {
+    max-width: 100%;
+    max-height: 100%;
+}
+.content.transparent .header video {
+    max-width: none;
+    height: 100vh;
+    position: relative;
+    left: 50vw;
+    transform: translateX(-50%);
+}
+.header audio {
+    height: 85%;
+    width: 600px;
+    max-width: calc(100% - 1em);
+}
+.header img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.content.transparent .header img {
+    max-width: none;
+    height: 100vh;
+    position: relative;
+    right: 50vw;
+    transform: translateX(50%);
+}
+.header .bg_area {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% auto;
+}
+.content.transparent .header .bg_area {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+}
+.header h2 {
+    position: relative;
+    bottom: 57%;
+    font-size: xx-large;
+}
+.header h3 {
+    position: relative;
+    bottom: 47%;
+    font-size: large;
+}
 
 
 .grid_block,
@@ -429,7 +490,6 @@ h2 {
         height: 2em;
         margin: 1em 0 0 3em;
         border: solid 10px black;
-        background-color: white;
     }
     .bird_mobile_menu.active {
         background-color: black;
@@ -450,6 +510,24 @@ h2 {
         width: auto;
     }
 
+    .header {
+        height: 400px;
+    }
+    .content.transparent .header .bg_area {
+        height: 100%;
+    }
+    .header h2 {
+        bottom: 7em;
+    }
+    .header h3 {
+        bottom: 10em;
+    }
+    .content.transparent .header h2 {
+        bottom: 57%;
+    }
+    .content.transparent .header h3 {
+        bottom: 47%;
+    }
     .grid_block,
     .feed_block {
         width: 900px;
@@ -490,16 +568,56 @@ h2 {
     .content .responsive-object {
         height: 320px;
     }
+    .header {
+        height: 300px;
+    }
+    .content.transparent .header .bg_area {
+        height: 100%;
+    }
+    .header h2 {
+        bottom: 5em;
+    }
+    .header h3 {
+        bottom: 9em;
+    }
+    .content.transparent .header h2 {
+        bottom: 57%;
+    }
+    .content.transparent .header h3 {
+        bottom: 47%;
+    }
 }
 
 @media (max-width: 571px) {
     .content .responsive-object {
         height: 277px;
     }
+    .header {
+        height: 200px;
+    }
+    .content.transparent .header .bg_area {
+        height: 100%;
+    }
+    .content.transparent .header h2 {
+        bottom: 57%;
+    }
+    .content.transparent .header h3 {
+        bottom: 47%;
+    }
+    
 
 }
 @media (max-width: 400px) {
     .content .responsive-object {
         height: 217px;
+    }
+    .header {
+        height: 200px;
+    }
+    .content.transparent .header h2 {
+        bottom: 57%;
+    }
+    .content.transparent .header h3 {
+        bottom: 47%;
     }
 }
