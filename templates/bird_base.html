@@ -20,8 +20,6 @@
 
 {% if page.search_description %}
     <meta name="description" content="{{ page.search_description }}">
-{% elif request.site.name %}
-    <meta name="description" content="{{ request.site.name|default:'' }} - {{ page.description }}">
 {% endif %}
 
 {% if page.specific.tags.count > 1 %}
@@ -32,6 +30,30 @@
 
 {% if page.specific.author %}
 <meta name="author" content="{{ page.specific.author }}">
+{% endif %}
+
+
+{% if page.seo_title %}
+<meta property="og:title" content="{{ page.seo_title }}"/>
+{% elif page.title %}
+<meta property="og:title" content="{{ page.title }}"/>
+{% endif %}
+
+{% if page.specific.coverImage %}
+{% image page.specific.coverImage min-1200x627 format-jpeg as og_image %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ og_image.url }}"/>
+{% endif %}
+
+{% if request.site.site_name %}
+<meta property="og:site_name" content="{{ request.site.site_name }}"/>
+{% endif %}
+
+{% if page.search_description %}
+<meta property="og:description" content="{{ page.search_description }}"/>
+{% endif %}
+
+{% if page.full_url %}
+<meta property="og:url" content="{{ page.full_url }}"/>
 {% endif %}
 
 
@@ -54,8 +76,9 @@
                 </div>
 
                 {% if settings.birdapp657.BrandingSettings.mobile_menu_page %}
-                <a href="{% pageurl settings.birdapp657.BrandingSettings.mobile_menu_page %}">
-                    <div class="bird_mobile_menu {% if page.title == settings.birdapp657.BrandingSettings.mobile_menu_page.title %}active{% endif %}">        
+                <a class="bird_mobile_menu {% if page.title == settings.birdapp657.BrandingSettings.mobile_menu_page.title %}active{% endif %}" 
+                    href="{% pageurl settings.birdapp657.BrandingSettings.mobile_menu_page %}">
+                    <div >        
                     </div>
                 </a>
                 {% endif %}
