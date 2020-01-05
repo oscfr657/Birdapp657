@@ -297,7 +297,10 @@ h2 {
     max-height: 100%;
 }
 .content.transparent .header video {
+    min-width: 100%;
+    min-height: 100%;
     max-width: none;
+    max-height: none;
     height: 100vh;
     position: relative;
     left: 50vw;
@@ -334,12 +337,16 @@ h2 {
 .header h2 {
     position: relative;
     bottom: 57%;
-    font-size: xx-large;
+    left: 0;
+    right: 0;
+    font-size: xxx-large;
 }
 .header h3 {
     position: relative;
-    bottom: 47%;
-    font-size: large;
+    bottom: 57%;
+    left: 0;
+    right: 0;
+    font-size: x-large;
 }
 
 
@@ -517,18 +524,6 @@ h2 {
     .content.transparent .header .bg_area {
         height: 100%;
     }
-    .header h2 {
-        bottom: 7em;
-    }
-    .header h3 {
-        bottom: 10em;
-    }
-    .content.transparent .header h2 {
-        bottom: 57%;
-    }
-    .content.transparent .header h3 {
-        bottom: 47%;
-    }
     .grid_block,
     .feed_block {
         width: 900px;
@@ -576,16 +571,16 @@ h2 {
         height: 100%;
     }
     .header h2 {
-        bottom: 5em;
+        bottom: 3.5em;
     }
     .header h3 {
-        bottom: 9em;
+        bottom: 8em;
     }
     .content.transparent .header h2 {
         bottom: 57%;
     }
     .content.transparent .header h3 {
-        bottom: 47%;
+        bottom: 57%;
     }
 
     .grid_block {
@@ -608,22 +603,16 @@ h2 {
         bottom: 57%;
     }
     .content.transparent .header h3 {
-        bottom: 47%;
+        bottom: 57%;
     }
     
-
 }
+
 @media (max-width: 400px) {
     .content .responsive-object {
         height: 217px;
     }
     .header {
         height: 200px;
-    }
-    .content.transparent .header h2 {
-        bottom: 57%;
-    }
-    .content.transparent .header h3 {
-        bottom: 47%;
     }
 }
