@@ -156,11 +156,11 @@ h2 {
 }
 .content.boxed {
     width: 600px;
-    max-width: 100%;
+    max-width: 100vw;
 }
 .content.wide {
     width: 1200px;
-    max-width: 100%;
+    max-width: 100vw;
 }
 .content.full {
     width: 100%;
@@ -316,11 +316,14 @@ h2 {
     max-height: 100%;
 }
 .content.transparent .header img {
+    min-width: 100%;
+    min-height: 100%;
     max-width: none;
+    max-height: none;
     height: 100vh;
     position: relative;
-    right: 50vw;
-    transform: translateX(50%);
+    left: 50vw;
+    transform: translateX(-50%);
 }
 .header .bg_area {
     height: 100%;
@@ -332,21 +335,29 @@ h2 {
     height: 100%;
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: auto 100%;
+    background-size: cover;
 }
 .header h2 {
-    position: relative;
-    bottom: 57%;
+    position: absolute;
+    top: 18%;
     left: 0;
     right: 0;
+    z-index: 1;
     font-size: xxx-large;
 }
+.content.transparent .header h2 {
+    top: 42vh;
+}
 .header h3 {
-    position: relative;
-    bottom: 57%;
+    position: absolute;
+    top: 24%;
     left: 0;
     right: 0;
+    z-index: 1;
     font-size: x-large;
+}
+.content.transparent .header h3 {
+    top: 50vh;
 }
 
 
@@ -475,6 +486,13 @@ h2 {
 }
 
 
+@media screen and (min-aspect-ratio: 16/9) {
+    .content.transparent .header video {
+        height: auto;
+        width: 100vw;
+    }
+  }
+
 @media (max-width: 900px) {
     body  {
         display: block;
@@ -524,6 +542,13 @@ h2 {
     .content.transparent .header .bg_area {
         height: 100%;
     }
+    .header h2 {
+        top: 10%;
+    }
+    .header h3 {
+        top: 15%;
+    }
+
     .grid_block,
     .feed_block {
         width: 900px;
@@ -571,10 +596,10 @@ h2 {
         height: 100%;
     }
     .header h2 {
-        bottom: 3.5em;
+        top: 7vh;
     }
     .header h3 {
-        bottom: 8em;
+        top: 15vh;
     }
     .content.transparent .header h2 {
         bottom: 57%;

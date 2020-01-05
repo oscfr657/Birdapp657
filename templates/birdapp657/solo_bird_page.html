@@ -6,6 +6,16 @@
 {% block content %}
     {% for header in page.specific.header %}
     <div class="header" style="color: {{ header.value.font_color }};">
+        {% if header.value.title %}
+        <h2>
+            {{ header.value.title }}
+        </h2>
+        {% endif %}
+        {% if header.value.sub_title %}
+        <h3>
+            {{ header.value.sub_title }}
+        </h3>
+        {% endif %}
         {% if header.value.block_media.type == 'video' %}
         <!--#TODO: But what about webm and ogg ? sad_face -->
         <video {% if header.value.muted %}muted{% endif %} {% if header.value.autoplay %}autoplay{% endif %} {% if header.value.loop %}loop{% endif %} {% if header.value.controls %}controls{% endif %} >
@@ -27,16 +37,6 @@
             <div class="bg_area">
 
             </div>
-        {% endif %}
-        {% if header.value.title %}
-        <h2>
-            {{ header.value.title }}
-        </h2>
-        {% endif %}
-        {% if header.value.sub_title %}
-        <h3>
-            {{ header.value.sub_title }}
-        </h3>
         {% endif %}
     </div>
     {% endfor %}
