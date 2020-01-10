@@ -16,7 +16,7 @@ a {
 }
 p,
 h2 {
-    margin: 1rem 0 0.5rem 0;
+    margin: 1rem 0 1rem 0;
 }
 p sub {
     color: blue;
@@ -204,6 +204,7 @@ p sub {
     grid-auto-flow: column;
     grid-column-gap: 10px;
     margin: auto;
+    padding: 3em 0;
     width: 900px;
     max-width: calc(100% - 2em);
 }
@@ -310,9 +311,13 @@ p sub {
     transform: translateX(-50%);
 }
 .header audio {
-    height: 85%;
     width: 600px;
     max-width: calc(100% - 1em);
+    top: 75%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 .header img {
     max-width: 100%;
@@ -342,7 +347,7 @@ p sub {
 }
 .header h2 {
     position: absolute;
-    top: 18%;
+    top: 18vh;
     left: 0;
     right: 0;
     z-index: 1;
@@ -353,7 +358,7 @@ p sub {
 }
 .header h3 {
     position: absolute;
-    top: 24%;
+    top: 26vh;
     left: 0;
     right: 0;
     z-index: 1;
@@ -546,10 +551,10 @@ p sub {
         height: 100%;
     }
     .header h2 {
-        top: 10%;
+        top: 10vh;
     }
     .header h3 {
-        top: 15%;
+        top: 18vh;
     }
 
     .grid_block,
