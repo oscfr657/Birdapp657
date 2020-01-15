@@ -411,6 +411,7 @@ p sub {
 .feed_block .feed_item {
     padding: 0;
 }
+.feed_block .feed_item .feed_item_cover,
 .grid_block .grid_page .grid_page_cover {
     overflow: hidden;
     border: solid 1px black;
@@ -420,9 +421,11 @@ p sub {
     width: 100%;
     margin: 0 0 -5px 0;
 }
+.feed_block .feed_item img.cover_image,
 .grid_block .grid_page img.cover_image {
     transition: all 1s ease;
 }
+.feed_block .feed_item img.cover_image:hover,
 .grid_block .grid_page img.cover_image:hover {
     transform: scale(1.25);
 }
