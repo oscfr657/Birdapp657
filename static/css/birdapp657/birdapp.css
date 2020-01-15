@@ -9,7 +9,8 @@ body  {
     width: 100%;
     color: black;
     /*font-family: Impact, Charcoal, sans-serif;*/
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif;*/
+    font-family: 'Open Sans';
 }
 a {
     color: black;
@@ -36,25 +37,22 @@ p sub {
 }
 
 .bird_top {
-    text-align: center;
     margin: auto;
     width: 900px;
     max-width: calc(100% - 2em);
-    left: 0;
-    right: 0;
+    height: 5.5rem;
 }
 .bird_top .bird_logo {
-    padding: 10px 0 0 0;
+    float: left;
+    margin-top: 10px;
 }
 .bird_top .bird_logo a {
     text-decoration: None;
 }
 .bird_top .bird_logo h1 {
-    font-size: 6em;
-    line-height: 0.7em;
-    margin: 0 0 0 -3px;
-    text-align: left;
-    min-height: 67.2px;
+    font-size: 5em;
+    line-height: 0.8em;
+    margin: 0;
 }
 .bird_top .bird_logo h1 img {
     margin: 0 -25px 0 3px;
@@ -65,11 +63,8 @@ p sub {
     display: none;
 }
 .bird_top .bird_menu {
-    height: 28px;
-    padding: 0 0 1px 0;
-    margin: 0 auto;
-    text-align: right;
-    border-top: solid 1px black;
+    float: right;
+    margin-top: 51px;
 }
 .bird_top .bird_menu_list {
     margin: -1px 0;
@@ -78,7 +73,6 @@ p sub {
 }
 .bird_top .bird_menu_child {
     display: inline-block;
-    padding: 3px 0 0 0;
 }
 .bird_top .bird_menu_child:hover .bird_menu_child_list {
     display: grid;
@@ -99,11 +93,14 @@ p sub {
 .bird_top .bird_menu a {
     text-decoration: none;
     background-color: white;
-    border: solid black 1px;
     padding: 2px 15px;
     white-space: nowrap;
     font-size: 1.3em;
 }
+.bird_top_wraper.transparent .bird_top .bird_menu a {
+    background-color: transparent;
+}
+
 .bird_top .bird_menu a.active,
 .bird_top .bird_menu a:hover,
 .bird_top .bird_menu a:active {
@@ -115,6 +112,17 @@ p sub {
     padding: 2px 15px;
     margin: 0;
 }
+.bird_top_wraper.transparent .bird_top .bird_menu a.icon {
+    background-color: transparent;
+}
+
+.bird_top_wraper.transparent .bird_top .bird_menu a.active,
+.bird_top_wraper.transparent .bird_top .bird_menu a:hover,
+.bird_top_wraper.transparent .bird_top .bird_menu a:active {
+    color: whitesmoke;
+    background-color: black;
+}
+
 .bird_top .bird_menu a.icon.active.hover,
 .bird_top .bird_menu a.icon.hover:hover,
 .bird_top .bird_menu a.icon.hover:active {
@@ -383,6 +391,10 @@ p sub {
 .grid_block {
     grid-template-columns: repeat(3, 1fr);
 }
+.grid_block a,
+.feed_block a {
+    text-decoration: None;
+}
 .grid_block.boxed,
 .feed_block.boxed {
     width: 600px;
@@ -409,7 +421,7 @@ p sub {
 .grid_block .grid_page img.cover_image,
 .feed_block .feed_item img.cover_image {
     width: 100%;
-    margin: 0 0 -4px 0;
+    margin: 0 0 -5px 0;
 }
 .grid_block .grid_page img.cover_image {
     transition: all 1s ease;
@@ -522,7 +534,7 @@ p sub {
         display: block;
         width: 2em;
         height: 2em;
-        margin: 1em 0 0 3em;
+        margin: 19px 0 0 3em;
         border: solid 10px black;
     }
     .bird_mobile_menu.active {
