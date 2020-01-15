@@ -413,11 +413,12 @@ p sub {
 }
 .grid_block .grid_page .grid_page_cover {
     overflow: hidden;
+    border: solid 1px black;
 }
 .grid_block .grid_page img.cover_image,
 .feed_block .feed_item img.cover_image {
     width: 100%;
-    border: solid 1px black;
+    margin: 0 0 -5px 0;
 }
 .grid_block .grid_page img.cover_image {
     transition: all 1s ease;
