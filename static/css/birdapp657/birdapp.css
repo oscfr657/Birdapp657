@@ -411,17 +411,13 @@ p sub {
 .feed_block .feed_item {
     padding: 0;
 }
-.grid_block .grid_page .grid_page_cover,
-.feed_block .feed_item .feed_item_cover {
-    border: solid 1px black;
-}
 .grid_block .grid_page .grid_page_cover {
     overflow: hidden;
 }
 .grid_block .grid_page img.cover_image,
 .feed_block .feed_item img.cover_image {
     width: 100%;
-    margin: 0 0 -5px 0;
+    border: solid 1px black;
 }
 .grid_block .grid_page img.cover_image {
     transition: all 1s ease;
