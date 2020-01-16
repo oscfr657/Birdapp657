@@ -52,7 +52,7 @@ p sub {
 .bird_top .bird_logo h1 {
     font-size: 5em;
     line-height: 0.8em;
-    margin: 0;
+    margin: 0 0 0 -4px;
 }
 .bird_top .bird_logo h1 img {
     margin: 0 -25px 0 3px;
@@ -158,7 +158,7 @@ p sub {
     top: 143px;
     margin: auto;
     width: 900px;
-    max-width: calc(100% - 2em);
+    max-width: 100%;
     padding: 0 0 1em 0;
 }
 .content.transparent {
@@ -572,7 +572,7 @@ p sub {
     .grid_block,
     .feed_block {
         width: 900px;
-        max-width: calc(100% - 1em);
+        max-width: calc(100% - 2em);
     }
     .grid_block {
         grid-template-columns: repeat(2, 1fr);
@@ -580,6 +580,9 @@ p sub {
 
     .block-racer .racer .racer_text.right .rich-text {
         padding: 0;
+    }
+    .block-media .media {
+        max-width: calc(100% - 2em);
     }
 }
 
