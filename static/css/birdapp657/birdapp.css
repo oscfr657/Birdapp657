@@ -624,13 +624,6 @@ p sub {
     .header h3 {
         top: 15vh;
     }
-    .content.transparent .header h2 {
-        bottom: 57%;
-    }
-    .content.transparent .header h3 {
-        bottom: 57%;
-    }
-
     .grid_block {
         grid-template-columns: 1fr;
     }
@@ -646,12 +639,6 @@ p sub {
     }
     .content.transparent .header .bg_area {
         height: 100%;
-    }
-    .content.transparent .header h2 {
-        bottom: 57%;
-    }
-    .content.transparent .header h3 {
-        bottom: 57%;
     }
     
 }
