@@ -1,13 +1,21 @@
 
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load birdtags %}
 
 <div class="racer" 
-    style="background-color:{{ value.bg_color }}; color:{{ value.text_color }}">
+    style="background-color:{{ value.bg_color }};">
+    <style>
+        .inner_racer .racer_text.{% toclass value.text_color %},
+        .inner_racer .racer_text.{% toclass value.text_color %} a {
+            color:{{ value.text_color }};
+        }
+    </style>
     {% if value.right %}
-    <div class="inner_racer" >
+    <div class="inner_racer right" >
         {% if value.text %}
-            <div class="racer_text" >{{ value.text|richtext }}</div>
+            <div class="racer_text {% toclass value.text_color %}" 
+            style="color:{{ value.text_color }}">{{ value.text|richtext }}</div>
         {% endif %}
         {% if value.image %}
             <div class="racer_image">
@@ -17,7 +25,7 @@
         {% endif %}
     </div>
     {% else %}
-    <div class="inner_racer" >
+    <div class="inner_racer left" >
         {% if value.image %}
             <div class="racer_image">
                 {% image value.image original as tmp_img %}
@@ -25,7 +33,9 @@
             </div>
         {% endif %}
         {% if value.text %}
-            <div class="racer_text">{{ value.text|richtext }}</div>
+            <div class="racer_text {% toclass value.text_color %}">
+                {{ value.text|richtext }}
+            </div>
         {% endif %}
     </div>
     {% endif %}

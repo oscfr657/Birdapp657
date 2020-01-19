@@ -156,10 +156,8 @@ p sub {
 .content {
     position: relative;
     top: 143px;
+    min-height: 65vh;
     margin: auto;
-    width: 900px;
-    max-width: 100%;
-    padding: 0 0 1em 0;
 }
 .content.transparent {
     top:0;
@@ -180,6 +178,13 @@ p sub {
 
 .content.solo {
     padding: 0;
+}
+.content .title,
+.content .meta,
+.content .cover {
+    margin: auto;
+    width: 900px;
+    max-width: calc(100% - 2em);
 }
 .content .cover img.top_cover_image {
     display: block;
@@ -275,7 +280,8 @@ p sub {
 .content .responsive-object {
     position: relative;
     padding-bottom: 0px !important;
-    height: 494px;
+    height: 250px;
+    width: 500px;
     max-width: 100%;
     margin: auto;
 }
@@ -376,6 +382,12 @@ p sub {
     top: 50vh;
 }
 
+.block-paragraph {
+    padding: 0em 0;
+    width: 900px;
+    max-width: calc(100% - 2em);
+    margin: auto;
+}
 
 .grid_block,
 .feed_block {
@@ -384,7 +396,7 @@ p sub {
     margin: auto;
     display: grid;
     grid-template-columns: 1fr;
-    padding: 0.5rem 0 0 0;
+    padding: 3em 0 3em 0;
     grid-row-gap: 1.5rem;
     grid-column-gap: 1.5rem;
 }
@@ -430,7 +442,7 @@ p sub {
     transform: scale(1.25);
 }
 .grid_block .grid_page .grid_page_title h3 {
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     font-size: 1.4rem;
 }
 .feed_block .feed_item .feed_item_title h3 {
@@ -448,7 +460,10 @@ p sub {
 
 
 .block-image {
-    padding: 1em 0;
+    padding: 3em 0;
+    width: 900px;
+    max-width: calc(100% -  2em);
+    margin: auto;
 }
 .block-image img {
     display: block;
@@ -458,24 +473,52 @@ p sub {
 }
 
 .block-code {
+    margin: 0px auto;
+    color: #e8e8e8;
+    width: 900px;
+    max-width: calc(100% - 1em);
+}
+.block-code pre {
     background-color: #292929;
     padding: 1em;
-    margin-bottom: 1em;
-    color: #e8e8e8;
-    width: max-content;
+    width: min-content;
 }
+
 
 
 .block-racer .racer {
     margin: auto;
     min-height: 5em;
 }
+.block-racer .racer h2 {
+    margin: 0;
+    text-align: center;
+}
 .block-racer .racer .inner_racer {
+    width: 900px;
+    max-width: calc(100% - 2em);
+    margin: auto;
+    padding: 3em 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 4em;
+}
+.block-racer .racer .inner_racer.left .racer_image {
+    justify-self: right;
+}
+.block-racer .racer .inner_racer.right .racer_image {
+    justify-self: left;
 }
 .block-racer .racer .racer_image img {
     width: 100%;
+}
+.block-racer .racer .inner_racer.right .racer_text {
+    text-align: right;
+    margin: auto 0;
+}
+.block-racer .racer .inner_racer.left .racer_text {
+    text-align: left;
+    margin: auto 0;
 }
 
 
@@ -498,6 +541,7 @@ p sub {
 .block-media audio,
 .block-media video {
     width: 100%;
+    margin-bottom: -5px;
 }
 .block-media audio {
     border-radius: 20px;
@@ -569,6 +613,11 @@ p sub {
         top: 18vh;
     }
 
+    .block-paragraph {
+        margin: auto;
+        width: 900px;
+        max-width: calc(100% - 2em);
+    }
     .grid_block,
     .feed_block {
         width: 900px;
@@ -578,9 +627,6 @@ p sub {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .block-racer .racer .racer_text.right .rich-text {
-        padding: 0;
-    }
     .block-media .media {
         max-width: calc(100% - 2em);
     }
@@ -628,6 +674,23 @@ p sub {
         grid-template-columns: 1fr;
     }
 
+    .block-racer .racer .inner_racer {
+        display: flex;
+    }
+    .block-racer .racer .inner_racer.left {
+        flex-flow: column;
+    }
+    .block-racer .racer .inner_racer.right {
+        flex-flow: column-reverse;
+    }
+    .block-racer .racer .inner_racer.left .racer_text {
+        margin: auto 0;
+    }
+    .block-racer .racer .inner_racer.right .racer_text {
+        margin: auto 0;
+    }
+
+
 }
 
 @media (max-width: 571px) {
@@ -635,7 +698,7 @@ p sub {
         height: 277px;
     }
     .header {
-        height: 200px;
+        height: 400px;
     }
     .content.transparent .header .bg_area {
         height: 100%;
@@ -644,10 +707,7 @@ p sub {
 }
 
 @media (max-width: 400px) {
-    .content .responsive-object {
-        height: 217px;
-    }
     .header {
-        height: 200px;
+        height: 400px;
     }
 }
