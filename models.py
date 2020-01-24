@@ -55,6 +55,7 @@ class BrandingSettings(BaseSetting):
         on_delete=models.SET_NULL,
         related_name='+',
     )
+    extra_head = models.TextField(blank=True, null=True)
     footer = StreamField([
         ('paragraph', blocks.RichTextBlock(
             required=False, null=True,
@@ -73,6 +74,7 @@ class BrandingSettings(BaseSetting):
         ImageChooserPanel('logo'),
         FieldPanel('show_name'),
         PageChooserPanel('mobile_menu_page'),
+        FieldPanel('extra_head'),
         StreamFieldPanel('footer'),
     ]
 

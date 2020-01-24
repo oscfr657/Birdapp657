@@ -214,7 +214,6 @@ p sub {
     color: white;
     margin: 0;
     padding: 0 0 1em 0;
-    display: table-row;
 }
 .footer.transparent {
     top:0;
@@ -554,9 +553,7 @@ p sub {
     margin-bottom: -5px;
 }
 .block-media audio {
-    border-radius: 20px;
     color: black;
-    background: black;
 }
 
 

@@ -56,6 +56,13 @@
 <meta property="og:url" content="{{ page.full_url }}"/>
 {% endif %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
+
+
+{% if settings.birdapp657.BrandingSettings.extra_head %}
+{{ settings.birdapp657.BrandingSettings.extra_head|safe }}
+{% endif %}
+
 
         {% block bird_top %}
         <div class="bird_top_wraper {% if page.transparent_header %}transparent{% endif %}">
@@ -159,7 +166,3 @@
 
 
 {% wagtailuserbar %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
-
-<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" lazyload>
