@@ -166,3 +166,13 @@
 
 
 {% wagtailuserbar %}
+
+
+{% if settings.birdapp657.BrandingSettings.extra_css %}
+<link rel="stylesheet" type="text/css" href="{{ settings.birdapp657.BrandingSettings.extra_css.url }}" lazyload>
+{% endif %}
+
+
+{% if settings.birdapp657.BrandingSettings.extra_js %}
+<script src="{{ settings.birdapp657.BrandingSettings.extra_js.url }}" async=""></script>
+{% endif %}

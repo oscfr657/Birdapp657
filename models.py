@@ -18,6 +18,9 @@ from wagtail.admin.edit_handlers import (
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from wagtail.documents.models import Document
+from wagtail.documents.edit_handlers import DocumentChooserPanel
+
 from wagtail.contrib.forms.models import AbstractForm, AbstractFormField
 from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
 
@@ -56,6 +59,20 @@ class BrandingSettings(BaseSetting):
         related_name='+',
     )
     extra_head = models.TextField(blank=True, null=True)
+    extra_css = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    extra_js = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     footer = StreamField([
         ('paragraph', blocks.RichTextBlock(
             required=False, null=True,
@@ -75,6 +92,8 @@ class BrandingSettings(BaseSetting):
         FieldPanel('show_name'),
         PageChooserPanel('mobile_menu_page'),
         FieldPanel('extra_head'),
+        DocumentChooserPanel('extra_css'),
+        DocumentChooserPanel('extra_js'),
         StreamFieldPanel('footer'),
     ]
 
