@@ -331,7 +331,8 @@ p sub {
     height: 100vh;
     position: relative;
     left: 50vw;
-    transform: translateX(-50%);
+    top: 50vh;
+    transform: translate(-50%, -50%);
 }
 .header audio {
     width: 600px;
