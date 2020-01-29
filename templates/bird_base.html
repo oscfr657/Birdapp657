@@ -99,8 +99,12 @@
                             <a href="{% pageurl child %}"
                                 class="icon {% if child.title == page.title or child in page.get_ancestors %}active{% endif %} {% if child.specific.hover_over_menu %}hover{% endif %}" >
                                 {% if child.specific.hover_menu_icon %}
-                                    {% image child.specific.menu_icon fill-24x24 class="no_hover" %}
-                                    {% image child.specific.hover_menu_icon fill-24x24 class="hover" %}
+                                    {% if page.transparent_header %}
+                                        {% image child.specific.hover_menu_icon fill-24x24 %}
+                                    {% else %}
+                                        {% image child.specific.menu_icon fill-24x24 class="no_hover" %}
+                                        {% image child.specific.hover_menu_icon fill-24x24 class="hover" %}
+                                    {% endif %}
                                 {% else %}
                                     {% image child.specific.menu_icon fill-24x24 %}
                                 {% endif %}
