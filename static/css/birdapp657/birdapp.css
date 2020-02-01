@@ -209,11 +209,10 @@ p sub {
 
 .footer {
     position: relative;
-    top: 143px;
+    top: 7em;
     background: black;
     color: white;
     margin: 0;
-    padding: 0 0 1em 0;
 }
 .footer.transparent {
     top:0;
@@ -410,12 +409,23 @@ p sub {
     grid-row-gap: 1.5rem;
     grid-column-gap: 1.5rem;
 }
+.grid_block.fancy {
+    grid-row-gap: 0;
+    grid-column-gap: 0;
+    padding: 0;
+}
+
 .grid_block {
     grid-template-columns: repeat(3, 1fr);
 }
+.grid_block.boxed.fancy {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .grid_block a,
 .feed_block a {
     text-decoration: None;
+    position: relative;
 }
 .grid_block.boxed,
 .feed_block.boxed {
@@ -438,6 +448,13 @@ p sub {
     overflow: hidden;
     border: solid 1px black;
 }
+.grid_block.fancy .grid_page .grid_page_cover {
+    border: None;
+    background-color: black;
+    display: block;
+    width: 100%;
+    height: auto;
+}
 .grid_block .grid_page img.cover_image,
 .feed_block .feed_item img.cover_image {
     width: 100%;
@@ -451,9 +468,26 @@ p sub {
 .grid_block .grid_page img.cover_image:hover {
     transform: scale(1.25);
 }
+.grid_block.fancy .grid_page a:hover img.cover_image {
+    transform: scale(1.25);
+    opacity: 0.3;
+}
+.grid_block.fancy .grid_page .grid_page_title {
+    position: absolute;
+    top: 1em;
+    width: 33vw;
+    padding: 0em;
+}
+.grid_block.boxed.fancy .grid_page .grid_page_title {
+    width: 24vw;
+}
 .grid_block .grid_page .grid_page_title h3 {
     margin: 0;
     font-size: 1.4rem;
+}
+.grid_block.fancy .grid_page .grid_page_title h3 {
+    color: white;
+    margin: 1em;
 }
 .feed_block .feed_item .feed_item_title h3 {
     margin: 0 0 0.5rem 0;
@@ -642,7 +676,13 @@ p sub {
     .grid_block {
         grid-template-columns: repeat(2, 1fr);
     }
-
+    .grid_block.fancy {
+        width: 900px;
+        max-width: 100%;
+    }
+    .grid_block.fancy .grid_page .grid_page_title {
+        width: 49vw;
+    }
     .block-media .media {
         max-width: calc(100% - 2em);
     }
@@ -686,8 +726,16 @@ p sub {
     .header h3 {
         top: 15vh;
     }
+    .grid_block.boxed.fancy,
     .grid_block {
         grid-template-columns: 1fr;
+    }
+    .grid_block.fancy .grid_page .grid_page_title {
+        width: 96vw;
+    }
+
+    .grid_block.boxed.fancy .grid_page .grid_page_title {
+        width: 96vw;
     }
 
     .block-racer .racer .inner_racer {
