@@ -488,6 +488,7 @@ p sub {
 .grid_block.fancy .grid_page .grid_page_title h3 {
     color: white;
     margin: 1em;
+    text-shadow: 1px 1px 1px black;
 }
 .feed_block .feed_item .feed_item_title h3 {
     margin: 0 0 0.5rem 0;
