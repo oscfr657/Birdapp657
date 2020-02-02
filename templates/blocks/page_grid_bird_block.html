@@ -12,22 +12,25 @@
                 <div class="grid_page_cover">
                     <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" />
                 </div>
-                {% if value.show_title %}
+                {% if value.show_title or value.show_meta %}
                 <div class="grid_page_title">
+                    {% if value.show_title %}
                     <h3>{{ p.title }}</h3>
+                    {% endif %}
+                    {% if value.show_meta %}
+                    <span >
+                    {% if p.go_live_at and p.specific.show_date and value.show_date %}
+                        {{ p.go_live_at|date:"d M Y" }} 
+                    {% elif p.specific.show_date and value.show_date %}
+                        {{ p.first_published_at|date:"d M Y" }}
+                    {% endif %}
+                    {% if p.specific.show_author and value.show_author %} / {{ p.specific.author }}{% endif %}
+                    </span>
+                    {% endif %}
                 </div>
                 {% endif %}
+               
             </a>
-            {% if value.show_meta %}
-            <span class="meta">
-            {% if p.go_live_at and p.specific.show_date and value.show_date %}
-                {{ p.go_live_at|date:"d M Y" }} 
-            {% elif p.specific.show_date and value.show_date %}
-                {{ p.first_published_at|date:"d M Y" }}
-            {% endif %}
-            {% if p.specific.show_author and value.show_author %} / {{ p.specific.author }}{% endif %}
-            </span>
-            {% endif %}
             {% if value.show_intro %}
             <div class="intro">
             {{ p.specific.intro|richtext }}
