@@ -168,6 +168,8 @@ p sub {
     top: 7em;
     min-height: 65vh;
     margin: auto;
+    width: 900px;
+    max-width: 100vw;
 }
 .content.transparent {
     top:0;
