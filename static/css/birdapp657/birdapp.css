@@ -41,7 +41,6 @@ p sub {
     position: absolute;
     background-color: transparent;
 }
-
 .bird_top {
     margin: auto;
     width: 900px;
@@ -66,7 +65,6 @@ p sub {
     margin: 0 -25px 0 3px;
     height: 66px;
 }
-
 .bird_mobile_menu {
     display: none;
 }
@@ -109,7 +107,6 @@ p sub {
     background-color: transparent;
     color: white;
 }
-
 .bird_top .bird_menu a.active,
 .bird_top .bird_menu a:hover,
 .bird_top .bird_menu a:active {
@@ -124,14 +121,12 @@ p sub {
 .bird_top_wraper.transparent .bird_top .bird_menu a.icon {
     background-color: transparent;
 }
-
 .bird_top_wraper.transparent .bird_top .bird_menu a.active,
 .bird_top_wraper.transparent .bird_top .bird_menu a:hover,
 .bird_top_wraper.transparent .bird_top .bird_menu a:active {
     color: whitesmoke;
     background-color: black;
 }
-
 .bird_top .bird_menu a.icon.active.hover,
 .bird_top .bird_menu a.icon.hover:hover,
 .bird_top .bird_menu a.icon.hover:active {
@@ -187,7 +182,6 @@ p sub {
     width: 100%;
     max-width: 100%;
 }
-
 .content.solo {
     padding: 0;
 }
@@ -503,7 +497,6 @@ p sub {
     color: white;
     margin: 1.5em;
     text-shadow: 1px 1px 1px black;
-
 }
 .feed_block .feed_item .feed_item_title h3 {
     margin: 0 0 0.5rem 0;
