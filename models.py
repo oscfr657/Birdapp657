@@ -323,11 +323,22 @@ class TiberiusBirdPage(Page, BirdMixin):
         ('header', HeaderBirdBlock(required=False, null=True)),
     ], blank=True, null=True)
     body = StreamField([
+        ('paragraph', blocks.RichTextBlock(
+            required=False, null=True,
+            features=[
+                'h2', 'h3', 'h4',
+                'bold', 'italic',
+                'superscript', 'subscript', 'strikethrough',
+                'ol', 'ul', 'hr',
+                'link', 'document-link',
+                'blockquote', 'embed', 'image'])),
+        ('image', ImageChooserBlock(required=False, null=True)),
         ('media', MediaFileBirdBlock(required=False, null=True)),
         ('html', HTMLBirdBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
         ('racer', RacerBirdBlock(required=False, null=True)),
         ('feed', FeedBirdBlock(required=False)),
+        ('page_grid', PageGridBirdBlock(required=False)),
     ], blank=True, null=True)
 
     tags = ClusterTaggableManager(through=TiberiusBirdPageTag, blank=True)

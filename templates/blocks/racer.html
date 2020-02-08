@@ -19,7 +19,7 @@
         {% endif %}
         {% if value.image %}
             <div class="racer_image">
-                    {% image value.image original as tmp_img %}
+                    {% image value.image max-500x500 as tmp_img %}
                 <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
             </div>
         {% endif %}
@@ -28,7 +28,7 @@
     <div class="inner_racer left" >
         {% if value.image %}
             <div class="racer_image">
-                {% image value.image original as tmp_img %}
+                {% image value.image max-500x500 as tmp_img %}
                 <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}"  />
             </div>
         {% endif %}
