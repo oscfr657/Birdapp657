@@ -583,7 +583,7 @@ p sub {
 }
 .block-racer .racer .racer_image img {
     height: 100%;
-    min-width: 100%;
+    width: 100%;
 }
 .block-racer .racer .inner_racer.right .racer_text {
     text-align: right;
