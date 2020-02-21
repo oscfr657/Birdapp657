@@ -3,7 +3,7 @@
 {% load wagtailimages_tags %}
 {% load birdtags %}
 
-<div class="racer" 
+<div class="racer {{ value.block_class }}"
     style="background-color:{{ value.bg_color }};">
     <style>
         .inner_racer .racer_text.{% toclass value.text_color %},

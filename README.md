@@ -8,7 +8,7 @@ A small Wagtail app
 ### Tested for ###
 
 ```
-Django < 2.3, >= 2.0
+Django >= 2.0, <=2.2
 Wagtail >= 2.6
 Wagtailmedia >= 0.3.1
 ```
@@ -26,10 +26,6 @@ To your settings file,
 add to the INSTALLED_APPS
 
 ``` Python
-    # extra
-    'django.contrib.sites',
-    'django.contrib.sitemaps',
-
     # wagtail
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -158,6 +154,7 @@ To the Django settings.py add
 To the Django project url.py add
 
 ``` python
+from django.conf import settings
 from django.conf.urls.static import static
 ```
 

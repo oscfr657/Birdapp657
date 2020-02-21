@@ -169,7 +169,10 @@ class BirdMixin(models.Model):
 
 
 class SoloBirdPageTag(TaggedItemBase):
-    content_object = ParentalKey('SoloBirdPage', on_delete=models.CASCADE, related_name='tagged_items')
+    content_object = ParentalKey(
+        'SoloBirdPage',
+        on_delete=models.CASCADE,
+        related_name='tagged_items')
 
 
 class SoloBirdPage(Page, BirdMixin):
@@ -229,10 +232,11 @@ class SearchBirdPage(Page, BirdMixin):
             form = SearchBirdForm(request.POST)
             if form.is_valid():
                 search_query = form.cleaned_data['search_query']
-                search_results = self.get_parent().get_descendants().live().public().exclude(
-                    show_in_menus=True).order_by(
-                        '-first_published_at').search(
-                            search_query, order_by_relevance=False)
+                search_results = self.get_parent().get_descendants().live(
+                    ).public().exclude(
+                        show_in_menus=True).order_by(
+                            '-first_published_at').search(
+                                search_query, order_by_relevance=False)
 
                 Query.get(search_query).add_hit()
 

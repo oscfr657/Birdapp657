@@ -54,7 +54,7 @@ class RacerBirdBlock(blocks.StructBlock):
     text_color = blocks.CharBlock(
         default='#000',
         label='Text color')
-    #block_width = blocks.CharBlock(required=False, help_text='Block width class')
+    block_class = blocks.CharBlock(required=False, help_text='Block class')
 
     class Meta:
         label = 'Racer'
