@@ -63,11 +63,12 @@
 {{ settings.birdapp657.BrandingSettings.extra_head|safe }}
 {% endif %}
 
-
         {% block bird_top %}
+        <div class="bird_top_wraper_block {% if page.transparent_header %}transparent{% endif %}">
+        </div>
+
         <div class="bird_top_wraper {% if page.transparent_header %}transparent{% endif %}">
             <div class="bird_top">
-
                 <div class="bird_logo">
                     <a href="{% pageurl request.site.root_page %}" >
                         <h1 >
@@ -81,7 +82,6 @@
                         </h1>
                     </a>
                 </div>
-
                 {% if settings.birdapp657.BrandingSettings.mobile_menu_page %}
                 <a class="bird_mobile_menu {% if page.title == settings.birdapp657.BrandingSettings.mobile_menu_page.title %}active{% endif %}" 
                     href="{% pageurl settings.birdapp657.BrandingSettings.mobile_menu_page %}">
@@ -89,12 +89,11 @@
                     </div>
                 </a>
                 {% endif %}
-
                 {% if request.site.root_page.get_children.live.in_menu and page.show_menu %}
                 <div class="bird_menu">
                     <ul class="bird_menu_list">
                         {% for child in request.site.root_page.get_children.live.in_menu %}
-                        <li class="bird_menu_child test">
+                        <li class="bird_menu_child">
                             {% if child.specific.menu_icon %}
                             <a href="{% pageurl child %}"
                                 class="icon {% if child.title == page.title or child in page.get_ancestors %}active{% endif %} {% if child.specific.hover_over_menu %}hover{% endif %}" >
@@ -115,10 +114,10 @@
                                 {{ child.title }}
                                 </a>
                             {% endif %}
-                        {% if child.get_children.live.in_menu %}
+                            {% if child.get_children.live.in_menu %}
                             <ul class="bird_menu_child_list">
                             {% for grandchild in child.get_children.live.in_menu %}
-                                <li  class="bird_menu_grand_child">
+                                <li class="bird_menu_grand_child">
                                     <a href="{% pageurl grandchild %}"
                                         class="{% if page.title == grandchild.title or grandchild in page.get_ancestors %}active{% endif %}" >
                                     {{ grandchild.title }}
@@ -132,9 +131,7 @@
                     </ul>
                 </div>
                 {% endif %}
-
             </div>
-
             {% if page.specific.show_breadcrumbs %}
             <div class="breadcrumbs_wraper">
                 <div class="breadcrumbs">
@@ -145,7 +142,6 @@
                 </div>
             </div>
             {% endif %}
-            
         </div>
         {% endblock bird_top %}
 
@@ -171,6 +167,7 @@
 
 {% wagtailuserbar %}
 
+<script src="{% static 'js/birdapp657/birdapp.js' %}" async=""></script>
 
 {% if settings.birdapp657.BrandingSettings.extra_css %}
 <link rel="stylesheet" type="text/css" href="{{ settings.birdapp657.BrandingSettings.extra_css.url }}" lazyload>

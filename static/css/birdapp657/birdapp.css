@@ -28,6 +28,15 @@ p sub {
     color: blue;
 }
 
+.bird_top_wraper_block {
+    position: relative;
+    background-color: white;
+    height: 7em;
+    display: block;
+}
+.bird_top_wraper_block.transparent {
+    display: None;
+}
 .bird_top_wraper {
     position: fixed;
     top: 0;
@@ -36,9 +45,10 @@ p sub {
     background-color: white;
     z-index: 2;
     height: 7em;
+    transition: top 0.5s;
+    transition: all 0.5s;
 }
 .bird_top_wraper.transparent {
-    position: absolute;
     background-color: transparent;
 }
 .bird_top {
@@ -160,14 +170,12 @@ p sub {
 
 .content {
     position: relative;
-    top: 7em;
     min-height: 65vh;
     margin: auto;
     width: 900px;
     max-width: 100vw;
 }
 .content.transparent {
-    top:0;
     max-width: 100%;
 }
 .content.boxed {
