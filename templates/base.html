@@ -83,11 +83,22 @@
                     </a>
                 </div>
                 {% if settings.birdapp657.BrandingSettings.mobile_menu_page %}
-                <a class="bird_mobile_menu {% if page.title == settings.birdapp657.BrandingSettings.mobile_menu_page.title %}active{% endif %}" 
-                    href="{% pageurl settings.birdapp657.BrandingSettings.mobile_menu_page %}">
-                    <div >        
-                    </div>
-                </a>
+                    {% if page.title == settings.birdapp657.BrandingSettings.mobile_menu_page.title %}
+                    <a class="bird_mobile_menu active"
+                        href="javascript:history.back()">
+                        <div ></div>
+                    </a>
+                    {% else %}
+                    <a class="bird_mobile_menu "
+                        href="{% pageurl settings.birdapp657.BrandingSettings.mobile_menu_page %}">
+                        <div ></div>
+                    </a>
+                    {% endif %}
+                {% else %}
+                    <a id="bird_mobile_menu_dropdown" class="bird_mobile_menu"
+                        href="/">
+                        <div ></div>
+                    </a>
                 {% endif %}
                 {% if request.site.root_page.get_children.live.in_menu and page.show_menu %}
                 <div class="bird_menu">
@@ -98,12 +109,8 @@
                             <a href="{% pageurl child %}"
                                 class="icon {% if child.title == page.title or child in page.get_ancestors %}active{% endif %} {% if child.specific.hover_over_menu %}hover{% endif %}" >
                                 {% if child.specific.hover_menu_icon %}
-                                    {% if page.transparent_header %}
-                                        {% image child.specific.hover_menu_icon fill-24x24 %}
-                                    {% else %}
-                                        {% image child.specific.menu_icon fill-24x24 class="no_hover" %}
-                                        {% image child.specific.hover_menu_icon fill-24x24 class="hover" %}
-                                    {% endif %}
+                                    {% image child.specific.menu_icon fill-24x24 class="no_hover" %}
+                                    {% image child.specific.hover_menu_icon fill-24x24 class="hover" %}
                                 {% else %}
                                     {% image child.specific.menu_icon fill-24x24 %}
                                 {% endif %}

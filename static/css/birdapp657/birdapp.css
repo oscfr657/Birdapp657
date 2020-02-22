@@ -80,7 +80,7 @@ p sub {
 }
 .bird_top .bird_menu {
     float: right;
-    margin-top: 2.5em;
+    margin-top: 1.6em;
 }
 .bird_top .bird_menu_list {
     margin: -1px 0;
@@ -89,6 +89,7 @@ p sub {
 }
 .bird_top .bird_menu_child {
     display: inline-block;
+    padding: 15px 0;
 }
 .bird_top .bird_menu_child:hover .bird_menu_child_list {
     display: grid;
@@ -134,7 +135,7 @@ p sub {
 .bird_top_wraper.transparent .bird_top .bird_menu a.active,
 .bird_top_wraper.transparent .bird_top .bird_menu a:hover,
 .bird_top_wraper.transparent .bird_top .bird_menu a:active {
-    color: whitesmoke;
+    color: white;
     background-color: black;
 }
 .bird_top .bird_menu a.icon.active.hover,
@@ -671,7 +672,6 @@ p sub {
     }
     .bird_top_wraper.transparent .bird_mobile_menu {
         border: solid 10px white;
-
     }
     .bird_mobile_menu.active {
         background-color: black;
@@ -679,6 +679,26 @@ p sub {
     .bird_menu {
         display: none;
     }
+    .bird_menu_list {
+        display: grid;
+    }
+    #bird_mobile_menu_dropdown.active + .bird_menu {
+        display: block;
+        position: fixed;
+        right: 0;
+        top: 85px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+    }
+    .bird_top_wraper .bird_menu ul {
+        display: grid;
+    }
+    .bird_top_wraper .bird_menu_child {
+        text-align: center;
+    }
+
+
     .breadcrumbs {
         margin: auto 1em;
     }
