@@ -147,12 +147,12 @@ p sub {
     margin: -5px 0px;
 }
 .bird_top .bird_menu a.icon.active.hover img.no_hover,
-.bird_top .bird_menu a.icon:hover img.no_hover {
-    display: none;
-}
+.bird_top .bird_menu a.icon:hover img.no_hover,
+.bird_top_wraper.transparent .bird_top .bird_menu a.icon img.no_hover,
 .bird_top .bird_menu a.icon img.hover {
     display: none;
 }
+.bird_top_wraper.transparent .bird_top .bird_menu a.icon img.hover,
 .bird_top .bird_menu a.icon.active.hover img.hover,
 .bird_top .bird_menu a.icon:hover img.hover {
     display: inline-block;
