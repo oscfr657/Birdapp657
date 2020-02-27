@@ -214,7 +214,6 @@ p sub {
 
 .footer {
     position: relative;
-    top: 7em;
     background: black;
     color: white;
     margin: 0;
@@ -562,6 +561,14 @@ p sub {
     min-height: 5em;
 }
 .block-racer .racer h2 {
+    margin: 0;
+    text-align: center;
+}
+.block-racer .racer h3 {
+    margin: 0;
+    text-align: center;
+}
+.block-racer .racer h4 {
     margin: 0;
     text-align: center;
 }
