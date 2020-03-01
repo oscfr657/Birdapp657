@@ -1,6 +1,5 @@
 
 body  {
-    display: table;
     margin: 0;
     padding: 0;
     top: 0px;
@@ -609,6 +608,23 @@ p sub {
     text-align: left;
     margin: auto 0;
 }
+.inner_racer .racer_text.black,
+.inner_racer .racer_text.black a {
+    color:black;
+}
+.inner_racer .racer_text.white,
+.inner_racer .racer_text.white a {
+    color:white;
+}
+.inner_racer .racer_text.red,
+.inner_racer .racer_text.red a {
+    color:red;
+}
+.inner_racer .racer_text.blue,
+.inner_racer .racer_text.blue a {
+    color:blue;
+}
+
 
 
 .block-media .media {

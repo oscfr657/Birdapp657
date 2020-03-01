@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="{{ settings.birdapp657.BrandingSettings.lang_code|default:'en' }}">
 <head>
 
 <meta charset="UTF-8">
@@ -58,7 +58,7 @@
 <meta property="og:url" content="{{ page.full_url }}"/>
 {% endif %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" lazyload>
+<link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" >
 
 
 {% if settings.birdapp657.BrandingSettings.extra_head %}
@@ -184,7 +184,7 @@
     <script src="{% static 'js/birdapp657/birdapp.js' %}" async=""></script>
 
     {% if settings.birdapp657.BrandingSettings.extra_css %}
-    <link rel="stylesheet" type="text/css" href="{{ settings.birdapp657.BrandingSettings.extra_css.url }}" lazyload>
+    <link rel="stylesheet" type="text/css" href="{{ settings.birdapp657.BrandingSettings.extra_css.url }}" >
     {% endif %}
 
     {% if settings.birdapp657.BrandingSettings.extra_js %}

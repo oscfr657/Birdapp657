@@ -58,6 +58,7 @@ class BrandingSettings(BaseSetting):
         on_delete=models.SET_NULL,
         related_name='+',
     )
+    lang_code = models.CharField(max_length=5, blank=True, null=True)
     extra_head = models.TextField(blank=True, null=True)
     extra_css = models.ForeignKey(
         'wagtaildocs.Document',
@@ -91,6 +92,7 @@ class BrandingSettings(BaseSetting):
         ImageChooserPanel('logo'),
         FieldPanel('show_name'),
         PageChooserPanel('mobile_menu_page'),
+        FieldPanel('lang_code'),
         FieldPanel('extra_head'),
         DocumentChooserPanel('extra_css'),
         DocumentChooserPanel('extra_js'),

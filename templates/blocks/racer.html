@@ -5,17 +5,10 @@
 
 <div class="racer {{ value.block_class }}"
     style="background-color:{{ value.bg_color }};">
-    <style>
-        .inner_racer .racer_text.{% toclass value.text_color %},
-        .inner_racer .racer_text.{% toclass value.text_color %} a {
-            color:{{ value.text_color }};
-        }
-    </style>
     {% if value.right %}
     <div class="inner_racer right" >
         {% if value.text %}
-            <div class="racer_text {% toclass value.text_color %}" 
-            style="color:{{ value.text_color }}">{{ value.text|richtext }}</div>
+            <div class="racer_text {{ value.text_color }}">{{ value.text|richtext }}</div>
         {% endif %}
         {% if value.image %}
             <div class="racer_image">
@@ -33,7 +26,7 @@
             </div>
         {% endif %}
         {% if value.text %}
-            <div class="racer_text {% toclass value.text_color %}">
+            <div class="racer_text {{ value.text_color }}"">
                 {{ value.text|richtext }}
             </div>
         {% endif %}
