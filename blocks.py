@@ -45,6 +45,16 @@ class RacerBirdBlock(blocks.StructBlock):
             'link', 'document-link',
             'ol', 'ul'])
     image = ImageChooserBlock(required=False)
+    page_image_link = blocks.PageChooserBlock(
+        required=False,
+        help_text='Link image to a page.'
+    )
+    external_image_link = blocks.URLBlock(
+        label='Link URL',
+        max_length=200,
+        required=False,
+        help_text='Link image to a URL.'
+    )
     right = blocks.BooleanBlock(
         required=False,
         help_text='Image to the right else left')

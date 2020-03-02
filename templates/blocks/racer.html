@@ -12,8 +12,20 @@
         {% endif %}
         {% if value.image %}
             <div class="racer_image">
+                {% if value.page_image_link %}
+                <a href="{% pageurl value.page_image_link %}">
                     {% image value.image max-500x500 as tmp_img %}
-                <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                </a>
+                {% elif value.external_image_link %}
+                <a href="{{ value.external_image_link }}">
+                    {% image value.image max-500x500 as tmp_img %}
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                </a>
+                {% else %}
+                    {% image value.image max-500x500 as tmp_img %}
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                {% endif %}
             </div>
         {% endif %}
     </div>
@@ -21,8 +33,20 @@
     <div class="inner_racer left" >
         {% if value.image %}
             <div class="racer_image">
+                {% if value.page_image_link %}
+                <a href="{% pageurl value.page_image_link %}">
+                    {% image value.image max-500x500 as tmp_img %}
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                </a>
+                {% elif value.external_image_link %}
+                <a href="{{ value.external_image_link }}">
+                    {% image value.image max-500x500 as tmp_img %}
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                </a>
+                {% else %}
                 {% image value.image max-500x500 as tmp_img %}
                 <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}"  />
+                {% endif %}
             </div>
         {% endif %}
         {% if value.text %}
