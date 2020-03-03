@@ -198,12 +198,13 @@ p sub {
 .content .cover {
     margin: 1em auto;
     width: 900px;
-    max-width: calc(100% - 2em);
+    max-width: 100%;
 }
 .content .cover img.top_cover_image {
     display: block;
     margin: auto;
     max-width: 100%;
+    border: solid 1px black;
 }
 .content .content_body {
     color: #505050;
@@ -399,7 +400,7 @@ p sub {
 .block-paragraph {
     padding: 0em 0;
     width: 900px;
-    max-width: calc(100% - 2em);
+    max-width: 100%;
     margin: auto;
 }
 
@@ -530,7 +531,7 @@ p sub {
 .block-image {
     padding: 3em 0;
     width: 900px;
-    max-width: calc(100% -  2em);
+    max-width: 100%;
     margin: auto;
 }
 .block-image img {
@@ -545,7 +546,7 @@ p sub {
     margin: 0px auto;
     color: #e8e8e8;
     width: 900px;
-    max-width: calc(100% - 1em);
+    max-width: 100%;
 }
 .block-code pre {
     background-color: #292929;
@@ -752,11 +753,26 @@ p sub {
         top: 18vh;
     }
 
+    .content .title,
+    .content .meta,
+    .content .cover {
+        max-width: calc(100% - 2em);
+    }
+
     .block-paragraph {
         margin: auto;
         width: 900px;
         max-width: calc(100% - 2em);
     }
+
+    .block-image {
+        max-width: calc(100% - 2em);
+    }
+
+    .block-code {
+        max-width: calc(100% - 2em);
+    }
+
     .grid_block,
     .feed_block {
         width: 900px;
