@@ -26,14 +26,12 @@ window.onscroll = function(e) {
             wrapers[0].style.top = '-114px';
         }
         active_menu = false;
-        active_dropdown = false;
     }
     if (currentScrollPos == 0 & prevScrollpos != currentScrollPos) {
         if (transparent) {
             wrapers[0].classList.add('transparent');
         }
         active_menu = true;
-        active_dropdown = true;
     }
     prevScrollpos = currentScrollPos;
 }
