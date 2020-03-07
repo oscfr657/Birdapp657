@@ -320,8 +320,23 @@ p sub {
 }
 .content.transparent .header {
     height: 100vh;
-    width: 100vw;
     background-color: black;
+}
+.header .header-text {
+    position: relative;
+    z-index: 1;
+    top: 26vh;
+    bottom: 0px;
+    transform: translateY(-50%);
+    width: 900px;
+    max-width: 100%;
+    margin: auto;
+}
+.content.transparent .header .header-text {
+    top: 50vh;
+}
+.header .header-text .rich-text {
+    margin: auto;
 }
 .header video {
     max-width: 100%;
@@ -335,7 +350,7 @@ p sub {
     height: 100vh;
     position: relative;
     left: 50vw;
-    top: 50vh;
+    top: 28vh;
     transform: translate(-50%, -50%);
 }
 .header audio {
@@ -374,26 +389,10 @@ p sub {
     background-size: cover;
 }
 .header h2 {
-    position: absolute;
-    top: 18vh;
-    left: 0;
-    right: 0;
-    z-index: 1;
     font-size: xxx-large;
 }
-.content.transparent .header h2 {
-    top: 42vh;
-}
 .header h3 {
-    position: absolute;
-    top: 26vh;
-    left: 0;
-    right: 0;
-    z-index: 1;
     font-size: x-large;
-}
-.content.transparent .header h3 {
-    top: 50vh;
 }
 
 
@@ -746,13 +745,9 @@ p sub {
     .content.transparent .header .bg_area {
         height: 100%;
     }
-    .header h2 {
-        top: 10vh;
+    .header .header-text {
+        top: 23vh;;
     }
-    .header h3 {
-        top: 18vh;
-    }
-
     .content .title,
     .content .meta,
     .content .cover {
@@ -827,12 +822,6 @@ p sub {
     .content.transparent .header .bg_area {
         height: 100%;
     }
-    .header h2 {
-        top: 7vh;
-    }
-    .header h3 {
-        top: 15vh;
-    }
 
     .grid_block.boxed.fancy,
     .grid_block {
@@ -871,10 +860,6 @@ p sub {
     .header {
         height: 400px;
     }
-    .content.transparent .header .bg_area {
-        height: 100%;
-    }
-    
 }
 
 @media (max-width: 400px) {

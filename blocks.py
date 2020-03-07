@@ -20,6 +20,15 @@ class HeaderBirdBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False, null=True)
     sub_title = blocks.CharBlock(required=False, null=True)
     font_color = blocks.CharBlock(required=False, null=True)
+    bg_color = blocks.CharBlock(required=False, null=True)
+
+    text = blocks.RichTextBlock(
+        required=False,
+        features=[
+            'h2', 'h3', 'h4', 'h5',
+            'bold', 'italic',
+            'link', 'document-link',
+            'ol', 'ul'])
 
     class Meta:
         label = 'Header'
