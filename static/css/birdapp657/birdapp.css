@@ -167,6 +167,15 @@ p sub {
     margin: auto;
     width: 900px;
 }
+.bird_top_wraper.transparent .breadcrumbs_wraper {
+    background-color: transparent;
+    color: white;
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
+}
+.bird_top_wraper.transparent .breadcrumbs_wraper a {
+    color: white;
+}
 
 .content {
     position: relative;
