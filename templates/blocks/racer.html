@@ -15,16 +15,16 @@
                 {% if value.page_image_link %}
                 <a href="{% pageurl value.page_image_link %}">
                     {% image value.image max-500x500 as tmp_img %}
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
                 </a>
                 {% elif value.external_image_link %}
                 <a href="{{ value.external_image_link }}">
                     {% image value.image max-500x500 as tmp_img %}
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
                 </a>
                 {% else %}
                     {% image value.image max-500x500 as tmp_img %}
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
                 {% endif %}
             </div>
         {% endif %}
@@ -36,16 +36,16 @@
                 {% if value.page_image_link %}
                 <a href="{% pageurl value.page_image_link %}">
                     {% image value.image max-500x500 as tmp_img %}
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
                 </a>
                 {% elif value.external_image_link %}
                 <a href="{{ value.external_image_link }}">
                     {% image value.image max-500x500 as tmp_img %}
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" />
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
                 </a>
                 {% else %}
                 {% image value.image max-500x500 as tmp_img %}
-                <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}"  />
+                <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
                 {% endif %}
             </div>
         {% endif %}

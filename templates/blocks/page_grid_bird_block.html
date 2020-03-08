@@ -10,7 +10,7 @@
             <a href="{% pageurl p %}">
                 {% image p.specific.coverImage min-400x400 as tmp_img %}
                 <div class="grid_page_cover">
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" />
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" loading="lazy" />
                 </div>
                 {% if value.show_title or value.show_meta %}
                 <div class="grid_page_title">

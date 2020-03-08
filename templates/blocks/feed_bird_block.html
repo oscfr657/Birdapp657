@@ -10,7 +10,7 @@
                 {% if p.specific.coverImage %}
                 {% image p.specific.coverImage min-400x400 as tmp_img %}
                 <div class="feed_item_cover">
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" />
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" loading="lazy" />
                 </div>
                 {% endif %}
                 {% if value.show_title %}

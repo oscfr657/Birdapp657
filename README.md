@@ -88,6 +88,15 @@ set the admin title
 WAGTAIL_SITE_NAME = 'Birdapp657'
 ```
 
+I recommend setting the WAGTAILIMAGES_FORMAT_CONVERSIONS setting like this
+
+``` python
+WAGTAILIMAGES_FORMAT_CONVERSIONS = {
+    'bmp': 'jpeg',
+    'webp': 'webp',
+}
+```
+
 ### Database configuration ###
 
 > python manage.py migrate
