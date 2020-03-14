@@ -17,11 +17,8 @@ class HeaderBirdBlock(blocks.StructBlock):
     
     image = ImageChooserBlock(required=False, null=True)
     
-    title = blocks.CharBlock(required=False, null=True)
-    sub_title = blocks.CharBlock(required=False, null=True)
     font_color = blocks.CharBlock(required=False, null=True)
     bg_color = blocks.CharBlock(required=False, null=True)
-
     text = blocks.RichTextBlock(
         required=False,
         features=[
@@ -33,6 +30,7 @@ class HeaderBirdBlock(blocks.StructBlock):
     class Meta:
         label = 'Header'
         icon = 'image'
+        template = 'blocks/header.html'
 
 
 class BirdCodeBlock(blocks.StructBlock):  # TODO: Rename to CodeBirdBlock ?

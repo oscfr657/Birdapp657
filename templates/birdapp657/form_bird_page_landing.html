@@ -3,20 +3,39 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
+
+    {{ page.specific.header }}
+
+    {% if page.specific.coverImage and page.specific.show_coverImage %}
     <div class="cover">
-        {% if page.specific.coverImage  and page.specific.show_coverImage %}
-            {% image page.specific.coverImage original as tmp_photo %}
-            <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="top_cover_image" />
-        {% endif %}
-        <h2>{{ page.title }}</h2>
+        {% image page.specific.coverImage original as tmp_photo %}
+        <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="top_cover_image" />
     </div>
+    {% endif %}
+
+    {% if page.specific.show_title %}
+    <div class="title">
+            <h2>{{ page.title }}</h2>
+    </div>
+    {% endif %}
+
+    {% if page.specific.show_meta %}
     <div class="meta">
-        {% if page.go_live_at and page.show_date %}
+        {% if page.go_live_at and page.specific.show_date %}
             {{ page.go_live_at|date:"d M Y" }} 
-        {% elif page.show_date %}
+        {% elif page.specific.show_date %}
             {{ page.first_published_at|date:"d M Y" }}
         {% endif %}
         {% if page.show_author  %} / {{ page.specific.author }}{% endif %}
     </div>
-    {{ page.thank_you_text|richtext }}
+    {% endif %}
+
+    {% if page.specific.intro %}
+    <div class="intro">{{ page.specific.intro|richtext }}</div>
+    {% endif %}
+
+    {% if page.specific.thank_you_text %}
+    <div class="thank_you">{{ page.specific.thank_you_text|richtext }}</div>
+    {% endif %}
+
 {% endblock %}

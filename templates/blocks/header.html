@@ -1,0 +1,31 @@
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="header" style="color: {{ value.font_color }}; background-color: {{ value.bg_color }};">
+    {% if value.text %}
+    <div class="header-text">
+        {{ value.text|richtext }}
+    </div>
+    {% endif %}
+    {% if value.block_media.type == 'video' %}
+    <!--#TODO: But what about webm and ogg ? sad_face -->
+    <video {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} {% if value.controls %}controls{% endif %} >
+        <source src="{{ value.block_media.file.url }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    {% elif value.block_media.type == 'audio' %}
+    <div class="bg_area">
+    <audio {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} {% if value.controls %}controls{% endif %}>
+        <source src="{{ value.block_media.file.url }}" >
+        Your browser does not support the audio element.
+    </audio>
+    </div>
+    {% elif value.image %}
+    {% image value.image original as header_photo %}
+    <div class="bg_area" style="background-image: url('{{ header_photo.url }}');">
+    </div>
+    {% else %}
+        <div class="bg_area">
+        </div>
+    {% endif %}
+</div>

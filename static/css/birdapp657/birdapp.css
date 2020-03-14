@@ -181,27 +181,10 @@ p sub {
     position: relative;
     min-height: 65vh;
     margin: auto;
-    width: 900px;
-    max-width: 100vw;
-}
-.content.transparent {
     max-width: 100%;
 }
-.content.boxed {
-    width: 600px;
-    max-width: 100vw;
-}
-.content.wide {
-    width: 1200px;
-    max-width: 100vw;
-}
-.content.full {
-    width: 100%;
-    max-width: 100%;
-}
-.content.solo {
-    padding: 0;
-}
+.content .thank_you,
+.content .intro,
 .content .title,
 .content .meta,
 .content .cover {
@@ -209,12 +192,43 @@ p sub {
     width: 900px;
     max-width: 100%;
 }
+.content.boxed .thank_you,
+.content.boxed .intro,
+.content.boxed .title,
+.content.boxed .meta,
+.content.boxed .cover{
+    width: 600px;
+}
+.content.wide .thank_you,
+.content.wide .intro,
+.content.wide .title,
+.content.wide .meta,
+.content.wide .cover {
+    width: 1200px;
+}
+.content.full .thank_you,
+.content.full .intro,
+.content.full .title,
+.content.full .meta,
+.content.full .cover {
+    width: 100%;
+}
 .content .cover img.top_cover_image {
     display: block;
     margin: auto;
     max-width: 100%;
     border: solid 1px black;
 }
+
+form {
+    width: 900px;
+    max-width: 100%;
+    margin: auto;
+}
+form input[type=submit] {
+    margin: 0 0 2em 0;
+}
+
 .content .content_body {
     color: #505050;
     text-align: left;
@@ -349,7 +363,6 @@ p sub {
 }
 .header video {
     max-width: 100%;
-    max-height: 100%;
 }
 .content.transparent .header video {
     min-width: 100%;
@@ -386,12 +399,16 @@ p sub {
     transform: translateX(-50%);
 }
 .header .bg_area {
+    position: relative;
+    top: -5.2em;
     height: 100%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% auto;
 }
 .content.transparent .header .bg_area {
+    position: relative;
+    top: -3.2em;
     height: 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -428,6 +445,7 @@ p sub {
     grid-row-gap: 0;
     grid-column-gap: 0;
     padding: 0;
+    max-width: 100%;
 }
 .grid_block {
     grid-template-columns: repeat(3, 1fr);
@@ -670,18 +688,26 @@ p sub {
   }
 
 @media (max-width: 1200px) {
-    .grid_block.wide.fancy {
-        width: auto;
-    }
     .grid_block.wide.fancy .grid_page .grid_page_title{
         width: 32.8vw;
     }
+
+    .content.wide .thank_you,
+    .content.wide .intro,
+    .content.wide .title,
+    .content.wide .meta,
+    .content.wide .cover {
+        max-width: calc(100% - 2em);
+    }
+
+    form {
+        max-width: calc(100% - 2em);
+        margin: auto;
+    }
+
 }
 
 @media (max-width: 900px) {
-    body  {
-        display: block;
-    }
     .bird_top .bird_logo h1 {
         font-size: 5em;
     }
@@ -745,7 +771,6 @@ p sub {
     .footer-row {
         grid-auto-flow: dense;
         grid-template-columns: 1fr 1fr;
-        width: auto;
     }
 
     .header {
@@ -757,10 +782,18 @@ p sub {
     .header .header-text {
         top: 23vh;;
     }
+
+    .content .thank_you,
+    .content .intro,
     .content .title,
     .content .meta,
     .content .cover {
         max-width: calc(100% - 2em);
+    }
+
+    form {
+        max-width: calc(100% - 2em);
+        margin: auto;
     }
 
     .block-paragraph {
@@ -786,7 +819,6 @@ p sub {
         grid-template-columns: repeat(2, 1fr);
     }
     .grid_block.fancy {
-        width: 900px;
         max-width: 100%;
     }
     .grid_block.wide.fancy .grid_page .grid_page_title,
@@ -824,9 +856,6 @@ p sub {
     }
     .content .responsive-object {
         height: 320px;
-    }
-    .header {
-        height: 300px;
     }
     .content.transparent .header .bg_area {
         height: 100%;

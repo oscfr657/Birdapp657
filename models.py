@@ -225,7 +225,13 @@ class SoloBirdPage(Page, BirdMixin):
 
 class SearchBirdPage(Page, BirdMixin):
     
-    content_panels = Page.content_panels + BirdMixin.content_panels
+    header = StreamField([
+        ('header', HeaderBirdBlock(required=False, null=True)),
+    ], blank=True, null=True)
+
+    content_panels = Page.content_panels + BirdMixin.content_panels + [
+        StreamFieldPanel('header'),
+        ]
     settings_panels = Page.settings_panels + BirdMixin.settings_panels
 
     def serve(self, request):
@@ -271,6 +277,11 @@ class FormField(AbstractFormField):
         
 
 class FormBirdPage(AbstractForm, BirdMixin):
+
+    header = StreamField([
+        ('header', HeaderBirdBlock(required=False, null=True)),
+    ], blank=True, null=True)
+
     thank_you_text = RichTextField(
         blank=True, null=True,
         features=[
@@ -282,7 +293,8 @@ class FormBirdPage(AbstractForm, BirdMixin):
             'blockquote', 'embed', 'image']
             )
 
-    content_panels = BirdMixin.content_panels + AbstractForm.content_panels + [
+    content_panels = AbstractForm.content_panels + BirdMixin.content_panels + [
+            StreamFieldPanel('header'),
             FormSubmissionsPanel(),
             InlinePanel('form_fields', label="Form fields"),
             FieldPanel('thank_you_text', classname="full"),
@@ -298,7 +310,7 @@ class FormBirdPage(AbstractForm, BirdMixin):
     def serve(self, request, *args, **kwargs):
         if request.method == 'POST':
             form = self.get_form(request.POST, request.FILES, page=self, user=request.user)
-            if form.data["bird_pot"]:
+            if form.data.get('bird_pot'):
                 return self.render_landing_page(request, None, *args, **kwargs)
             if form.is_valid():
                 form_submission = self.process_form_submission(form)
