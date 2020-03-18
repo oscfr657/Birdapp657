@@ -33,7 +33,7 @@ from taggit.models import TaggedItemBase
 
 from .forms import SearchBirdForm
 from .blocks import (HeaderBirdBlock, BirdCodeBlock, RacerBirdBlock,
-    HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock, PageGridBirdBlock)
+    HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock)
 
 
 @register_setting
@@ -197,7 +197,6 @@ class SoloBirdPage(Page, BirdMixin):
         ('racer', RacerBirdBlock(required=False, null=True)),
         ('html', HTMLBirdBlock(required=False, null=True)),
         ('feed', FeedBirdBlock(required=False)),
-        ('page_grid', PageGridBirdBlock(required=False)),
     ], blank=True, null=True)
 
     tags = ClusterTaggableManager(through=SoloBirdPageTag, blank=True)
@@ -356,7 +355,6 @@ class TiberiusBirdPage(Page, BirdMixin):
         ('code', BirdCodeBlock(required=False, null=True)),
         ('racer', RacerBirdBlock(required=False, null=True)),
         ('feed', FeedBirdBlock(required=False)),
-        ('page_grid', PageGridBirdBlock(required=False)),
     ], blank=True, null=True)
 
     tags = ClusterTaggableManager(through=TiberiusBirdPageTag, blank=True)

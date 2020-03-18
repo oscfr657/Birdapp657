@@ -3,16 +3,59 @@
 
 
 {% if feed_posts %}
+{% if value.use_grid_template %}
+<div class="grid_block {{ value.block_width }}">
+{% else %}
 <div class="feed_block {{ value.block_width }}">
+{% endif %}
     {% for p in feed_posts %}
+        {% if p.specific.coverImage %}
+        {% if value.use_grid_template %}
+        <div class="grid_page">
+            <a href="{% pageurl p %}">
+                {% image p.specific.coverImage min-400x400 as tmp_img %}
+                <div class="grid_page_cover">
+                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" loading="lazy" />
+                </div>
+                {% if value.show_title or value.show_meta %}
+                <div class="grid_page_title">
+                    {% if value.show_title %}
+                    <h3>{{ p.title }}</h3>
+                    {% endif %}
+                    {% if value.show_meta %}
+                    <span >
+                    {% if p.go_live_at and p.specific.show_date and value.show_date %}
+                        {{ p.go_live_at|date:"d M Y" }} 
+                    {% elif p.specific.show_date and value.show_date %}
+                        {{ p.first_published_at|date:"d M Y" }}
+                    {% endif %}
+                    {% if p.specific.show_author and value.show_author %} / {{ p.specific.author }}{% endif %}
+                    </span>
+                    {% endif %}
+                </div>
+                {% endif %}
+               
+            </a>
+            {% if value.show_intro %}
+            <div class="intro">
+            {{ p.specific.intro|richtext }}
+            </div>
+            {% endif %}
+            
+            {% if value.show_content %}
+            <div class="intro">
+            {{ p.specific.body }}
+            </div>
+            {% endif %}
+        </div>
+        {% else %}
         <div class="feed_item">
             <a href="{% pageurl p %}">
-                {% if p.specific.coverImage %}
                 {% image p.specific.coverImage min-400x400 as tmp_img %}
                 <div class="feed_item_cover">
                     <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" loading="lazy" />
                 </div>
-                {% endif %}
+                
                 {% if value.show_title %}
                 <div class="feed_item_title">
                     <h3>{{ p.title }}</h3>
@@ -29,17 +72,21 @@
             {% if p.specific.show_author and value.show_author %} / {{ p.specific.author }}{% endif %}
             </span>
             {% endif %}
+
             {% if value.show_intro %}
-            <div class="intro">
+            <div class="feed_intro">
             {{ p.specific.intro|richtext }}
             </div>
             {% endif %}
+
             {% if value.show_content %}
-            <div class="intro">
+            <div class="feed_body">
             {{ p.specific.body }}
             </div>
             {% endif %}
         </div>
+        {% endif %}
+        {% endif %}
     {% endfor %}
 </div>
 {% endif %}
