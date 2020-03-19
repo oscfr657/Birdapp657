@@ -347,7 +347,7 @@ form input[type=submit] {
 .header .header-text {
     position: relative;
     z-index: 1;
-    top: 26vh;
+    top: 44%;
     bottom: 0px;
     transform: translateY(-50%);
     width: 900px;
@@ -779,7 +779,7 @@ form input[type=submit] {
         height: 100%;
     }
     .header .header-text {
-        top: 23vh;;
+        max-width: calc(100% - 2em);
     }
 
     .content .thank_you,
