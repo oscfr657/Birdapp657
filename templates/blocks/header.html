@@ -1,7 +1,9 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="header" style="color: {{ value.font_color }}; background-color: {{ value.bg_color }};">
+<div class="header" style="color: {{ value.font_color }}; 
+                        background-color: {{ value.bg_color }};
+                        text-align: {{ value.text_align }};">
     {% if value.text %}
     <div class="header-text">
         {{ value.text|richtext }}

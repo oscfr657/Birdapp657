@@ -19,6 +19,7 @@ class HeaderBirdBlock(blocks.StructBlock):
     
     font_color = blocks.CharBlock(required=False, null=True)
     bg_color = blocks.CharBlock(required=False, null=True)
+    text_align = blocks.CharBlock(required=False, default='left')
     text = blocks.RichTextBlock(
         required=False,
         features=[
