@@ -11,7 +11,10 @@ body  {
     /* font-family: Arial, Helvetica, sans-serif;*/
     /* font-family: 'Open Sans';*/
     font-family: 'normal', Helvetica, sans-serif;
+    --main-font: 'normal', Helvetica, sans-serif;
+    --second-font: 'Times New Roman', Times, serif;
 }
+
 h1, h2, h3, h4 {
     font-weight: normal;
 }
@@ -23,8 +26,8 @@ p,
 h2 {
     margin: 1rem 0 1rem 0;
 }
-p, li , blockquote {
-    font-family: 'Times New Roman', Times, serif;
+p, li, blockquote {
+    font-family: var(--second-font);
 }
 p sub {
     color: blue;
@@ -33,7 +36,7 @@ p sub {
 blockquote:before {
     content: "\201C";
     font-size: xxx-large;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: var(--second-font);
     right: 0;
     position: absolute;
     width: 900px;
@@ -105,6 +108,10 @@ blockquote:before {
     display: inline-block;
     padding: 15px 0;
 }
+li.bird_menu_child {
+    font-family: var(--main-font);
+}
+
 .bird_top .bird_menu_child:hover .bird_menu_child_list {
     display: grid;
     text-align: left;
