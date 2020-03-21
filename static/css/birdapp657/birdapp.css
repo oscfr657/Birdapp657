@@ -23,8 +23,23 @@ p,
 h2 {
     margin: 1rem 0 1rem 0;
 }
+p, li , blockquote {
+    font-family: 'Times New Roman', Times, serif;
+}
 p sub {
     color: blue;
+}
+
+blockquote:before {
+    content: "\201C";
+    font-size: xxx-large;
+    font-family: 'Times New Roman', Times, serif;
+    right: 0;
+    position: absolute;
+    width: 900px;
+    margin: -0.3em auto;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    left: 0;
 }
 
 .bird_top_wraper_block {
@@ -520,12 +535,14 @@ form input[type=submit] {
 }
 .grid_block .grid_page .grid_page_title h3 {
     margin: 0;
-    font-size: 1.4rem;
 }
 .grid_block.fancy .grid_page .grid_page_title h3 {
     color: white;
     margin: 1em 0 0.3em 1em;
     text-shadow: 1px 1px 1px black;
+}
+.grid_block.full.fancy .grid_page .grid_page_title h3 {
+    font-size: 1.4rem;
 }
 .grid_block.fancy .grid_page .grid_page_title span {
     color: white;
