@@ -40,6 +40,7 @@ blockquote:before {
     right: 0;
     position: absolute;
     width: 900px;
+    max-width: calc(100% - 0.6em);
     margin: -0.3em auto;
     quotes: "\201C" "\201D" "\2018" "\2019";
     left: 0;
