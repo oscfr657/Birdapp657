@@ -33,9 +33,12 @@ p sub {
     color: blue;
 }
 
+blockquote {
+    margin: auto auto auto 1.6em;
+}
 blockquote:before {
     content: "\201C";
-    font-size: xxx-large;
+    font-size: 3em;
     font-family: var(--second-font);
     right: 0;
     position: absolute;
