@@ -34,7 +34,7 @@ p sub {
 }
 
 blockquote {
-    margin: auto auto auto 1.6em;
+    margin: 1em auto 1em 1.6em;
 }
 blockquote:before {
     content: "\201C";
