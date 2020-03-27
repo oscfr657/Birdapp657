@@ -164,7 +164,7 @@
 
     <div class="content {{ page.specific.content_width|default:'' }} {% if page.specific.transparent_header %}transparent{% endif %}">
     {% block content %}
-    {% endblock %}
+    {% endblock content %}
     </div>
 
 
@@ -178,7 +178,7 @@
         </div>
     </div>
     {% endif %}
-    {% endblock %}
+    {% endblock footer %}
 
 
     {% wagtailuserbar %}

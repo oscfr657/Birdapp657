@@ -246,6 +246,13 @@ li.bird_menu_child {
     border: solid 1px black;
 }
 
+.password-required {
+    width: 900px;
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
 form {
     width: 900px;
     max-width: 100%;

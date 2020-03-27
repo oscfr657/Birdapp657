@@ -291,12 +291,14 @@ class FormBirdPage(AbstractForm, BirdMixin):
             'link', 'document-link',
             'blockquote', 'embed', 'image']
             )
+    #show_result = models.BooleanField(default=False)
 
     content_panels = AbstractForm.content_panels + BirdMixin.content_panels + [
             StreamFieldPanel('header'),
-            FormSubmissionsPanel(),
+    #        FieldPanel('show_result'),
             InlinePanel('form_fields', label="Form fields"),
             FieldPanel('thank_you_text', classname="full"),
+            FormSubmissionsPanel(),
         ]
     settings_panels = Page.settings_panels + BirdMixin.settings_panels
 

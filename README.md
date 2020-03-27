@@ -88,6 +88,12 @@ set the admin title
 WAGTAIL_SITE_NAME = 'Birdapp657'
 ```
 
+optionaly set the password required template
+
+``` python
+PASSWORD_REQUIRED_TEMPLATE = 'birdapp657_password_required.html'
+```
+
 I recommend setting the WAGTAILIMAGES_FORMAT_CONVERSIONS setting like this
 
 ``` python
