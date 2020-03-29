@@ -52,3 +52,18 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
     }
     return false;
 }
+
+function birdPlay(element) {
+    //console.log('birdPlay');
+    //console.log(element.parentNode.parentNode.getElementsByTagName('video')[0]);
+    element.parentNode.parentNode.getElementsByTagName('video')[0].play();
+    element.nextElementSibling.style.display = 'block';
+    element.style.display = 'none';
+}
+function birdPause(element) {
+    //console.log('birdPause');
+    //console.log(element.previusSibling);
+    element.parentNode.parentNode.getElementsByTagName('video')[0].pause()
+    element.previousElementSibling.style.display = 'block';
+    element.style.display = 'none';
+}

@@ -1,9 +1,30 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="header" style="color: {{ value.font_color }}; 
+<div class="header {{ value.block_class|default:'' }}" style="color: {{ value.font_color }}; 
                         background-color: {{ value.bg_color }};
                         text-align: {{ value.text_align }};">
+    
+    {% if value.block_media.type == 'video' %}
+        {% if value.controls %}
+        <div class="header-player" >
+            <div class="header-play" onclick="birdPlay(this);">
+                <svg height="50" width="50" >
+                    <circle cx="25" cy="25" r="25"  fill="white" />
+                    <polygon points="15,10 15,40 45,25" style="fill:black;" />
+                </svg>
+            </div>
+            <div class="header-pause" onclick="birdPause(this);">
+                <svg width="50" height="50">
+                    <circle cx="25" cy="25" r="25"  fill="white" />
+                    <rect x="12.5" y="12.5" width="25" height="25"
+                    style="fill:black;" />
+                  </svg>
+            </div>
+        </div>
+        {% endif %}
+    {% endif %}
+
     {% if value.text %}
     <div class="header-text">
         {{ value.text|richtext }}
@@ -11,7 +32,7 @@
     {% endif %}
     {% if value.block_media.type == 'video' %}
     <!--#TODO: But what about webm and ogg ? sad_face -->
-    <video {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} {% if value.controls %}controls{% endif %} >
+    <video {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} >
         <source src="{{ value.block_media.file.url }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>

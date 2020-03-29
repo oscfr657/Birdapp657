@@ -52,7 +52,7 @@ blockquote:before {
 .bird_top_wraper_block {
     position: relative;
     background-color: white;
-    height: 7em;
+    height: 6.5em;
     display: block;
 }
 .bird_top_wraper_block.transparent {
@@ -65,8 +65,7 @@ blockquote:before {
     right: 0;
     background-color: white;
     z-index: 2;
-    height: 7em;
-    transition: top 0.5s;
+    height: 6.5em;
     transition: all 0.5s;
 }
 .bird_top_wraper.transparent {
@@ -185,16 +184,17 @@ li.bird_menu_child {
 
 .breadcrumbs_wraper {
     width: 100%;
-    background-color: #f2f2f2;
-    height: 2em;
+    background-color: white;
+    height: 30px;
     display: flex;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
 }
 .breadcrumbs {
     margin: auto;
     width: 900px;
 }
 .bird_top_wraper.transparent .breadcrumbs_wraper {
-    background-color: transparent;
     color: white;
     border-top: solid 1px white;
     border-bottom: solid 1px white;
@@ -373,9 +373,8 @@ form input[type=submit] {
     overflow: hidden;
     margin: 0;
 }
-.content.transparent .header {
+.header.full {
     height: 100vh;
-    background-color: black;
 }
 .header .header-text {
     position: relative;
@@ -387,7 +386,24 @@ form input[type=submit] {
     max-width: 100%;
     margin: auto;
 }
-.content.transparent .header .header-text {
+.header .header-player {
+    position: relative;
+    z-index: 1;
+    top: 440px;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: 900px;
+    max-width: 100%;
+    margin: auto;
+}
+.header-pause {
+    display: none;
+}
+.header.full .header-player {
+    top: 90vh;
+}
+.header.full .header-text {
     top: 50vh;
 }
 .header .header-text .rich-text {
@@ -395,16 +411,17 @@ form input[type=submit] {
 }
 .header video {
     max-width: 100%;
+    transform: translateY(-25%);
 }
-.content.transparent .header video {
+.header.full video {
     min-width: 100%;
     min-height: 100%;
     max-width: none;
     max-height: none;
-    height: 100vh;
+    height: 107vh;
     position: relative;
     left: 50vw;
-    top: 28vh;
+    top: 31vh;
     transform: translate(-50%, -50%);
 }
 .header audio {
@@ -420,7 +437,7 @@ form input[type=submit] {
     max-width: 100%;
     max-height: 100%;
 }
-.content.transparent .header img {
+.header.full img {
     min-width: 100%;
     min-height: 100%;
     max-width: none;
@@ -432,16 +449,18 @@ form input[type=submit] {
 }
 .header .bg_area {
     position: relative;
-    top: -5.2em;
+    top: -5.5em;
     height: 100%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% auto;
 }
-.content.transparent .header .bg_area {
-    position: relative;
-    top: -3.2em;
-    height: 100%;
+.header.full .bg_area {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -715,7 +734,7 @@ form input[type=submit] {
 
 
 @media screen and (min-aspect-ratio: 16/9) {
-    .content.transparent .header video {
+    .header.full video {
         height: auto;
         width: 100vw;
     }
@@ -778,7 +797,7 @@ form input[type=submit] {
         display: block;
         position: fixed;
         right: 0;
-        top: 85px;
+        top: 78px;
         bottom: 0;
         left: 0;
         background-color: white;
@@ -794,10 +813,6 @@ form input[type=submit] {
     .breadcrumbs {
         margin: auto 1em;
     }
-
-    .content_wrapper .content_head_block {
-        height: 131px;
-    }
     
     .footer {
         display: block;
@@ -810,8 +825,18 @@ form input[type=submit] {
     .header {
         height: 400px;
     }
-    .content.transparent .header .bg_area {
-        height: 100%;
+    .header.full {
+        height: 97vh;
+    }
+    .header.full .header-player {
+        top: 70vh;
+    }
+    .header.full video {
+        top: 0em;
+        transform: translate(-50%, -9em);
+    }
+    .header.full .header-text {
+        top: 32vh;
     }
     .header .header-text {
         max-width: calc(100% - 2em);
@@ -891,9 +916,6 @@ form input[type=submit] {
     .content .responsive-object {
         height: 320px;
     }
-    .content.transparent .header .bg_area {
-        height: 100%;
-    }
 
     .grid_block.boxed.fancy,
     .grid_block {
@@ -929,13 +951,5 @@ form input[type=submit] {
     .content .responsive-object {
         height: 277px;
     }
-    .header {
-        height: 400px;
-    }
 }
 
-@media (max-width: 400px) {
-    .header {
-        height: 400px;
-    }
-}
