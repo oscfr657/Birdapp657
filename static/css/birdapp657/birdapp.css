@@ -196,6 +196,7 @@ li.bird_menu_child {
 }
 .bird_top_wraper.transparent .breadcrumbs_wraper {
     color: white;
+    background-color: transparent;
     border-top: solid 1px white;
     border-bottom: solid 1px white;
 }
