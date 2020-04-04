@@ -9,8 +9,8 @@
     <div class="bird_top">
         <div class="bird_logo">
             <a href="{{ request.site.root_page.url }}" >
-                {% if settings.birdapp657.BrandingSettings.logo %}  
-                    <img itemprop="logo" src="{{ settings.birdapp657.BrandingSettings.logo.url }}" alt="{{ settings.birdapp657.BrandingSettings.logo.alt }}" class="logo_img" />
+                {% if settings.birdapp657.BrandingSettings.logo %}
+                    <img itemprop="logo" src="{{ settings.birdapp657.BrandingSettings.logo.file.url }}" alt="{{ settings.birdapp657.BrandingSettings.logo.alt }}" class="logo_img" />
                 {% endif %}
                 {% if settings.birdapp657.BrandingSettings.show_name %}
                 <h1 >
@@ -47,10 +47,10 @@
                     <a href="{{ child.url }}"
                         class="icon {% if child.specific.hover_over_menu %}hover{% endif %}" >
                         {% if child.specific.hover_menu_icon %}
-                            <img alt="{{ child.specific.menu_icon.alt }}" class="no_hover" src="{{ child.specific.menu_icon.url }}" width="24" height="24">
-                            <img alt="{{ child.specific.hover_menu_icon.alt }}" class="hover" src="{{ child.specific.hover_menu_icon.url }}" width="24" height="24">
+                            <img alt="{{ child.specific.menu_icon.alt }}" class="no_hover" src="{{ child.specific.menu_icon.file.url }}" width="24" height="24">
+                            <img alt="{{ child.specific.hover_menu_icon.alt }}" class="hover" src="{{ child.specific.hover_menu_icon.file.url }}" width="24" height="24">
                         {% else %}
-                        <img alt="{{ child.specific.menu_icon }}" src="{{ child.specific.menu_icon.url }}" width="24" height="24">
+                        <img alt="{{ child.specific.menu_icon.alt }}" src="{{ child.specific.menu_icon.file.url }}" width="24" height="24">
                         {% endif %}
                     </a>
                     {% else %}

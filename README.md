@@ -145,9 +145,9 @@ urlpatterns = [
 
 
 ```python
-handler404 = 'birdapp657.views.bird_page_403'
+handler403 = 'birdapp657.views.bird_page_403'
 handler404 = 'birdapp657.views.bird_page_404'
-handler404 = 'birdapp657.views.bird_page_500'
+handler500 = 'birdapp657.views.bird_page_500'
 ```
 
 ### Collectstatic ###
