@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+
+{% block bird_top %}
+<div class="bird_top_wraper_block ">
+</div>
+
+<div class="bird_top_wraper ">
+    <div class="bird_top">
+        <div class="bird_logo">
+            <a href="{{ request.site.root_page.url }}" >
+                {% if settings.birdapp657.BrandingSettings.logo %}  
+                    <img itemprop="logo" src="{{ settings.birdapp657.BrandingSettings.logo.url }}" alt="{{ settings.birdapp657.BrandingSettings.logo.alt }}" class="logo_img" />
+                {% endif %}
+                {% if settings.birdapp657.BrandingSettings.show_name %}
+                <h1 >
+                    {{ request.site.site_name|default:'' }}
+                </h1>
+                {% endif %}
+            </a>
+        </div>
+        {% if settings.birdapp657.BrandingSettings.mobile_menu_page %}
+            {% if page.title == settings.birdapp657.BrandingSettings.mobile_menu_page.title %}
+            <a class="bird_mobile_menu active"
+                href="javascript:history.back()">
+                <div ></div>
+            </a>
+            {% else %}
+            <a class="bird_mobile_menu "
+                href="{{ settings.birdapp657.BrandingSettings.mobile_menu_page.url }}">
+                <div ></div>
+            </a>
+            {% endif %}
+        {% else %}
+            <a id="bird_mobile_menu_dropdown" class="bird_mobile_menu"
+                href="/">
+                <div ></div>
+            </a>
+        {% endif %}
+
+        {% if request.site.root_page.get_children.live.in_menu %}
+        <div class="bird_menu">
+            <ul class="bird_menu_list">
+                {% for child in request.site.root_page.get_children.live.in_menu %}
+                <li class="bird_menu_child">
+                    {% if child.specific.menu_icon %}
+                    <a href="{{ child.url }}"
+                        class="icon {% if child.specific.hover_over_menu %}hover{% endif %}" >
+                        {% if child.specific.hover_menu_icon %}
+                            <img alt="{{ child.specific.menu_icon.alt }}" class="no_hover" src="{{ child.specific.menu_icon.url }}" width="24" height="24">
+                            <img alt="{{ child.specific.hover_menu_icon.alt }}" class="hover" src="{{ child.specific.hover_menu_icon.url }}" width="24" height="24">
+                        {% else %}
+                        <img alt="{{ child.specific.menu_icon }}" src="{{ child.specific.menu_icon.url }}" width="24" height="24">
+                        {% endif %}
+                    </a>
+                    {% else %}
+                        <a href="{{ child.url }}"
+                            class="" >
+                        {{ child.title }}
+                        </a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock bird_top %}
+
+
+{% block content %}
+<div class="error-page">
+    <h3>{{ error }}</h3>
+</div>
+{% endblock %}

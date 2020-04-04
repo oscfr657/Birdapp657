@@ -247,6 +247,10 @@ li.bird_menu_child {
     border: solid 1px black;
 }
 
+.error-page {
+    text-align: center;
+}
+
 .password-required {
     width: 900px;
     max-width: 100%;

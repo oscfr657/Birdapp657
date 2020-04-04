@@ -80,15 +80,15 @@
         <div class="bird_top">
             <div class="bird_logo">
                 <a href="{% pageurl request.site.root_page %}" >
-                    <h1 >
                     {% if settings.birdapp657.BrandingSettings.logo %}
                         {% image settings.birdapp657.BrandingSettings.logo height-64 as site_logo %}
-                        <img src="{{ site_logo.url }}" alt="{{ site_logo.alt }}" class="logo_img" />
+                        <img src="{{ site_logo.url }}" alt="{{ site_logo.alt }}" class="logo_img" itemprop="logo" />
                     {% endif %}
                     {% if settings.birdapp657.BrandingSettings.show_name %}
+                    <h1 >
                         {{ request.site.site_name|default:'' }}
-                    {% endif %}
                     </h1>
+                    {% endif %}
                 </a>
             </div>
             {% if settings.birdapp657.BrandingSettings.mobile_menu_page %}
