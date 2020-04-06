@@ -3,16 +3,17 @@
 
 
 {% if feed_posts %}
+<div style="background-color:{{ value.bg_color }}; color:{{ value.text_color }};" >
 {% if value.use_grid_template %}
-<div class="grid_block {{ value.block_width }}">
+<div class="grid_block {{ value.block_class }}" >
 {% else %}
-<div class="feed_block {{ value.block_width }}">
+<div class="feed_block {{ value.block_class }}" >
 {% endif %}
     {% for p in feed_posts %}
         {% if p.specific.coverImage %}
         {% if value.use_grid_template %}
         <div class="grid_page">
-            <a href="{% pageurl p %}">
+            <a href="{% pageurl p %}" style="color:{{ value.text_color }};">
                 {% image p.specific.coverImage min-400x400 as tmp_img %}
                 <div class="grid_page_cover">
                     <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" loading="lazy" />
@@ -50,7 +51,7 @@
         </div>
         {% else %}
         <div class="feed_item">
-            <a href="{% pageurl p %}">
+            <a href="{% pageurl p %}" style="color:{{ value.text_color }};">
                 {% image p.specific.coverImage min-400x400 as tmp_img %}
                 <div class="feed_item_cover">
                     <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" loading="lazy" />
@@ -88,5 +89,6 @@
         {% endif %}
         {% endif %}
     {% endfor %}
+</div>
 </div>
 {% endif %}

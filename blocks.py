@@ -107,7 +107,7 @@ class MediaFileBirdBlock(blocks.StructBlock):
 
 
 class FeedBirdBlock(blocks.StructBlock):
-    block_width = blocks.CharBlock(required=False, help_text='Block width class')
+    block_class = blocks.CharBlock(required=False, help_text='Block class')
     children = blocks.ChoiceBlock(choices=[
             ('c', 'Children'),
             ('d', 'Descendants'),
@@ -123,6 +123,12 @@ class FeedBirdBlock(blocks.StructBlock):
     show_author = blocks.BooleanBlock(required=False, default=False)
     show_date = blocks.BooleanBlock(required=False, default=False)
     use_grid_template = blocks.BooleanBlock(required=False, default=False)
+    bg_color = blocks.CharBlock(
+        default='white',
+        label='Background color')
+    text_color = blocks.CharBlock(
+        default='black',
+        label='Text color')
     max_number = blocks.IntegerBlock(required=False)
 
     def get_context(self, value):
