@@ -142,7 +142,9 @@ class FeedBirdBlock(blocks.StructBlock):
             feed_posts = value[
                 'parent_page'].get_descendants().live().public().not_in_menu().order_by(
                     '-go_live_at')
-        feed_posts = feed_posts.filter(solobirdpage__tags__name__in=value['tags'])
+        tags = value['tags']
+        if tags[0]:
+            feed_posts = feed_posts.filter(solobirdpage__tags__name__in=tags)
         max_number = value['max_number']
         if max_number:
             feed_posts = feed_posts[:max_number]
