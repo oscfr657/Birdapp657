@@ -116,7 +116,7 @@ class FeedBirdBlock(blocks.StructBlock):
         required=True
         )
     parent_page = blocks.PageChooserBlock(label='parent page')
-    tags = blocks.ListBlock(blocks.CharBlock(label="Tag"))
+    tags = blocks.ListBlock(blocks.CharBlock(label="Tag"), required=False)
     show_title = blocks.BooleanBlock(required=False, default=True)
     show_intro = blocks.BooleanBlock(required=False, default=False)
     show_content = blocks.BooleanBlock(required=False, default=False)
@@ -143,7 +143,7 @@ class FeedBirdBlock(blocks.StructBlock):
                 'parent_page'].get_descendants().live().public().not_in_menu().order_by(
                     '-go_live_at')
         tags = value['tags']
-        if tags[0]:
+        if tags:
             feed_posts = feed_posts.filter(solobirdpage__tags__name__in=tags)
         max_number = value['max_number']
         if max_number:
