@@ -547,6 +547,7 @@ form input[type=submit] {
 .feed_block .feed_item img.cover_image {
     width: 100%;
     margin: 0 0 -5px 0;
+    display: block;
 }
 .feed_block .feed_item img.cover_image,
 .grid_block .grid_page img.cover_image {
