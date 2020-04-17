@@ -1,0 +1,16 @@
+
+{% if value.page_link %}
+    <div class="link_block" >
+    <a style="color:{{ value.font_color|default:'white' }}; background-color:{{ value.bg_color|default:'black' }};"
+        href="{{ value.page_link.url }}">
+                {{ value.text }}
+    </a>
+    </div>
+{% elif value.external_link %}
+    <div class="link_block" >
+    <a style="color: {{ value.font_color|default:'white' }}; background-color:{{ value.bg_color|default:'black' }}"
+        href="{{ value.external_link }}">
+                {{ value.text }}
+    </a>
+    </div>
+{% endif %}

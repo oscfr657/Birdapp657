@@ -21,6 +21,10 @@ h1, h2, h3, h4 {
 
 a {
     color: black;
+    text-decoration: none;
+}
+p a {
+    text-decoration: underline;
 }
 p,
 h2 {
@@ -411,6 +415,9 @@ form input[type=submit] {
 .header.full .header-text {
     top: 50vh;
 }
+.header.text-down .header-text {
+    top: 74%;
+}
 .header .header-text .rich-text {
     margin: auto;
 }
@@ -423,11 +430,11 @@ form input[type=submit] {
     min-height: 100%;
     max-width: none;
     max-height: none;
-    height: 107vh;
+    height: 117vh;
     position: relative;
     left: 50vw;
-    top: 31vh;
-    transform: translate(-50%, -50%);
+    top: 0em;
+    transform: translate(-50%, -10em);
 }
 .header audio {
     width: 600px;
@@ -477,6 +484,13 @@ form input[type=submit] {
     font-size: x-large;
 }
 
+.link_block {
+    margin: 0;
+}
+.link_block a {
+    padding: 0.5em 1.5em;
+    font-size: larger;
+}
 
 .block-paragraph {
     padding: 0em 0;
@@ -745,6 +759,11 @@ form input[type=submit] {
         width: 100vw;
     }
   }
+@media screen and (min-aspect-ratio: 16/9) and (max-width: 900px) {
+    .header.full video {
+        top: 10em;
+    }
+}
 
 @media (max-width: 1200px) {
     .grid_block.wide.fancy .grid_page .grid_page_title{
@@ -831,18 +850,11 @@ form input[type=submit] {
     .header {
         height: 400px;
     }
-    .header.full {
-        height: 97vh;
-    }
-    .header.full .header-player {
-        top: 70vh;
-    }
-    .header.full video {
-        top: 0em;
-        transform: translate(-50%, -9em);
-    }
     .header.full .header-text {
         top: 32vh;
+    }
+    .header.full.text-down .header-text {
+        top: 74vh;
     }
     .header .header-text {
         max-width: calc(100% - 2em);

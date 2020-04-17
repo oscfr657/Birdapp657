@@ -8,6 +8,27 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 
 
+
+class LinkBirdBlock(blocks.StructBlock):
+    font_color = blocks.CharBlock(required=False, null=True)
+    bg_color = blocks.CharBlock(required=False, null=True)
+    page_link = blocks.PageChooserBlock(
+        required=False,
+        help_text='Link to a page.'
+    )
+    external_link = blocks.URLBlock(
+        label='Link URL',
+        max_length=200,
+        required=False,
+        help_text='Link to a URL.'
+    )
+    text = blocks.CharBlock(required=False, null=True, help_text='Link text')
+
+    class Meta:
+        label = 'Link'
+        template = 'blocks/link.html'
+
+
 class HeaderBirdBlock(blocks.StructBlock):
     block_class = blocks.CharBlock(required=False, null=True, help_text='Block class')
 
@@ -29,6 +50,8 @@ class HeaderBirdBlock(blocks.StructBlock):
             'bold', 'italic',
             'link', 'document-link',
             'ol', 'ul'])
+    
+    button_link = LinkBirdBlock(required=False, null=True)
 
     class Meta:
         label = 'Header'

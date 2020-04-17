@@ -10,24 +10,25 @@
         <div class="header-player" >
             <div class="header-play" onclick="birdPlay(this);">
                 <svg height="50" width="50" >
-                    <circle cx="25" cy="25" r="25"  fill="white" />
-                    <polygon points="15,10 15,40 45,25" style="fill:black;" />
+                    <circle cx="25" cy="25" r="25"  fill="{{ value.bg_color }}" />
+                    <polygon points="15,10 15,40 45,25" style="fill:{{ value.font_color }};" />
                 </svg>
             </div>
             <div class="header-pause" onclick="birdPause(this);">
                 <svg width="50" height="50">
-                    <circle cx="25" cy="25" r="25"  fill="white" />
+                    <circle cx="25" cy="25" r="25"  fill="{{ value.bg_color }}" />
                     <rect x="12.5" y="12.5" width="25" height="25"
-                    style="fill:black;" />
+                    style="fill:{{ value.font_color }};" />
                   </svg>
             </div>
         </div>
         {% endif %}
     {% endif %}
 
-    {% if value.text %}
+    {% if value.text or value.button_link %}
     <div class="header-text">
         {{ value.text|richtext }}
+        {% include_block value.button_link %}
     </div>
     {% endif %}
     {% if value.block_media.type == 'video' %}
