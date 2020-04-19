@@ -159,12 +159,14 @@ class FeedBirdBlock(blocks.StructBlock):
         context = super(FeedBirdBlock, self).get_context(value)
         if value['children'] == 'c':
             feed_posts = value[
-                'parent_page'].get_children().live().public().not_in_menu().order_by(
-                    '-go_live_at')
+                'parent_page'].get_children().live().public().not_in_menu().exclude(
+                    solobirdpage__coverImage__isnull=True).order_by(
+                    '-go_live_at').distinct()
         elif value['children'] == 'd':
             feed_posts = value[
-                'parent_page'].get_descendants().live().public().not_in_menu().order_by(
-                    '-go_live_at')
+                'parent_page'].get_descendants().live().public().not_in_menu().exclude(
+                    solobirdpage__coverImage__isnull=True).order_by(
+                    '-go_live_at').distinct()
         tags = value['tags']
         if tags:
             feed_posts = feed_posts.filter(solobirdpage__tags__name__in=tags)
