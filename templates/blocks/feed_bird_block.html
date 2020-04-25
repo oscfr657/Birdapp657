@@ -10,6 +10,7 @@
 <div class="feed_block {{ value.block_class }}" >
 {% endif %}
     {% for p in feed_posts %}
+    {% if p.title != page.title %}
         {% if value.use_grid_template %}
         <div class="grid_page">
             <a href="{% pageurl p %}" style="color:{{ value.text_color }};">
@@ -86,6 +87,7 @@
             {% endif %}
         </div>
         {% endif %}
+    {% endif %}
     {% endfor %}
 </div>
 </div>

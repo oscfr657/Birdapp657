@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.core.exceptions import FieldError
 from django.utils.html import format_html
 
 from wagtail.core import blocks
@@ -159,17 +160,26 @@ class FeedBirdBlock(blocks.StructBlock):
         context = super(FeedBirdBlock, self).get_context(value)
         if value['children'] == 'c':
             feed_posts = value[
-                'parent_page'].get_children().live().public().not_in_menu().exclude(
-                    solobirdpage__coverImage__isnull=True).order_by(
+                'parent_page'].get_children().live().public().not_in_menu().order_by(
                     '-go_live_at').distinct()
         elif value['children'] == 'd':
             feed_posts = value[
-                'parent_page'].get_descendants().live().public().not_in_menu().exclude(
-                    solobirdpage__coverImage__isnull=True).order_by(
+                'parent_page'].get_descendants().live().public().not_in_menu().order_by(
                     '-go_live_at').distinct()
         tags = value['tags']
-        if tags:
-            feed_posts = feed_posts.filter(solobirdpage__tags__name__in=tags)
+        posts = []
+        for post in feed_posts.specific():
+            try:
+                if tags:
+                    if set(post.tags.all().values_list('name', flat=True)).intersection(set(tags)):
+                        post = post
+                    else:
+                        continue
+                if post.coverImage:
+                    posts.append(post)
+            except (FieldError, AttributeError):
+                pass
+        feed_posts = posts
         max_number = value['max_number']
         if max_number:
             feed_posts = feed_posts[:max_number]

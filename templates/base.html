@@ -62,6 +62,8 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" >
 
+{% block extra_head %}
+{% endblock extra_head %}
 
 {% if settings.birdapp657.BrandingSettings.extra_head %}
 {{ settings.birdapp657.BrandingSettings.extra_head|safe }}
@@ -109,7 +111,7 @@
                     <div ></div>
                 </a>
             {% endif %}
-            {% if request.site.root_page.get_children.live.in_menu and page.show_menu %}
+            {% if request.site.root_page.get_children.live.in_menu and page.specific.show_menu != False %}
             <div class="bird_menu">
                 <ul class="bird_menu_list">
                     {% for child in request.site.root_page.get_children.live.in_menu %}
