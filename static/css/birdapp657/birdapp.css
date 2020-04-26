@@ -211,7 +211,7 @@ li.bird_menu_child {
 .content {
     position: relative;
     min-height: 65vh;
-    margin: auto;
+    margin: 0;
     max-width: 100%;
 }
 .content .thank_you,

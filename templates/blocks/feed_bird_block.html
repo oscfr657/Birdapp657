@@ -30,7 +30,7 @@
                     {% elif p.specific.show_date and value.show_date %}
                         {{ p.first_published_at|date:"d M Y" }}
                     {% endif %}
-                    {% if p.specific.show_author and value.show_author %} / {{ p.specific.author }}{% endif %}
+                    {% if p.specific.show_author != False and value.show_author != False %} / {{ p.specific.author }}{% endif %}
                     </span>
                     {% endif %}
                 </div>
@@ -70,7 +70,7 @@
             {% elif p.specific.show_date and value.show_date %}
                 {{ p.first_published_at|date:"d M Y" }}
             {% endif %}
-            {% if p.specific.show_author and value.show_author %} / {{ p.specific.author }}{% endif %}
+            {% if p.specific.show_author != False and value.show_author != False %} / {{ p.specific.author }}{% endif %}
             </span>
             {% endif %}
 
