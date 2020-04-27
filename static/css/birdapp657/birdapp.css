@@ -473,6 +473,7 @@ form input[type=submit] {
     position: relative;
     height: 100%;
     width: 900px;
+    max-width: 100%;
     margin: auto;
     background-repeat: no-repeat;
     background-position: center center;
