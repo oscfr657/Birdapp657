@@ -140,6 +140,7 @@ class FeedBirdBlock(blocks.StructBlock):
         required=True
         )
     parent_page = blocks.PageChooserBlock(label='parent page')
+    #exclude = blocks.ListBlock(blocks.PageChooserBlock(label="Exclude page"), required=False)
     tags = blocks.ListBlock(blocks.CharBlock(label="Tag"), required=False)
     show_title = blocks.BooleanBlock(required=False, default=True)
     show_intro = blocks.BooleanBlock(required=False, default=False)

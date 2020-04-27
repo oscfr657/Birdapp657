@@ -18,7 +18,6 @@ body  {
 h1, h2, h3, h4 {
     font-weight: normal;
 }
-
 a {
     color: black;
     text-decoration: none;
@@ -37,6 +36,7 @@ p sub {
     color: blue;
 }
 
+
 blockquote {
     margin: 1em auto 1em 1.6em;
 }
@@ -52,6 +52,7 @@ blockquote:before {
     quotes: "\201C" "\201D" "\2018" "\2019";
     left: 0;
 }
+
 
 .bird_top_wraper_block {
     position: relative;
@@ -118,6 +119,7 @@ blockquote:before {
 li.bird_menu_child {
     font-family: var(--main-font);
 }
+
 
 .bird_top .bird_menu_child:hover .bird_menu_child_list {
     display: grid;
@@ -186,6 +188,7 @@ li.bird_menu_child {
     display: inline-block;
 }
 
+
 .breadcrumbs_wraper {
     width: 100%;
     background-color: white;
@@ -207,6 +210,7 @@ li.bird_menu_child {
 .bird_top_wraper.transparent .breadcrumbs_wraper a {
     color: white;
 }
+
 
 .content {
     position: relative;
@@ -251,9 +255,11 @@ li.bird_menu_child {
     border: solid 1px black;
 }
 
+
 .error-page {
     text-align: center;
 }
+
 
 .password-required {
     width: 900px;
@@ -261,6 +267,7 @@ li.bird_menu_child {
     margin: auto;
     text-align: center;
 }
+
 
 form {
     width: 900px;
@@ -271,11 +278,13 @@ form input[type=submit] {
     margin: 0 0 2em 0;
 }
 
+
 .content .content_body {
     color: #505050;
     text-align: left;
     font-size: 18px;
 }
+
 
 .footer {
     position: relative;
@@ -298,6 +307,7 @@ form input[type=submit] {
     width: 900px;
     max-width: calc(100% - 2em);
 }
+
 
 .search {
     text-align: center;
@@ -461,8 +471,9 @@ form input[type=submit] {
 }
 .header .bg_area {
     position: relative;
-    top: -5.5em;
     height: 100%;
+    width: 900px;
+    margin: auto;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100% auto;
@@ -477,12 +488,16 @@ form input[type=submit] {
     background-position: center center;
     background-size: cover;
 }
+.header.boxed .bg_area {
+    width: 600px;
+}
 .header h2 {
     font-size: xxx-large;
 }
 .header h3 {
     font-size: x-large;
 }
+
 
 .link_block {
     margin: 0;
@@ -491,6 +506,7 @@ form input[type=submit] {
     padding: 0.5em 1.5em;
     font-size: larger;
 }
+
 
 .block-paragraph {
     padding: 0em 0;
