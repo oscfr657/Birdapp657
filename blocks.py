@@ -140,7 +140,7 @@ class FeedBirdBlock(blocks.StructBlock):
         required=True
         )
     parent_page = blocks.PageChooserBlock(label='parent page')
-    #exclude = blocks.ListBlock(blocks.PageChooserBlock(label="Exclude page"), required=False)
+    exclude = blocks.ListBlock(blocks.PageChooserBlock(label="Exclude page"), required=False, default=[])
     tags = blocks.ListBlock(blocks.CharBlock(label="Tag"), required=False)
     show_title = blocks.BooleanBlock(required=False, default=True)
     show_intro = blocks.BooleanBlock(required=False, default=False)
@@ -167,6 +167,11 @@ class FeedBirdBlock(blocks.StructBlock):
             feed_posts = value[
                 'parent_page'].get_descendants().live().public().not_in_menu().order_by(
                     '-go_live_at').distinct()
+        try:
+            exclude = [excl.pk for excl in value['exclude'] ]
+            feed_posts = feed_posts.exclude(id__in=exclude)
+        except AttributeError:
+            pass
         tags = value['tags']
         posts = []
         for post in feed_posts.specific():
