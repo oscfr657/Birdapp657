@@ -4,7 +4,9 @@ from django.db import models
 from django.shortcuts import render
 from django import forms
 
-from wagtail.core.models import Page
+from wagtail.core.models import (
+    Page, Orderable
+    )
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
 
@@ -27,6 +29,7 @@ from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 
 from modelcluster.fields import ParentalKey
+from modelcluster.models import ClusterableModel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 
 from taggit.models import TaggedItemBase
@@ -36,8 +39,28 @@ from .blocks import (HeaderBirdBlock, BirdCodeBlock, RacerBirdBlock,
     HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock)
 
 
+class FontFace(Orderable):
+    brand = ParentalKey(
+        'BrandingSettings',
+        related_name='brand_fonts',
+        on_delete=models.CASCADE
+    )
+    src_file = models.ForeignKey(
+        'wagtaildocs.Document',
+        on_delete=models.CASCADE,
+        related_name='+'
+    )
+    font_family = models.CharField(max_length=50)
+    font_format =  models.CharField(max_length=50)
+    panels = [
+        DocumentChooserPanel('src_file'),
+        FieldPanel('font_family'),
+        FieldPanel('font_format'),
+    ]
+
+
 @register_setting
-class BrandingSettings(BaseSetting):
+class BrandingSettings(BaseSetting, ClusterableModel):
     icon = models.ForeignKey(
         'wagtailimages.Image',
         blank=True, null=True,
@@ -96,6 +119,7 @@ class BrandingSettings(BaseSetting):
         FieldPanel('extra_head'),
         DocumentChooserPanel('extra_css'),
         DocumentChooserPanel('extra_js'),
+        InlinePanel('brand_fonts', label="Brand fontfaces"),
         StreamFieldPanel('footer'),
     ]
 

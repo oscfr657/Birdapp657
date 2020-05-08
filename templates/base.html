@@ -22,6 +22,17 @@
 <link rel="shortcut icon" type="image/png" href="{{ site_icon.url }}">
 {% endif %}
 
+{% if settings.birdapp657.BrandingSettings.brand_fonts %}
+<style type="text/css">
+{% for brand_font in settings.birdapp657.BrandingSettings.brand_fonts.all %}
+    @font-face {
+        font-family: "{{ brand_font.font_family }}";
+        src: url({{ brand_font.src_file.url }}) format("{{ brand_font.font_format }}");
+    }
+{% endfor %}
+</style>
+{% endif %}
+
 {% if page.search_description %}
 <meta name="description" content="{{ page.search_description }}">
 {% endif %}
@@ -68,6 +79,10 @@
 
 {% block extra_head %}
 {% endblock extra_head %}
+
+{% if settings.birdapp657.BrandingSettings.extra_css %}
+<link rel="stylesheet" type="text/css" href="{{ settings.birdapp657.BrandingSettings.extra_css.url }}" >
+{% endif %}
 
 {% if settings.birdapp657.BrandingSettings.extra_head %}
 {{ settings.birdapp657.BrandingSettings.extra_head|safe }}
@@ -190,10 +205,6 @@
     {% wagtailuserbar %}
 
     <script src="{% static 'js/birdapp657/birdapp.js' %}" async=""></script>
-
-    {% if settings.birdapp657.BrandingSettings.extra_css %}
-    <link rel="stylesheet" type="text/css" href="{{ settings.birdapp657.BrandingSettings.extra_css.url }}" >
-    {% endif %}
 
     {% if settings.birdapp657.BrandingSettings.extra_js %}
     <script src="{{ settings.birdapp657.BrandingSettings.extra_js.url }}" async=""></script>
