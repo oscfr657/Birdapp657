@@ -12,7 +12,8 @@ body  {
     --second-font: 'Times New Roman', Times, serif;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--main-font);
     font-weight: normal;
 }
 a {
@@ -54,8 +55,11 @@ blockquote:before {
 .bird_top_wraper_block {
     position: relative;
     background-color: white;
-    height: 6.5em;
+    height: 96px;
     display: block;
+}
+.bird_top_wraper_block.breadcrumbs {
+    height: 128px;
 }
 .bird_top_wraper_block.transparent {
     display: None;
@@ -67,8 +71,7 @@ blockquote:before {
     right: 0;
     background-color: white;
     z-index: 2;
-    height: 6.5em;
-    transition: all 0.5s;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 .bird_top_wraper.transparent {
     background-color: transparent;
@@ -77,7 +80,6 @@ blockquote:before {
     margin: auto;
     width: 900px;
     max-width: calc(100% - 2em);
-    height: 4.5em;
 }
 .bird_top .bird_logo {
     float: left;
@@ -90,7 +92,7 @@ blockquote:before {
 }
 .bird_top .bird_logo h1 {
     font-size: 5em;
-    line-height: 0.8em;
+    line-height: 96px;
     margin: 0 0 0 -4px;
 }
 .bird_top .bird_logo h1 img {
@@ -102,21 +104,19 @@ blockquote:before {
 }
 .bird_top .bird_menu {
     float: right;
-    margin-top: 1.6em;
+    margin: 57px 0 0 0;
 }
 .bird_top .bird_menu_list {
-    margin: -1px 0;
+    margin: 0;
     padding: 0;
     display: block;
 }
 .bird_top .bird_menu_child {
     display: inline-block;
-    padding: 15px 0;
 }
 li.bird_menu_child {
     font-family: var(--main-font);
 }
-
 
 .bird_top .bird_menu_child:hover .bird_menu_child_list {
     display: grid;

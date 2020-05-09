@@ -16,14 +16,16 @@ window.onscroll = function(e) {
     if (prevScrollpos > currentScrollPos) {
         if (!active_menu) {
             active_menu = true;
-            wrapers[0].style.top = '0px';
+            wrapers[0].style.visibility = 'visible';
+            wrapers[0].style.opacity = 1;
             if (transparent) {
                 wrapers[0].classList.remove('transparent');
             }
         }
     } else {
         if (active_menu) {
-            wrapers[0].style.top = '-114px';
+            wrapers[0].style.visibility = 'hidden';
+            wrapers[0].style.opacity = 0;
         }
         active_menu = false;
     }
