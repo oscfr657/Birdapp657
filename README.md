@@ -8,9 +8,9 @@ A small Wagtail app
 ### Tested for ###
 
 ```
-Django >= 2.0, <=2.2
-Wagtail >= 2.6
-Wagtailmedia >= 0.3.1
+Django == 3.0
+Wagtail == 2.9
+Wagtailmedia == 0.5.0
 ```
 
 ## Installation ###

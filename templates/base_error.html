@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% wagtail_site as current_site %}
 
 {% block bird_top %}
 <div class="bird_top_wraper_block ">
@@ -8,13 +9,13 @@
 <div class="bird_top_wraper ">
     <div class="bird_top">
         <div class="bird_logo">
-            <a href="{{ request.site.root_page.url }}" >
+            <a href="{{ current_site.root_page.url }}" >
                 {% if settings.birdapp657.BrandingSettings.logo %}
                     <img itemprop="logo" src="{{ settings.birdapp657.BrandingSettings.logo.file.url }}" alt="{{ settings.birdapp657.BrandingSettings.logo.alt }}" class="logo_img" />
                 {% endif %}
                 {% if settings.birdapp657.BrandingSettings.show_name %}
                 <h1 >
-                    {{ request.site.site_name|default:'' }}
+                    {{ current_site.site_name|default:'' }}
                 </h1>
                 {% endif %}
             </a>
@@ -38,10 +39,10 @@
             </a>
         {% endif %}
 
-        {% if request.site.root_page.get_children.live.in_menu %}
+        {% if current_site.root_page.get_children.live.in_menu %}
         <div class="bird_menu">
             <ul class="bird_menu_list">
-                {% for child in request.site.root_page.get_children.live.in_menu %}
+                {% for child in current_site.root_page.get_children.live.in_menu %}
                 <li class="bird_menu_child">
                     {% if child.specific.menu_icon %}
                     <a href="{{ child.url }}"
