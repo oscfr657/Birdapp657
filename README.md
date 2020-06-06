@@ -5,7 +5,7 @@ A small Wagtail app
 
 ## Compatible ##
 
-### Tested for ###
+### Tested with ###
 
 ```
 Django == 3.0
@@ -123,19 +123,12 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.core import urls as wagtail_urls
 
-from wagtail.contrib.sitemaps.sitemap_generator import Sitemap
 from wagtail.contrib.sitemaps.views import sitemap
 ```
 and
 ``` python
-SITEMAPS = {
-    'wagtail': Sitemap,
-}
-```
-and
-``` python
 urlpatterns = [
-    path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}),
+    re_path('sitemap.xml', sitemap),
     #  Wagtail
     re_path(r'^birdapp/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
@@ -156,11 +149,15 @@ handler500 = 'birdapp657.views.bird_page_500'
 
 ### [Management commands](https://docs.wagtail.io/en/stable/reference/management_commands.html) ###
 
-These commands can be good to have in a cron script to run once every hour.
+Some commands is good to have in cron to run once every hour.
 
-> python manage.py publish_scheduled_pages
+> crontab -e
 
-> python manage.py search_garbage_collect
+> 0 * * * * /path/to/env/bin/python /path/to/project/manage.py publish_scheduled_pages
+
+> 0 * * * * /path/to/env/bin/python /path/to/project/manage.py search_garbage_collect
+
+> crontab -l
 
 ## For development ##
 
