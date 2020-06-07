@@ -96,10 +96,10 @@ blockquote:before {
     font-size: 5em;
     line-height: 96px;
     margin: 0 0 0 -4px;
+    float: right;
 }
-.bird_top .bird_logo h1 img {
-    margin: 0 -25px 0 3px;
-    height: 66px;
+.bird_top .bird_logo img {
+    margin: 1em 1em 0 0;
 }
 .bird_mobile_menu {
     display: none;
@@ -832,9 +832,9 @@ form input[type=submit] {
 }
 
 @media (max-width: 900px) {
-    .bird_top .bird_logo h1 img {
-        margin: 0 -21px 0 3px;
-        height: 56px;
+    .bird_top .bird_logo img {
+        margin: 1.7em 1em 0 0;
+        height: 2.5em;
     }
     .bird_top {
         display: grid;
