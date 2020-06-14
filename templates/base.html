@@ -55,8 +55,8 @@
 <meta property="og:title" content="{{ page.title }}"/>
 {% endif %}
 
-{% if page.specific.coverImage %}
-{% image page.specific.coverImage min-1200x627 format-jpeg as og_image %}
+{% if page.specific.cover_image %}
+{% image page.specific.cover_image min-1200x627 format-jpeg as og_image %}
 <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ og_image.url }}"/>
 {% endif %}
 

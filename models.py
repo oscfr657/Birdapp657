@@ -126,7 +126,7 @@ class BrandingSettings(BaseSetting, ClusterableModel):
 
 class BirdMixin(models.Model):
     author = models.CharField(max_length=255, blank=True, null=True)
-    coverImage = models.ForeignKey(
+    cover_image = models.ForeignKey(
         'wagtailimages.Image',
         blank=True, null=True,
         on_delete=models.SET_NULL,
@@ -174,7 +174,7 @@ class BirdMixin(models.Model):
     ]
     content_panels = [
         FieldPanel('author'),
-        ImageChooserPanel('coverImage'),
+        ImageChooserPanel('cover_image'),
         FieldPanel('intro', classname="full"),
     ]
     settings_panels = [

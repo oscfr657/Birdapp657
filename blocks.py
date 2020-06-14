@@ -181,7 +181,7 @@ class FeedBirdBlock(blocks.StructBlock):
                         post = post
                     else:
                         continue
-                if post.coverImage:
+                if post.cover_image:
                     posts.append(post)
             except (FieldError, AttributeError):
                 pass
