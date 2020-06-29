@@ -573,6 +573,10 @@ form input[type=submit] {
     text-decoration: None;
     position: relative;
 }
+.feed_block a {
+    max-width: calc(100vw - 2em);
+    display: block;
+}
 .grid_block.boxed,
 .feed_block.boxed {
     width: 600px;
@@ -654,9 +658,15 @@ form input[type=submit] {
 .feed_block .feed_item .feed_item_title h3 {
     margin: 0 0 0.5rem 0;
     font-size: 2rem;
+    text-align: center;
 }
-.grid_block .grid_page > span,
 .feed_block .feed_item > span {
+    margin: 0;
+    text-align: center;
+    display: block;
+    max-width: calc(100vw - 2em);
+}
+.grid_block .grid_page > span {
     margin: 0 0 0.5rem 0;
 }
 .grid_block.fancy .grid_page > span {
