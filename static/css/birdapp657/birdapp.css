@@ -166,7 +166,7 @@ li.bird_menu_child {
 .bird_top .bird_menu a {
     text-decoration: none;
     background-color: white;
-    padding: 2px 15px;
+    padding: 6px 15px 2px 15px;
     white-space: nowrap;
     font-size: 1.3em;
 }
@@ -182,7 +182,7 @@ li.bird_menu_child {
 }
 .bird_top .bird_menu a.icon {
     background-color: white;
-    padding: 2px 15px;
+    padding: 6px 15px 2px 15px;
     margin: 0;
 }
 .bird_top_wraper.transparent .bird_top .bird_menu a.icon {
