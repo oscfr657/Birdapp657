@@ -42,15 +42,10 @@ blockquote {
 }
 blockquote:before {
     content: "\201C";
-    font-size: 3em;
-    font-family: var(--second-font);
-    right: 0;
-    position: absolute;
-    width: 900px;
-    max-width: calc(100% - 0.6em);
+    font-size: 1.5em;
+    position:relative;
     margin: -0.3em auto;
     quotes: "\201C" "\201D" "\2018" "\2019";
-    left: 0;
 }
 
 
@@ -640,7 +635,7 @@ form input[type=submit] {
     width: 33vw;
 }
 .grid_block .grid_page .grid_page_title h3 {
-    margin: 0;
+    margin: 0.5em 0 0 0;
 }
 .grid_block.fancy .grid_page .grid_page_title h3 {
     color: white;
