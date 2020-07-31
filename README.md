@@ -55,7 +55,8 @@ add to the INSTALLED_APPS
 add to the MIDDLEWARE settings
 
 ``` python
-    'wagtail.core.middleware.SiteMiddleware',  # wagtail
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    #'wagtail.core.middleware.SiteMiddleware',  # wagtail
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',  # wagtail
 ```
 
@@ -72,7 +73,23 @@ add to the TEMPLATES settings
     ]
 ```
 
-add the search backend settings
+#### Optionaly set: ####
+
+the admin title
+
+``` python
+WAGTAIL_SITE_NAME = 'Birdapp657'
+```
+
+the password required template
+
+``` python
+PASSWORD_REQUIRED_TEMPLATE = 'birdapp657_password_required.html'
+```
+
+#### I recommend: ####
+
+the use of the postgres_search.backend, set the search backend settings
 
 ``` python
 WAGTAILSEARCH_BACKENDS = {
@@ -82,19 +99,7 @@ WAGTAILSEARCH_BACKENDS = {
 }
 ```
 
-set the admin title
-
-``` python
-WAGTAIL_SITE_NAME = 'Birdapp657'
-```
-
-optionaly set the password required template
-
-``` python
-PASSWORD_REQUIRED_TEMPLATE = 'birdapp657_password_required.html'
-```
-
-I recommend setting the WAGTAILIMAGES_FORMAT_CONVERSIONS setting like this
+and set the WAGTAILIMAGES_FORMAT_CONVERSIONS setting 
 
 ``` python
 WAGTAILIMAGES_FORMAT_CONVERSIONS = {

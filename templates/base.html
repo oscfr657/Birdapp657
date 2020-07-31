@@ -125,7 +125,7 @@
                     <div ></div>
                 </a>
                 {% endif %}
-            {% else %}
+            {% elif current_site.root_page.get_children.live.in_menu and page.specific.show_menu != False %}
                 <a id="bird_mobile_menu_dropdown" class="bird_mobile_menu"
                     href="/">
                     <div ></div>
