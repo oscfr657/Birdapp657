@@ -113,7 +113,7 @@
                     {% endif %}
                 </a>
             </div>
-            {% if settings.birdapp657.BrandingSettings.mobile_menu_page %}
+            {% if settings.birdapp657.BrandingSettings.mobile_menu_page and page.specific.show_menu != False %}
                 {% if page.title == settings.birdapp657.BrandingSettings.mobile_menu_page.title %}
                 <a class="bird_mobile_menu active"
                     href="javascript:history.back()">
@@ -184,7 +184,7 @@
     {% endblock bird_top %}
 
 
-    <div class="content {{ page.specific.content_width|default:'' }} {% if page.specific.transparent_header %}transparent{% endif %}">
+    <div class="content {{ page.specific.content_width|default:'' }} {% if page.specific.transparent_header != False %}transparent{% endif %}">
     {% block content %}
     {% endblock content %}
     </div>
