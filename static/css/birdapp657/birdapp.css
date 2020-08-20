@@ -158,6 +158,10 @@ li.bird_menu_child {
     margin: 10px 0px 0 0px;
     z-index: 1;
 }
+li.bird_menu_grand_child {
+    font-family: var(--main-font);
+}
+
 .bird_top .bird_menu a {
     text-decoration: none;
     background-color: white;
@@ -515,13 +519,6 @@ form input[type=submit] {
 .header.wide .bg_area {
     width: 1200px;
 }
-.header h2 {
-    font-size: xxx-large;
-}
-.header h3 {
-    font-size: x-large;
-}
-
 
 .link_block {
     margin: 0;
@@ -548,12 +545,12 @@ form input[type=submit] {
     display: grid;
     grid-template-columns: 1fr;
     padding: 3em 0 3em 0;
-    grid-row-gap: 1.5rem;
-    grid-column-gap: 1.5rem;
+    row-gap: 1.5rem;
+    column-gap: 1.5rem;
 }
 .grid_block.fancy {
-    grid-row-gap: 0;
-    grid-column-gap: 0;
+    row-gap: 0;
+    column-gap: 0;
     padding: 0;
     max-width: 100%;
 }
@@ -747,9 +744,15 @@ form input[type=submit] {
     overflow: hidden;
 }
 .block-racer .racer .racer_image img {
-    height: 100%;
-    width: 100%;
+    width: 600px;
+    max-width: 100%;
+    margin: 0px 0px -5px 0px;
 }
+.block-racer .racer.full .racer_image img {
+    width: 100%;
+    margin: 0px 0px -6px 0px;
+}
+
 .block-racer .racer .inner_racer .racer_text {
     margin: auto 0;
 }
@@ -1003,12 +1006,16 @@ form input[type=submit] {
     .block-racer .racer .inner_racer {
         display: flex;
         padding: 3em 0 2.5em 0;
+        row-gap: 1em;
     }
     .block-racer .racer .inner_racer.left {
         flex-flow: column;
     }
     .block-racer .racer .inner_racer.right {
         flex-flow: column-reverse;
+    }
+    .block-racer .racer .racer_image img {
+        margin: 0px 0px -5px 0px;
     }
     .block-racer .racer .inner_racer .racer_text {
         margin: 1em 0 0;

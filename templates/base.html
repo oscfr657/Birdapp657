@@ -4,6 +4,8 @@
 
 <!DOCTYPE html>
 <html lang="{{ settings.birdapp657.BrandingSettings.lang_code|default:'en' }}">
+
+
 <head>
 
 <meta charset="UTF-8">
@@ -89,9 +91,9 @@
 {{ settings.birdapp657.BrandingSettings.extra_head|safe }}
 {% endif %}
 
-
 </head>
-<body>
+
+<body class="{{ page.slug }}">
 
 
     {% block bird_top %}
@@ -213,4 +215,5 @@
 
 
 </body>
+
 </html>
