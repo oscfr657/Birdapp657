@@ -18,6 +18,13 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--main-font);
     font-weight: normal;
 }
+h1 { font-size: 80px; }
+h2 { font-size: 40px; }
+h3 { font-size: 28px; }
+h4, h5, h6 {
+    font-size: 20px;
+    font-weight: 400;
+}
 a {
     color: black;
     text-decoration: none;
@@ -31,6 +38,7 @@ h2 {
 }
 p, li, blockquote {
     font-family: var(--second-font);
+    font-size: 20px;
 }
 p sub {
     color: blue;
@@ -88,7 +96,6 @@ blockquote:before {
     color: white;
 }
 .bird_top .bird_logo h1 {
-    font-size: 5em;
     line-height: 96px;
     margin: 0 0 0 -4px;
     float: right;
@@ -649,7 +656,6 @@ form input[type=submit] {
 }
 .feed_block .feed_item .feed_item_title h3 {
     margin: 0 0 0.5rem 0;
-    font-size: 2rem;
     text-align: center;
 }
 .feed_block .feed_item > span {
@@ -871,23 +877,6 @@ form input[type=submit] {
 }
 
 @media (max-width: 900px) {
-
-    h2 {
-        font-size: 2em;
-    }
-    h3 {
-        font-size: 1.8em;
-    }
-    h4 {
-        font-size: 1.5em;
-    }
-    p {
-        font-size: 1.5em;
-    }
-
-    .bird_top .bird_logo h1 {
-        font-size: 3em;
-    }
     .breadcrumbs_wraper .breadcrumbs {
         margin: auto 1em;
     }
