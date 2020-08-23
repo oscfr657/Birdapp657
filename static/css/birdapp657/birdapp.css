@@ -17,13 +17,24 @@ body  {
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--main-font);
     font-weight: normal;
+    text-align: center;
 }
 h1 { font-size: 80px; }
-h2 { font-size: 40px; }
-h3 { font-size: 28px; }
+h2 {
+    font-size: 40px;
+    margin: 0;
+}
+h3 {
+    font-size: 28px;
+    margin: 0;
+}
 h4, h5, h6 {
     font-size: 20px;
     font-weight: 400;
+    margin: 0;
+}
+h5, h6 {
+    text-align: left;
 }
 a {
     color: black;
@@ -647,7 +658,7 @@ form input[type=submit] {
     text-shadow: 1px 1px 1px black;
 }
 .grid_block.full.fancy .grid_page .grid_page_title h3 {
-    font-size: 1.4rem;
+    text-align: left;
 }
 .grid_block.fancy .grid_page .grid_page_title span {
     color: white;
@@ -711,18 +722,6 @@ form input[type=submit] {
 .block-racer .racer {
     margin: auto;
     min-height: 5em;
-}
-.block-racer .racer h2 {
-    margin: 0;
-    text-align: center;
-}
-.block-racer .racer h3 {
-    margin: 0;
-    text-align: center;
-}
-.block-racer .racer h4 {
-    margin: 0;
-    text-align: center;
 }
 .block-racer .racer .inner_racer {
     width: 900px;
