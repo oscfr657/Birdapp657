@@ -635,10 +635,15 @@ form input[type=submit] {
     opacity: 0.3;
 }
 .grid_block.fancy .grid_page .grid_page_title {
+    transition: all 1s ease;
+    opacity: 0;
     position: absolute;
     top: 1em;
     width: 16.5vw;
     padding: 0em;
+}
+.grid_block.fancy .grid_page a:hover .grid_page_title {
+    opacity: 1;
 }
 .grid_block.boxed.fancy .grid_page .grid_page_title {
     width: 300px;
