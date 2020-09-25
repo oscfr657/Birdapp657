@@ -33,15 +33,17 @@
     {% endif %}
     {% if value.block_media.type == 'video' %}
     <!--#TODO: But what about webm and ogg ? sad_face -->
-    <video {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} >
-        <source src="{{ value.block_media.file.url }}" type="video/mp4">
-        Your browser does not support the video tag.
+    <video {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} 
+            preload="auto" {% if value.block_media.thumbnail %}poster="{{ value.block_media.thumbnail.url }}"{% endif %} >
+        <source src="{{ value.block_media.file.url }}" type="{{value.block_media.type }}/{{ value.block_media.file_extension }}">
+        <!-- #TODO: <track kind="subtitles" src="subtitles.vtt" srclang="en"> -->
+        <p>Your browser doesn't support HTML video. Here is a <a href="{{ value.block_media.file.url }}">link to the video</a> instead.</p>
     </video>
     {% elif value.block_media.type == 'audio' %}
     <div class="bg_area">
-    <audio {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} {% if value.controls %}controls{% endif %}>
-        <source src="{{ value.block_media.file.url }}" >
-        Your browser does not support the audio element.
+    <audio {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} {% if value.controls %}controls{% endif %} preload="auto" >
+        <source src="{{ value.block_media.file.url }}" type="{{value.block_media.type }}/{{ value.block_media.file_extension }}">
+        <p>Your browser doesn't support HTML video. Here is a <a href="{{ value.block_media.file.url }}">link to the audio</a> instead.</p>
     </audio>
     </div>
     {% elif value.image %}

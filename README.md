@@ -8,8 +8,8 @@ A small Wagtail app
 ### Tested with ###
 
 ```
-Django == 3.0
-Wagtail == 2.9
+Django == 3.1
+Wagtail == 2.10.1
 Wagtailmedia == 0.5.0
 ```
 
@@ -56,7 +56,6 @@ add to the MIDDLEWARE settings
 
 ``` python
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
-    #'wagtail.core.middleware.SiteMiddleware',  # wagtail
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',  # wagtail
 ```
 
