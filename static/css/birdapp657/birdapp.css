@@ -17,24 +17,20 @@ body  {
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--main-font);
     font-weight: normal;
+    text-align: left;
+}
+h1 {
+    font-size: 40px;
     text-align: center;
 }
-h1 { font-size: 80px; }
 h2 {
-    font-size: 40px;
-    margin: 0;
-}
-h3 {
     font-size: 28px;
-    margin: 0;
+    margin: 1rem 0 0 0;
 }
-h4, h5, h6 {
+h3, h4, h5, h6 {
     font-size: 20px;
     font-weight: 400;
     margin: 0;
-}
-h5, h6 {
-    text-align: left;
 }
 a {
     color: black;
@@ -43,13 +39,10 @@ a {
 p a {
     text-decoration: underline;
 }
-p,
-h2 {
-    margin: 1rem 0 1rem 0;
-}
 p, li, blockquote {
     font-family: var(--second-font);
     font-size: 20px;
+    margin: 0;
 }
 p sub {
     color: blue;
@@ -106,7 +99,12 @@ blockquote:before {
 .bird_top_wraper.transparent .bird_top .bird_logo a {
     color: white;
 }
-.bird_top .bird_logo h1 {
+.bird_top .bird_logo .site_name {
+    font-family: var(--main-font);
+    font-weight: normal;
+    text-align: left;
+    font-size: 80px;
+    text-align: center;
     line-height: 96px;
     margin: 0 0 0 -4px;
     float: right;
@@ -323,13 +321,6 @@ form input[type=submit] {
 }
 
 
-.content .content_body {
-    color: #505050;
-    text-align: left;
-    font-size: 18px;
-}
-
-
 .footer {
     position: relative;
     background: black;
@@ -538,6 +529,7 @@ form input[type=submit] {
     width: 1200px;
 }
 
+
 .link_block {
     margin: 0;
 }
@@ -723,7 +715,17 @@ form input[type=submit] {
 }
 
 
-
+.block-racer,
+.block-racer h2,
+.block-racer h3,
+.block-racer h4,
+.block-racer h5,
+.block-racer h6 {
+    text-align: center;
+}
+.block-racer h2 {
+    font-size: 40px;
+}
 .block-racer .racer {
     margin: auto;
     min-height: 5em;
@@ -965,22 +967,6 @@ form input[type=submit] {
         grid-template-columns: 1fr;
     }
 
-    .content .content_body .block-racer .racer .racer_text {
-        width: 100%;
-    }
-    .content .content_body .block-racer .racer .racer_text .rich-text {
-        position: relative;
-        transform: none;
-        top: 50%;
-        width: calc(100% - 2em);
-    }
-    .content .content_body .block-racer .racer .racer_image {
-        width: 100%;
-        padding: 0 16px;
-    }
-    .content .content_body .block-racer .racer .racer_image.right {
-        margin: 0 0 1em 0;
-    }
     .block-racer .racer .inner_racer {
         display: flex;
         padding: 3em 0 2.5em 0;
