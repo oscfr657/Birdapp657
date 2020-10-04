@@ -93,14 +93,14 @@
 
 </head>
 
+
 <body class="{{ page.slug }}">
 
-
-    {% block bird_top %}
+    {% block header %}
     <div class="bird_top_wraper_block {% if page.specific.transparent_header %}transparent{% endif %} {% if page.specific.show_breadcrumbs %}breadcrumbs{% endif %}">
     </div>
 
-    <div class="bird_top_wraper {% if page.transparent_header %}transparent{% endif %} {% if page.specific.show_breadcrumbs %}breadcrumbs{% endif %}">
+    <div class="bird_top_wraper {% if page.transparent_header %}transparent{% endif %}">
         <div class="bird_top">
             <div class="bird_logo">
                 <a href="{% pageurl current_site.root_page %}" >
@@ -183,13 +183,11 @@
         </div>
         {% endif %}
     </div>
-    {% endblock bird_top %}
+    {% endblock header %}
 
 
-    <div class="content {{ page.specific.content_width|default:'' }} {% if page.specific.transparent_header != False %}transparent{% endif %}">
     {% block content %}
     {% endblock content %}
-    </div>
 
 
     {% block footer %}
