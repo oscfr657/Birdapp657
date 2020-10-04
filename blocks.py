@@ -161,12 +161,14 @@ class FeedBirdBlock(blocks.StructBlock):
         context = super(FeedBirdBlock, self).get_context(value)
         if value['children'] == 'c':
             feed_posts = value[
-                'parent_page'].get_children().live().public().not_in_menu().order_by(
-                    '-go_live_at').distinct()
+                'parent_page'].get_children().live().public().filter(
+                    go_live_at__isnull=False).order_by(
+                            '-first_published_at').distinct()
         elif value['children'] == 'd':
             feed_posts = value[
-                'parent_page'].get_descendants().live().public().not_in_menu().order_by(
-                    '-go_live_at').distinct()
+                'parent_page'].get_descendants().live().public().filter(
+                    go_live_at__isnull=False).order_by(
+                            '-first_published_at').distinct()
         try:
             exclude = [excl.pk for excl in value['exclude'] ]
             feed_posts = feed_posts.exclude(id__in=exclude)
