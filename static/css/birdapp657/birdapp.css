@@ -365,7 +365,8 @@ form input[type=submit] {
 /*    max-width: max-content;*/
 }
 .search_result li h3 {
-    margin: 0 0 1em 0;
+    margin: 0 auto 1em auto;
+    max-width: 300px;
 }
 .search_result li .search_result_item_cover {
     margin: auto;
