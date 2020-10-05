@@ -11,6 +11,7 @@ body  {
     --main-font: 'normal', Helvetica, sans-serif;
     --second-font: 'Times New Roman', Times, serif;
     --top-width: 900px;
+    --content-width: 900px;
     --footer-width: 900px;
 }
 
@@ -66,9 +67,6 @@ blockquote:before {
     background-color: white;
     height: 96px;
     display: block;
-}
-.bird_top_wraper_block.breadcrumbs {
-    height: 137px;
 }
 .bird_top_wraper_block.transparent {
     display: None;
@@ -230,28 +228,10 @@ li.bird_menu_grand_child {
 }
 
 
-.breadcrumbs_wraper {
-    width: 100%;
-    background-color: white;
-    min-height: 39px;
-    display: flex;
-    border-top: solid 1px black;
-    border-bottom: solid 1px black;
-}
-.breadcrumbs_wraper .breadcrumbs {
-    margin: auto;
-    width: var(--top-width);
+.breadcrumbs {
+    margin: 1em auto 0 auto;
+    width: var(--content-width);
     max-width: calc(100% - 1em);
-    font-size: 1.2em;
-}
-.bird_top_wraper.transparent .breadcrumbs_wraper {
-    color: white;
-    background-color: transparent;
-    border-top: solid 1px white;
-    border-bottom: solid 1px white;
-}
-.bird_top_wraper.transparent .breadcrumbs_wraper a {
-    color: white;
 }
 
 
