@@ -1,57 +1,53 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
+{% if value.image and not value.block_media %}
+    {% image value.image original as header_photo %}
+{% endif %}
 <div class="header {{ value.block_class|default:'' }}" style="color: {{ value.font_color }}; 
                         background-color: {{ value.bg_color }};
-                        text-align: {{ value.text_align }};">
-    
-    {% if value.block_media.type == 'video' %}
-        {% if value.controls %}
-        <div class="header-player" >
-            <div class="header-play" onclick="birdPlay(this);">
-                <svg height="50" width="50" >
-                    <circle cx="25" cy="25" r="25"  fill="{{ value.bg_color }}" />
-                    <polygon points="15,10 15,40 45,25" style="fill:{{ value.font_color }};" />
-                </svg>
-            </div>
-            <div class="header-pause" onclick="birdPause(this);">
-                <svg width="50" height="50">
-                    <circle cx="25" cy="25" r="25"  fill="{{ value.bg_color }}" />
-                    <rect x="12.5" y="12.5" width="25" height="25"
-                    style="fill:{{ value.font_color }};" />
-                  </svg>
-            </div>
-        </div>
-        {% endif %}
-    {% endif %}
+                        text-align: {{ value.text_align }};
+                        {% if header_photo %}background-image: url('{{ header_photo.url }}');{% endif %}">
 
-    {% if value.text or value.button_link %}
-    <div class="header-text">
-        {{ value.text|richtext }}
-        {% include_block value.button_link %}
-    </div>
-    {% endif %}
-    {% if value.block_media.type == 'video' %}
+{% if value.block_media.type == 'video' %}
     <!--#TODO: But what about webm and ogg ? sad_face -->
-    <video {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} 
+    <video id="header_video" {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} 
             preload="auto" {% if value.block_media.thumbnail %}poster="{{ value.block_media.thumbnail.url }}"{% endif %} >
         <source src="{{ value.block_media.file.url }}" type="{{value.block_media.type }}/{{ value.block_media.file_extension }}">
         <!-- #TODO: <track kind="subtitles" src="subtitles.vtt" srclang="en"> -->
         <p>Your browser doesn't support HTML video. Here is a <a href="{{ value.block_media.file.url }}">link to the video</a> instead.</p>
     </video>
-    {% elif value.block_media.type == 'audio' %}
-    <div class="bg_area">
+{% elif value.block_media.type == 'audio' %}
     <audio {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} {% if value.controls %}controls{% endif %} preload="auto" >
         <source src="{{ value.block_media.file.url }}" type="{{value.block_media.type }}/{{ value.block_media.file_extension }}">
-        <p>Your browser doesn't support HTML video. Here is a <a href="{{ value.block_media.file.url }}">link to the audio</a> instead.</p>
+        <p>Your browser doesn't support HTML audio. Here is a <a href="{{ value.block_media.file.url }}">link to the audio</a> instead.</p>
     </audio>
-    </div>
-    {% elif value.image %}
-    {% image value.image original as header_photo %}
-    <div class="bg_area" style="background-image: url('{{ header_photo.url }}');">
-    </div>
-    {% else %}
-        <div class="bg_area">
+{% endif %}
+
+{% if value.text or value.button_link %}
+    <div class="header-content ">
+        <div class="header-content-text {{ value.text_align }}">
+        {{ value.text|richtext }}
+        {% include_block value.button_link %}
         </div>
-    {% endif %}
+    </div>
+{% endif %}
+
+{% if value.block_media.type == 'video' and value.controls %}
+    <div class="header-player" >
+        <div class="header-play" onclick="birdPlay(this);">
+            <svg height="50" width="50" >
+                <circle cx="25" cy="25" r="25"  fill="{{ value.bg_color }}" />
+                <polygon points="15,10 15,40 45,25" style="fill:{{ value.font_color }};" />
+            </svg>
+        </div>
+        <div class="header-pause" onclick="birdPause(this);">
+            <svg width="50" height="50">
+                <circle cx="25" cy="25" r="25"  fill="{{ value.bg_color }}" />
+                <rect x="12.5" y="12.5" width="25" height="25"
+                style="fill:{{ value.font_color }};" />
+            </svg>
+        </div>
+    </div>
+{% endif %}
 </div>
