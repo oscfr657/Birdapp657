@@ -35,7 +35,7 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 from .forms import SearchBirdForm
-from .blocks import (HeaderBirdBlock, BirdCodeBlock, RacerBirdBlock,
+from .blocks import (HeroBirdBlock, BirdCodeBlock, RacerBirdBlock,
     HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock)
 
 
@@ -202,8 +202,8 @@ class SoloBirdPageTag(TaggedItemBase):
 
 
 class SoloBirdPage(Page, BirdMixin):
-    header = StreamField([
-        ('header', HeaderBirdBlock(required=False, null=True)),
+    top_hero = StreamField([
+        ('hero', HeroBirdBlock(required=False, null=True)),
     ], blank=True, null=True)
     body = StreamField([
         ('paragraph', blocks.RichTextBlock(
@@ -231,7 +231,7 @@ class SoloBirdPage(Page, BirdMixin):
         ]
 
     content_panels = Page.content_panels + BirdMixin.content_panels + [
-        StreamFieldPanel('header'),
+        StreamFieldPanel('top_hero'),
         StreamFieldPanel('body'),
         ]
     promote_panels = Page.promote_panels + [
@@ -248,12 +248,12 @@ class SoloBirdPage(Page, BirdMixin):
 
 class SearchBirdPage(Page, BirdMixin):
     
-    header = StreamField([
-        ('header', HeaderBirdBlock(required=False, null=True)),
+    top_hero = StreamField([
+        ('hero', HeroBirdBlock(required=False, null=True)),
     ], blank=True, null=True)
 
     content_panels = Page.content_panels + BirdMixin.content_panels + [
-        StreamFieldPanel('header'),
+        StreamFieldPanel('top_hero'),
         ]
     settings_panels = Page.settings_panels + BirdMixin.settings_panels
 
@@ -301,8 +301,8 @@ class FormField(AbstractFormField):
 
 class FormBirdPage(AbstractForm, BirdMixin):
 
-    header = StreamField([
-        ('header', HeaderBirdBlock(required=False, null=True)),
+    top_hero = StreamField([
+        ('hero', HeroBirdBlock(required=False, null=True)),
     ], blank=True, null=True)
 
     thank_you_text = RichTextField(
@@ -318,7 +318,7 @@ class FormBirdPage(AbstractForm, BirdMixin):
     #show_result = models.BooleanField(default=False)
 
     content_panels = AbstractForm.content_panels + BirdMixin.content_panels + [
-            StreamFieldPanel('header'),
+            StreamFieldPanel('top_hero'),
     #        FieldPanel('show_result'),
             InlinePanel('form_fields', label="Form fields"),
             FieldPanel('thank_you_text', classname="full"),

@@ -31,7 +31,7 @@ h2 {
 h3, h4, h5, h6 {
     font-size: 20px;
     font-weight: 400;
-    margin: 0;
+    margin: 1em 0 0 0;
 }
 a {
     color: black;
@@ -473,6 +473,7 @@ form input[type=submit] {
 
 
 .block-paragraph {
+    display: contents;
     padding: 0em 0;
     width: 900px;
     max-width: 100%;
@@ -510,7 +511,6 @@ form input[type=submit] {
 }
 .feed_block a {
     max-width: calc(100vw - 2em);
-    display: block;
 }
 .grid_block.boxed,
 .feed_block.boxed {
@@ -638,7 +638,6 @@ form input[type=submit] {
 .block-code {
     margin: 0px auto;
     color: #e8e8e8;
-    width: 900px;
     max-width: 100%;
 }
 .block-code pre {

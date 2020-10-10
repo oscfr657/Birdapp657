@@ -30,7 +30,7 @@ class LinkBirdBlock(blocks.StructBlock):
         template = 'blocks/link.html'
 
 
-class HeaderBirdBlock(blocks.StructBlock):
+class HeroBirdBlock(blocks.StructBlock):
     block_class = blocks.CharBlock(required=False, null=True, help_text='Block class')
 
     muted = blocks.BooleanBlock(required=False, default=True, help_text='Muted')
@@ -55,7 +55,7 @@ class HeaderBirdBlock(blocks.StructBlock):
     button_link = LinkBirdBlock(required=False, null=True)
 
     class Meta:
-        label = 'Header'
+        label = 'Hero'
         icon = 'image'
         template = 'blocks/header.html'
 

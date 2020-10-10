@@ -5,6 +5,8 @@
 {% block content %}
 <div class="content {{ page.specific.content_class|default:'' }}">
 
+    {{ page.specific.top_hero }}
+    
     {% if page.specific.show_breadcrumbs %}
     <div class="breadcrumbs_wraper">
         <div class="breadcrumbs">
