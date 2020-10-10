@@ -867,7 +867,7 @@ form input[type=submit] {
 
     .block-racer .racer .inner_racer {
         display: flex;
-        padding: 0 0 1em;
+        padding: 0 0 2em;
         row-gap: 1em;
     }
     .block-racer .racer .inner_racer.left {
