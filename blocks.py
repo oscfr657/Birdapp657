@@ -60,16 +60,6 @@ class HeroBirdBlock(blocks.StructBlock):
         template = 'blocks/header.html'
 
 
-class BirdCodeBlock(blocks.StructBlock):  # TODO: Rename to CodeBirdBlock ?
-
-    code = blocks.TextBlock(required=True)
-
-    class Meta:
-        label = 'Code'
-        icon = 'code'
-        template = 'blocks/code.html'
-
-
 class RacerBirdBlock(blocks.StructBlock):
     text = blocks.RichTextBlock(
         required=False,
@@ -101,33 +91,10 @@ class RacerBirdBlock(blocks.StructBlock):
     block_class = blocks.CharBlock(required=False, help_text='Block class')
 
     class Meta:
+        group = 'Racers'
         label = 'Racer'
         icon = 'image'
         template = 'blocks/racer.html'
-
-
-class HTMLBirdBlock(blocks.StructBlock):
-
-    html = blocks.RawHTMLBlock()
-
-    class Meta:
-        label = 'HTML'
-        icon = 'code'
-        template = 'blocks/html_bird_block.html'
-
-
-class MediaFileBirdBlock(blocks.StructBlock):
-    block_width = blocks.CharBlock(required=False, help_text='Block width class')
-    muted = blocks.BooleanBlock(required=False, default=True, help_text='Muted')
-    autoplay = blocks.BooleanBlock(required=False, default=False, help_text='Autoplay')
-    loop = blocks.BooleanBlock(required=False, default=False, help_text='Loop')
-    controls = blocks.BooleanBlock(required=False, default=True, help_text='Controls')
-    block_media = AbstractMediaChooserBlock()
-
-    class Meta:
-        label = 'MediaFile'
-        icon = 'media'
-        template = 'blocks/media_file_bird_block.html'
 
 
 class FeedBirdBlock(blocks.StructBlock):
@@ -156,6 +123,11 @@ class FeedBirdBlock(blocks.StructBlock):
         default='black',
         label='Text color')
     max_number = blocks.IntegerBlock(required=False)
+
+    class Meta:
+        label = 'FeedBlock'
+        icon = 'list-ul'
+        template = 'blocks/feed_bird_block.html'
 
     def get_context(self, value):
         context = super(FeedBirdBlock, self).get_context(value)
@@ -194,8 +166,37 @@ class FeedBirdBlock(blocks.StructBlock):
         context['feed_posts'] = feed_posts
         return context
 
+
+class BirdCodeBlock(blocks.StructBlock):  # TODO: Rename to CodeBirdBlock ?
+
+    code = blocks.TextBlock(required=True)
+
     class Meta:
-        label = 'FeedBlock'
-        icon = 'list-ul'
-        template = 'blocks/feed_bird_block.html'
+        label = 'Code'
+        icon = 'code'
+        template = 'blocks/code.html'
+
+
+class HTMLBirdBlock(blocks.StructBlock):
+
+    html = blocks.RawHTMLBlock()
+
+    class Meta:
+        label = 'HTML'
+        icon = 'code'
+        template = 'blocks/html_bird_block.html'
+
+
+class MediaFileBirdBlock(blocks.StructBlock):
+    block_width = blocks.CharBlock(required=False, help_text='Block width class')
+    muted = blocks.BooleanBlock(required=False, default=True, help_text='Muted')
+    autoplay = blocks.BooleanBlock(required=False, default=False, help_text='Autoplay')
+    loop = blocks.BooleanBlock(required=False, default=False, help_text='Loop')
+    controls = blocks.BooleanBlock(required=False, default=True, help_text='Controls')
+    block_media = AbstractMediaChooserBlock()
+
+    class Meta:
+        label = 'MediaFile'
+        icon = 'media'
+        template = 'blocks/media_file_bird_block.html'
 

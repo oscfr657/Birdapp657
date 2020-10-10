@@ -1,59 +1,45 @@
 
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
-{% load birdtags %}
 
 <div class="racer {{ value.block_class }}"
     style="background-color:{{ value.bg_color }};">
-    {% if value.right %}
-    <div class="inner_racer right" >
-        {% if value.text %}
-            <div class="racer_text {{ value.text_color }}">{{ value.text|richtext }}</div>
-        {% endif %}
-        {% if value.image %}
-            <div class="racer_image">
-                {% if value.page_image_link %}
-                <a href="{% pageurl value.page_image_link %}">
-                    {% image value.image max-500x500 as tmp_img %}
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
-                </a>
-                {% elif value.external_image_link %}
-                <a href="{{ value.external_image_link }}">
-                    {% image value.image max-500x500 as tmp_img %}
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
-                </a>
-                {% else %}
-                    {% image value.image max-500x500 as tmp_img %}
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
-                {% endif %}
-            </div>
-        {% endif %}
-    </div>
-    {% else %}
-    <div class="inner_racer left" >
-        {% if value.image %}
-            <div class="racer_image">
-                {% if value.page_image_link %}
-                <a href="{% pageurl value.page_image_link %}">
-                    {% image value.image max-500x500 as tmp_img %}
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
-                </a>
-                {% elif value.external_image_link %}
-                <a href="{{ value.external_image_link }}">
-                    {% image value.image max-500x500 as tmp_img %}
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
-                </a>
-                {% else %}
-                {% image value.image max-500x500 as tmp_img %}
-                <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" loading="lazy" />
-                {% endif %}
-            </div>
-        {% endif %}
-        {% if value.text %}
-            <div class="racer_text {{ value.text_color }}">
-                {{ value.text|richtext }}
-            </div>
-        {% endif %}
-    </div>
+    <div class="inner_racer {% if value.right %}right{% else %}left{% endif %}" >
+    {% if value.text and value.right %}
+        <div class="racer_text {{ value.text_color }}">
+            {{ value.text|richtext }}
+        </div>
     {% endif %}
+    {% if value.image %}
+        {% image value.image width-400 as 400_photo %}
+        {% image value.image width-500 as 500_photo %}
+        {% image value.image width-600 as 600_photo %}
+        {% image value.image width-900 as 900_photo %}
+        <div class="racer_image">
+        {% if value.page_image_link %}
+            <a href="{% pageurl value.page_image_link %}">
+        {% elif value.external_image_link %}
+            <a href="{{ value.external_image_link }}">
+        {% endif %}
+            <img srcset="{{ 400_photo.url }} 400w,
+                        {{ 500_photo.url }} 500w,
+                        {{ 600_photo.url }} 600w,
+                        {{ 900_photo.url }} 900w"
+                sizes="(max-width: 400px) 400px,
+                        (max-width: 600px) 600px,
+                        (max-width: 900px) 500px,
+                        (max-width: 1200px) 600px,
+                        900px"
+                src="{{ 900_photo.url }}" alt="{{ 900_photo.alt }}" loading="lazy" />
+        {% if value.page_image_link or value.external_image_link %}
+            </a>
+        {% endif %}
+        </div>
+    {% endif %}
+    {% if value.text and not value.right %}
+        <div class="racer_text {{ value.text_color }}">
+            {{ value.text|richtext }}
+        </div>
+    {% endif %}
+    </div>
 </div>

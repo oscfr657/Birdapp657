@@ -104,7 +104,7 @@ blockquote:before {
     font-size: 80px;
     text-align: center;
     line-height: 96px;
-    margin: 0 0 0 -4px;
+    margin: 0 0 0 -10px;
     float: right;
 }
 .bird_top .bird_logo img {
@@ -419,9 +419,10 @@ form input[type=submit] {
 .header .header-content {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    max-width: calc(100% - 1em);
+    max-width: calc(100% - 2em);
     margin: auto;
 }
 .header .header-content-text {
@@ -663,18 +664,12 @@ form input[type=submit] {
     min-height: 5em;
 }
 .block-racer .racer .inner_racer {
-    width: 900px;
-    max-width: calc(100% - 2em);
+    width: 100%;
+    max-width: 100%;
     margin: auto;
-    padding: 3em 0;
+    padding: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 4em;
-}
-.block-racer .racer.full .inner_racer {
-    width: 100%;
-    padding: 0;
-    max-width: 100%;
     grid-column-gap: 0;
 }
 .block-racer .racer .inner_racer.left .racer_image {
@@ -683,20 +678,15 @@ form input[type=submit] {
 .block-racer .racer .inner_racer.right .racer_image {
     justify-self: left;
 }
-.block-racer .racer.full .inner_racer .racer_image {
+.block-racer .racer .inner_racer .racer_image {
     width: 100%;
     overflow: hidden;
 }
 .block-racer .racer .racer_image img {
-    width: 600px;
-    max-width: 100%;
-    margin: 0px 0px -5px 0px;
-}
-.block-racer .racer.full .racer_image img {
     width: 100%;
+    max-width: 100%;
     margin: 0px 0px -6px 0px;
 }
-
 .block-racer .racer .inner_racer .racer_text {
     margin: auto 0;
 }
@@ -877,11 +867,8 @@ form input[type=submit] {
 
     .block-racer .racer .inner_racer {
         display: flex;
-        padding: 3em 0 2.5em 0;
-        row-gap: 1em;
-    }
-    .block-racer .racer.full .inner_racer {
         padding: 0 0 1em;
+        row-gap: 1em;
     }
     .block-racer .racer .inner_racer.left {
         flex-flow: column;
