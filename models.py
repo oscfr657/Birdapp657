@@ -36,7 +36,7 @@ from taggit.models import TaggedItemBase
 
 from .forms import SearchBirdForm
 from .blocks import (HeroBirdBlock, BirdCodeBlock, RacerBirdBlock,
-    HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock)
+    HTMLBirdBlock, MediaFileBirdBlock, FeedBirdBlock, GridBirdBlock)
 
 
 class FontFace(Orderable):
@@ -218,9 +218,10 @@ class SoloBirdPage(Page, BirdMixin):
         ('image', ImageChooserBlock(required=False, null=True)),
         ('media', MediaFileBirdBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
-        ('racer', RacerBirdBlock(required=False, null=True)),
         ('html', HTMLBirdBlock(required=False, null=True)),
         ('feed', FeedBirdBlock(required=False)),
+        ('grid', GridBirdBlock(required=False)),
+        ('racer', RacerBirdBlock(required=False, null=True)),
     ], blank=True, null=True)
 
     tags = ClusterTaggableManager(through=SoloBirdPageTag, blank=True)

@@ -3,66 +3,16 @@
 
 
 {% if feed_posts %}
-<div style="background-color:{{ value.bg_color }}; color:{{ value.text_color }};" >
-{% if value.use_grid_template %}
-<div class="grid_block {{ value.block_class }}" >
-{% else %}
 <div class="feed_block {{ value.block_class }}" >
-{% endif %}
     {% for p in feed_posts %}
-        {% if value.use_grid_template %}
-        <div class="grid_page">
-            <a href="{% pageurl p %}" style="color:{{ value.text_color }};">
-                {% image p.specific.cover_image min-400x400 as tmp_img %}
-                <div class="grid_page_cover">
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" loading="lazy" />
-                </div>
-                {% if value.show_title or value.show_meta %}
-                <div class="grid_page_title">
-                    {% if value.show_title %}
-                    <h3>{{ p.title }}</h3>
-                    {% endif %}
-                    {% if value.show_meta %}
-                    <span >
-                    {% if p.go_live_at and p.specific.show_date and value.show_date %}
-                        {{ p.go_live_at|date:"d M Y" }} 
-                    {% elif p.specific.show_date and value.show_date %}
-                        {{ p.first_published_at|date:"d M Y" }}
-                    {% endif %}
-                    {% if p.specific.show_author != False and value.show_author != False %} / {{ p.specific.author }}{% endif %}
-                    </span>
-                    {% endif %}
-                </div>
-                {% endif %}
-               
-            </a>
-            {% if value.show_intro %}
-            <div class="intro">
-            {{ p.specific.intro|richtext }}
-            </div>
-            {% endif %}
-            
-            {% if value.show_content %}
-            <div class="intro">
-            {{ p.specific.body }}
-            </div>
-            {% endif %}
-        </div>
-        {% else %}
         <div class="feed_item">
-            <a href="{% pageurl p %}" style="color:{{ value.text_color }};">
-                
-                {% image p.specific.cover_image min-400x400 as tmp_img %}
-                <div class="feed_item_cover">
-                    <img src="{{ tmp_img.url }}" alt="{{ tmp_img.alt }}" class="cover_image" loading="lazy" />
-                </div>
 
-                {% if value.show_title %}
-                <div class="feed_item_title">
-                    <h3>{{ p.title }}</h3>
-                </div>
-                {% endif %}
-            </a>
+            {% if value.show_title %}
+            <div class="feed_item_title">
+                <h2>{{ p.title }}</h2>
+            </div>
+            {% endif %}
+
             {% if value.show_meta %}
             <span class="meta">
             {% if p.go_live_at and p.specific.show_date and value.show_date %}
@@ -73,6 +23,25 @@
             {% if p.specific.show_author != False and value.show_author != False %} / {{ p.specific.author }}{% endif %}
             </span>
             {% endif %}
+
+            <a href="{% pageurl p %}" >
+                {% image p.specific.cover_image min-400x400 as tmp_img %}
+                {% image p.specific.cover_image width-400 as 400_photo %}
+                {% image p.specific.cover_image width-600 as 600_photo %}
+                {% image p.specific.cover_image width-900 as 900_photo %}
+                {% image p.specific.cover_image width-900 as original_photo %}
+                <div class="feed_item_cover">
+                    <img srcset="{{ 400_photo.url }} 400w,
+                                {{ 600_photo.url }} 600w,
+                                {{ 900_photo.url }} 900w,
+                                {{ original_photo.url }} 901w"
+                        sizes="(max-width: 400px) 400px,
+                                (max-width: 600px) 600px,
+                                (max-width: 900px) 900px,
+                                901px"
+                        src="{{ original_photo.url }}" alt="{{ original_photo.alt }}" class="cover_image" loading="lazy" />
+                </div>
+            </a>
 
             {% if value.show_intro %}
             <div class="feed_intro">
@@ -85,9 +54,8 @@
             {{ p.specific.body }}
             </div>
             {% endif %}
+            
         </div>
-        {% endif %}
     {% endfor %}
-</div>
 </div>
 {% endif %}

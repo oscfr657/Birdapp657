@@ -166,6 +166,66 @@ class FeedBirdBlock(blocks.StructBlock):
         context['feed_posts'] = feed_posts
         return context
 
+class GridBirdBlock(blocks.StructBlock):
+    block_class = blocks.CharBlock(required=False, help_text='Block class')
+    children = blocks.ChoiceBlock(choices=[
+            ('c', 'Children'),
+            ('d', 'Descendants'),
+        ],
+        icon='arrow-down',
+        required=True
+        )
+    parent_page = blocks.PageChooserBlock(label='parent page')
+    exclude = blocks.ListBlock(blocks.PageChooserBlock(
+        label="Exclude page"), required=False, default=[])
+    tags = blocks.ListBlock(blocks.CharBlock(label="Tag"), required=False)
+    bg_color = blocks.CharBlock(default='white', label='Background color')
+    text_color = blocks.CharBlock(default='black', label='Text color')
+    max_number = blocks.IntegerBlock(required=False)
+
+    class Meta:
+        group = 'GridBlock'
+        label = 'GridBlock'
+        icon = 'list-ul'
+        template = 'blocks/grid_bird_block.html'
+
+    def get_context(self, value):
+        context = super(GridBirdBlock, self).get_context(value)
+        if value['children'] == 'c':
+            grid_posts = value[
+                'parent_page'].get_children().live().public().filter(
+                    go_live_at__isnull=False).order_by(
+                            '-go_live_at').distinct()
+        elif value['children'] == 'd':
+            grid_posts = value[
+                'parent_page'].get_descendants().live().public().filter(
+                    go_live_at__isnull=False).order_by(
+                            '-go_live_at').distinct()
+        try:
+            exclude = [excl.pk for excl in value['exclude'] ]
+            grid_posts = grid_posts.exclude(id__in=exclude)
+        except AttributeError:
+            pass
+        tags = value['tags']
+        posts = []
+        for post in grid_posts.specific():
+            try:
+                if tags:
+                    if set(post.tags.all().values_list('name', flat=True)).intersection(set(tags)):
+                        post = post
+                    else:
+                        continue
+                if post.cover_image:
+                    posts.append(post)
+            except (FieldError, AttributeError):
+                pass
+        grid_posts = posts
+        max_number = value['max_number']
+        if max_number:
+            grid_posts = grid_posts[:max_number]
+        context['grid_posts'] = grid_posts
+        return context
+
 
 class BirdCodeBlock(blocks.StructBlock):  # TODO: Rename to CodeBirdBlock ?
 
