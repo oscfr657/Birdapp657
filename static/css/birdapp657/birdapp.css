@@ -523,7 +523,6 @@ form input[type=submit] {
 }
 .grid_block .grid_page .grid_page_cover {
     overflow: hidden;
-    border: solid 1px black;
     border: None;
     background-color: black;
     display: block;
@@ -535,29 +534,24 @@ form input[type=submit] {
     margin: 0 0 -5px 0;
     display: block;
     transition: all 1s ease;
+    opacity: 0.2;
 }
 .grid_block .grid_page img.cover_image:hover {
     transform: scale(1.25);
 }
 .grid_block .grid_page a:hover img.cover_image {
     transform: scale(1.25);
-    opacity: 0.3;
-}
-.grid_block .grid_page .grid_page_title {
-    transition: all 1s ease;
-    opacity: 0;
-    position: absolute;
-    top: 1em;
-    width: 16.5vw;
-    padding: 0em;
-}
-.grid_block .grid_page a:hover .grid_page_title {
     opacity: 1;
 }
 .grid_block .grid_page .grid_page_title {
+    transition: all 1s ease;
+    opacity: 1;
+    position: absolute;
+    top: 1em;
+    padding: 0em;
     width: 33vw;
 }
-.grid_block .grid_page .grid_page_title h3 {
+.grid_block .grid_page .grid_page_title h2 {
     color: white;
     margin: 1em 0 0.3em 1em;
     text-shadow: 1px 1px 1px black;
@@ -694,13 +688,13 @@ form input[type=submit] {
 
 
 @media (max-width: 1200px) {
-    .grid_block.wide.fancy .grid_page .grid_page_title{
-        width: 32.8vw;
-    }
-
     form {
         max-width: calc(100% - 2em);
         margin: auto;
+    }
+
+    .grid_block .grid_page img.cover_image {
+        opacity: 1;
     }
 
 }
@@ -781,8 +775,8 @@ form input[type=submit] {
     .grid_block {
         grid-template-columns: repeat(2, 1fr);
     }
-    .grid_block.fancy {
-        max-width: 100%;
+    .grid_block .grid_page img.cover_image {
+        opacity: 1;
     }
     
     .block-media .media {
@@ -821,6 +815,9 @@ form input[type=submit] {
 
     .grid_block {
         grid-template-columns: 1fr;
+    }
+    .grid_block .grid_page .grid_page_title {
+        width: 100vw;
     }
 }
 
