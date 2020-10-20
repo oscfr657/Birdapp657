@@ -772,6 +772,12 @@ form input[type=submit] {
         max-width: calc(100% - 2em);
     }
 
+    .block-racer .racer .inner_racer h2,
+    .block-racer .racer .inner_racer h3,
+    .block-racer .racer .inner_racer h4 {
+        margin: 0;
+    }
+
     .grid_block {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -793,8 +799,11 @@ form input[type=submit] {
 
     .block-racer .racer .inner_racer {
         display: flex;
-        padding: 0 0 2em;
-        row-gap: 1em;
+    }
+    .block-racer .racer .inner_racer h2,
+    .block-racer .racer .inner_racer h3,
+    .block-racer .racer .inner_racer h4 {
+        margin: 0;
     }
     .block-racer .racer .inner_racer.left {
         flex-flow: column;
@@ -806,7 +815,7 @@ form input[type=submit] {
         margin: 0px 0px -5px 0px;
     }
     .block-racer .racer .inner_racer .racer_text {
-        margin: 1em 0 0;
+        padding: 50px 0;
     }
 
     .content .responsive-object {
