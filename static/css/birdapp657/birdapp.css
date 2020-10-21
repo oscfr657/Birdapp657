@@ -385,7 +385,7 @@ form input[type=submit] {
 /** ^ End Ugly ^ **/
 
 
-.header {
+.hero {
     position: relative;
     height: 500px;
     overflow: hidden;
@@ -395,10 +395,10 @@ form input[type=submit] {
     background-position: center;
     background-size: cover;
 }
-.bird_top_wraper_block.transparent + .bird_top_wraper + .content .header {
+.bird_top_wraper_block.transparent + .bird_top_wraper + .content > .block-hero > .hero {
     height: 100vh;
 }
-.header .header-content {
+.hero .hero-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -407,35 +407,35 @@ form input[type=submit] {
     max-width: calc(100% - 2em);
     margin: auto;
 }
-.header .header-content-text {
+.hero .hero-content-text {
     width: var(--content-width);
     max-width: 100%;
     margin: auto;
 }
-.header .header-content-text.center h1,
-.header .header-content-text.center h2,
-.header .header-content-text.center h3,
-.header .header-content-text.center h4,
-.header .header-content-text.center h5,
-.header .header-content-text.center p {
+.hero .hero-content-text.center h1,
+.hero .hero-content-text.center h2,
+.hero .hero-content-text.center h3,
+.hero .hero-content-text.center h4,
+.hero .hero-content-text.center h5,
+.hero .hero-content-text.center p {
     text-align: center;
 }
-.header .header-player {
+.hero .hero-player {
     position: absolute;
     bottom: 0;
     width: 100vw;
     max-width: 100%;
     margin: 0 auto;
 }
-.header-pause {
+.hero-pause {
     display: none;
 }
-.header video {
+.hero video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
 }
-.header audio {
+.hero audio {
     width: 600px;
     max-width: calc(100% - 1em);
     top: 75%;
