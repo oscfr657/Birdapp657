@@ -35,10 +35,10 @@
             {% for search_promotion in search_promotions %}
                 <li>
                     <a href="{% pageurl search_promotion.page %}">
-                        {% if search_promotion.page.specific.cover_image %}
-                        {% image search_promotion.page.specific.cover_image original as tmp_photo %}
-                        <div class="search_result_item_cover">
-                            <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="cover_image" />
+                        {% if search_promotion.page.specific.image %}
+                        {% image search_promotion.page.specific.image original as tmp_photo %}
+                        <div class="search_result_item">
+                            <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="image" />
                         </div>
                         {% endif %}
                         <h3>{{ search_promotion.page.title }}</h3>
@@ -55,10 +55,10 @@
             {% for result in search_results %}
                 <li>
                     <a href="{% pageurl result %}">
-                        {% if result.specific.cover_image %}
-                        {% image result.specific.cover_image original as tmp_photo %}
-                        <div class="search_result_item_cover">
-                            <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="cover_image" />
+                        {% if result.specific.image %}
+                        {% image result.specific.image original as tmp_photo %}
+                        <div class="search_result_item">
+                            <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="image" />
                         </div>
                         {% endif %}
                         <h3>{{ result.title }}</h3>

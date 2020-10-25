@@ -57,7 +57,7 @@ class HeroBirdBlock(blocks.StructBlock):
     class Meta:
         label = 'Hero'
         icon = 'image'
-        template = 'blocks/header.html'
+        template = 'blocks/hero.html'
 
 
 class RacerBirdBlock(blocks.StructBlock):
@@ -155,7 +155,7 @@ class FeedBirdBlock(blocks.StructBlock):
                         post = post
                     else:
                         continue
-                if post.cover_image:
+                if post.image:
                     posts.append(post)
             except (FieldError, AttributeError):
                 pass
@@ -215,7 +215,7 @@ class GridBirdBlock(blocks.StructBlock):
                         post = post
                     else:
                         continue
-                if post.cover_image:
+                if post.image:
                     posts.append(post)
             except (FieldError, AttributeError):
                 pass

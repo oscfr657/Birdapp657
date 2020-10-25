@@ -253,7 +253,7 @@ li.bird_menu_grand_child {
 .content .meta {
     text-align: center;
 }
-.content .cover img.top_cover_image {
+.content .cover img.top_image {
     display: block;
     margin: auto;
     max-width: 100%;
@@ -480,11 +480,11 @@ form input[type=submit] {
 .feed_block .feed_item {
     padding: 2em 0;
 }
-.feed_block .feed_item .feed_item_cover {
+.feed_block .feed_item .feed_item_image {
     overflow: hidden;
     border: solid 1px black;
 }
-.feed_block .feed_item img.cover_image {
+.feed_block .feed_item img.image {
     width: 100%;
     margin: 0 0 -5px 0;
     display: block;
@@ -521,7 +521,7 @@ form input[type=submit] {
 .grid_block .grid_page {
     padding: 0;
 }
-.grid_block .grid_page .grid_page_cover {
+.grid_block .grid_page .grid_page_image {
     overflow: hidden;
     border: None;
     background-color: black;
@@ -529,17 +529,17 @@ form input[type=submit] {
     width: 100%;
     height: auto;
 }
-.grid_block .grid_page img.cover_image {
+.grid_block .grid_page img.image {
     width: 100%;
     margin: 0 0 -5px 0;
     display: block;
     transition: all 1s ease;
     opacity: 0.2;
 }
-.grid_block .grid_page img.cover_image:hover {
+.grid_block .grid_page img.image:hover {
     transform: scale(1.25);
 }
-.grid_block .grid_page a:hover img.cover_image {
+.grid_block .grid_page a:hover img.image {
     transform: scale(1.25);
     opacity: 1;
 }
@@ -587,10 +587,11 @@ form input[type=submit] {
 
 
 .block-code {
+    width: var(--content-width);
     max-width: 100%;
     overflow: auto;
     padding: 0 1em;
-    margin: 1em 0;
+    margin: 1em auto;
     background-color: #292929;
     color: #e8e8e8;
 }
@@ -693,7 +694,7 @@ form input[type=submit] {
         margin: auto;
     }
 
-    .grid_block .grid_page img.cover_image {
+    .grid_block .grid_page img.image {
         opacity: 1;
     }
 
@@ -781,7 +782,7 @@ form input[type=submit] {
     .grid_block {
         grid-template-columns: repeat(2, 1fr);
     }
-    .grid_block .grid_page img.cover_image {
+    .grid_block .grid_page img.image {
         opacity: 1;
     }
     
