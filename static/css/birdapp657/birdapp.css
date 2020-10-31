@@ -447,11 +447,13 @@ form input[type=submit] {
 
 
 .link_block {
-    margin: 0;
+    margin: 1em 0;
+    padding: 0.5em 0;
 }
 .link_block a {
-    padding: 0.5em 1.5em;
+    padding: 17px 26px 12px 26px;
     font-size: larger;
+    text-decoration: none;
 }
 
 
