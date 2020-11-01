@@ -10,7 +10,9 @@ body  {
     font-family: 'normal', Helvetica, sans-serif;
     --main-font: 'normal', Helvetica, sans-serif;
     --second-font: 'Times New Roman', Times, serif;
+    --site-name-font-size: 54px;
     --top-width: 900px;
+    --top-height: 80px;
     --content-width: 900px;
     --footer-width: 900px;
 }
@@ -28,9 +30,12 @@ h2 {
     font-size: 28px;
     margin: 1rem 0 0 0;
 }
-h3, h4, h5, h6 {
+h3 {
+    font-size: 26px;
+    margin: 1em 0 0 0;
+}
+h4, h5, h6 {
     font-size: 20px;
-    font-weight: 400;
     margin: 1em 0 0 0;
 }
 a {
@@ -48,7 +53,9 @@ p, li, blockquote {
 p sub {
     color: blue;
 }
-
+ul {
+    padding: 0 0 0 1.1em;
+}
 
 blockquote {
     margin: 1em auto 1em 1.6em;
@@ -65,7 +72,7 @@ blockquote:before {
 .bird_top_wraper_block {
     position: relative;
     background-color: white;
-    height: 96px;
+    height: var(--top-height);
     display: block;
 }
 .bird_top_wraper_block.transparent {
@@ -101,9 +108,8 @@ blockquote:before {
     font-family: var(--main-font);
     font-weight: normal;
     text-align: left;
-    font-size: 80px;
+    font-size: var(--site-name-font-size);
     text-align: center;
-    line-height: 96px;
     margin: 0 0 0 -10px;
     float: right;
 }
@@ -125,12 +131,15 @@ blockquote:before {
 }
 .bird_top .bird_menu {
     float: right;
-    margin: 57px 0 0 0;
+    height: var(--top-height);
 }
 .bird_top .bird_menu_list {
     margin: 0;
     padding: 0;
     display: block;
+    position: relative;
+    top: calc(50% + 4px);
+    transform: translateY(-50%);
 }
 .bird_top .bird_menu_child {
     display: inline-block;
@@ -161,10 +170,11 @@ li.bird_menu_child {
 }
 #bird_mobile_menu_dropdown.active + .bird_menu {
     position: fixed;
-    right: 0;
-    top: 39px;
+    top: calc(var(--top-height) - 1px);
     bottom: 0;
+    right: 0;
     left: 0;
+    height: auto;
     background-color: white;
 }
 .bird_top .bird_menu_grand_child {
@@ -179,7 +189,7 @@ li.bird_menu_grand_child {
 .bird_top .bird_menu a {
     text-decoration: none;
     background-color: white;
-    padding: 6px 15px 2px 15px;
+    padding: 10px 15px 2px 15px;
     white-space: nowrap;
     font-size: 1.3em;
 }
@@ -719,17 +729,16 @@ form input[type=submit] {
     .bird_menu {
         display: none;
     }
-    .bird_menu_list {
-        display: grid;
-    }
     #bird_mobile_menu_dropdown.active + .bird_menu {
         display: block;
     }
     #bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child_list {
         display: none;
     }
-    .bird_top_wraper .bird_menu ul {
+    .bird_top_wraper .bird_menu ul.bird_menu_list {
         display: grid;
+        top: 0;
+        transform: none;
     }
     .bird_top_wraper .bird_menu_child {
         text-align: center;
