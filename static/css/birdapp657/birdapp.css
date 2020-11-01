@@ -470,11 +470,11 @@ form input[type=submit] {
 .block-paragraph {
     padding: 0em 0;
     width: 900px;
-    max-width: 100%;
+    max-width: calc(100% - 2em);
     margin: auto;
 }
 .block-paragraph iframe {
-    max-width: 100%;
+    max-width: calc(100% - 2em);
 }
 
 
