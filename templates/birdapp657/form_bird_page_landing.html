@@ -7,13 +7,11 @@
     {{ page.specific.header }}
 
     {% if page.specific.show_breadcrumbs %}
-    <div class="breadcrumbs_wraper">
-        <div class="breadcrumbs">
-            {% for ancestor in page.get_ancestors.public|slice:"2:" %}
-            <a href="{% pageurl ancestor %}">{{ ancestor.title }}</a> /
-            {% endfor %}
-            {{ page.title  }}
-        </div>
+    <div class="breadcrumbs">
+        {% for ancestor in page.get_ancestors.public|slice:"2:" %}
+        <a href="{% pageurl ancestor %}">{{ ancestor.title }}</a> /
+        {% endfor %}
+        {{ page.title  }}
     </div>
     {% endif %}
     

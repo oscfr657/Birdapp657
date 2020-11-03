@@ -40,10 +40,6 @@ h4, h5, h6 {
 }
 a {
     color: black;
-    text-decoration: none;
-}
-p a {
-    text-decoration: underline;
 }
 p, li, blockquote {
     font-family: var(--second-font);
@@ -67,6 +63,7 @@ blockquote:before {
     margin: -0.3em auto;
     quotes: "\201C" "\201D" "\2018" "\2019";
 }
+
 
 
 .bird_top_wraper_block {
@@ -110,7 +107,7 @@ blockquote:before {
     text-align: left;
     font-size: var(--site-name-font-size);
     text-align: center;
-    margin: 0 0 0 -10px;
+    margin: 0 0 0 -6px;
     float: right;
 }
 .bird_top .bird_logo img {
@@ -147,17 +144,18 @@ blockquote:before {
 li.bird_menu_child {
     font-family: var(--main-font);
 }
-
 .bird_top .bird_menu_child:hover .bird_menu_child_list {
     display: grid;
     text-align: left;
+    box-shadow: 1px 1px 2px black;
 }
 .bird_top .bird_menu_child_list {
     display: none;
     position: absolute;
     padding: 0;
-    margin: auto;
+    margin: 1px 0px;
     width: max-content;
+    background-color: white;
 }
 #bird_mobile_menu_dropdown.active + .bird_menu li.bird_menu_child {
     margin: 2em auto 0 auto;
@@ -177,18 +175,8 @@ li.bird_menu_child {
     height: auto;
     background-color: white;
 }
-.bird_top .bird_menu_grand_child {
-    display: inline-block;
-    margin: 10px 0px 0 0px;
-    z-index: 1;
-}
-li.bird_menu_grand_child {
-    font-family: var(--main-font);
-}
-
 .bird_top .bird_menu a {
     text-decoration: none;
-    background-color: white;
     padding: 10px 15px 2px 15px;
     white-space: nowrap;
     font-size: 1.3em;
@@ -204,22 +192,21 @@ li.bird_menu_grand_child {
     background-color: black;
 }
 .bird_top .bird_menu a.icon {
-    background-color: white;
     padding: 6px 15px 2px 15px;
     margin: 0;
 }
 .bird_top_wraper.transparent .bird_top .bird_menu a.icon {
     background-color: transparent;
 }
-.bird_top_wraper.transparent .bird_top .bird_menu a.active,
-.bird_top_wraper.transparent .bird_top .bird_menu a:hover,
-.bird_top_wraper.transparent .bird_top .bird_menu a:active {
+.bird_top_wraper.transparent .bird_top .bird_menu_child > a.active,
+.bird_top_wraper.transparent .bird_top .bird_menu_child > a:hover,
+.bird_top_wraper.transparent .bird_top .bird_menu_child > a:active {
     color: white;
     background-color: black;
 }
-.bird_top .bird_menu a.icon.active.hover,
-.bird_top .bird_menu a.icon.hover:hover,
-.bird_top .bird_menu a.icon.hover:active {
+.bird_top .bird_menu_child > a.icon.active.hover,
+.bird_top .bird_menu_child > a.icon.hover:hover,
+.bird_top .bird_menu_child > a.icon.hover:active {
     background-color: black;
 }
 .bird_top .bird_menu a.icon img {
@@ -236,14 +223,39 @@ li.bird_menu_grand_child {
 .bird_top .bird_menu a.icon:hover img.hover {
     display: inline-block;
 }
+.bird_top .bird_menu_grand_child {
+    display: inline-block;
+    margin: 10px 1.5em 0 0px;
+    z-index: 1;
+}
+li.bird_menu_grand_child {
+    font-family: var(--main-font);
+}
+.bird_menu_grand_child a {
+    width: 100%;
+    display: inline-block;
+    margin: 0px -30px 0 0;
+}
+.bird_top_wraper.transparent .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a {
+    color: black;
+}
+.bird_top_wraper.transparent .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:active,
+.bird_top_wraper.transparent .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a.active,
+.bird_top_wraper.transparent .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:hover {
+    color: white;
+    background-color: black;
+}
+
 
 
 .breadcrumbs {
     margin: 1em auto 0 auto;
     width: var(--content-width);
-    max-width: calc(100% - 1em);
+    max-width: calc(100% - 2em);
 }
-
+.breadcrumbs a {
+    text-decoration: none;
+}
 
 .content {
     position: relative;
@@ -404,6 +416,9 @@ form input[type=submit] {
     top: 0;
     background-position: center;
     background-size: cover;
+}
+.hero a {
+    color: unset;
 }
 .bird_top_wraper_block.transparent + .bird_top_wraper + .content > .block-hero > .hero {
     height: 100vh;
@@ -763,7 +778,7 @@ form input[type=submit] {
     .content .title,
     .content .meta,
     .content .cover {
-        max-width: calc(100% - 2em);
+        max-width: calc(100% - 1em);
     }
     .content .meta {
         font-size: 1.2em;
