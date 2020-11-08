@@ -1,0 +1,41 @@
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+{% if grid_posts %}
+<div style="background-color:{{ value.bg_color }}; color:{{ value.text_color }};" >
+<div class="simple_grid_block {{ value.block_class }}" >
+    {% for p in grid_posts %}
+        <div class="simple_grid_page">
+            <a href="{% pageurl p %}" style="color:{{ value.text_color }};">
+                {% image p.specific.image width-400 as 400_photo %}
+                {% image p.specific.image width-500 as 500_photo %}
+                {% image p.specific.image width-600 as 600_photo %}
+                <div class="simple_grid_page_image">
+                    <img srcset="{{ 400_photo.url }} 400w,
+                                {{ 500_photo.url }} 500w,
+                                {{ 600_photo.url }} 600w"
+                        sizes="(max-width: 400px) 400px,
+                                (max-width: 600px) 600px,
+                                (max-width: 800px) 400px,
+                                (max-width: 900px) 500px,
+                                400px"
+                        src="{{ 400_photo.url }}" alt="{{ 400_photo.alt }}" class="image" loading="lazy" />
+                </div>
+                <div class="simple_grid_page_title">
+                    <h2>{{ p.title }}</h2>
+                    <span >
+                    {% if p.go_live_at %}
+                        {{ p.go_live_at|date:"d M Y" }} 
+                    {% else %}
+                        {{ p.first_published_at|date:"d M Y" }}
+                    {% endif %}
+                     / {% if p.specific.author%}{{ p.specific.author }}{% else %}{{ p.owner.username }}{% endif %}
+                    </span>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+</div>
+{% endif %}

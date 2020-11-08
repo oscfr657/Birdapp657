@@ -227,6 +227,14 @@ class GridBirdBlock(blocks.StructBlock):
         return context
 
 
+class SimpleGridBirdBlock(GridBirdBlock):
+    class Meta:
+        group = 'GridBlock'
+        label = 'SimpleGridBlock'
+        icon = 'list-ul'
+        template = 'blocks/simple_grid_bird_block.html'
+
+
 class BirdCodeBlock(blocks.StructBlock):  # TODO: Rename to CodeBirdBlock ?
 
     code = blocks.TextBlock(required=True)
