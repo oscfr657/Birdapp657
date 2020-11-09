@@ -600,12 +600,12 @@ form input[type=submit] {
 
 .simple_grid_block {
     width: var(--top-width);
-    max-width: 100%;
+    max-width: calc(100% - 2em);
     margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 0;
-    row-gap: 0;
+    padding: 1em 0;
+    row-gap: 1em;
     column-gap: 1em;
 }
 .simple_grid_block a {
@@ -614,6 +614,9 @@ form input[type=submit] {
 }
 .simple_grid_block .simple_grid_page {
     padding: 0;
+}
+.simple_grid_block .simple_grid_page .simple_grid_page_title h2 {
+    margin: 0;
 }
 .simple_grid_block .simple_grid_page .simple_grid_page_image {
     overflow: hidden;
