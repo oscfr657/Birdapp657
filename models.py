@@ -161,11 +161,14 @@ class BirdMixin(models.Model):
     hover_over_menu = models.BooleanField(default=False)
     show_breadcrumbs = models.BooleanField(default=False)
     transparent_header = models.BooleanField(default=False)
+    hide_header = models.BooleanField(default=False)
+    # REMOVE ?
     show_coverImage = models.BooleanField(default=False)
     show_title = models.BooleanField(default=True)
     show_meta = models.BooleanField(default=False)
     show_author = models.BooleanField(default=False)
     show_date = models.BooleanField(default=False)
+    # Remove ? ^
     exclude_from_sitemap = models.BooleanField(default=False)
 
     class Meta:
@@ -188,6 +191,7 @@ class BirdMixin(models.Model):
         FieldPanel('hover_over_menu'),
         FieldPanel('show_breadcrumbs'),
         FieldPanel('transparent_header'),
+        FieldPanel('hide_header'),
         FieldPanel('show_coverImage'),
         FieldPanel('show_title'),
         FieldPanel('show_meta'),

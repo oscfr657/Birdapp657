@@ -2,6 +2,18 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
+
+{% block header %}
+
+{% if page.specific.hide_header == True %}
+    {# No header #}
+{% else %}
+    {{ block.super }}
+{% endif %}
+
+{% endblock header %}
+
+
 {% block content %}
 
     {{ page.specific.header }}
