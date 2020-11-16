@@ -54,7 +54,9 @@ ul {
 }
 
 blockquote {
-    margin: 1em auto 1em 1.6em;
+    margin: 1em auto;
+    padding: 0 0 0 1em;
+    border-left: 1px solid;
 }
 blockquote:before {
     content: "\201C";
