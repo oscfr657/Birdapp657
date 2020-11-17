@@ -12,7 +12,7 @@ body  {
     --second-font: 'Times New Roman', Times, serif;
     --site-name-font-size: 54px;
     --top-width: 900px;
-    --top-height: 80px;
+    --top-height: 66px;
     --content-width: 900px;
     --footer-width: 900px;
 }
@@ -82,6 +82,7 @@ blockquote:before {
     top: 0;
     left: 0;
     right: 0;
+    height: var(--top-height);
     background-color: white;
     z-index: 2;
     transition: visibility 0s, opacity 0.5s linear;
@@ -106,21 +107,24 @@ blockquote:before {
 .bird_top .bird_logo .site_name {
     font-family: var(--main-font);
     font-weight: normal;
-    text-align: left;
     font-size: var(--site-name-font-size);
     text-align: center;
-    margin: 0 0 0 -6px;
-    float: right;
+    margin: 0 0;
+    transform: translate(0, 6px);
+    position: absolute;
 }
 .bird_top .bird_logo img {
     margin: 1em 1em 0 0;
 }
 .bird_mobile_menu {
     display: none;
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     margin: auto;
-    border: solid 10px black;
+    border: solid 5px black;
+    position: absolute;
+    right: 1em;
+    top: 1em;
 }
 .bird_top_wraper.transparent .bird_mobile_menu {
     border: solid 10px white;
@@ -134,11 +138,12 @@ blockquote:before {
 }
 .bird_top .bird_menu_list {
     margin: 0;
-    padding: 0;
+    padding: 8px 0 0 0;
     display: block;
     position: relative;
-    top: calc(50% + 4px);
+    top: 50%;
     transform: translateY(-50%);
+    border-right: solid 1px black;
 }
 .bird_top .bird_menu_child {
     display: inline-block;
@@ -616,6 +621,10 @@ form input[type=submit] {
 }
 .simple_grid_block .simple_grid_page {
     padding: 0;
+    background-color: white;
+}
+.simple_grid_page_title {
+    padding: 1em 0;
 }
 .simple_grid_block .simple_grid_page .simple_grid_page_title h2 {
     margin: 0;
@@ -636,6 +645,19 @@ form input[type=submit] {
 }
 .simple_grid_block .simple_grid_page a:hover img.image {
     transform: scale(1.25);
+}
+
+
+.masonry_grid_block {
+    width: var(--top-width);
+    max-width: calc(100% - 2em);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: masonry;
+    padding: 2em 0;
+    row-gap: 2em;
+    column-gap: 2em;
 }
 
 .block-image {
@@ -762,6 +784,12 @@ form input[type=submit] {
 
     .grid_block .grid_page img.image {
         opacity: 1;
+    }
+
+    .simple_grid_block {
+        padding: 1em 0;
+        row-gap: 1em;
+        column-gap: 1em;
     }
 
 }
