@@ -7,10 +7,10 @@ A small Wagtail app
 
 ### Tested with ###
 
-```
+``` Python
 Django == 3.1
-Wagtail == 2.10.1
-Wagtailmedia == 0.5.0
+Wagtail == 2.11.2
+Wagtailmedia == 0.7.0
 ```
 
 ## Installation ###
@@ -72,7 +72,7 @@ add to the TEMPLATES settings
     ]
 ```
 
-#### Optionaly set: ####
+#### Optionaly set ####
 
 the admin title
 
@@ -86,7 +86,7 @@ the password required template
 PASSWORD_REQUIRED_TEMPLATE = 'birdapp657_password_required.html'
 ```
 
-#### I recommend: ####
+#### I recommend ####
 
 the use of the postgres_search.backend, set the search backend settings
 
@@ -98,12 +98,15 @@ WAGTAILSEARCH_BACKENDS = {
 }
 ```
 
-and set the WAGTAILIMAGES_FORMAT_CONVERSIONS setting 
+and set the WAGTAILIMAGES_FORMAT_CONVERSIONS setting
 
 ``` python
 WAGTAILIMAGES_FORMAT_CONVERSIONS = {
-    'bmp': 'jpeg',
-    'webp': 'webp',
+    'bmp': 'webp',
+    'jpeg': 'webp',
+    'jpg': 'webp',
+    'JPG':'webp',
+    'webp':'webp',
 }
 ```
 
@@ -112,6 +115,7 @@ WAGTAILIMAGES_FORMAT_CONVERSIONS = {
 > python manage.py migrate
 
 ### Search Index setup ###
+
 > python manage.py update_index
 
 ### Django url ###
@@ -129,7 +133,9 @@ from wagtail.core import urls as wagtail_urls
 
 from wagtail.contrib.sitemaps.views import sitemap
 ```
+
 and
+
 ``` python
 urlpatterns = [
     re_path('sitemap.xml', sitemap),
@@ -139,7 +145,6 @@ urlpatterns = [
     re_path(r'', include(wagtail_urls)),
   ]
 ```
-
 
 ```python
 handler403 = 'birdapp657.views.bird_page_403'
