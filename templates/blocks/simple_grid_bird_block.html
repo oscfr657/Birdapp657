@@ -30,7 +30,7 @@
                     {% else %}
                         {{ p.first_published_at|date:"d M Y" }}
                     {% endif %}
-                     / {% if p.specific.author%}{{ p.specific.author }}{% else %}{{ p.owner.username }}{% endif %}
+                     / {{ p.owner.get_full_name }}
                     </span>
                 </div>
             </a>

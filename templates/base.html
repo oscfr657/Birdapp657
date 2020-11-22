@@ -47,9 +47,7 @@
 <meta name="keywords" content="{% for tag in page.specific.tags.all %}{{ tag }}{% endfor %}">
 {% endif %}
 
-{% if page.specific.author %}
-<meta name="author" content="{{ page.specific.author }}">
-{% endif %}
+<meta name="author" content="{{ page.owner.get_full_name }}">
 
 
 {% if page.seo_title %}
@@ -58,8 +56,8 @@
 <meta property="og:title" content="{{ page.title }}"/>
 {% endif %}
 
-{% if page.specific.cover_image %}
-{% image page.specific.cover_image min-1200x627 format-jpeg as og_image %}
+{% if page.specific.image %}
+{% image page.specific.image min-1200x627 format-jpeg as og_image %}
 <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ og_image.url }}"/>
 {% endif %}
 

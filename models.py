@@ -176,9 +176,9 @@ class BirdMixin(models.Model):
 
     search_fields = [
         index.SearchField('intro'),
-        #index.FilterField('author'),
     ]
     content_panels = [
+        FieldPanel('owner'),
         FieldPanel('author'),
         ImageChooserPanel('image'),
         FieldPanel('intro', classname="full"),
