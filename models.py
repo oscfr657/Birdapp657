@@ -44,7 +44,7 @@ from .blocks import (HeroBirdBlock, BirdCodeBlock,
 
 class FontFace(Orderable):
     brand = ParentalKey(
-        'BrandingSettings',
+        'BirdAppSettings',
         related_name='brand_fonts',
         on_delete=models.CASCADE
     )
@@ -63,7 +63,7 @@ class FontFace(Orderable):
 
 
 @register_setting
-class BrandingSettings(BaseSetting, ClusterableModel):
+class BirdAppSettings(BaseSetting, ClusterableModel):
     icon = models.ForeignKey(
         'wagtailimages.Image',
         blank=True, null=True,

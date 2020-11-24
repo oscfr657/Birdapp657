@@ -2,10 +2,10 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import BrandingSettings, SoloBirdPage, SearchBirdPage, FormBirdPage, SoloBirdPageTag, FormField
+from .models import BirdAppSettings, SoloBirdPage, SearchBirdPage, FormBirdPage, SoloBirdPageTag, FormField
 
 
-admin.site.register(BrandingSettings)
+admin.site.register(BirdAppSettings)
 
 admin.site.register(SoloBirdPage)
 
