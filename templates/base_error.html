@@ -12,34 +12,21 @@
     <div class="bird_top">
         <div class="bird_logo">
             <a href="{{ current_site.root_page.url }}" >
-                {% if settings.birdapp657.BrandingSettings.logo %}
-                    <img itemprop="logo" src="{{ settings.birdapp657.BrandingSettings.logo.file.url }}" alt="{{ settings.birdapp657.BrandingSettings.logo.alt }}" class="logo_img" />
+                {% if settings.birdapp657.BirdAppSettings.logo %}
+                    <img itemprop="logo" src="{{ settings.birdapp657.BirdAppSettings.logo.file.url }}" alt="{{ settings.birdapp657.BirdAppSettings.logo.alt }}" class="logo_img" />
                 {% endif %}
-                {% if settings.birdapp657.BrandingSettings.show_name %}
+                {% if settings.birdapp657.BirdAppSettings.show_name %}
                 <h1 >
                     {{ current_site.site_name|default:'' }}
                 </h1>
                 {% endif %}
             </a>
         </div>
-        {% if settings.birdapp657.BrandingSettings.mobile_menu_page %}
-            {% if page.title == settings.birdapp657.BrandingSettings.mobile_menu_page.title %}
-            <a class="bird_mobile_menu active"
-                href="javascript:history.back()">
-                <div ></div>
-            </a>
-            {% else %}
-            <a class="bird_mobile_menu "
-                href="{{ settings.birdapp657.BrandingSettings.mobile_menu_page.url }}">
-                <div ></div>
-            </a>
-            {% endif %}
-        {% else %}
-            <a id="bird_mobile_menu_dropdown" class="bird_mobile_menu"
-                href="/">
-                <div ></div>
-            </a>
-        {% endif %}
+
+        <a id="bird_mobile_menu_dropdown" class="bird_mobile_menu"
+            href="/">
+            <div ></div>
+        </a>
 
         {% if current_site.root_page.get_children.live.in_menu %}
         <div class="bird_menu">

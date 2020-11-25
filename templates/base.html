@@ -3,7 +3,7 @@
 {% wagtail_site as current_site %}
 
 <!DOCTYPE html>
-<html lang="{{ settings.birdapp657.BrandingSettings.lang_code|default:'en' }}">
+<html lang="{{ settings.birdapp657.BirdAppSettings.lang_code|default:'en' }}">
 
 
 <head>
@@ -19,15 +19,15 @@
 <title >{{ page.title }} - {{ current_site.site_name|default:'' }}</title>
 {% endif %}
 
-{% if settings.birdapp657.BrandingSettings.icon %}
-{% image settings.birdapp657.BrandingSettings.icon fill-64x64 as site_icon %}
+{% if settings.birdapp657.BirdAppSettings.icon %}
+{% image settings.birdapp657.BirdAppSettings.icon fill-64x64 as site_icon %}
 <link rel="icon" type="image/png" href="{{ site_icon.url }}">
 <link rel="shortcut icon" type="image/png" href="{{ site_icon.url }}">
 {% endif %}
 
-{% if settings.birdapp657.BrandingSettings.brand_fonts %}
+{% if settings.birdapp657.BirdAppSettings.brand_fonts %}
 <style type="text/css">
-{% for brand_font in settings.birdapp657.BrandingSettings.brand_fonts.all %}
+{% for brand_font in settings.birdapp657.BirdAppSettings.brand_fonts.all %}
     @font-face {
         font-family: "{{ brand_font.font_family }}";
         src: url({{ brand_font.src_file.url }}) format("{{ brand_font.font_format }}");
@@ -82,12 +82,12 @@
 {% block extra_head %}
 {% endblock extra_head %}
 
-{% if settings.birdapp657.BrandingSettings.extra_css %}
-<link rel="stylesheet" type="text/css" href="{{ settings.birdapp657.BrandingSettings.extra_css.url }}" >
+{% if settings.birdapp657.BirdAppSettings.extra_css %}
+<link rel="stylesheet" type="text/css" href="{{ settings.birdapp657.BirdAppSettings.extra_css.url }}" >
 {% endif %}
 
-{% if settings.birdapp657.BrandingSettings.extra_head %}
-{{ settings.birdapp657.BrandingSettings.extra_head|safe }}
+{% if settings.birdapp657.BirdAppSettings.extra_head %}
+{{ settings.birdapp657.BirdAppSettings.extra_head|safe }}
 {% endif %}
 
 </head>
@@ -108,30 +108,18 @@
         <div class="bird_top">
             <div class="bird_logo">
                 <a href="{% pageurl current_site.root_page %}" >
-                    {% if settings.birdapp657.BrandingSettings.logo %}
-                        {% image settings.birdapp657.BrandingSettings.logo height-64 as site_logo %}
+                    {% if settings.birdapp657.BirdAppSettings.logo %}
+                        {% image settings.birdapp657.BirdAppSettings.logo height-64 as site_logo %}
                     <img src="{{ site_logo.url }}" alt="{{ site_logo.alt }}" class="logo_img" itemprop="logo" />
                     {% endif %}
-                    {% if settings.birdapp657.BrandingSettings.show_name %}
+                    {% if settings.birdapp657.BirdAppSettings.show_name %}
                     <span class="site_name">
                         {{ current_site.site_name|default:'' }}
                     </span>
                     {% endif %}
                 </a>
             </div>
-            {% if settings.birdapp657.BrandingSettings.mobile_menu_page and page.specific.show_menu != False %}
-                {% if page.title == settings.birdapp657.BrandingSettings.mobile_menu_page.title %}
-                <a class="bird_mobile_menu active"
-                    href="javascript:history.back()">
-                    <div ></div>
-                </a>
-                {% else %}
-                <a class="bird_mobile_menu "
-                    href="{% pageurl settings.birdapp657.BrandingSettings.mobile_menu_page %}">
-                    <div ></div>
-                </a>
-                {% endif %}
-            {% elif current_site.root_page.get_children.live.in_menu and page.specific.show_menu != False %}
+            {% if current_site.root_page.get_children.live.in_menu and page.specific.show_menu != False %}
                 <a id="bird_mobile_menu_dropdown" class="bird_mobile_menu"
                     href="/">
                     <div ></div>
@@ -185,14 +173,14 @@
 
 
     {% block footer %}
-    {% if settings.birdapp657.BrandingSettings.footer %}
-    <div class="footer {% if page.specific.transparent_header %}transparent{% endif %}">
+    {% if settings.birdapp657.BirdAppSettings.footer %}
+    <footer class="footer {% if page.specific.transparent_header %}transparent{% endif %}">
         <div class="footer-row">
-                {% for block in settings.birdapp657.BrandingSettings.footer %}
+                {% for block in settings.birdapp657.BirdAppSettings.footer %}
                     <div class="footer-column">{% include_block block %}</div>
                 {% endfor %}
         </div>
-    </div>
+    </footer>
     {% endif %}
     {% endblock footer %}
 
@@ -201,8 +189,8 @@
 
     <script src="{% static 'js/birdapp657/birdapp.js' %}" async=""></script>
 
-    {% if settings.birdapp657.BrandingSettings.extra_js %}
-    <script src="{{ settings.birdapp657.BrandingSettings.extra_js.url }}" async=""></script>
+    {% if settings.birdapp657.BirdAppSettings.extra_js %}
+    <script src="{{ settings.birdapp657.BirdAppSettings.extra_js.url }}" async=""></script>
     {% endif %}
 
 
