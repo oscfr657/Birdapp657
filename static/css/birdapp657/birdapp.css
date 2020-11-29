@@ -620,11 +620,11 @@ form input[type=submit] {
     position: relative;
 }
 .simple_grid_block .simple_grid_page {
-    padding: 0;
+    padding: 0.5em;
     background-color: white;
 }
 .simple_grid_page_title {
-    padding: 1em 0;
+    padding: 0.5em 0 0 0px;
 }
 .simple_grid_block .simple_grid_page .simple_grid_page_title h2 {
     margin: 0;
@@ -647,6 +647,14 @@ form input[type=submit] {
     transform: scale(1.25);
 }
 
+@supports (grid-template-rows: masonry) {
+    .simple_grid_block {
+        grid-template-rows: masonry;
+    }
+    .simple_grid_page_title {
+        padding: 0.5em 0 0 0px;
+    }
+}
 
 .masonry_grid_block {
     width: var(--top-width);
