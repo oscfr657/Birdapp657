@@ -491,7 +491,7 @@ form input[type=submit] {
 
 .block-paragraph {
     padding: 0em 0;
-    width: 900px;
+    width: var(--content-width);
     max-width: calc(100% - 2em);
     margin: auto;
 }
@@ -606,7 +606,7 @@ form input[type=submit] {
 }
 
 .simple_grid_block {
-    width: var(--top-width);
+    width: var(--content-width);
     max-width: calc(100% - 2em);
     margin: auto;
     display: grid;
@@ -620,14 +620,14 @@ form input[type=submit] {
     position: relative;
 }
 .simple_grid_block .simple_grid_page {
-    padding: 0.5em;
     background-color: white;
 }
 .simple_grid_page_title {
-    padding: 0.5em 0 0 0px;
+    padding: 1em 0;
 }
 .simple_grid_block .simple_grid_page .simple_grid_page_title h2 {
-    margin: 0;
+    margin: 0 0 0.5rem 0;
+    font-size: 22px;
 }
 .simple_grid_block .simple_grid_page .simple_grid_page_image {
     overflow: hidden;
@@ -651,22 +651,8 @@ form input[type=submit] {
     .simple_grid_block {
         grid-template-rows: masonry;
     }
-    .simple_grid_page_title {
-        padding: 0.5em 0 0 0px;
-    }
 }
 
-.masonry_grid_block {
-    width: var(--top-width);
-    max-width: calc(100% - 2em);
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: masonry;
-    padding: 2em 0;
-    row-gap: 2em;
-    column-gap: 2em;
-}
 
 .block-image {
     padding: 3em 0;
@@ -683,8 +669,8 @@ form input[type=submit] {
 
 
 .block-code {
-    width: var(--content-width);
-    max-width: 100%;
+    width: calc(var(--content-width) - 2em);
+    max-width: calc(100% - 4em);
     overflow: auto;
     padding: 0 1em;
     margin: 1em auto;
