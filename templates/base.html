@@ -20,9 +20,20 @@
 {% endif %}
 
 {% if settings.birdapp657.BirdAppSettings.icon %}
-{% image settings.birdapp657.BirdAppSettings.icon fill-64x64 as site_icon %}
-<link rel="icon" type="image/png" href="{{ site_icon.url }}">
-<link rel="shortcut icon" type="image/png" href="{{ site_icon.url }}">
+{% image settings.birdapp657.BirdAppSettings.icon fill-64x64 format-png as site_icon %}
+<link rel="icon" sizes="64x64" type="image/png" href="{{ site_icon.url }}">
+<link rel="shortcut icon" sizes="64x64" type="image/png" href="{{ site_icon.url }}">
+{% image settings.birdapp657.BirdAppSettings.icon fill-32x32 format-png as medium_icon %}
+<link rel="icon" sizes="32x32" type="image/png" href="{{ medium_icon.url }}">
+<link rel="shortcut icon" sizes="32x32" type="image/png" href="{{ medium_icon.url }}">
+{% image settings.birdapp657.BirdAppSettings.icon fill-128x128 format-png as chrome_icon %}
+<link rel="icon" sizes="128x128" type="image/png" href="{{ chrome_icon.url }}">
+{% image settings.birdapp657.BirdAppSettings.icon fill-192x192 format-png as android_icon %}
+<link rel="icon" sizes="192x192" type="image/png" href="{{ android_icon.url }}">
+{% image settings.birdapp657.BirdAppSettings.icon fill-152x152 format-png as ios_icon %}
+<link rel="apple-touch-icon" sizes="152x152" type="image/png" href="{{ ios_icon.url }}">
+{% image settings.birdapp657.BirdAppSettings.icon fill-180x180 format-png as ipad_icon %}
+<link rel="apple-touch-icon" sizes="180x180" type="image/png" href="{{ ipad_icon.url }}">
 {% endif %}
 
 {% if settings.birdapp657.BirdAppSettings.brand_fonts %}

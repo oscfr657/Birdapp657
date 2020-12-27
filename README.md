@@ -105,8 +105,9 @@ WAGTAILIMAGES_FORMAT_CONVERSIONS = {
     'bmp': 'webp',
     'jpeg': 'webp',
     'jpg': 'webp',
-    'JPG':'webp',
-    'webp':'webp',
+    'JPG': 'webp',
+    'webp': 'webp',
+    'png': 'webp',
 }
 ```
 
