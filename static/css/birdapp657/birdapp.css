@@ -15,6 +15,9 @@ body  {
     --top-height: 66px;
     --content-width: 900px;
     --footer-width: 900px;
+    display: grid;
+    grid-template-rows: var(--top-height) 1fr auto;
+    min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -266,7 +269,6 @@ li.bird_menu_grand_child {
 
 .content {
     position: relative;
-    min-height: 65vh;
     margin: 0;
     max-width: 100%;
 }
@@ -335,7 +337,7 @@ form input[type=submit] {
 }
 
 
-.search {
+div.search {
     text-align: center;
     border-bottom: solid 1px black;
     max-width: 100%;

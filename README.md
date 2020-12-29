@@ -26,6 +26,10 @@ To your settings file,
 add to the INSTALLED_APPS
 
 ``` Python
+
+    'django.contrib.sites',  # extra
+    'django.contrib.sitemaps',  # extra
+
     # wagtail
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
