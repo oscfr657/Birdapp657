@@ -257,7 +257,6 @@ li.bird_menu_grand_child {
 }
 
 
-
 .breadcrumbs {
     margin: 1em auto 0 auto;
     width: var(--content-width);
@@ -267,10 +266,11 @@ li.bird_menu_grand_child {
     text-decoration: none;
 }
 
+
 .content {
     position: relative;
     margin: 0;
-    max-width: 100%;
+    max-width: 100vw;
 }
 .content .thank_you,
 .content .intro,
@@ -287,6 +287,10 @@ li.bird_menu_grand_child {
 .content .cover img.top_image {
     display: block;
     margin: auto;
+    max-width: 100%;
+}
+.content .rich-text iframe {
+    margin: 0px auto !important;
     max-width: 100%;
 }
 
@@ -333,7 +337,7 @@ form input[type=submit] {
     margin: auto;
     padding: 2em 0;
     width: var(--footer-width);
-    max-width: calc(100% - 2em);
+    max-width: calc(100vw - 2em);
 }
 
 
@@ -498,7 +502,7 @@ div.search {
     margin: auto;
 }
 .block-paragraph iframe {
-    max-width: calc(100% - 2em);
+    max-width: 100%;
 }
 
 
