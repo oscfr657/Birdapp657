@@ -104,12 +104,10 @@
 </head>
 
 
-<body class="{{ page.slug }}">
+<body class="{{ page.slug }} {% if page.specific.transparent_header %}transparent_header{% endif %}">
     {% block header %}
-    <div class="bird_top_wraper_block {% if page.specific.transparent_header %}transparent{% endif %} ">
-    </div>
 
-    <div class="bird_top_wraper {% if page.specific.transparent_header %}transparent{% endif %}">
+    <div class="bird_top_wraper ">
     <!--[if IE]>
     <div class="browser-alert">
         You are using an <strong>outdated</strong> browser.
@@ -185,7 +183,7 @@
 
     {% block footer %}
     {% if settings.birdapp657.BirdAppSettings.footer %}
-    <footer class="footer {% if page.specific.transparent_header %}transparent{% endif %}">
+    <footer class="footer">
         <div class="footer-row">
                 {% for block in settings.birdapp657.BirdAppSettings.footer %}
                     <div class="footer-column">{% include_block block %}</div>

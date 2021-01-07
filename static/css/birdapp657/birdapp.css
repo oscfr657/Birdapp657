@@ -16,7 +16,7 @@ body  {
     --content-width: 900px;
     --footer-width: 900px;
     display: grid;
-    grid-template-rows: var(--top-height) 1fr auto;
+    grid-template-rows: 1fr auto;
     min-height: 100vh;
 }
 
@@ -70,16 +70,6 @@ blockquote:before {
 }
 
 
-
-.bird_top_wraper_block {
-    position: relative;
-    background-color: white;
-    height: var(--top-height);
-    display: block;
-}
-.bird_top_wraper_block.transparent {
-    display: None;
-}
 .bird_top_wraper {
     position: fixed;
     top: 0;
@@ -89,9 +79,6 @@ blockquote:before {
     background-color: white;
     z-index: 2;
     transition: visibility 0s, opacity 0.5s linear;
-}
-.bird_top_wraper.transparent {
-    background-color: transparent;
 }
 .bird_top {
     margin: auto;
@@ -103,9 +90,6 @@ blockquote:before {
 }
 .bird_top .bird_logo a {
     text-decoration: None;
-}
-.bird_top_wraper.transparent .bird_top .bird_logo a {
-    color: white;
 }
 .bird_top .bird_logo .site_name {
     font-family: var(--main-font);
@@ -128,9 +112,6 @@ blockquote:before {
     position: absolute;
     right: 1em;
     top: 1em;
-}
-.bird_top_wraper.transparent .bird_mobile_menu {
-    border: solid 10px white;
 }
 .bird_mobile_menu.active {
     background-color: black;
@@ -191,10 +172,6 @@ li.bird_menu_child {
     white-space: nowrap;
     font-size: 1.3em;
 }
-.bird_top_wraper.transparent .bird_top .bird_menu a {
-    background-color: transparent;
-    color: white;
-}
 .bird_top .bird_menu a.active,
 .bird_top .bird_menu a:hover,
 .bird_top .bird_menu a:active {
@@ -204,15 +181,6 @@ li.bird_menu_child {
 .bird_top .bird_menu a.icon {
     padding: 6px 15px 2px 15px;
     margin: 0;
-}
-.bird_top_wraper.transparent .bird_top .bird_menu a.icon {
-    background-color: transparent;
-}
-.bird_top_wraper.transparent .bird_top .bird_menu_child > a.active,
-.bird_top_wraper.transparent .bird_top .bird_menu_child > a:hover,
-.bird_top_wraper.transparent .bird_top .bird_menu_child > a:active {
-    color: white;
-    background-color: black;
 }
 .bird_top .bird_menu_child > a.icon.active.hover,
 .bird_top .bird_menu_child > a.icon.hover:hover,
@@ -224,11 +192,11 @@ li.bird_menu_child {
 }
 .bird_top .bird_menu a.icon.active.hover img.no_hover,
 .bird_top .bird_menu a.icon:hover img.no_hover,
-.bird_top_wraper.transparent .bird_top .bird_menu a.icon img.no_hover,
+body.transparent_header .bird_top_wraper .bird_top .bird_menu a.icon img.no_hover,
 .bird_top .bird_menu a.icon img.hover {
     display: none;
 }
-.bird_top_wraper.transparent .bird_top .bird_menu a.icon img.hover,
+body.transparent_header .bird_top_wraper .bird_top .bird_menu a.icon img.hover,
 .bird_top .bird_menu a.icon.active.hover img.hover,
 .bird_top .bird_menu a.icon:hover img.hover {
     display: inline-block;
@@ -246,12 +214,36 @@ li.bird_menu_grand_child {
     display: inline-block;
     margin: 0px -30px 0 0;
 }
-.bird_top_wraper.transparent .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a {
+
+
+body.transparent_header .bird_top_wraper .bird_mobile_menu {
+    border: solid 5px white;
+}
+body.transparent_header .bird_top_wraper {
+    background-color: transparent;
+}
+body.transparent_header .bird_top_wraper .bird_top .bird_logo a {
+    color: white;
+}
+body.transparent_header .bird_top_wraper .bird_top .bird_menu a {
+    background-color: transparent;
+    color: white;
+}
+body.transparent_header .bird_top_wraper .bird_top .bird_menu a.icon {
+    background-color: transparent;
+}
+body.transparent_header .bird_top_wraper .bird_top .bird_menu_child > a.active,
+body.transparent_header .bird_top_wraper .bird_top .bird_menu_child > a:hover,
+body.transparent_header .bird_top_wraper .bird_top .bird_menu_child > a:active {
+    color: white;
+    background-color: black;
+}
+body.transparent_header .bird_top_wraper .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a {
     color: black;
 }
-.bird_top_wraper.transparent .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:active,
-.bird_top_wraper.transparent .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a.active,
-.bird_top_wraper.transparent .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:hover {
+body.transparent_header .bird_top_wraper .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:active,
+body.transparent_header .bird_top_wraper .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a.active,
+body.transparent_header .bird_top_wraper .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:hover {
     color: white;
     background-color: black;
 }
@@ -266,7 +258,12 @@ li.bird_menu_grand_child {
     text-decoration: none;
 }
 
-
+body > div + div {
+    top: var(--top-height);
+}
+body.transparent_header > div + div {
+    top: 0;
+}
 .content {
     position: relative;
     margin: 0;
@@ -323,9 +320,11 @@ form input[type=submit] {
     background: black;
     color: white;
     margin: 0;
+    margin-top: var(--top-height);
 }
-.footer.transparent {
+body.transparent_header .footer {
     top:0;
+    margin-top: 0;
 }
 .footer a {
     color: white;
@@ -422,7 +421,7 @@ div.search {
 
 .hero {
     position: relative;
-    height: 500px;
+    height: 600px;
     overflow: hidden;
     margin: 0;
     left: 0;
@@ -433,7 +432,7 @@ div.search {
 .hero a {
     color: unset;
 }
-.bird_top_wraper_block.transparent + .bird_top_wraper + .content > .block-hero > .hero {
+.content > .block-hero > .hero.full_screen {
     height: 100vh;
 }
 .hero .hero-content {
@@ -461,7 +460,7 @@ div.search {
 .hero .hero-player {
     position: absolute;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     max-width: 100%;
     margin: 0 auto;
 }
@@ -469,8 +468,8 @@ div.search {
     display: none;
 }
 .hero video {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 .hero audio {
