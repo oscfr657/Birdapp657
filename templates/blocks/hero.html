@@ -4,7 +4,8 @@
 {% if value.image and not value.block_media %}
     {% image value.image original as hero_photo %}
 {% endif %}
-<div class="hero {{ value.block_class|default:'' }}" style="color: {{ value.font_color }}; 
+<div class="hero {{ value.block_class|default:'' }}
+    {%if value.full_screen %} full_screen{% endif %}" style="color: {{ value.font_color }}; 
                         background-color: {{ value.bg_color }};
                         text-align: {{ value.text_align }};
                         {% if hero_photo %}background-image: url('{{ hero_photo.url }}');{% endif %}">

@@ -41,6 +41,8 @@ class HeroBirdBlock(blocks.StructBlock):
     
     image = ImageChooserBlock(required=False, null=True)
     
+    full_screen = blocks.BooleanBlock(required=False, default=False, help_text='Full screen')
+
     font_color = blocks.CharBlock(required=False, null=True)
     bg_color = blocks.CharBlock(required=False, null=True)
     text_align = blocks.CharBlock(required=False, default='left')

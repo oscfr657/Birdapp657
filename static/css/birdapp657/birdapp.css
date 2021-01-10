@@ -432,7 +432,7 @@ div.search {
 .hero a {
     color: unset;
 }
-.content > .block-hero > .hero.full_screen {
+.block-hero > .hero.full_screen {
     height: 100vh;
 }
 .hero .hero-content {
