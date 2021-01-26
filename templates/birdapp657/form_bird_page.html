@@ -34,23 +34,6 @@
     </div>
     {% endif %}
 
-    {% if page.specific.show_title %}
-    <div class="title">
-            <h1>{{ page.title }}</h1>
-    </div>
-    {% endif %}
-    
-    {% if page.specific.show_meta %}
-    <div class="meta">
-        {% if page.go_live_at and page.specific.show_date %}
-            {{ page.go_live_at|date:"d M Y" }} 
-        {% elif page.specific.show_date %}
-            {{ page.first_published_at|date:"d M Y" }}
-        {% endif %}
-        {% if page.show_author  %} / {{ page.owner.get_full_name }}{% endif %}
-    </div>
-    {% endif %}
-
     {% if page.specific.intro %}
     <div class="intro">{{ page.specific.intro|richtext }}</div>
     {% endif %}

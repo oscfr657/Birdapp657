@@ -128,33 +128,21 @@
                     {% endif %}
                 </a>
             </div>
-            {% if current_site.root_page.get_children.live.in_menu and page.specific.show_menu != False %}
+            {% if current_site.root_page.get_children.live.in_menu %}
                 <a id="bird_mobile_menu_dropdown" class="bird_mobile_menu"
                     href="/">
                     <div ></div>
                 </a>
             {% endif %}
-            {% if current_site.root_page.get_children.live.in_menu and page.specific.show_menu != False %}
+            {% if current_site.root_page.get_children.live.in_menu %}
             <div class="bird_menu">
                 <ul class="bird_menu_list">
                     {% for child in current_site.root_page.get_children.live.in_menu %}
                     <li class="bird_menu_child">
-                        {% if child.specific.menu_icon %}
-                        <a href="{% pageurl child %}"
-                            class="icon {% if child.title == page.title or child in page.get_ancestors %}active{% endif %} {% if child.specific.hover_over_menu %}hover{% endif %}" >
-                            {% if child.specific.hover_menu_icon %}
-                                {% image child.specific.menu_icon fill-24x24 class="no_hover" %}
-                                {% image child.specific.hover_menu_icon fill-24x24 class="hover" %}
-                            {% else %}
-                                {% image child.specific.menu_icon fill-24x24 %}
-                            {% endif %}
-                        </a>
-                        {% else %}
                         <a href="{% pageurl child %}"
                             class="{% if child.title == page.title or child in page.get_ancestors %}active{% endif %}" >
                         {{ child.title }}
                         </a>
-                        {% endif %}
                         {% if child.get_children.live.in_menu %}
                         <ul class="bird_menu_child_list">
                             {% for grandchild in child.get_children.live.in_menu %}

@@ -33,22 +33,10 @@
             <ul class="bird_menu_list">
                 {% for child in current_site.root_page.get_children.live.in_menu %}
                 <li class="bird_menu_child">
-                    {% if child.specific.menu_icon %}
                     <a href="{{ child.url }}"
-                        class="icon {% if child.specific.hover_over_menu %}hover{% endif %}" >
-                        {% if child.specific.hover_menu_icon %}
-                            <img alt="{{ child.specific.menu_icon.alt }}" class="no_hover" src="{{ child.specific.menu_icon.file.url }}" width="24" height="24">
-                            <img alt="{{ child.specific.hover_menu_icon.alt }}" class="hover" src="{{ child.specific.hover_menu_icon.file.url }}" width="24" height="24">
-                        {% else %}
-                        <img alt="{{ child.specific.menu_icon.alt }}" src="{{ child.specific.menu_icon.file.url }}" width="24" height="24">
-                        {% endif %}
+                        class="" >
+                    {{ child.title }}
                     </a>
-                    {% else %}
-                        <a href="{{ child.url }}"
-                            class="" >
-                        {{ child.title }}
-                        </a>
-                    {% endif %}
                 </li>
                 {% endfor %}
             </ul>

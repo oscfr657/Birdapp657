@@ -128,7 +128,6 @@ class BirdAppSettings(BaseSetting, ClusterableModel):
 
 
 class BirdMixin(models.Model):
-    author = models.CharField(max_length=255, blank=True, null=True)
     image = models.ForeignKey(
         'wagtailimages.Image',
         blank=True, null=True,
@@ -144,31 +143,9 @@ class BirdMixin(models.Model):
             'ol', 'ul', 'hr',
             'link', 'document-link', 'blockquote']
             )
-    menu_icon = models.ForeignKey(
-        'wagtailimages.Image',
-        blank=True, null=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-        )
-    hover_menu_icon = models.ForeignKey(
-        'wagtailimages.Image',
-        blank=True, null=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-        )
-    content_width = models.CharField(max_length=50, blank=True, null=True)
-    show_menu = models.BooleanField(default=True)
-    hover_over_menu = models.BooleanField(default=False)
     show_breadcrumbs = models.BooleanField(default=False)
     transparent_header = models.BooleanField(default=False)
     hide_header = models.BooleanField(default=False)
-    # REMOVE ?
-    show_coverImage = models.BooleanField(default=False)
-    show_title = models.BooleanField(default=True)
-    show_meta = models.BooleanField(default=False)
-    show_author = models.BooleanField(default=False)
-    show_date = models.BooleanField(default=False)
-    # Remove ? ^
     exclude_from_sitemap = models.BooleanField(default=False)
 
     class Meta:
@@ -179,24 +156,13 @@ class BirdMixin(models.Model):
     ]
     content_panels = [
         FieldPanel('owner'),
-        FieldPanel('author'),
         ImageChooserPanel('image'),
         FieldPanel('intro', classname="full"),
     ]
     settings_panels = [
-        FieldPanel('content_width'),
-        FieldPanel('show_menu'),
-        ImageChooserPanel('menu_icon'),
-        ImageChooserPanel('hover_menu_icon'),
-        FieldPanel('hover_over_menu'),
         FieldPanel('show_breadcrumbs'),
         FieldPanel('transparent_header'),
         FieldPanel('hide_header'),
-        FieldPanel('show_coverImage'),
-        FieldPanel('show_title'),
-        FieldPanel('show_meta'),
-        FieldPanel('show_author'),
-        FieldPanel('show_date'),
         FieldPanel('exclude_from_sitemap'),
     ]
 
