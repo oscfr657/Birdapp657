@@ -192,6 +192,7 @@ class SoloBirdPage(Page, BirdMixin):
         ('media', MediaFileBirdBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
         ('html', HTMLBirdBlock(required=False, null=True)),
+        ('hero', HeroBirdBlock(required=False, null=True)),
         ('feed', FeedBirdBlock(required=False)),
         ('grid', GridBirdBlock(required=False)),
         ('simplegrid', SimpleGridBirdBlock(required=False)),

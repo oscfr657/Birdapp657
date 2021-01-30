@@ -60,6 +60,7 @@ class HeroBirdBlock(blocks.StructBlock):
         label = 'Hero'
         icon = 'image'
         template = 'blocks/hero.html'
+        group = 'Heroes'
 
 
 class RacerBirdBlock(blocks.StructBlock):
