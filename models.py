@@ -175,9 +175,6 @@ class SoloBirdPageTag(TaggedItemBase):
 
 
 class SoloBirdPage(Page, BirdMixin):
-    top_hero = StreamField([
-        ('hero', HeroBirdBlock(required=False, null=True)),
-    ], blank=True, null=True)
     body = StreamField([
         ('paragraph', blocks.RichTextBlock(
             required=False, null=True,
@@ -207,7 +204,6 @@ class SoloBirdPage(Page, BirdMixin):
         ]
 
     content_panels = Page.content_panels + BirdMixin.content_panels + [
-        StreamFieldPanel('top_hero'),
         StreamFieldPanel('body'),
         ]
     promote_panels = Page.promote_panels + [
