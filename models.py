@@ -38,7 +38,7 @@ from .forms import SearchBirdForm
 from .blocks import (HeroBirdBlock, BirdCodeBlock,
     HTMLBirdBlock, MediaFileBirdBlock,
     FeedBirdBlock,
-    RacerBirdBlock,
+    RacerBirdBlock, SimpleRacerBirdBlock,
     GridBirdBlock, SimpleGridBirdBlock)
 
 
@@ -194,6 +194,7 @@ class SoloBirdPage(Page, BirdMixin):
         ('grid', GridBirdBlock(required=False)),
         ('simplegrid', SimpleGridBirdBlock(required=False)),
         ('racer', RacerBirdBlock(required=False, null=True)),
+        ('simpleracer', SimpleRacerBirdBlock(required=False, null=True)),
     ], blank=True, null=True)
 
     tags = ClusterTaggableManager(through=SoloBirdPageTag, blank=True)

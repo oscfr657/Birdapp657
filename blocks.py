@@ -100,6 +100,14 @@ class RacerBirdBlock(blocks.StructBlock):
         template = 'blocks/racer.html'
 
 
+class SimpleRacerBirdBlock(RacerBirdBlock):
+    class Meta:
+        group = 'Racers'
+        label = 'SimpleRacerBlock'
+        icon = 'image'
+        template = 'blocks/simple_racer.html'
+
+
 class FeedBirdBlock(blocks.StructBlock):
     block_class = blocks.CharBlock(required=False, help_text='Block class')
     children = blocks.ChoiceBlock(choices=[
