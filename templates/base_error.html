@@ -4,6 +4,10 @@
 
 {% wagtail_site as current_site %}
 
+
+{% with settings.birdapp657.BirdAppSettings as site_settings %}
+
+
 {% block header %}
 <div class="bird_top_wraper_block ">
 </div>
@@ -12,10 +16,10 @@
     <div class="bird_top">
         <div class="bird_logo">
             <a href="{{ current_site.root_page.url }}" >
-                {% if settings.birdapp657.BirdAppSettings.logo %}
-                    <img itemprop="logo" src="{{ settings.birdapp657.BirdAppSettings.logo.file.url }}" alt="{{ settings.birdapp657.BirdAppSettings.logo.alt }}" class="logo_img" />
+                {% if site_settings.logo %}
+                    <img itemprop="logo" src="{{ site_settings.logo.file.url }}" alt="{{ site_settings.logo.alt }}" class="logo_img" />
                 {% endif %}
-                {% if settings.birdapp657.BirdAppSettings.show_name %}
+                {% if site_settings.show_name %}
                 <h1 >
                     {{ current_site.site_name|default:'' }}
                 </h1>
@@ -52,3 +56,6 @@
     <h2>{{ error }}</h2>
 </div>
 {% endblock %}
+
+
+{% endwith %}
