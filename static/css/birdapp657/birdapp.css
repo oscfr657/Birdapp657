@@ -370,6 +370,13 @@ div.search {
 }
 
 
+.block-paragraph .richtext-image {
+    max-width: 100%;
+    max-height: 200px;
+    height: auto;
+    width: auto;
+}
+
 /* blocks */
 /** Ugly **/
 .content .rich-text img {
