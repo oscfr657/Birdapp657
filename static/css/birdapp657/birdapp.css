@@ -568,7 +568,7 @@ div.search {
     margin: 0 0 -5px 0;
     display: block;
     transition: all 1s ease;
-    opacity: 0.2;
+    opacity: 0.4;
 }
 .grid_block .grid_page img.image:hover {
     transform: scale(1.25);
@@ -623,7 +623,7 @@ div.search {
     background-color: white;
 }
 .simple_grid_page_title {
-    padding: 1em 0;
+    padding: 1em 1em;
 }
 .simple_grid_block .simple_grid_page .simple_grid_page_title h2 {
     margin: 0 0 0.5rem 0;
