@@ -326,6 +326,11 @@ body.transparent_header .footer {
     top:0;
     margin-top: 0;
 }
+.footer h2,
+.footer h3,
+.footer h4 {
+    margin: 0;
+}
 .footer a {
     color: white;
 }

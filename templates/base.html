@@ -176,7 +176,15 @@
     {% block footer %}
     {% if site_settings.footer %}
     <footer class="footer">
-        <div class="footer-row">
+        <style>
+        @media (min-width: 900px) {
+            .footer-row {
+                grid-auto-flow: dense;
+                grid-template-columns: repeat({{ site_settings.footer|length }}, 1fr);
+            }
+        }
+        </style>
+        <div class="footer-row" >
                 {% for block in site_settings.footer %}
                     <div class="footer-column">{% include_block block %}</div>
                 {% endfor %}
