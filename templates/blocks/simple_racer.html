@@ -3,13 +3,7 @@
 {% load wagtailimages_tags %}
 
 <div class="simple racer {{ value.block_class }}"
-    style="background-color:{{ value.bg_color }};">
-    <style scoped >
-        .inner_racer .racer_text,
-        .inner_racer .racer_text a {
-            color:{{ value.text_color }};
-        }
-    </style>
+    style="background-color:{{ value.bg_color }}; color:{{ value.text_color }};">
     <div class="inner_racer {% if value.right %}right{% else %}left{% endif %}" >
     {% if value.text and value.right %}
         <div class="racer_text ">
