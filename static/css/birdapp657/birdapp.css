@@ -101,7 +101,9 @@ blockquote:before {
     position: absolute;
 }
 .bird_top .bird_logo img {
-    margin: 1em 1em 0 0;
+    margin: 0;
+    height: 40px;
+    transform: translateY(14px);
 }
 .bird_mobile_menu {
     display: none;
