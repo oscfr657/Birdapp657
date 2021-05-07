@@ -63,6 +63,29 @@ class HeroBirdBlock(blocks.StructBlock):
         group = 'Heroes'
 
 
+class HeroBTBirdBlock(blocks.StructBlock):
+    block_class = blocks.CharBlock(required=False, null=True, help_text='Block class')
+    full_screen = blocks.BooleanBlock(required=False, default=False, help_text='Full screen')
+
+    font_color = blocks.CharBlock(required=False, null=True)
+    bg_color = blocks.CharBlock(required=False, null=True)
+    text_align = blocks.CharBlock(required=False, default='left')
+    text = blocks.RichTextBlock(
+        required=False,
+        features=[
+            'h1', 'h2', 'h3', 'h4',
+            'bold', 'italic',
+            'link', 'document-link'])
+    
+    button_link = LinkBirdBlock(required=False, null=True)
+
+    class Meta:
+        label = 'HeroBT'
+        icon = 'text'
+        template = 'blocks/hero_bt.html'
+        group = 'Heroes'
+
+
 class RacerBirdBlock(blocks.StructBlock):
     text = blocks.RichTextBlock(
         required=False,

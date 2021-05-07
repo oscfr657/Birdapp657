@@ -421,6 +421,7 @@ div.search {
 /** ^ End Ugly ^ **/
 
 
+.hero-bt,
 .hero {
     position: relative;
     height: 600px;
@@ -434,9 +435,19 @@ div.search {
 .hero a {
     color: unset;
 }
-.block-hero > .hero.full_screen {
+.hero-bt h1,
+.hero-bt h2,
+.hero-bt h3,
+.hero-bt h4 {
+    text-align: inherit;
+    font-size: 7vw;
+    margin: 0.5em auto;
+}
+.hero-bt.full_screen,
+.hero.full_screen {
     height: 100vh;
 }
+.hero-bt .hero-content,
 .hero .hero-content {
     position: absolute;
     top: 50%;
@@ -445,6 +456,15 @@ div.search {
     width: 100%;
     max-width: calc(100% - 2em);
     margin: auto;
+}
+.hero-bt .hero-content {
+    width: var(--content-width);
+}
+.hero-bt .hero-content a {
+    text-decoration: none;
+}
+.hero-bt .hero-content a:hover {
+    opacity: 0.8;
 }
 .hero .hero-content-text {
     width: var(--content-width);
@@ -791,6 +811,13 @@ div.search {
         margin: auto;
     }
 
+    .hero-bt h1,
+    .hero-bt h2,
+    .hero-bt h3,
+    .hero-bt h4 {
+        font-size: 9vw;
+    }
+
     .simple_grid_block {
         padding: 1em 0;
         row-gap: 1em;
@@ -862,6 +889,13 @@ div.search {
         margin: auto;
     }
 
+    .hero-bt h1,
+    .hero-bt h2,
+    .hero-bt h3,
+    .hero-bt h4 {
+        font-size: 15vw;
+    }
+
     .block-image {
         max-width: calc(100% - 2em);
     }
@@ -903,6 +937,13 @@ div.search {
         grid-template-columns: 1fr;
     }
     
+    .hero-bt h1,
+    .hero-bt h2,
+    .hero-bt h3,
+    .hero-bt h4 {
+        font-size: 20vw;
+    }
+
     .racer .inner_racer {
         display: flex;
     }
