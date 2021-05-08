@@ -4,6 +4,13 @@
 
 {% if grid_posts %}
 <div style="background-color:{{ value.bg_color }}; color:{{ value.text_color }};" >
+    {% if value.title_page %}
+    <div>
+        <h2 style="font-size: 42px; width:var(--content-width);max-width: calc(100% - 1em); margin: 0 auto 0 auto; padding: 2rem 0 0 0;">
+            <a href="{% pageurl value.title_page %}" >{{ value.title_page }}</a>
+        </h2>
+    </div>
+    {% endif %}
 <div class="simple_grid_block {{ value.block_class }}" >
     {% for p in grid_posts %}
         <div class="simple_grid_page">
@@ -24,6 +31,7 @@
                 </div>
                 <div class="simple_grid_page_title">
                     <h2>{{ p.title }}</h2>
+                    {% if value.show_meta %}
                     <span >
                     {% if p.go_live_at %}
                         {{ p.go_live_at|date:"d M Y" }} 
@@ -32,6 +40,7 @@
                     {% endif %}
                      / {{ p.owner.get_full_name }}
                     </span>
+                    {% endif %}
                 </div>
             </a>
         </div>

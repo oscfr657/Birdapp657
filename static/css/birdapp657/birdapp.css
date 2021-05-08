@@ -112,8 +112,8 @@ blockquote:before {
     margin: auto;
     border: solid 5px black;
     position: absolute;
-    right: 1em;
-    top: 1em;
+    right: 14px;
+    top: 14px;
 }
 .bird_mobile_menu.active {
     background-color: black;
@@ -641,9 +641,9 @@ div.search {
     margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 1em 0;
-    row-gap: 1em;
-    column-gap: 1em;
+    padding: 2em 0;
+    row-gap: 2em;
+    column-gap: 2em;
 }
 .simple_grid_block a {
     text-decoration: None;
@@ -656,8 +656,12 @@ div.search {
     padding: 1em 1em;
 }
 .simple_grid_block .simple_grid_page .simple_grid_page_title h2 {
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     font-size: 22px;
+}
+.simple_grid_block .simple_grid_page .simple_grid_page_title span {
+    top: 5px;
+    position: relative;
 }
 .simple_grid_block .simple_grid_page .simple_grid_page_image {
     overflow: hidden;
@@ -827,10 +831,6 @@ div.search {
 }
 
 @media (max-width: 900px) {
-    .bird_top .bird_logo img {
-        margin: 1.7em 1em 0 0;
-        height: 2.5em;
-    }
     .bird_top {
         display: grid;
         grid-auto-columns: auto auto;

@@ -200,6 +200,7 @@ class FeedBirdBlock(blocks.StructBlock):
         context['feed_posts'] = feed_posts
         return context
 
+
 class GridBirdBlock(blocks.StructBlock):
     block_class = blocks.CharBlock(required=False, help_text='Block class')
     children = blocks.ChoiceBlock(choices=[
@@ -262,6 +263,9 @@ class GridBirdBlock(blocks.StructBlock):
 
 
 class SimpleGridBirdBlock(GridBirdBlock):
+    show_meta = blocks.BooleanBlock(required=False, default=True)
+    title_page = blocks.PageChooserBlock(required=False, label='Title page')
+
     class Meta:
         group = 'GridBlock'
         label = 'SimpleGridBlock'
