@@ -651,6 +651,7 @@ div.search {
 }
 .simple_grid_block .simple_grid_page {
     background-color: white;
+    color: black;
 }
 .simple_grid_page_title {
     padding: 1em 1em;

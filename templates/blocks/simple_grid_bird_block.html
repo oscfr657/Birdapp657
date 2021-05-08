@@ -14,7 +14,7 @@
 <div class="simple_grid_block {{ value.block_class }}" >
     {% for p in grid_posts %}
         <div class="simple_grid_page">
-            <a href="{% pageurl p %}" style="color:{{ value.text_color }};">
+            <a href="{% pageurl p %}" >
                 {% image p.specific.image width-400 as 400_photo %}
                 {% image p.specific.image width-500 as 500_photo %}
                 {% image p.specific.image width-600 as 600_photo %}
