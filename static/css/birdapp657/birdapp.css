@@ -667,7 +667,6 @@ div.search {
 .simple_grid_block .simple_grid_page .simple_grid_page_image {
     overflow: hidden;
     border: None;
-    background-color: black;
     display: block;
     width: 100%;
     height: auto;
@@ -732,13 +731,17 @@ div.search {
     min-height: 5em;
 }
 .racer .inner_racer {
-    width: var(--content-width);
-    max-width: calc(100% - 4em);
+    width: 100%;
+    max-width: 100%;
     margin: auto;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap:2em;
+}
+.racer.simple .inner_racer {
+    width: var(--content-width);
+    max-width: calc(100% - 4em);
 }
 .racer .inner_racer.left .racer_image {
     justify-self: right;
