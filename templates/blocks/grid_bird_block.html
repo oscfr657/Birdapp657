@@ -3,7 +3,14 @@
 
 
 {% if grid_posts %}
-<div style="background-color:{{ value.bg_color }}; color:{{ value.text_color }};" >
+<div style="background-color:{{ value.bg_color }}; color:{{ value.title_color }};" >
+    {% if value.title_page %}
+    <div>
+        <h2 style="font-size: 40px; max-width: calc(100% - 1em); margin: 0 auto 0 auto; padding: 1rem 0; text-align: center;">
+            <a href="{% pageurl value.title_page %}" >{{ value.title_page }}</a>
+        </h2>
+    </div>
+    {% endif %}
 <div class="grid_block {{ value.block_class }}" >
     {% for p in grid_posts %}
         <div class="grid_page">
@@ -24,8 +31,9 @@
                                 720px"
                         src="{{ 720_photo.url }}" alt="{{ 720_photo.alt }}" class="image" loading="lazy" />
                 </div>
-                <div class="grid_page_title">
+                <div class="grid_page_title" style="color:{{ value.text_color }};" >
                     <h2>{{ p.title }}</h2>
+                    {% if value.show_meta %}
                     <span >
                     {% if p.go_live_at %}
                         {{ p.go_live_at|date:"d M Y" }} 
@@ -34,6 +42,7 @@
                     {% endif %}
                      / {{ p.owner.get_full_name }}
                     </span>
+                    {% endif %}
                 </div>
             </a>
         </div>

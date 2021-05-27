@@ -3,10 +3,10 @@
 
 
 {% if grid_posts %}
-<div style="background-color:{{ value.bg_color }}; color:{{ value.text_color }};" >
+<div style="background-color:{{ value.bg_color }}; color:{{ value.title_color }};" >
     {% if value.title_page %}
     <div>
-        <h2 style="font-size: 42px; width:var(--content-width);max-width: calc(100% - 1em); margin: 0 auto 0 auto; padding: 2rem 0 0 0;">
+        <h2 style="font-size: 40px; width:var(--content-width);max-width: calc(100% - 1em); margin: 0 auto 0 auto; padding: 2rem 0 0 0;">
             <a href="{% pageurl value.title_page %}" >{{ value.title_page }}</a>
         </h2>
     </div>
@@ -29,7 +29,7 @@
                                 400px"
                         src="{{ 400_photo.url }}" alt="{{ 400_photo.alt }}" class="image" loading="lazy" />
                 </div>
-                <div class="simple_grid_page_title">
+                <div class="simple_grid_page_title" style="background-color:{{ value.bg_text_color }}; color:{{ value.text_color }};">
                     <h2>{{ p.title }}</h2>
                     {% if value.show_meta %}
                     <span >

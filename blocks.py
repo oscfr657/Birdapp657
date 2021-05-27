@@ -212,9 +212,13 @@ class GridBirdBlock(blocks.StructBlock):
         )
     parent_page = blocks.PageChooserBlock(label='parent page')
     exclude = blocks.ListBlock(blocks.PageChooserBlock(
-        label="Exclude page"), required=False, default=[])
+        label="Exclude page"), required=False)
     tags = blocks.ListBlock(blocks.CharBlock(label="Tag"), required=False)
+    show_meta = blocks.BooleanBlock(required=False, default=True)
+    title_page = blocks.PageChooserBlock(required=False, label='Title page')
     bg_color = blocks.CharBlock(default='white', label='Background color')
+    title_color = blocks.CharBlock(default='black', label='Title color')
+    bg_text_color = blocks.CharBlock(default='white', label='Background text color')
     text_color = blocks.CharBlock(default='black', label='Text color')
     max_number = blocks.IntegerBlock(required=False)
 
@@ -263,8 +267,6 @@ class GridBirdBlock(blocks.StructBlock):
 
 
 class SimpleGridBirdBlock(GridBirdBlock):
-    show_meta = blocks.BooleanBlock(required=False, default=True)
-    title_page = blocks.PageChooserBlock(required=False, label='Title page')
 
     class Meta:
         group = 'GridBlock'
