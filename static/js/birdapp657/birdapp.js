@@ -146,3 +146,12 @@ function birdPause(element) {
     element.previousElementSibling.style.display = 'block';
     element.style.display = 'none';
 }
+
+function openSearch() {
+  document.getElementById("BirdSearchOverlay").style.display = "block";
+  return false;
+}
+function closeSearch() {
+  document.getElementById("BirdSearchOverlay").style.display = "none";
+  return false;
+}

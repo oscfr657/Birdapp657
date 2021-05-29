@@ -377,6 +377,60 @@ div.search {
 }
 
 
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 2;
+    background-color: #000d;
+}
+.overlay-content {
+    position: absolute;
+    top: 50vh;
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+}
+.overlay .close-overlay {
+    position: absolute;
+    top: var(--top-height);
+    right: 15px;
+    font-size: 4em;
+    cursor: pointer;
+    color: white;
+}
+.overlay .close-overlay:hover {
+    color: #ccc;
+}
+.overlay input[type=text] {
+    border: none;
+    float: left;
+    width: 100%;
+    background: white;
+}
+.overlay button {
+    float: left;
+    width: 20%;
+    padding: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+.overlay button:hover {
+    background: #bbb;
+}
+
+@media (min-width: 900px) {
+    .overlay .close-overlay {
+        right: 45px;
+    }
+    .overlay input[type=text] {
+        width: 70%;
+    }
+}
+
 .block-paragraph .richtext-image {
     max-width: 100%;
     max-height: 200px;
