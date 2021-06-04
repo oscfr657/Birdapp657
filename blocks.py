@@ -275,6 +275,15 @@ class SimpleGridBirdBlock(GridBirdBlock):
         template = 'blocks/simple_grid_bird_block.html'
 
 
+class HighGridBirdBlock(GridBirdBlock):
+
+    class Meta:
+        group = 'GridBlock'
+        label = 'HighGridBlock'
+        icon = 'list-ul'
+        template = 'blocks/high_grid_bird_block.html'
+
+
 class BirdCodeBlock(blocks.StructBlock):  # TODO: Rename to CodeBirdBlock ?
 
     code = blocks.TextBlock(required=True)

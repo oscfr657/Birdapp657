@@ -40,7 +40,7 @@ from .blocks import (
     BirdCodeBlock, HTMLBirdBlock, MediaFileBirdBlock,
     FeedBirdBlock,
     RacerBirdBlock, SimpleRacerBirdBlock,
-    GridBirdBlock, SimpleGridBirdBlock )
+    GridBirdBlock, SimpleGridBirdBlock, HighGridBirdBlock )
 
 
 class FontFace(Orderable):
@@ -195,6 +195,7 @@ class SoloBirdPage(Page, BirdMixin):
         ('feed', FeedBirdBlock(required=False)),
         ('grid', GridBirdBlock(required=False)),
         ('simplegrid', SimpleGridBirdBlock(required=False)),
+        ('highgrid', HighGridBirdBlock(required=False)),
         ('racer', RacerBirdBlock(required=False, null=True)),
         ('simpleracer', SimpleRacerBirdBlock(required=False, null=True)),
     ], blank=True, null=True)

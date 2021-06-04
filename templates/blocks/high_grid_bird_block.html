@@ -1,0 +1,50 @@
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+{% if grid_posts %}
+<div style="background-color:{{ value.bg_color }}; color:{{ value.title_color }};" >
+    {% if value.title_page %}
+    <div>
+        <h2 style="font-size: 40px; width:var(--content-width);max-width: calc(100% - 1em); margin: 0 auto 0 auto; padding: 2rem 0 0 0;">
+            <a href="{% pageurl value.title_page %}" >{{ value.title_page }}</a>
+        </h2>
+    </div>
+    {% endif %}
+<div class="high_grid_block {{ value.block_class }}" >
+    {% for p in grid_posts %}
+        <div class="high_grid_page">
+            <a href="{% pageurl p %}" >
+                {% image p.specific.image fill-400x450 as 400_photo %}
+                {% image p.specific.image fill-500x600 as 500_photo %}
+                {% image p.specific.image fill-600x650 as 600_photo %}
+                <div class="high_grid_page_image">
+                    <img srcset="{{ 400_photo.url }} 400w,
+                                {{ 500_photo.url }} 500w,
+                                {{ 600_photo.url }} 600w"
+                        sizes="(max-width: 400px) 400px,
+                                (max-width: 600px) 600px,
+                                (max-width: 800px) 400px,
+                                (max-width: 900px) 600px,
+                                400px"
+                        src="{{ 400_photo.url }}" alt="{{ 400_photo.alt }}" class="high_image" loading="lazy" />
+                </div>
+                <div class="high_grid_page_title" style="background-color:{{ value.bg_text_color }}; color:{{ value.text_color }};">
+                    <h2>{{ p.title }}</h2>
+                    {% if value.show_meta %}
+                    <span >
+                    {% if p.go_live_at %}
+                        {{ p.go_live_at|date:"d M Y" }} 
+                    {% else %}
+                        {{ p.first_published_at|date:"d M Y" }}
+                    {% endif %}
+                     / {{ p.owner.get_full_name }}
+                    </span>
+                    {% endif %}
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+</div>
+{% endif %}

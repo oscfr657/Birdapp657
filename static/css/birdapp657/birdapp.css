@@ -703,10 +703,7 @@ div.search {
     text-decoration: None;
     position: relative;
 }
-.simple_grid_block .simple_grid_page {
-    background-color: white;
-    color: black;
-}
+
 .simple_grid_page_title {
     padding: 1em 1em;
 }
@@ -724,6 +721,8 @@ div.search {
     display: block;
     width: 100%;
     height: auto;
+    border-top-left-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
 }
 .simple_grid_block .simple_grid_page img.image {
     width: 100%;
@@ -737,6 +736,56 @@ div.search {
 
 @supports (grid-template-rows: masonry) {
     .simple_grid_block {
+        grid-template-rows: masonry;
+    }
+}
+
+.high_grid_block {
+    width: var(--content-width);
+    max-width: calc(100% - 2em);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2em 0;
+    row-gap: 2em;
+    column-gap: 2em;
+}
+.high_grid_block a {
+    text-decoration: None;
+    position: relative;
+}
+.high_grid_page_title {
+    padding: 1em 1em;
+    margin-top: 1em;
+    border-radius: 0.5rem;
+}
+.high_grid_block .high_grid_page .high_grid_page_title h2 {
+    margin: 0;
+    font-size: 22px;
+}
+.high_grid_block .high_grid_page .high_grid_page_title span {
+    top: 5px;
+    position: relative;
+}
+.high_grid_block .high_grid_page .high_grid_page_image {
+    overflow: hidden;
+    border: None;
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+.high_grid_block .high_grid_page img.high_image {
+    width: 100%;
+    margin: 0 0;
+    display: block;
+    transition: all 1s ease;
+}
+.high_grid_block .high_grid_page a:hover img.image {
+    transform: scale(1.25);
+}
+@supports (grid-template-rows: masonry) {
+    .high_grid_block {
         grid-template-rows: masonry;
     }
 }
@@ -978,10 +1027,13 @@ div.search {
     .grid_block {
         grid-template-columns: repeat(2, 1fr);
     }
-
     .simple_grid_block {
         grid-template-columns: repeat(2, 1fr);
     }
+    .high_grid_block {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     
     .block-media .media {
         max-width: calc(100% - 2em);
@@ -1036,10 +1088,13 @@ div.search {
     .grid_block .grid_page .grid_page_title {
         width: 100vw;
     }
-
     .simple_grid_block {
         grid-template-columns: 1fr;
     }
+    .high_grid_block {
+        grid-template-columns: 1fr;
+    }
+
 }
 
 @media (max-width: 571px) {
