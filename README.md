@@ -8,9 +8,9 @@ A small Wagtail app
 ### Tested with ###
 
 ``` Python
-Django == 3.1.6
-Wagtail == 2.12
-Wagtailmedia == 0.7.0
+django==3.2.6
+wagtail==2.14
+wagtailmedia==0.7.1
 ```
 
 ## Installation ###
@@ -51,7 +51,7 @@ add to the INSTALLED_APPS
     'birdapp657',
     # birdapp657 media file block
     'wagtailmedia',
-    # birdapp657 default search backend
+    # birdapp657 default search backend requires postgresql
     'wagtail.contrib.postgres_search',
 
 ```
@@ -117,11 +117,11 @@ WAGTAILIMAGES_FORMAT_CONVERSIONS = {
 
 ### Database configuration ###
 
-> python manage.py migrate
+> python3 manage.py migrate
 
 ### Search Index setup ###
 
-> python manage.py update_index
+> python3 manage.py update_index
 
 ### Django url ###
 
@@ -142,7 +142,7 @@ from wagtail.contrib.sitemaps.views import sitemap
 and
 
 ``` python
-urlpatterns = [
+urlpatterns += [
     re_path('sitemap.xml', sitemap),
     #  Wagtail
     re_path(r'^birdapp/', include(wagtailadmin_urls)),
@@ -159,7 +159,7 @@ handler500 = 'birdapp657.views.bird_page_500'
 
 ### Collectstatic ###
 
-> python manage.py collectstatic
+> python3 manage.py collectstatic
 
 ### [Management commands](https://docs.wagtail.io/en/stable/reference/management_commands.html) ###
 
@@ -167,9 +167,9 @@ Some commands is good to have in cron to run once every hour.
 
 > crontab -e
 
-> 0 * * * * /path/to/env/bin/python /path/to/project/manage.py publish_scheduled_pages
+> 0 * * * * /path/to/env/bin/python3 /path/to/project/manage.py publish_scheduled_pages
 
-> 0 * * * * /path/to/env/bin/python /path/to/project/manage.py search_garbage_collect
+> 0 * * * * /path/to/env/bin/python3 /path/to/project/manage.py search_garbage_collect
 
 > crontab -l
 
