@@ -64,7 +64,6 @@
 
 <meta name="author" content="{{ page.owner.get_full_name }}">
 
-
 {% if page.seo_title %}
 <meta property="og:title" content="{{ page.seo_title }}"/>
 {% elif page.title %}
@@ -88,7 +87,6 @@
 <meta property="og:url" content="{{ page.full_url }}"/>
 {% endif %}
 
-
 {% block ldjson %}
 {% endblock ldjson %}
 
@@ -109,6 +107,9 @@
 
 
 <body class="{{ page.slug }} {% if page.specific.transparent_header %}transparent_header{% endif %}">
+
+    {% wagtailuserbar %}
+
     {% block header %}
 
     <div class="bird_top_wraper ">
@@ -208,9 +209,8 @@
     {% endblock footer %}
 
 
-    {% wagtailuserbar %}
-
     <script src="{% static 'js/birdapp657/birdapp.js' %}" async=""></script>
+
 
     {% if site_settings.extra_js %}
     <script src="{{ site_settings.extra_js.url }}" async=""></script>
