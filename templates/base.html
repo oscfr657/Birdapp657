@@ -144,7 +144,7 @@
                 <ul class="bird_menu_list">
                     {% for child in current_site.root_page.get_children.live.in_menu %}
                     <li class="bird_menu_child">
-                        <a href="{% pageurl child %}" {% if 'Search' == child.title %}onclick="openSearch(); return false;"{% endif %}
+                        <a href="{% pageurl child %}"
                             class="{% if child.title == page.title or child in page.get_ancestors %}active{% endif %}" >
                         {{ child.title }}
                         </a>
@@ -162,6 +162,12 @@
                         {% endif %}
                     </li>
                     {% endfor %}
+                    <li class="bird_menu_child">
+                        <a href="" class="{% if request.path == '/search/' %}active{% endif %}" onclick="openSearch(); return false;"
+                            class="" >
+                            Search
+                        </a>
+                    </li>
                 </ul>
             </div>
             {% endif %}
@@ -171,7 +177,8 @@
     <div id="BirdSearchOverlay" class="overlay">
         <span class="close-overlay" onclick="closeSearch(); return false;" title="Close Overlay">x</span>
         <div class="overlay-content">
-            <form action="/search/" method="GET">
+            <form action="/search/" method="POST">
+                {% csrf_token %}
                 <input type="text" type="text" id="id_search_query" name="search_query"
                     required="" placeholder="Search.." value="">
                 <button type="submit">

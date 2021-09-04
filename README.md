@@ -142,6 +142,7 @@ and
 
 ``` python
 urlpatterns += [
+    path('search/', search),
     re_path('sitemap.xml', sitemap),
     #  Wagtail
     re_path(r'^birdapp/', include(wagtailadmin_urls)),

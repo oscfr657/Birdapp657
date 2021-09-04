@@ -354,8 +354,31 @@ div.search {
     margin: auto;
     padding: 2rem 0 2rem 0;
 }
+div.search > form > button {
+    width: 9em;
+    padding: 9px;
+    background: #ddd;
+    font-size: 1.5em;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+    left: -5px;
+}
+div.search > form > button:hover {
+    background: #bbb;
+}
+
+@media (max-width: 900px) {
+    div.search > form > button {
+        top: 0px;
+    }
+}
+
 #id_search_query {
-    padding: 0.5em;
+    position: relative;
+    top: 0px;
+    padding: 7px;
     font-size: 1.5em;
     max-width: calc(100% - 2rem);
 }
@@ -391,6 +414,7 @@ div.search {
     transform: translateY(-50%);
     right: 0;
     left: 0;
+    text-align: center;
 }
 .overlay .close-overlay {
     position: absolute;
@@ -405,24 +429,29 @@ div.search {
 }
 .overlay input[type=text] {
     border: none;
-    float: left;
     width: 100%;
     background: white;
 }
 .overlay button {
-    float: left;
-    width: 20%;
-    padding: 16px;
+    width: 9em;
+    padding: 11px;
     background: #ddd;
     font-size: 17px;
     border: none;
     cursor: pointer;
+    position: relative;
+    top: 0;
+    left: -5px;
 }
 .overlay button:hover {
     background: #bbb;
 }
 
 @media (min-width: 900px) {
+
+    #id_search_query {
+        top: 3px;
+    }
     .overlay .close-overlay {
         right: 45px;
     }
@@ -430,6 +459,7 @@ div.search {
         width: 70%;
     }
 }
+
 
 .block-paragraph .richtext-image {
     max-width: 100%;
@@ -513,9 +543,6 @@ div.search {
 }
 .hero-bt .hero-content {
     width: var(--content-width);
-}
-.hero-bt .hero-content a {
-    text-decoration: none;
 }
 .hero-bt .hero-content a:hover {
     opacity: 0.8;
@@ -828,6 +855,9 @@ div.search {
 }
 .racer h2 {
     font-size: 40px;
+}
+.racer a {
+    text-decoration: None;
 }
 .racer {
     margin: auto;
