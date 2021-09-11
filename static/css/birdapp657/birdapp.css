@@ -870,11 +870,6 @@ div.search > form > button:hover {
     padding: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap:2em;
-}
-.racer.simple .inner_racer {
-    width: var(--content-width);
-    max-width: calc(100% - 4em);
 }
 .racer .inner_racer.left .racer_image {
     justify-self: right;
@@ -885,10 +880,6 @@ div.search > form > button:hover {
 .racer .inner_racer .racer_image {
     width: 100%;
     overflow: hidden;
-}
-.racer.simple .inner_racer .racer_image {
-    margin: 2em auto;
-    max-width: 100%;
 }
 .racer .racer_image img {
     width: 100%;
@@ -905,6 +896,20 @@ div.search > form > button:hover {
 .racer .inner_racer .racer_text h5 {
     margin: 0;
 }
+.racer .inner_racer .racer_text ul {
+    margin: auto 1em;
+}
+
+.racer.simple .inner_racer {
+    width: var(--content-width);
+    max-width: calc(100% - 4em);
+    grid-column-gap: 2em;
+}
+
+.racer.simple .inner_racer .racer_image {
+    margin: 2em auto;
+    max-width: 100%;
+}
 .racer.simple .inner_racer .racer_text {
     margin: auto;
     width: 100%;
@@ -913,10 +918,6 @@ div.search > form > button:hover {
 .racer.simple .inner_racer.left .racer_text {
     justify-self: left;
 }
-.racer .inner_racer .racer_text ul {
-    margin: auto 1em;
-}
-
 
 
 .block-media .media {
@@ -1097,9 +1098,6 @@ div.search > form > button:hover {
     }
     .racer .inner_racer.right {
         flex-flow: column-reverse;
-    }
-    .racer .racer_image img {
-        margin: 0px 0px -5px 0px;
     }
     .racer.simple .inner_racer .racer_image {
         margin: 1em 0 0 0;
