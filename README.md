@@ -9,8 +9,8 @@ A small Wagtail app
 
 ``` Python
 django==3.2.6
-wagtail==2.14.1
-wagtailmedia==0.7.1
+wagtail==2.14.2
+wagtailmedia==0.8.0
 ```
 
 ## Installation ###
