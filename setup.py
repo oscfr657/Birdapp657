@@ -10,8 +10,8 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name="birdapp657",
-    version='0.1.0-alpha',
+    name="Birdapp657",
+    version='0.1.1-alpha',
     description='A small Wagtail app.',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -20,7 +20,9 @@ setup(
     packages=['birdapp657'],
     package_dir={'birdapp657':'.'},
     package_data={'birdapp657': [
+        './migrations/*',
         './static/*/*/*',
+        './static/*/*/*/*',
         './templates/*',
         './templates/*/*',
         ]
