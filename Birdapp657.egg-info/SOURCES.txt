@@ -1,0 +1,16 @@
+LICENSE.md
+README.md
+setup.py
+./__init__.py
+./admin.py
+./apps.py
+./blocks.py
+./forms.py
+./models.py
+./tests.py
+./views.py
+Birdapp657.egg-info/PKG-INFO
+Birdapp657.egg-info/SOURCES.txt
+Birdapp657.egg-info/dependency_links.txt
+Birdapp657.egg-info/requires.txt
+Birdapp657.egg-info/top_level.txt

@@ -146,7 +146,7 @@
                     <li class="bird_menu_child">
                         <a href="{% pageurl child %}"
                             class="{% if child.title == page.title or child in page.get_ancestors %}active{% endif %}" >
-                        {{ child.title }}
+                        {{ child.title }} {% if child.get_children.live.in_menu %}&#x25BE;{% endif %}
                         </a>
                         {% if child.get_children.live.in_menu %}
                         <ul class="bird_menu_child_list">
