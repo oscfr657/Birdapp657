@@ -317,3 +317,25 @@ class MediaFileBirdBlock(blocks.StructBlock):
         icon = 'media'
         template = 'blocks/media_file_bird_block.html'
 
+
+class ColumnBirdBlock(blocks.StreamBlock):
+    bg_color = blocks.CharBlock(default='white', label='Background color')
+    text_color = blocks.CharBlock(default='black', label='Text color')
+    paragraph = blocks.RichTextBlock(
+        required=False, null=True,
+        features=[
+            'h2', 'h3', 'h4',
+            'bold', 'italic',
+            'superscript', 'subscript', 'strikethrough',
+            'ol', 'ul', 'hr',
+            'link', 'document-link',
+            'blockquote', 'embed', 'image'])
+    html = HTMLBirdBlock(required=False, null=True)
+
+    class Meta:
+        template = 'blocks/columns.html'
+        max_num = 7
+        block_counts = {
+            'bg_color': {'min_num': 1, 'max_num': 1},
+            'text_color': {'min_num': 1, 'max_num': 1},
+        }

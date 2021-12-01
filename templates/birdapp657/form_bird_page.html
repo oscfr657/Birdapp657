@@ -15,8 +15,7 @@
 
 
 {% block content %}
-
-    {{ page.specific.top_hero }}
+<div class="content ">
 
     {% if page.specific.show_breadcrumbs %}
     <div class="breadcrumbs">
@@ -37,6 +36,8 @@
     {% if page.specific.intro %}
     <div class="intro">{{ page.specific.intro|richtext }}</div>
     {% endif %}
+
+    {{ page.specific.prolog }}
 
     <form action="{% pageurl page %}" method="POST">
         {% csrf_token %}
@@ -61,4 +62,5 @@
         <input type="submit" value="Submit">
     </form>
     
+</div>
 {% endblock content %}

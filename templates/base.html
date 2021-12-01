@@ -207,9 +207,9 @@
         }
         </style>
         <div class="footer-row" >
-                {% for block in site_settings.footer %}
-                    <div class="footer-column">{% include_block block %}</div>
-                {% endfor %}
+        {% for block in site_settings.footer %}
+            <div class="footer-column">{% include_block block %}</div>
+        {% endfor %}
         </div>
     </footer>
     {% endif %}

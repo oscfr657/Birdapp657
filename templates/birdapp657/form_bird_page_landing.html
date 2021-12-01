@@ -16,8 +16,6 @@
 
 {% block content %}
 
-    {{ page.specific.header }}
-
     {% if page.specific.show_breadcrumbs %}
     <div class="breadcrumbs">
         {% for ancestor in page.get_ancestors.public|slice:"2:" %}
@@ -27,15 +25,11 @@
     </div>
     {% endif %}
     
-    {% if page.specific.image %}
+    {% if page.specific.image and page.specific.show_coverImage %}
     <div class="cover">
         {% image page.specific.image original as tmp_photo %}
         <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}" class="top_image" />
     </div>
-    {% endif %}
-
-    {% if page.specific.intro %}
-    <div class="intro">{{ page.specific.intro|richtext }}</div>
     {% endif %}
 
     {% if page.specific.thank_you_text %}

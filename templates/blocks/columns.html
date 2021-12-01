@@ -1,0 +1,30 @@
+{% load wagtailcore_tags %}
+
+<style>
+    .block-columns {
+    {% for column in value %}
+        {% if column.block_type == 'bg_color' %}
+        background-color: {% include_block column %};
+        {% endif %}
+        {% if column.block_type == 'text_color' %}
+        color: {% include_block column %};
+        {% endif %}
+    {% endfor %}
+    }
+
+@media (min-width: 901px) {
+    .columns-row-{{ value|length|add:"-2" }} {
+        display: grid;
+        grid-column-gap: 1em;
+        grid-template-columns: repeat({{ value|length|add:"-2" }}, 1fr);
+    }
+}
+</style>
+
+<div class="columns-row-{{ value|length|add:"-2" }}" >
+{% for column in value %}
+    {% if column.block_type != 'bg_color' %}
+    <div class="columns-content">{% include_block column %}</div>
+    {% endif %}
+{% endfor %}
+</div>

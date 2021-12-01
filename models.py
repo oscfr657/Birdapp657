@@ -40,7 +40,8 @@ from .blocks import (
     BirdCodeBlock, HTMLBirdBlock, MediaFileBirdBlock,
     FeedBirdBlock,
     RacerBirdBlock, SimpleRacerBirdBlock,
-    GridBirdBlock, SimpleGridBirdBlock, HighGridBirdBlock )
+    GridBirdBlock, SimpleGridBirdBlock, HighGridBirdBlock,
+    ColumnBirdBlock)
 
 
 class FontFace(Orderable):
@@ -186,6 +187,7 @@ class SoloBirdPage(Page, BirdMixin):
                 'ol', 'ul', 'hr',
                 'link', 'document-link',
                 'blockquote', 'embed', 'image'])),
+        ('columns', ColumnBirdBlock(required=False, null=True)),
         ('image', ImageChooserBlock(required=False, null=True)),
         ('media', MediaFileBirdBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
@@ -277,8 +279,23 @@ class FormField(AbstractFormField):
 
 class FormBirdPage(AbstractForm, BirdMixin):
 
-    top_hero = StreamField([
+    prolog = StreamField([
+        ('paragraph', blocks.RichTextBlock(
+            required=False, null=True,
+            features=[
+                'h2', 'h3', 'h4',
+                'bold', 'italic',
+                'superscript', 'subscript', 'strikethrough',
+                'ol', 'ul', 'hr',
+                'link', 'document-link',
+                'blockquote', 'embed', 'image'])),
+        ('image', ImageChooserBlock(required=False, null=True)),
+        ('media', MediaFileBirdBlock(required=False, null=True)),
         ('hero', HeroBirdBlock(required=False, null=True)),
+        ('hero_bt', HeroBTBirdBlock(required=False, null=True)),
+        ('racer', RacerBirdBlock(required=False, null=True)),
+        ('simpleracer', SimpleRacerBirdBlock(required=False, null=True)),
+        ('columns', ColumnBirdBlock(required=False, null=True)),
     ], blank=True, null=True)
 
     thank_you_text = RichTextField(
@@ -294,7 +311,7 @@ class FormBirdPage(AbstractForm, BirdMixin):
     #show_result = models.BooleanField(default=False)
 
     content_panels = AbstractForm.content_panels + BirdMixin.content_panels + [
-            StreamFieldPanel('top_hero'),
+            StreamFieldPanel('prolog'),
     #        FieldPanel('show_result'),
             InlinePanel('form_fields', label="Form fields"),
             FieldPanel('thank_you_text', classname="full"),

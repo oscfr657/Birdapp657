@@ -17,8 +17,6 @@
 {% block content %}
 <div class="content ">
 
-    {{ page.specific.top_hero }}
-
     {% if page.specific.show_breadcrumbs %}
     <div class="breadcrumbs">
         {% for ancestor in page.get_ancestors.public|slice:"2:" %}
