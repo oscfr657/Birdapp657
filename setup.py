@@ -29,6 +29,7 @@ setup(
     },
     include_package_data=True,
     install_requires=[
+        'django>=3.2.6',
         'wagtail>=2.14.2',
         'wagtailmedia>=0.8.0',
     ],
