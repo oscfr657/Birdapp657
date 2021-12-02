@@ -23,7 +23,7 @@
 
 <div class="columns-row-{{ value|length|add:"-2" }}" >
 {% for column in value %}
-    {% if column.block_type != 'bg_color' %}
+    {% if column.block_type not in 'bg_color,text_color' %}
     <div class="columns-content">{% include_block column %}</div>
     {% endif %}
 {% endfor %}
