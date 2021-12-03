@@ -39,6 +39,7 @@
 
     {{ page.specific.prolog }}
 
+    <div class="form">
     <form action="{% pageurl page %}" method="POST">
         {% csrf_token %}
         {{ form.non_field_errors }}
@@ -48,19 +49,22 @@
         {% for field in form.visible_fields %}
             {% if field.name == 'bird_pot' %}
             <div style='display: none;'>
+                {{ field }}
+            </div>
             {% else %}
             <div >
-            {% endif %}
                 {{ field.errors }}
-                <h4>{{ field.label }}</h4>
-                {{ field }}
-                {% if field.help_text %}
-                <p>{{ field.help_text|safe }}</p>
+                {% if field.widget_type == 'text' %}
+                <input type="text" name="{{ field.name }}" maxlength="255" required="" id="{{ field.id_for_label }}" value="{{ field.label }}">
+                {% else %}
+                <input type="{{ field.widget_type|lower }}" name="{{ field.name }}" maxlength="255" required="" id="{{ field.id_for_label }}" value="{{ field.label }}">
                 {% endif %}
             </div>
+            {% endif %}
         {% endfor %}
         <input type="submit" value="Submit">
     </form>
+    </div>
     
 </div>
 {% endblock content %}

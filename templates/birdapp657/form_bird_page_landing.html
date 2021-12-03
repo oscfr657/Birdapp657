@@ -15,6 +15,7 @@
 
 
 {% block content %}
+<div class="content ">
 
     {% if page.specific.show_breadcrumbs %}
     <div class="breadcrumbs">
@@ -35,5 +36,5 @@
     {% if page.specific.thank_you_text %}
     <div class="thank_you">{{ page.specific.thank_you_text|richtext }}</div>
     {% endif %}
-
+</div>
 {% endblock %}

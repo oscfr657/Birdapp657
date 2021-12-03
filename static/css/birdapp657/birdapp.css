@@ -73,6 +73,28 @@ blockquote:before {
     quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
+form {
+    width: 500px;
+    max-width: 100%;
+    margin: auto;
+    padding: 2rem 0;
+}
+form div {
+    width: 900px;
+    max-width: 100%;
+    margin: auto;
+    padding: 0 0 1rem 0;
+    border-radius: 0;
+}
+form div input {
+    padding: 0.5rem 1rem;
+}
+form input[type=submit] {
+    margin: 0 0 1rem 0;
+    padding: 0.5rem 2rem;
+    border: None;
+}
+
 
 .bird_top_wraper {
     position: fixed;
@@ -308,16 +330,6 @@ body.transparent_header > div + div {
     max-width: 100%;
     margin: auto;
     text-align: center;
-}
-
-
-form {
-    width: 900px;
-    max-width: 100%;
-    margin: auto;
-}
-form input[type=submit] {
-    margin: 0 0 2em 0;
 }
 
 
