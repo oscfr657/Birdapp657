@@ -82,7 +82,6 @@ form {
 form div {
     width: 900px;
     max-width: 100%;
-    margin: auto;
     padding: 0 0 1rem 0;
     border-radius: 0;
 }
@@ -934,7 +933,6 @@ div.search > form > button:hover {
 }
 .racer .inner_racer .racer_image {
     width: 100%;
-    overflow: hidden;
 }
 .racer .racer_image img {
     width: 100%;
@@ -964,6 +962,7 @@ div.search > form > button:hover {
 .racer.simple .inner_racer .racer_image {
     margin: 2em auto;
     max-width: 100%;
+    overflow: hidden;
 }
 .racer.simple .inner_racer .racer_text {
     margin: auto;
