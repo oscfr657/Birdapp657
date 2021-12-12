@@ -55,9 +55,9 @@
             <div >
                 {{ field.errors }}
                 {% if field.widget_type == 'text' %}
-                <input type="text" name="{{ field.name }}" maxlength="255" required="" id="{{ field.id_for_label }}" value="{{ field.label }}">
+                <input type="text" name="{{ field.name }}" maxlength="255" {% if field.field.required %}required="required"{% endif %} id="{{ field.id_for_label }}" placeholder="{{ field.label }}">
                 {% else %}
-                <input type="{{ field.widget_type|lower }}" name="{{ field.name }}" maxlength="255" required="" id="{{ field.id_for_label }}" value="{{ field.label }}">
+                <input type="{{ field.widget_type|lower }}" name="{{ field.name }}" maxlength="255" {% if field.field.required %}required="required"{% endif %} id="{{ field.id_for_label }}" placeholder="{{ field.label }}">
                 {% endif %}
             </div>
             {% endif %}
