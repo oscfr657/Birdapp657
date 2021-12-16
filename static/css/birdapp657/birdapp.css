@@ -392,7 +392,7 @@ div.search > form > button:hover {
 
 #id_search_query {
     position: relative;
-    top: 0px;
+    bottom: 2rem;
     padding: 7px;
     font-size: 1.5em;
     max-width: calc(100% - 2rem);
@@ -442,6 +442,9 @@ div.search > form > button:hover {
 .overlay .close-overlay:hover {
     color: #ccc;
 }
+.overlay-content form {
+    width: 600px;
+}
 .overlay input[type=text] {
     border: none;
     width: 100%;
@@ -465,7 +468,11 @@ div.search > form > button:hover {
 @media (min-width: 900px) {
 
     #id_search_query {
+        width: 70%;
         top: 3px;
+    }
+    .overlay-content form {
+        width: 900px;
     }
     .overlay .close-overlay {
         right: 45px;
@@ -474,7 +481,6 @@ div.search > form > button:hover {
         width: 70%;
     }
 }
-
 
 /* blocks */
 /** Ugly **/
@@ -1029,9 +1035,7 @@ div.search > form > button:hover {
     .bird_top_wraper .bird_menu_child {
         text-align: center;
     }
-}
 
-@media (max-width: 900px) {
     form {
         max-width: calc(100% - 2em);
         margin: auto;

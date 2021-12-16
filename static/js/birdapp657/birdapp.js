@@ -149,6 +149,7 @@ function birdPause(element) {
 
 function openSearch() {
   document.getElementById("BirdSearchOverlay").style.display = "block";
+  document.getElementById("id_search_query").focus();
   return false;
 }
 function closeSearch() {
