@@ -1,7 +1,7 @@
 
 
 from django.shortcuts import render
-from wagtail.core.models import Page
+from wagtail.core.models import Page, Site
 from wagtail.search.models import Query
 
 from .forms import SearchBirdForm
@@ -23,13 +23,14 @@ def bird_page_500(request, exception=None, template_name='bird_500.html'):
 
 
 def search(request):
+    site = Site.find_for_request(request)
     search_query = ''
     if request.method == 'POST':
         form = SearchBirdForm(request.POST)
         if form.is_valid():
             search_query = form.cleaned_data['search_query']
-            search_results = Page.objects.live(
-                ).public().exclude(
+            search_results = Page.objects.in_site(site).live(
+                ).public().filter().exclude(
                     show_in_menus=True).order_by(
                         '-first_published_at').search(
                             search_query, order_by_relevance=False)
@@ -44,7 +45,7 @@ def search(request):
         search_results = Page.objects.none()
         search_query = request.GET.get('search_query', None)
         if search_query:
-            search_results = Page.objects.live(
+            search_results = Page.objects.in_site(site).live(
                         ).public().exclude(
                             show_in_menus=True).order_by(
                                 '-first_published_at').search(
