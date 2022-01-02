@@ -200,3 +200,9 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 ```
+
+### Build a new release ###
+
+``` python
+python3 -m build --sdist
+```
