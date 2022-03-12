@@ -17,7 +17,9 @@ wagtailmedia==0.8.0
   
 ### Pip requirements ###
 
-> pip install -r requirements.txt
+``` Python
+pip install -r requirements.txt
+```
 
 ### Django settings ###
 
@@ -92,12 +94,12 @@ PASSWORD_REQUIRED_TEMPLATE = 'birdapp657_password_required.html'
 
 #### I recommend ####
 
-the use of the postgres_search.backend, set the search backend settings
+the use of the database search backend, set the search backend settings
 
 ``` python
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.contrib.postgres_search.backend',
+        'BACKEND': 'wagtail.search.backends.database',
     },
 }
 ```
@@ -121,7 +123,9 @@ WAGTAILIMAGES_FORMAT_CONVERSIONS = {
 
 ### Search Index setup ###
 
-> python3 manage.py update_index
+``` Python
+python3 manage.py update_index
+```
 
 ### Django url ###
 
@@ -159,23 +163,25 @@ handler500 = 'birdapp657.views.bird_page_500'
 
 ### Collectstatic ###
 
-> python3 manage.py collectstatic
+``` bash
+python3 manage.py collectstatic
+```
 
 ### [Management commands](https://docs.wagtail.io/en/stable/reference/management_commands.html) ###
 
 Some commands is good to have in cron to run once every hour.
 
-> crontab -e
+``` bash
+crontab -e
 
-> 0 * * * * /path/to/env/bin/python3 /path/to/project/manage.py publish_scheduled_pages
+0 * * * * /path/to/env/bin/python3 /path/to/project/manage.py publish_scheduled_pages
 
-> 0 * * * * /path/to/env/bin/python3 /path/to/project/manage.py search_garbage_collect
+0 * * * * /path/to/env/bin/python3 /path/to/project/manage.py search_garbage_collect
 
-> crontab -l
+crontab -l
+```
 
 ## For development ##
-
-> pip install pylint
 
 To the Django settings.py add
 
@@ -202,6 +208,11 @@ if settings.DEBUG:
 ```
 
 ### Build a new release ###
+
+``` bash
+    pip install black
+    black . --skip-string-normalization
+```
 
 ``` python
 python3 -m build --sdist

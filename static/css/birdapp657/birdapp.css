@@ -377,16 +377,16 @@ div.search > form > button {
     border: none;
     cursor: pointer;
     position: relative;
-    top: 3px;
+    top: 0px;
     left: -5px;
 }
 div.search > form > button:hover {
     background: #bbb;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 900px) {
     div.search > form > button {
-        top: 0px;
+        top: 3px;
     }
 }
 
@@ -597,20 +597,20 @@ div.search > form > button:hover {
     padding: 2em 0;
     margin: auto;
     width: calc(var(--content-width) - 2em);
-    max-width: calc(100% - 4em);
+    max-width: calc(100% - 2em);
 }
 .block-columns .columns-content > img {
     max-width: calc(100% - 2em);
     height: auto;
 }
-@media (max-width: 900px) {
-    .block-columns  > div {
+@media (min-width: 900px) {
+    .block-columns > div {
         max-width: 60%;
     }
 }
-@media (max-width: 600px) {
+@media (min-width: 600px) {
     .block-columns > div {
-        max-width: calc(100% - 2em);
+        max-width: calc(100% - 4em);
     }
 }
 
@@ -1191,10 +1191,3 @@ div.search > form > button:hover {
     }
 
 }
-
-@media (max-width: 571px) {
-    .content .responsive-object {
-        height: 277px;
-    }
-}
-
