@@ -19,11 +19,135 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SoloBirdPage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                (
+                    'page_ptr',
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to='wagtailcore.Page',
+                    ),
+                ),
                 ('author', models.CharField(blank=True, max_length=255, null=True)),
                 ('intro', wagtail.core.fields.RichTextField(blank=True, null=True)),
-                ('body', wagtail.core.fields.StreamField([('paragraph', wagtail.core.blocks.RichTextBlock(features=['h2', 'h3', 'h4', 'bold', 'italic', 'superscript', 'subscript', 'strikethroughol', 'ul', 'hr', 'link', 'document-link', 'blockquote', 'embed', 'image'], null=True, required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(null=True, required=False)), ('code', wagtail.core.blocks.StructBlock([('code', wagtail.core.blocks.TextBlock(required=True))], null=True, required=False)), ('racer', wagtail.core.blocks.StructBlock([('text', wagtail.core.blocks.RichTextBlock(features=['h2', 'h3', 'h4', 'h5', 'bold', 'italic', 'link', 'document-link', 'ol', 'ul'], required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(required=False)), ('right', wagtail.core.blocks.BooleanBlock(help_text='Image to the right else left', required=False)), ('bg_color', wagtail.core.blocks.CharBlock(default='#fff', label='Background color')), ('text_color', wagtail.core.blocks.CharBlock(default='#000', label='Text color'))], null=True, required=False))], blank=True, null=True)),
-                ('coverImage', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
+                (
+                    'body',
+                    wagtail.core.fields.StreamField(
+                        [
+                            (
+                                'paragraph',
+                                wagtail.core.blocks.RichTextBlock(
+                                    features=[
+                                        'h2',
+                                        'h3',
+                                        'h4',
+                                        'bold',
+                                        'italic',
+                                        'superscript',
+                                        'subscript',
+                                        'strikethroughol',
+                                        'ul',
+                                        'hr',
+                                        'link',
+                                        'document-link',
+                                        'blockquote',
+                                        'embed',
+                                        'image',
+                                    ],
+                                    null=True,
+                                    required=False,
+                                ),
+                            ),
+                            (
+                                'image',
+                                wagtail.images.blocks.ImageChooserBlock(
+                                    null=True, required=False
+                                ),
+                            ),
+                            (
+                                'code',
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            'code',
+                                            wagtail.core.blocks.TextBlock(
+                                                required=True
+                                            ),
+                                        )
+                                    ],
+                                    null=True,
+                                    required=False,
+                                ),
+                            ),
+                            (
+                                'racer',
+                                wagtail.core.blocks.StructBlock(
+                                    [
+                                        (
+                                            'text',
+                                            wagtail.core.blocks.RichTextBlock(
+                                                features=[
+                                                    'h2',
+                                                    'h3',
+                                                    'h4',
+                                                    'h5',
+                                                    'bold',
+                                                    'italic',
+                                                    'link',
+                                                    'document-link',
+                                                    'ol',
+                                                    'ul',
+                                                ],
+                                                required=False,
+                                            ),
+                                        ),
+                                        (
+                                            'image',
+                                            wagtail.images.blocks.ImageChooserBlock(
+                                                required=False
+                                            ),
+                                        ),
+                                        (
+                                            'right',
+                                            wagtail.core.blocks.BooleanBlock(
+                                                help_text='Image to the right else left',
+                                                required=False,
+                                            ),
+                                        ),
+                                        (
+                                            'bg_color',
+                                            wagtail.core.blocks.CharBlock(
+                                                default='#fff', label='Background color'
+                                            ),
+                                        ),
+                                        (
+                                            'text_color',
+                                            wagtail.core.blocks.CharBlock(
+                                                default='#000', label='Text color'
+                                            ),
+                                        ),
+                                    ],
+                                    null=True,
+                                    required=False,
+                                ),
+                            ),
+                        ],
+                        blank=True,
+                        null=True,
+                    ),
+                ),
+                (
+                    'coverImage',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name='+',
+                        to='wagtailimages.Image',
+                    ),
+                ),
             ],
             options={
                 'abstract': False,
@@ -33,10 +157,29 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CollectionBirdPage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                (
+                    'page_ptr',
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to='wagtailcore.Page',
+                    ),
+                ),
                 ('author', models.CharField(blank=True, max_length=255, null=True)),
                 ('intro', wagtail.core.fields.RichTextField(blank=True, null=True)),
-                ('coverImage', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
+                (
+                    'coverImage',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name='+',
+                        to='wagtailimages.Image',
+                    ),
+                ),
             ],
             options={
                 'abstract': False,

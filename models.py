@@ -4,9 +4,7 @@ from django.db import models
 from django.shortcuts import render
 from django import forms
 
-from wagtail.core.models import (
-    Page, Orderable
-    )
+from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
 
@@ -14,8 +12,11 @@ from wagtail.search.models import Query
 from wagtail.search import index
 
 from wagtail.admin.edit_handlers import (
-    FieldPanel, StreamFieldPanel, InlinePanel,
-    PageChooserPanel )
+    FieldPanel,
+    StreamFieldPanel,
+    InlinePanel,
+    PageChooserPanel,
+)
 
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -36,27 +37,30 @@ from taggit.models import TaggedItemBase
 
 from .forms import SearchBirdForm
 from .blocks import (
-    HeroBirdBlock, HeroBTBirdBlock,
-    BirdCodeBlock, HTMLBirdBlock, MediaFileBirdBlock,
+    HeroBirdBlock,
+    HeroBTBirdBlock,
+    BirdCodeBlock,
+    HTMLBirdBlock,
+    MediaFileBirdBlock,
     FeedBirdBlock,
-    RacerBirdBlock, SimpleRacerBirdBlock,
-    GridBirdBlock, SimpleGridBirdBlock, HighGridBirdBlock,
-    ColumnBirdBlock)
+    RacerBirdBlock,
+    SimpleRacerBirdBlock,
+    GridBirdBlock,
+    SimpleGridBirdBlock,
+    HighGridBirdBlock,
+    ColumnBirdBlock,
+)
 
 
 class FontFace(Orderable):
     brand = ParentalKey(
-        'BirdAppSettings',
-        related_name='brand_fonts',
-        on_delete=models.CASCADE
+        'BirdAppSettings', related_name='brand_fonts', on_delete=models.CASCADE
     )
     src_file = models.ForeignKey(
-        'wagtaildocs.Document',
-        on_delete=models.CASCADE,
-        related_name='+'
+        'wagtaildocs.Document', on_delete=models.CASCADE, related_name='+'
     )
     font_family = models.CharField(max_length=50)
-    font_format =  models.CharField(max_length=50)
+    font_format = models.CharField(max_length=50)
     panels = [
         DocumentChooserPanel('src_file'),
         FieldPanel('font_family'),
@@ -68,16 +72,18 @@ class FontFace(Orderable):
 class BirdAppSettings(BaseSetting, ClusterableModel):
     icon = models.ForeignKey(
         'wagtailimages.Image',
-        blank=True, null=True,
+        blank=True,
+        null=True,
         on_delete=models.SET_NULL,
-        related_name='+'
-        )
+        related_name='+',
+    )
     logo = models.ForeignKey(
         'wagtailimages.Image',
-        blank=True, null=True,
+        blank=True,
+        null=True,
         on_delete=models.SET_NULL,
-        related_name='+'
-        )
+        related_name='+',
+    )
     show_name = models.BooleanField(default=True)
     mobile_menu_page = models.ForeignKey(
         'wagtailcore.Page',
@@ -93,27 +99,45 @@ class BirdAppSettings(BaseSetting, ClusterableModel):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='+',
     )
     extra_js = models.ForeignKey(
         'wagtaildocs.Document',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='+',
     )
-    footer = StreamField([
-        ('paragraph', blocks.RichTextBlock(
-            required=False, null=True,
-            features=[
-                'h2', 'h3', 'h4',
-                'bold', 'italic',
-                'superscript', 'subscript', 'strikethrough',
-                'ol', 'ul', 'hr',
-                'link', 'document-link',
-                'blockquote',])),
-        ('html', HTMLBirdBlock(required=False, null=True)),
-    ], blank=True, null=True)
+    footer = StreamField(
+        [
+            (
+                'paragraph',
+                blocks.RichTextBlock(
+                    required=False,
+                    null=True,
+                    features=[
+                        'h2',
+                        'h3',
+                        'h4',
+                        'bold',
+                        'italic',
+                        'superscript',
+                        'subscript',
+                        'strikethrough',
+                        'ol',
+                        'ul',
+                        'hr',
+                        'link',
+                        'document-link',
+                        'blockquote',
+                    ],
+                ),
+            ),
+            ('html', HTMLBirdBlock(required=False, null=True)),
+        ],
+        blank=True,
+        null=True,
+    )
 
     panels = [
         ImageChooserPanel('icon'),
@@ -132,19 +156,31 @@ class BirdAppSettings(BaseSetting, ClusterableModel):
 class BirdMixin(models.Model):
     image = models.ForeignKey(
         'wagtailimages.Image',
-        blank=True, null=True,
+        blank=True,
+        null=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='+',
     )
     intro = RichTextField(
-        blank=True, null=True,
+        blank=True,
+        null=True,
         features=[
-            'h2', 'h3', 'h4',
-            'bold', 'italic',
-            'superscript', 'subscript', 'strikethrough',
-            'ol', 'ul', 'hr',
-            'link', 'document-link', 'blockquote']
-            )
+            'h2',
+            'h3',
+            'h4',
+            'bold',
+            'italic',
+            'superscript',
+            'subscript',
+            'strikethrough',
+            'ol',
+            'ul',
+            'hr',
+            'link',
+            'document-link',
+            'blockquote',
+        ],
+    )
     show_breadcrumbs = models.BooleanField(default=False)
     transparent_header = models.BooleanField(default=False)
     hide_header = models.BooleanField(default=False)
@@ -171,50 +207,77 @@ class BirdMixin(models.Model):
 
 class SoloBirdPageTag(TaggedItemBase):
     content_object = ParentalKey(
-        'SoloBirdPage',
-        on_delete=models.CASCADE,
-        related_name='tagged_items')
+        'SoloBirdPage', on_delete=models.CASCADE, related_name='tagged_items'
+    )
 
 
 class SoloBirdPage(Page, BirdMixin):
-    body = StreamField([
-        ('paragraph', blocks.RichTextBlock(
-            required=False, null=True,
-            features=[
-                'h2', 'h3', 'h4',
-                'bold', 'italic',
-                'superscript', 'subscript', 'strikethrough',
-                'ol', 'ul', 'hr',
-                'link', 'document-link',
-                'blockquote', 'embed', 'image'])),
-        ('columns', ColumnBirdBlock(required=False, null=True)),
-        ('image', ImageChooserBlock(required=False, null=True)),
-        ('media', MediaFileBirdBlock(required=False, null=True)),
-        ('code', BirdCodeBlock(required=False, null=True)),
-        ('html', HTMLBirdBlock(required=False, null=True)),
-        ('hero', HeroBirdBlock(required=False, null=True)),
-        ('hero_bt', HeroBTBirdBlock(required=False, null=True)),
-        ('feed', FeedBirdBlock(required=False)),
-        ('grid', GridBirdBlock(required=False)),
-        ('simplegrid', SimpleGridBirdBlock(required=False)),
-        ('highgrid', HighGridBirdBlock(required=False)),
-        ('racer', RacerBirdBlock(required=False, null=True)),
-        ('simpleracer', SimpleRacerBirdBlock(required=False, null=True)),
-    ], blank=True, null=True)
+    body = StreamField(
+        [
+            (
+                'paragraph',
+                blocks.RichTextBlock(
+                    required=False,
+                    null=True,
+                    features=[
+                        'h2',
+                        'h3',
+                        'h4',
+                        'bold',
+                        'italic',
+                        'superscript',
+                        'subscript',
+                        'strikethrough',
+                        'ol',
+                        'ul',
+                        'hr',
+                        'link',
+                        'document-link',
+                        'blockquote',
+                        'embed',
+                        'image',
+                    ],
+                ),
+            ),
+            ('columns', ColumnBirdBlock(required=False, null=True)),
+            ('image', ImageChooserBlock(required=False, null=True)),
+            ('media', MediaFileBirdBlock(required=False, null=True)),
+            ('code', BirdCodeBlock(required=False, null=True)),
+            ('html', HTMLBirdBlock(required=False, null=True)),
+            ('hero', HeroBirdBlock(required=False, null=True)),
+            ('hero_bt', HeroBTBirdBlock(required=False, null=True)),
+            ('feed', FeedBirdBlock(required=False)),
+            ('grid', GridBirdBlock(required=False)),
+            ('simplegrid', SimpleGridBirdBlock(required=False)),
+            ('highgrid', HighGridBirdBlock(required=False)),
+            ('racer', RacerBirdBlock(required=False, null=True)),
+            ('simpleracer', SimpleRacerBirdBlock(required=False, null=True)),
+        ],
+        blank=True,
+        null=True,
+    )
 
     tags = ClusterTaggableManager(through=SoloBirdPageTag, blank=True)
-    
-    search_fields = Page.search_fields + BirdMixin.search_fields + [
-        index.SearchField('body'),
-        index.SearchField('tags'),
-        ]
 
-    content_panels = Page.content_panels + BirdMixin.content_panels + [
-        StreamFieldPanel('body'),
+    search_fields = (
+        Page.search_fields
+        + BirdMixin.search_fields
+        + [
+            index.SearchField('body'),
+            index.SearchField('tags'),
         ]
+    )
+
+    content_panels = (
+        Page.content_panels
+        + BirdMixin.content_panels
+        + [
+            StreamFieldPanel('body'),
+        ]
+    )
     promote_panels = Page.promote_panels + [
         FieldPanel('tags'),
-        ]
+    ]
     settings_panels = Page.settings_panels + BirdMixin.settings_panels
 
     def get_sitemap_urls(self, request=None):
@@ -225,14 +288,22 @@ class SoloBirdPage(Page, BirdMixin):
 
 
 class SearchBirdPage(Page, BirdMixin):
-    
-    top_hero = StreamField([
-        ('hero', HeroBirdBlock(required=False, null=True)),
-    ], blank=True, null=True)
 
-    content_panels = Page.content_panels + BirdMixin.content_panels + [
-        StreamFieldPanel('top_hero'),
+    top_hero = StreamField(
+        [
+            ('hero', HeroBirdBlock(required=False, null=True)),
+        ],
+        blank=True,
+        null=True,
+    )
+
+    content_panels = (
+        Page.content_panels
+        + BirdMixin.content_panels
+        + [
+            StreamFieldPanel('top_hero'),
         ]
+    )
     settings_panels = Page.settings_panels + BirdMixin.settings_panels
 
     def serve(self, request):
@@ -241,11 +312,15 @@ class SearchBirdPage(Page, BirdMixin):
             form = SearchBirdForm(request.POST)
             if form.is_valid():
                 search_query = form.cleaned_data['search_query']
-                search_results = self.get_parent().get_descendants().live(
-                    ).public().exclude(
-                        show_in_menus=True).order_by(
-                            '-first_published_at').search(
-                                search_query, order_by_relevance=False)
+                search_results = (
+                    self.get_parent()
+                    .get_descendants()
+                    .live()
+                    .public()
+                    .exclude(show_in_menus=True)
+                    .order_by('-first_published_at')
+                    .search(search_query, order_by_relevance=False)
+                )
 
                 Query.get(search_query).add_hit()
 
@@ -256,13 +331,17 @@ class SearchBirdPage(Page, BirdMixin):
             form = SearchBirdForm()
             search_results = Page.objects.none()
 
-        return render(request, 'birdapp657/search_bird_page.html', {
-            'page': self,
-            'form': form,
-            'search_query': search_query,
-            'search_results': search_results,
-        })
-    
+        return render(
+            request,
+            'birdapp657/search_bird_page.html',
+            {
+                'page': self,
+                'form': form,
+                'search_query': search_query,
+                'search_results': search_results,
+            },
+        )
+
     def get_sitemap_urls(self, request=None):
         if self.exclude_from_sitemap:
             return []
@@ -272,51 +351,86 @@ class SearchBirdPage(Page, BirdMixin):
 
 class FormField(AbstractFormField):
     page = ParentalKey(
-        'FormBirdPage',
-        on_delete=models.CASCADE,
-        related_name='form_fields')
-        
+        'FormBirdPage', on_delete=models.CASCADE, related_name='form_fields'
+    )
+
 
 class FormBirdPage(AbstractForm, BirdMixin):
 
-    prolog = StreamField([
-        ('paragraph', blocks.RichTextBlock(
-            required=False, null=True,
-            features=[
-                'h2', 'h3', 'h4',
-                'bold', 'italic',
-                'superscript', 'subscript', 'strikethrough',
-                'ol', 'ul', 'hr',
-                'link', 'document-link',
-                'blockquote', 'embed', 'image'])),
-        ('image', ImageChooserBlock(required=False, null=True)),
-        ('media', MediaFileBirdBlock(required=False, null=True)),
-        ('hero', HeroBirdBlock(required=False, null=True)),
-        ('hero_bt', HeroBTBirdBlock(required=False, null=True)),
-        ('racer', RacerBirdBlock(required=False, null=True)),
-        ('simpleracer', SimpleRacerBirdBlock(required=False, null=True)),
-        ('columns', ColumnBirdBlock(required=False, null=True)),
-    ], blank=True, null=True)
+    prolog = StreamField(
+        [
+            (
+                'paragraph',
+                blocks.RichTextBlock(
+                    required=False,
+                    null=True,
+                    features=[
+                        'h2',
+                        'h3',
+                        'h4',
+                        'bold',
+                        'italic',
+                        'superscript',
+                        'subscript',
+                        'strikethrough',
+                        'ol',
+                        'ul',
+                        'hr',
+                        'link',
+                        'document-link',
+                        'blockquote',
+                        'embed',
+                        'image',
+                    ],
+                ),
+            ),
+            ('image', ImageChooserBlock(required=False, null=True)),
+            ('media', MediaFileBirdBlock(required=False, null=True)),
+            ('hero', HeroBirdBlock(required=False, null=True)),
+            ('hero_bt', HeroBTBirdBlock(required=False, null=True)),
+            ('racer', RacerBirdBlock(required=False, null=True)),
+            ('simpleracer', SimpleRacerBirdBlock(required=False, null=True)),
+            ('columns', ColumnBirdBlock(required=False, null=True)),
+        ],
+        blank=True,
+        null=True,
+    )
 
     thank_you_text = RichTextField(
-        blank=True, null=True,
+        blank=True,
+        null=True,
         features=[
-            'h2', 'h3', 'h4',
-            'bold', 'italic',
-            'superscript', 'subscript', 'strikethrough',
-            'ol', 'ul', 'hr',
-            'link', 'document-link',
-            'blockquote', 'embed', 'image']
-            )
-    #show_result = models.BooleanField(default=False)
+            'h2',
+            'h3',
+            'h4',
+            'bold',
+            'italic',
+            'superscript',
+            'subscript',
+            'strikethrough',
+            'ol',
+            'ul',
+            'hr',
+            'link',
+            'document-link',
+            'blockquote',
+            'embed',
+            'image',
+        ],
+    )
+    # show_result = models.BooleanField(default=False)
 
-    content_panels = AbstractForm.content_panels + BirdMixin.content_panels + [
+    content_panels = (
+        AbstractForm.content_panels
+        + BirdMixin.content_panels
+        + [
             StreamFieldPanel('prolog'),
-    #        FieldPanel('show_result'),
+            #        FieldPanel('show_result'),
             InlinePanel('form_fields', label="Form fields"),
             FieldPanel('thank_you_text', classname="full"),
             FormSubmissionsPanel(),
         ]
+    )
     settings_panels = Page.settings_panels + BirdMixin.settings_panels
 
     def get_sitemap_urls(self, request=None):
@@ -327,26 +441,27 @@ class FormBirdPage(AbstractForm, BirdMixin):
 
     def serve(self, request, *args, **kwargs):
         if request.method == 'POST':
-            form = self.get_form(request.POST, request.FILES, page=self, user=request.user)
+            form = self.get_form(
+                request.POST, request.FILES, page=self, user=request.user
+            )
             if form.data.get('bird_pot'):
                 return self.render_landing_page(request, None, *args, **kwargs)
             if form.is_valid():
                 form_submission = self.process_form_submission(form)
-                return self.render_landing_page(request, form_submission, *args, **kwargs)
+                return self.render_landing_page(
+                    request, form_submission, *args, **kwargs
+                )
         else:
             form = self.get_form(page=self, user=request.user)
             form.fields["bird_pot"] = forms.CharField(
                 # initial='bird' % time.now().format(),  # Time of creation and check time at submission ?
                 # empty_value='bird',  # Time of creation and check time at submission ?
                 # validators=[validate_honey_pot, forms.CharField.default_validators],  # Does not work. :/
-                required=False)
+                required=False
+            )
         context = self.get_context(request)
         context['form'] = form
-        return render(
-            request,
-            self.get_template(request),
-            context
-            )
+        return render(request, self.get_template(request), context)
 
 
 """

@@ -9,19 +9,12 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 
 
-
 class LinkBirdBlock(blocks.StructBlock):
     font_color = blocks.CharBlock(required=False, null=True)
     bg_color = blocks.CharBlock(required=False, null=True)
-    page_link = blocks.PageChooserBlock(
-        required=False,
-        help_text='Link to a page.'
-    )
+    page_link = blocks.PageChooserBlock(required=False, help_text='Link to a page.')
     external_link = blocks.URLBlock(
-        label='Link URL',
-        max_length=200,
-        required=False,
-        help_text='Link to a URL.'
+        label='Link URL', max_length=200, required=False, help_text='Link to a URL.'
     )
     text = blocks.CharBlock(required=False, null=True, help_text='Link text')
 
@@ -38,10 +31,12 @@ class HeroBirdBlock(blocks.StructBlock):
     loop = blocks.BooleanBlock(required=False, default=False, help_text='Loop')
     controls = blocks.BooleanBlock(required=False, default=True, help_text='Controls')
     block_media = AbstractMediaChooserBlock(required=False, null=True)
-    
+
     image = ImageChooserBlock(required=False, null=True)
-    
-    full_screen = blocks.BooleanBlock(required=False, default=False, help_text='Full screen')
+
+    full_screen = blocks.BooleanBlock(
+        required=False, default=False, help_text='Full screen'
+    )
 
     font_color = blocks.CharBlock(required=False, null=True)
     bg_color = blocks.CharBlock(required=False, null=True)
@@ -49,11 +44,20 @@ class HeroBirdBlock(blocks.StructBlock):
     text = blocks.RichTextBlock(
         required=False,
         features=[
-            'h1', 'h2', 'h3', 'h4', 'h5',
-            'bold', 'italic',
-            'link', 'document-link',
-            'ol', 'ul'])
-    
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'bold',
+            'italic',
+            'link',
+            'document-link',
+            'ol',
+            'ul',
+        ],
+    )
+
     button_link = LinkBirdBlock(required=False, null=True)
 
     class Meta:
@@ -65,18 +69,18 @@ class HeroBirdBlock(blocks.StructBlock):
 
 class HeroBTBirdBlock(blocks.StructBlock):
     block_class = blocks.CharBlock(required=False, null=True, help_text='Block class')
-    full_screen = blocks.BooleanBlock(required=False, default=False, help_text='Full screen')
+    full_screen = blocks.BooleanBlock(
+        required=False, default=False, help_text='Full screen'
+    )
 
     font_color = blocks.CharBlock(required=False, null=True)
     bg_color = blocks.CharBlock(required=False, null=True)
     text_align = blocks.CharBlock(required=False, default='left')
     text = blocks.RichTextBlock(
         required=False,
-        features=[
-            'h1', 'h2', 'h3', 'h4',
-            'bold', 'italic',
-            'link', 'document-link'])
-    
+        features=['h1', 'h2', 'h3', 'h4', 'bold', 'italic', 'link', 'document-link'],
+    )
+
     button_link = LinkBirdBlock(required=False, null=True)
 
     class Meta:
@@ -90,30 +94,33 @@ class RacerBirdBlock(blocks.StructBlock):
     text = blocks.RichTextBlock(
         required=False,
         features=[
-            'h2', 'h3', 'h4', 'h5',
-            'bold', 'italic',
-            'link', 'document-link',
-            'ol', 'ul'])
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'bold',
+            'italic',
+            'link',
+            'document-link',
+            'ol',
+            'ul',
+        ],
+    )
     image = ImageChooserBlock(required=False)
     page_image_link = blocks.PageChooserBlock(
-        required=False,
-        help_text='Link image to a page.'
+        required=False, help_text='Link image to a page.'
     )
     external_image_link = blocks.URLBlock(
         label='Link URL',
         max_length=200,
         required=False,
-        help_text='Link image to a URL.'
+        help_text='Link image to a URL.',
     )
     right = blocks.BooleanBlock(
-        required=False,
-        help_text='Image to the right else left')
-    bg_color = blocks.CharBlock(
-        default='#fff',
-        label='Background color')
-    text_color = blocks.CharBlock(
-        default='#000',
-        label='Text color')
+        required=False, help_text='Image to the right else left'
+    )
+    bg_color = blocks.CharBlock(default='#fff', label='Background color')
+    text_color = blocks.CharBlock(default='#000', label='Text color')
     block_class = blocks.CharBlock(required=False, help_text='Block class')
 
     class Meta:
@@ -133,15 +140,18 @@ class SimpleRacerBirdBlock(RacerBirdBlock):
 
 class FeedBirdBlock(blocks.StructBlock):
     block_class = blocks.CharBlock(required=False, help_text='Block class')
-    children = blocks.ChoiceBlock(choices=[
+    children = blocks.ChoiceBlock(
+        choices=[
             ('c', 'Children'),
             ('d', 'Descendants'),
         ],
         icon='arrow-down',
-        required=True
-        )
+        required=True,
+    )
     parent_page = blocks.PageChooserBlock(label='parent page')
-    exclude = blocks.ListBlock(blocks.PageChooserBlock(label="Exclude page"), required=False, default=[])
+    exclude = blocks.ListBlock(
+        blocks.PageChooserBlock(label="Exclude page"), required=False, default=[]
+    )
     tags = blocks.ListBlock(blocks.CharBlock(label="Tag"), required=False)
     show_title = blocks.BooleanBlock(required=False, default=True)
     show_intro = blocks.BooleanBlock(required=False, default=False)
@@ -150,12 +160,8 @@ class FeedBirdBlock(blocks.StructBlock):
     show_author = blocks.BooleanBlock(required=False, default=False)
     show_date = blocks.BooleanBlock(required=False, default=False)
     use_grid_template = blocks.BooleanBlock(required=False, default=False)
-    bg_color = blocks.CharBlock(
-        default='white',
-        label='Background color')
-    text_color = blocks.CharBlock(
-        default='black',
-        label='Text color')
+    bg_color = blocks.CharBlock(default='white', label='Background color')
+    text_color = blocks.CharBlock(default='black', label='Text color')
     max_number = blocks.IntegerBlock(required=False)
 
     class Meta:
@@ -166,17 +172,27 @@ class FeedBirdBlock(blocks.StructBlock):
     def get_context(self, value):
         context = super(FeedBirdBlock, self).get_context(value)
         if value['children'] == 'c':
-            feed_posts = value[
-                'parent_page'].get_children().live().public().filter(
-                    go_live_at__isnull=False).order_by(
-                            '-go_live_at').distinct()
+            feed_posts = (
+                value['parent_page']
+                .get_children()
+                .live()
+                .public()
+                .filter(go_live_at__isnull=False)
+                .order_by('-go_live_at')
+                .distinct()
+            )
         elif value['children'] == 'd':
-            feed_posts = value[
-                'parent_page'].get_descendants().live().public().filter(
-                    go_live_at__isnull=False).order_by(
-                            '-go_live_at').distinct()
+            feed_posts = (
+                value['parent_page']
+                .get_descendants()
+                .live()
+                .public()
+                .filter(go_live_at__isnull=False)
+                .order_by('-go_live_at')
+                .distinct()
+            )
         try:
-            exclude = [excl.pk for excl in value['exclude'] ]
+            exclude = [excl.pk for excl in value['exclude']]
             feed_posts = feed_posts.exclude(id__in=exclude)
         except AttributeError:
             pass
@@ -185,7 +201,9 @@ class FeedBirdBlock(blocks.StructBlock):
         for post in feed_posts.specific():
             try:
                 if tags:
-                    if set(post.tags.all().values_list('name', flat=True)).intersection(set(tags)):
+                    if set(post.tags.all().values_list('name', flat=True)).intersection(
+                        set(tags)
+                    ):
                         post = post
                     else:
                         continue
@@ -203,16 +221,18 @@ class FeedBirdBlock(blocks.StructBlock):
 
 class GridBirdBlock(blocks.StructBlock):
     block_class = blocks.CharBlock(required=False, help_text='Block class')
-    children = blocks.ChoiceBlock(choices=[
+    children = blocks.ChoiceBlock(
+        choices=[
             ('c', 'Children'),
             ('d', 'Descendants'),
         ],
         icon='arrow-down',
-        required=True
-        )
+        required=True,
+    )
     parent_page = blocks.PageChooserBlock(label='parent page')
-    exclude = blocks.ListBlock(blocks.PageChooserBlock(
-        label="Exclude page"), required=False)
+    exclude = blocks.ListBlock(
+        blocks.PageChooserBlock(label="Exclude page"), required=False
+    )
     tags = blocks.ListBlock(blocks.CharBlock(label="Tag"), required=False)
     show_meta = blocks.BooleanBlock(required=False, default=True)
     title_page = blocks.PageChooserBlock(required=False, label='Title page')
@@ -231,17 +251,27 @@ class GridBirdBlock(blocks.StructBlock):
     def get_context(self, value):
         context = super(GridBirdBlock, self).get_context(value)
         if value['children'] == 'c':
-            grid_posts = value[
-                'parent_page'].get_children().live().public().filter(
-                    go_live_at__isnull=False).order_by(
-                            '-go_live_at').distinct()
+            grid_posts = (
+                value['parent_page']
+                .get_children()
+                .live()
+                .public()
+                .filter(go_live_at__isnull=False)
+                .order_by('-go_live_at')
+                .distinct()
+            )
         elif value['children'] == 'd':
-            grid_posts = value[
-                'parent_page'].get_descendants().live().public().filter(
-                    go_live_at__isnull=False).order_by(
-                            '-go_live_at').distinct()
+            grid_posts = (
+                value['parent_page']
+                .get_descendants()
+                .live()
+                .public()
+                .filter(go_live_at__isnull=False)
+                .order_by('-go_live_at')
+                .distinct()
+            )
         try:
-            exclude = [excl.pk for excl in value['exclude'] ]
+            exclude = [excl.pk for excl in value['exclude']]
             grid_posts = grid_posts.exclude(id__in=exclude)
         except AttributeError:
             pass
@@ -250,7 +280,9 @@ class GridBirdBlock(blocks.StructBlock):
         for post in grid_posts.specific():
             try:
                 if tags:
-                    if set(post.tags.all().values_list('name', flat=True)).intersection(set(tags)):
+                    if set(post.tags.all().values_list('name', flat=True)).intersection(
+                        set(tags)
+                    ):
                         post = post
                     else:
                         continue
@@ -267,7 +299,6 @@ class GridBirdBlock(blocks.StructBlock):
 
 
 class SimpleGridBirdBlock(GridBirdBlock):
-
     class Meta:
         group = 'GridBlock'
         label = 'SimpleGridBlock'
@@ -276,7 +307,6 @@ class SimpleGridBirdBlock(GridBirdBlock):
 
 
 class HighGridBirdBlock(GridBirdBlock):
-
     class Meta:
         group = 'GridBlock'
         label = 'HighGridBlock'
@@ -322,14 +352,27 @@ class ColumnBirdBlock(blocks.StreamBlock):
     bg_color = blocks.CharBlock(default='white', label='Background color')
     text_color = blocks.CharBlock(default='black', label='Text color')
     paragraph = blocks.RichTextBlock(
-        required=False, null=True,
+        required=False,
+        null=True,
         features=[
-            'h2', 'h3', 'h4',
-            'bold', 'italic',
-            'superscript', 'subscript', 'strikethrough',
-            'ol', 'ul', 'hr',
-            'link', 'document-link',
-            'blockquote', 'embed', 'image'])
+            'h2',
+            'h3',
+            'h4',
+            'bold',
+            'italic',
+            'superscript',
+            'subscript',
+            'strikethrough',
+            'ol',
+            'ul',
+            'hr',
+            'link',
+            'document-link',
+            'blockquote',
+            'embed',
+            'image',
+        ],
+    )
     html = HTMLBirdBlock(required=False, null=True)
 
     class Meta:

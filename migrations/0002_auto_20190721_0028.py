@@ -18,7 +18,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='birdbasepage',
             name='coverImage',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='+',
+                to='wagtailimages.Image',
+            ),
         ),
         migrations.AlterField(
             model_name='birdbasepage',
@@ -33,6 +39,19 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='birdpage',
             name='body',
-            field=wagtail.core.fields.StreamField([('paragraph', wagtail.core.blocks.RichTextBlock(null=True, required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(null=True, required=False))]),
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        'paragraph',
+                        wagtail.core.blocks.RichTextBlock(null=True, required=False),
+                    ),
+                    (
+                        'image',
+                        wagtail.images.blocks.ImageChooserBlock(
+                            null=True, required=False
+                        ),
+                    ),
+                ]
+            ),
         ),
     ]

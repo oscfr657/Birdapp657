@@ -149,16 +149,472 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='formbirdpage',
             name='top_hero',
-            field=wagtail.core.fields.StreamField([('hero', wagtail.core.blocks.StructBlock([('block_class', wagtail.core.blocks.CharBlock(help_text='Block class', null=True, required=False)), ('muted', wagtail.core.blocks.BooleanBlock(default=True, help_text='Muted', required=False)), ('autoplay', wagtail.core.blocks.BooleanBlock(default=False, help_text='Autoplay', required=False)), ('loop', wagtail.core.blocks.BooleanBlock(default=False, help_text='Loop', required=False)), ('controls', wagtail.core.blocks.BooleanBlock(default=True, help_text='Controls', required=False)), ('block_media', wagtailmedia.blocks.AbstractMediaChooserBlock(null=True, required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(null=True, required=False)), ('full_screen', wagtail.core.blocks.BooleanBlock(default=False, help_text='Full screen', required=False)), ('font_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('bg_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('text_align', wagtail.core.blocks.CharBlock(default='left', required=False)), ('text', wagtail.core.blocks.RichTextBlock(features=['h1', 'h2', 'h3', 'h4', 'h5', 'bold', 'italic', 'link', 'document-link', 'ol', 'ul'], required=False)), ('button_link', wagtail.core.blocks.StructBlock([('font_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('bg_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('page_link', wagtail.core.blocks.PageChooserBlock(help_text='Link to a page.', required=False)), ('external_link', wagtail.core.blocks.URLBlock(help_text='Link to a URL.', label='Link URL', max_length=200, required=False)), ('text', wagtail.core.blocks.CharBlock(help_text='Link text', null=True, required=False))], null=True, required=False))], null=True, required=False))], blank=True, null=True),
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        'hero',
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    'block_class',
+                                    wagtail.core.blocks.CharBlock(
+                                        help_text='Block class',
+                                        null=True,
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'muted',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=True, help_text='Muted', required=False
+                                    ),
+                                ),
+                                (
+                                    'autoplay',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=False,
+                                        help_text='Autoplay',
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'loop',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=False, help_text='Loop', required=False
+                                    ),
+                                ),
+                                (
+                                    'controls',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=True,
+                                        help_text='Controls',
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'block_media',
+                                    wagtailmedia.blocks.AbstractMediaChooserBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'image',
+                                    wagtail.images.blocks.ImageChooserBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'full_screen',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=False,
+                                        help_text='Full screen',
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'font_color',
+                                    wagtail.core.blocks.CharBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'bg_color',
+                                    wagtail.core.blocks.CharBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'text_align',
+                                    wagtail.core.blocks.CharBlock(
+                                        default='left', required=False
+                                    ),
+                                ),
+                                (
+                                    'text',
+                                    wagtail.core.blocks.RichTextBlock(
+                                        features=[
+                                            'h1',
+                                            'h2',
+                                            'h3',
+                                            'h4',
+                                            'h5',
+                                            'bold',
+                                            'italic',
+                                            'link',
+                                            'document-link',
+                                            'ol',
+                                            'ul',
+                                        ],
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'button_link',
+                                    wagtail.core.blocks.StructBlock(
+                                        [
+                                            (
+                                                'font_color',
+                                                wagtail.core.blocks.CharBlock(
+                                                    null=True, required=False
+                                                ),
+                                            ),
+                                            (
+                                                'bg_color',
+                                                wagtail.core.blocks.CharBlock(
+                                                    null=True, required=False
+                                                ),
+                                            ),
+                                            (
+                                                'page_link',
+                                                wagtail.core.blocks.PageChooserBlock(
+                                                    help_text='Link to a page.',
+                                                    required=False,
+                                                ),
+                                            ),
+                                            (
+                                                'external_link',
+                                                wagtail.core.blocks.URLBlock(
+                                                    help_text='Link to a URL.',
+                                                    label='Link URL',
+                                                    max_length=200,
+                                                    required=False,
+                                                ),
+                                            ),
+                                            (
+                                                'text',
+                                                wagtail.core.blocks.CharBlock(
+                                                    help_text='Link text',
+                                                    null=True,
+                                                    required=False,
+                                                ),
+                                            ),
+                                        ],
+                                        null=True,
+                                        required=False,
+                                    ),
+                                ),
+                            ],
+                            null=True,
+                            required=False,
+                        ),
+                    )
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
         migrations.AlterField(
             model_name='searchbirdpage',
             name='top_hero',
-            field=wagtail.core.fields.StreamField([('hero', wagtail.core.blocks.StructBlock([('block_class', wagtail.core.blocks.CharBlock(help_text='Block class', null=True, required=False)), ('muted', wagtail.core.blocks.BooleanBlock(default=True, help_text='Muted', required=False)), ('autoplay', wagtail.core.blocks.BooleanBlock(default=False, help_text='Autoplay', required=False)), ('loop', wagtail.core.blocks.BooleanBlock(default=False, help_text='Loop', required=False)), ('controls', wagtail.core.blocks.BooleanBlock(default=True, help_text='Controls', required=False)), ('block_media', wagtailmedia.blocks.AbstractMediaChooserBlock(null=True, required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(null=True, required=False)), ('full_screen', wagtail.core.blocks.BooleanBlock(default=False, help_text='Full screen', required=False)), ('font_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('bg_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('text_align', wagtail.core.blocks.CharBlock(default='left', required=False)), ('text', wagtail.core.blocks.RichTextBlock(features=['h1', 'h2', 'h3', 'h4', 'h5', 'bold', 'italic', 'link', 'document-link', 'ol', 'ul'], required=False)), ('button_link', wagtail.core.blocks.StructBlock([('font_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('bg_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('page_link', wagtail.core.blocks.PageChooserBlock(help_text='Link to a page.', required=False)), ('external_link', wagtail.core.blocks.URLBlock(help_text='Link to a URL.', label='Link URL', max_length=200, required=False)), ('text', wagtail.core.blocks.CharBlock(help_text='Link text', null=True, required=False))], null=True, required=False))], null=True, required=False))], blank=True, null=True),
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        'hero',
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    'block_class',
+                                    wagtail.core.blocks.CharBlock(
+                                        help_text='Block class',
+                                        null=True,
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'muted',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=True, help_text='Muted', required=False
+                                    ),
+                                ),
+                                (
+                                    'autoplay',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=False,
+                                        help_text='Autoplay',
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'loop',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=False, help_text='Loop', required=False
+                                    ),
+                                ),
+                                (
+                                    'controls',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=True,
+                                        help_text='Controls',
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'block_media',
+                                    wagtailmedia.blocks.AbstractMediaChooserBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'image',
+                                    wagtail.images.blocks.ImageChooserBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'full_screen',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=False,
+                                        help_text='Full screen',
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'font_color',
+                                    wagtail.core.blocks.CharBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'bg_color',
+                                    wagtail.core.blocks.CharBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'text_align',
+                                    wagtail.core.blocks.CharBlock(
+                                        default='left', required=False
+                                    ),
+                                ),
+                                (
+                                    'text',
+                                    wagtail.core.blocks.RichTextBlock(
+                                        features=[
+                                            'h1',
+                                            'h2',
+                                            'h3',
+                                            'h4',
+                                            'h5',
+                                            'bold',
+                                            'italic',
+                                            'link',
+                                            'document-link',
+                                            'ol',
+                                            'ul',
+                                        ],
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'button_link',
+                                    wagtail.core.blocks.StructBlock(
+                                        [
+                                            (
+                                                'font_color',
+                                                wagtail.core.blocks.CharBlock(
+                                                    null=True, required=False
+                                                ),
+                                            ),
+                                            (
+                                                'bg_color',
+                                                wagtail.core.blocks.CharBlock(
+                                                    null=True, required=False
+                                                ),
+                                            ),
+                                            (
+                                                'page_link',
+                                                wagtail.core.blocks.PageChooserBlock(
+                                                    help_text='Link to a page.',
+                                                    required=False,
+                                                ),
+                                            ),
+                                            (
+                                                'external_link',
+                                                wagtail.core.blocks.URLBlock(
+                                                    help_text='Link to a URL.',
+                                                    label='Link URL',
+                                                    max_length=200,
+                                                    required=False,
+                                                ),
+                                            ),
+                                            (
+                                                'text',
+                                                wagtail.core.blocks.CharBlock(
+                                                    help_text='Link text',
+                                                    null=True,
+                                                    required=False,
+                                                ),
+                                            ),
+                                        ],
+                                        null=True,
+                                        required=False,
+                                    ),
+                                ),
+                            ],
+                            null=True,
+                            required=False,
+                        ),
+                    )
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
         migrations.AlterField(
             model_name='solobirdpage',
             name='top_hero',
-            field=wagtail.core.fields.StreamField([('hero', wagtail.core.blocks.StructBlock([('block_class', wagtail.core.blocks.CharBlock(help_text='Block class', null=True, required=False)), ('muted', wagtail.core.blocks.BooleanBlock(default=True, help_text='Muted', required=False)), ('autoplay', wagtail.core.blocks.BooleanBlock(default=False, help_text='Autoplay', required=False)), ('loop', wagtail.core.blocks.BooleanBlock(default=False, help_text='Loop', required=False)), ('controls', wagtail.core.blocks.BooleanBlock(default=True, help_text='Controls', required=False)), ('block_media', wagtailmedia.blocks.AbstractMediaChooserBlock(null=True, required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(null=True, required=False)), ('full_screen', wagtail.core.blocks.BooleanBlock(default=False, help_text='Full screen', required=False)), ('font_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('bg_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('text_align', wagtail.core.blocks.CharBlock(default='left', required=False)), ('text', wagtail.core.blocks.RichTextBlock(features=['h1', 'h2', 'h3', 'h4', 'h5', 'bold', 'italic', 'link', 'document-link', 'ol', 'ul'], required=False)), ('button_link', wagtail.core.blocks.StructBlock([('font_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('bg_color', wagtail.core.blocks.CharBlock(null=True, required=False)), ('page_link', wagtail.core.blocks.PageChooserBlock(help_text='Link to a page.', required=False)), ('external_link', wagtail.core.blocks.URLBlock(help_text='Link to a URL.', label='Link URL', max_length=200, required=False)), ('text', wagtail.core.blocks.CharBlock(help_text='Link text', null=True, required=False))], null=True, required=False))], null=True, required=False))], blank=True, null=True),
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        'hero',
+                        wagtail.core.blocks.StructBlock(
+                            [
+                                (
+                                    'block_class',
+                                    wagtail.core.blocks.CharBlock(
+                                        help_text='Block class',
+                                        null=True,
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'muted',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=True, help_text='Muted', required=False
+                                    ),
+                                ),
+                                (
+                                    'autoplay',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=False,
+                                        help_text='Autoplay',
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'loop',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=False, help_text='Loop', required=False
+                                    ),
+                                ),
+                                (
+                                    'controls',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=True,
+                                        help_text='Controls',
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'block_media',
+                                    wagtailmedia.blocks.AbstractMediaChooserBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'image',
+                                    wagtail.images.blocks.ImageChooserBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'full_screen',
+                                    wagtail.core.blocks.BooleanBlock(
+                                        default=False,
+                                        help_text='Full screen',
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'font_color',
+                                    wagtail.core.blocks.CharBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'bg_color',
+                                    wagtail.core.blocks.CharBlock(
+                                        null=True, required=False
+                                    ),
+                                ),
+                                (
+                                    'text_align',
+                                    wagtail.core.blocks.CharBlock(
+                                        default='left', required=False
+                                    ),
+                                ),
+                                (
+                                    'text',
+                                    wagtail.core.blocks.RichTextBlock(
+                                        features=[
+                                            'h1',
+                                            'h2',
+                                            'h3',
+                                            'h4',
+                                            'h5',
+                                            'bold',
+                                            'italic',
+                                            'link',
+                                            'document-link',
+                                            'ol',
+                                            'ul',
+                                        ],
+                                        required=False,
+                                    ),
+                                ),
+                                (
+                                    'button_link',
+                                    wagtail.core.blocks.StructBlock(
+                                        [
+                                            (
+                                                'font_color',
+                                                wagtail.core.blocks.CharBlock(
+                                                    null=True, required=False
+                                                ),
+                                            ),
+                                            (
+                                                'bg_color',
+                                                wagtail.core.blocks.CharBlock(
+                                                    null=True, required=False
+                                                ),
+                                            ),
+                                            (
+                                                'page_link',
+                                                wagtail.core.blocks.PageChooserBlock(
+                                                    help_text='Link to a page.',
+                                                    required=False,
+                                                ),
+                                            ),
+                                            (
+                                                'external_link',
+                                                wagtail.core.blocks.URLBlock(
+                                                    help_text='Link to a URL.',
+                                                    label='Link URL',
+                                                    max_length=200,
+                                                    required=False,
+                                                ),
+                                            ),
+                                            (
+                                                'text',
+                                                wagtail.core.blocks.CharBlock(
+                                                    help_text='Link text',
+                                                    null=True,
+                                                    required=False,
+                                                ),
+                                            ),
+                                        ],
+                                        null=True,
+                                        required=False,
+                                    ),
+                                ),
+                            ],
+                            null=True,
+                            required=False,
+                        ),
+                    )
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
     ]

@@ -15,6 +15,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='brandingsettings',
             name='mobile_menu_page',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.Page'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='+',
+                to='wagtailcore.Page',
+            ),
         ),
     ]

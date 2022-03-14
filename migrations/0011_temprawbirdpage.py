@@ -17,11 +17,30 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TempRawBirdPage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                (
+                    'page_ptr',
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to='wagtailcore.Page',
+                    ),
+                ),
                 ('author', models.CharField(blank=True, max_length=255, null=True)),
                 ('intro', wagtail.core.fields.RichTextField(blank=True, null=True)),
                 ('html', models.TextField(blank=True, null=True)),
-                ('coverImage', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
+                (
+                    'coverImage',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name='+',
+                        to='wagtailimages.Image',
+                    ),
+                ),
             ],
             options={
                 'abstract': False,

@@ -16,6 +16,47 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='birdpage',
             name='body',
-            field=wagtail.core.fields.StreamField([('paragraph', wagtail.core.blocks.RichTextBlock(features=['h2', 'h3', 'h4', 'bold', 'italic', 'superscript', 'subscript', 'strikethroughol', 'ul', 'hr', 'link', 'document-link', 'blockquote'], null=True, required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(null=True, required=False)), ('code', wagtail.core.blocks.StructBlock([('code', wagtail.core.blocks.TextBlock(required=True))], null=True, required=False))], blank=True, null=True),
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        'paragraph',
+                        wagtail.core.blocks.RichTextBlock(
+                            features=[
+                                'h2',
+                                'h3',
+                                'h4',
+                                'bold',
+                                'italic',
+                                'superscript',
+                                'subscript',
+                                'strikethroughol',
+                                'ul',
+                                'hr',
+                                'link',
+                                'document-link',
+                                'blockquote',
+                            ],
+                            null=True,
+                            required=False,
+                        ),
+                    ),
+                    (
+                        'image',
+                        wagtail.images.blocks.ImageChooserBlock(
+                            null=True, required=False
+                        ),
+                    ),
+                    (
+                        'code',
+                        wagtail.core.blocks.StructBlock(
+                            [('code', wagtail.core.blocks.TextBlock(required=True))],
+                            null=True,
+                            required=False,
+                        ),
+                    ),
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
     ]

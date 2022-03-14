@@ -17,7 +17,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='RawBirdPage',
             fields=[
-                ('birdbasepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='birdapp657.BirdBasePage')),
+                (
+                    'birdbasepage_ptr',
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to='birdapp657.BirdBasePage',
+                    ),
+                ),
                 ('html', models.TextField(blank=True, null=True)),
             ],
             options={
@@ -28,6 +38,49 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='birdpage',
             name='body',
-            field=wagtail.core.fields.StreamField([('paragraph', wagtail.core.blocks.RichTextBlock(features=['h2', 'h3', 'h4', 'bold', 'italic', 'superscript', 'subscript', 'strikethroughol', 'ul', 'hr', 'link', 'document-link', 'blockquote', 'embed', 'image'], null=True, required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(null=True, required=False)), ('code', wagtail.core.blocks.StructBlock([('code', wagtail.core.blocks.TextBlock(required=True))], null=True, required=False))], blank=True, null=True),
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        'paragraph',
+                        wagtail.core.blocks.RichTextBlock(
+                            features=[
+                                'h2',
+                                'h3',
+                                'h4',
+                                'bold',
+                                'italic',
+                                'superscript',
+                                'subscript',
+                                'strikethroughol',
+                                'ul',
+                                'hr',
+                                'link',
+                                'document-link',
+                                'blockquote',
+                                'embed',
+                                'image',
+                            ],
+                            null=True,
+                            required=False,
+                        ),
+                    ),
+                    (
+                        'image',
+                        wagtail.images.blocks.ImageChooserBlock(
+                            null=True, required=False
+                        ),
+                    ),
+                    (
+                        'code',
+                        wagtail.core.blocks.StructBlock(
+                            [('code', wagtail.core.blocks.TextBlock(required=True))],
+                            null=True,
+                            required=False,
+                        ),
+                    ),
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
     ]

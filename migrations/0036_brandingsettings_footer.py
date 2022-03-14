@@ -15,6 +15,42 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='brandingsettings',
             name='footer',
-            field=wagtail.core.fields.StreamField([('paragraph', wagtail.core.blocks.RichTextBlock(features=['h2', 'h3', 'h4', 'bold', 'italic', 'superscript', 'subscript', 'strikethrough', 'ol', 'ul', 'hr', 'link', 'document-link', 'blockquote'], null=True, required=False)), ('html', wagtail.core.blocks.StructBlock([('html', wagtail.core.blocks.RawHTMLBlock())], null=True, required=False))], blank=True, null=True),
+            field=wagtail.core.fields.StreamField(
+                [
+                    (
+                        'paragraph',
+                        wagtail.core.blocks.RichTextBlock(
+                            features=[
+                                'h2',
+                                'h3',
+                                'h4',
+                                'bold',
+                                'italic',
+                                'superscript',
+                                'subscript',
+                                'strikethrough',
+                                'ol',
+                                'ul',
+                                'hr',
+                                'link',
+                                'document-link',
+                                'blockquote',
+                            ],
+                            null=True,
+                            required=False,
+                        ),
+                    ),
+                    (
+                        'html',
+                        wagtail.core.blocks.StructBlock(
+                            [('html', wagtail.core.blocks.RawHTMLBlock())],
+                            null=True,
+                            required=False,
+                        ),
+                    ),
+                ],
+                blank=True,
+                null=True,
+            ),
         ),
     ]

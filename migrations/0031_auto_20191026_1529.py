@@ -15,16 +15,34 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='formbirdpage',
             name='menu_icon',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='+',
+                to='wagtailimages.Image',
+            ),
         ),
         migrations.AddField(
             model_name='searchbirdpage',
             name='menu_icon',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='+',
+                to='wagtailimages.Image',
+            ),
         ),
         migrations.AddField(
             model_name='solobirdpage',
             name='menu_icon',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='+',
+                to='wagtailimages.Image',
+            ),
         ),
     ]

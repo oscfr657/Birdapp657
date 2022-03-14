@@ -17,9 +17,31 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SoloBirdPageTag',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content_object', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='tagged_items', to='birdapp657.SoloBirdPage')),
-                ('tag', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='birdapp657_solobirdpagetag_items', to='taggit.Tag')),
+                (
+                    'id',
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'content_object',
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='tagged_items',
+                        to='birdapp657.SoloBirdPage',
+                    ),
+                ),
+                (
+                    'tag',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='birdapp657_solobirdpagetag_items',
+                        to='taggit.Tag',
+                    ),
+                ),
             ],
             options={
                 'abstract': False,
@@ -28,6 +50,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='solobirdpage',
             name='tags',
-            field=modelcluster.contrib.taggit.ClusterTaggableManager(blank=True, help_text='A comma-separated list of tags.', through='birdapp657.SoloBirdPageTag', to='taggit.Tag', verbose_name='Tags'),
+            field=modelcluster.contrib.taggit.ClusterTaggableManager(
+                blank=True,
+                help_text='A comma-separated list of tags.',
+                through='birdapp657.SoloBirdPageTag',
+                to='taggit.Tag',
+                verbose_name='Tags',
+            ),
         ),
     ]

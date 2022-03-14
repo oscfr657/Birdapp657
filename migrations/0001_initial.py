@@ -19,7 +19,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BirdBasePage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                (
+                    'page_ptr',
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to='wagtailcore.Page',
+                    ),
+                ),
                 ('author', models.CharField(blank=True, max_length=255)),
                 ('intro', wagtail.core.fields.RichTextField(blank=True)),
             ],
@@ -31,8 +41,38 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BirdPage',
             fields=[
-                ('birdbasepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='birdapp657.BirdBasePage')),
-                ('body', wagtail.core.fields.StreamField([('heading', wagtail.core.blocks.CharBlock(classname='full title', required=False)), ('paragraph', wagtail.core.blocks.RichTextBlock(required=False)), ('image', wagtail.images.blocks.ImageChooserBlock(required=False))])),
+                (
+                    'birdbasepage_ptr',
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to='birdapp657.BirdBasePage',
+                    ),
+                ),
+                (
+                    'body',
+                    wagtail.core.fields.StreamField(
+                        [
+                            (
+                                'heading',
+                                wagtail.core.blocks.CharBlock(
+                                    classname='full title', required=False
+                                ),
+                            ),
+                            (
+                                'paragraph',
+                                wagtail.core.blocks.RichTextBlock(required=False),
+                            ),
+                            (
+                                'image',
+                                wagtail.images.blocks.ImageChooserBlock(required=False),
+                            ),
+                        ]
+                    ),
+                ),
             ],
             options={
                 'abstract': False,
