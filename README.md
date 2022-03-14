@@ -8,9 +8,9 @@ A small Wagtail app
 ### Tested with ###
 
 ``` Python
-django==3.2.9
-wagtail==2.15.1
-wagtailmedia==0.8.0
+django
+wagtail
+wagtailmedia
 ```
 
 ## Installation ###
@@ -23,7 +23,7 @@ pip install -r requirements.txt
 
 ### Django settings ###
 
-To your settings file,
+In the settings file,
 
 add to the INSTALLED_APPS
 
@@ -180,6 +180,29 @@ crontab -e
 
 crontab -l
 ```
+
+### Memcached ###
+
+``` Python
+sudo apt install memcached
+sudo systemctl start memcached
+```
+
+install pymemcache
+
+``` Python
+pip install pymemcache
+```
+
+In the settings file add
+
+``` python
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
 
 ## For development ##
 

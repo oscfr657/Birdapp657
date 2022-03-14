@@ -313,7 +313,7 @@ body.transparent_header > div + div {
     margin: auto;
     max-width: 100%;
 }
-.content .rich-text iframe {
+.content iframe {
     margin: 0px auto !important;
     max-width: 100%;
 }

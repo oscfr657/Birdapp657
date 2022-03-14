@@ -52,6 +52,14 @@
 </style>
 {% endif %}
 
+<meta name="twitter:card" content="summary" />
+
+{% if page.seo_title %}
+<meta property="og:title" content="{{ page.seo_title }}"/>
+{% elif page.title %}
+<meta property="og:title" content="{{ page.title }}"/>
+{% endif %}
+
 {% if page.search_description %}
 <meta name="description" content="{{ page.search_description }}">
 {% endif %}
@@ -64,15 +72,13 @@
 
 <meta name="author" content="{{ page.owner.get_full_name }}">
 
-{% if page.seo_title %}
-<meta property="og:title" content="{{ page.seo_title }}"/>
-{% elif page.title %}
-<meta property="og:title" content="{{ page.title }}"/>
-{% endif %}
-
 {% if page.specific.image %}
-{% image page.specific.image min-1200x627 format-jpeg as og_image %}
+{% image page.specific.image fill-1200x627 format-jpeg as og_image %}
 <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ og_image.url }}"/>
+
+{% image page.specific.image fill-300x157 as twitter_image %}
+<meta property="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ twitter_image.url }}"/>
+<meta property="twitter:image:alt" content="{{ twitter_image.alt }}"/>
 {% endif %}
 
 {% if current_site.site_name %}
