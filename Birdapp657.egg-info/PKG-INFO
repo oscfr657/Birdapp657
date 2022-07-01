@@ -1,11 +1,10 @@
 Metadata-Version: 2.1
 Name: Birdapp657
-Version: 0.1.1b1
+Version: 0.1.1b2
 Summary: A small Wagtail app.
 Home-page: https://github.com/oscfr657/Birdapp657
 Author: Oscar F
 License: Hippocratic License Version Number: 2.1 with Commons Clause License Condition v1.0
-Platform: UNKNOWN
 Classifier: Development Status :: 3 - Alpha
 Classifier: Environment :: Web Environment
 Classifier: Intended Audience :: Developers
@@ -87,6 +86,10 @@ add to the INSTALLED_APPS
 add to the MIDDLEWARE settings
 
 ``` python
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # Extra
+    'django.middleware.common.CommonMiddleware',
+
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',  # wagtail
 ```
@@ -166,6 +169,8 @@ from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.core import urls as wagtail_urls
 
 from wagtail.contrib.sitemaps.views import sitemap
+
+from birdapp657.views import search
 ```
 
 and
@@ -266,5 +271,3 @@ if settings.DEBUG:
 ``` python
 python3 -m build --sdist
 ```
-
-

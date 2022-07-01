@@ -84,6 +84,7 @@ setup.py
 ./migrations/0073_auto_20210808_1538.py
 ./migrations/0074_auto_20211201_0130.py
 ./migrations/0075_alter_solobirdpagetag_tag.py
+./migrations/0076_alter_formfield_choices_and_more.py
 ./migrations/__init__.py
 ./static/css/birdapp657/birdapp.css
 ./static/js/birdapp657/birdapp.js
