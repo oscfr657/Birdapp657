@@ -1,5 +1,6 @@
 {% load wagtailcore_tags wagtailuserbar wagtailimages_tags %}
 {% load static %}
+{% load i18n %}
 {% wagtail_site as current_site %}
 
 
@@ -171,7 +172,17 @@
                     <li class="bird_menu_child">
                         <a href="" class="{% if request.path == '/search/' %}active{% endif %}" onclick="openSearch(); return false;"
                             class="" >
-                            Search
+                            <svg width="20" height="20">
+                                <circle
+                                    style="fill:none;fill-opacity:1;stroke-width:2.000;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                                    cx="8.500"
+                                    cy="8.500"
+                                    r="7.000" />
+                                <path
+                                    style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                                    d="m 15.000,15.000 c 0,0 9.243915,9.344393 8.892245,8.892246"
+                                    />
+                            </svg>
                         </a>
                     </li>
                 </ul>
@@ -186,9 +197,9 @@
             <form action="/search/" method="POST">
                 {% csrf_token %}
                 <input type="text" type="text" id="id_search_query" name="search_query"
-                    required="" placeholder="Search.." value="">
+                    required="" placeholder="{% translate "Search" %}.." value="">
                 <button type="submit">
-                    Search
+                    {% translate "Search" %}
                 </button>
             </form>
         </div>

@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 1 Jul 2022 ###
+
+    Menu search icon. Search translated.
+
 ### 9 Apr 2022 ###
 
     Mobile menu css bug fix. Build 0.1.1b1.

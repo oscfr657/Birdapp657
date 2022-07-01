@@ -20,6 +20,11 @@ body  {
     min-height: 100vh;
 }
 
+svg path,
+svg circle {
+    stroke: black;
+}
+
 .wagtail-userbar-reset {
     display: contents !important;
 }
@@ -153,7 +158,6 @@ form input[type=submit] {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    border-right: solid 1px black;
 }
 .bird_top .bird_menu_child {
     display: inline-block;
@@ -194,7 +198,7 @@ li.bird_menu_child {
 }
 .bird_top .bird_menu a {
     text-decoration: none;
-    padding: 10px 15px 2px 15px;
+    padding: 7px 15px 2px 15px;
     white-space: nowrap;
     font-size: 1.3em;
 }
@@ -203,6 +207,14 @@ li.bird_menu_child {
 .bird_top .bird_menu a:active {
     color: white;
     background-color: black;
+}
+.bird_top .bird_menu a.active svg path,
+.bird_top .bird_menu a:active svg path,
+.bird_top .bird_menu a:hover svg path,
+.bird_top .bird_menu a.active svg circle,
+.bird_top .bird_menu a:active svg circle,
+.bird_top .bird_menu a:hover svg circle {
+    stroke: white;
 }
 .bird_top .bird_menu a.icon {
     padding: 6px 15px 2px 15px;
@@ -272,6 +284,11 @@ body.transparent_header .bird_top_wraper .bird_top .bird_menu_child:hover .bird_
 body.transparent_header .bird_top_wraper .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:hover {
     color: white;
     background-color: black;
+}
+
+body.transparent_header .bird_top .bird_menu a svg path,
+body.transparent_header .bird_top .bird_menu a svg circle {
+    stroke: white;
 }
 
 
@@ -1055,6 +1072,17 @@ div.search > form > button:hover {
     #bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child > a:hover + .bird_menu_child_list {
         display: grid;
     }
+
+    #bird_mobile_menu_dropdown.active + .bird_menu a svg path,
+    #bird_mobile_menu_dropdown.active + .bird_menu a svg circle {
+        stroke: black;
+    }
+
+    #bird_mobile_menu_dropdown.active + .bird_menu a:hover svg path,
+    #bird_mobile_menu_dropdown.active + .bird_menu a:hover svg circle {
+        stroke: white;
+    }
+    
     #bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child_list {
         display: block;
         position: relative;

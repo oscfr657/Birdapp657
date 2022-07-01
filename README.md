@@ -61,6 +61,10 @@ add to the INSTALLED_APPS
 add to the MIDDLEWARE settings
 
 ``` python
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # Extra
+    'django.middleware.common.CommonMiddleware',
+
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',  # wagtail
 ```
@@ -140,6 +144,8 @@ from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.core import urls as wagtail_urls
 
 from wagtail.contrib.sitemaps.views import sitemap
+
+from birdapp657.views import search
 ```
 
 and
