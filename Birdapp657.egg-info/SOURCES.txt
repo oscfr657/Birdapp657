@@ -93,7 +93,6 @@ setup.py
 ./templates/bird_403.html
 ./templates/bird_404.html
 ./templates/bird_500.html
-./templates/bird_base_content.html
 ./templates/birdapp657_password_required.html
 ./templates/birdapp657/form_bird_page.html
 ./templates/birdapp657/form_bird_page_landing.html

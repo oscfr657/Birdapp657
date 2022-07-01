@@ -1,22 +1,17 @@
-{% extends "bird_base_content.html" %}
+{% extends "base.html" %}
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
-
 {% block header %}
-
-{% if page.specific.hide_header == True %}
-    {# No header #}
-{% else %}
-    {{ block.super }}
-{% endif %}
-
+    {% if page.specific.hide_header == True %}
+        {# No header #}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
 {% endblock header %}
-
 
 {% block content %}
 <div class="content ">
-
     {% if page.specific.show_breadcrumbs %}
     <div class="breadcrumbs">
         {% for ancestor in page.get_ancestors.public|slice:"2:" %}
@@ -25,24 +20,18 @@
         {{ page.title  }}
     </div>
     {% endif %}
-    
-
     {% for block in page.specific.body %}
     <div id=block-{{ forloop.counter }} class=block-{{ block.block_type }}>
         {{ block }}
     </div>
     {% endfor %}
-
 </div>
 {% endblock %}
 
-
 {% block footer %}
-
-{% if page.specific.hide_header == True %}
-    {# No header #}
-{% else %}
-    {{ block.super }}
-{% endif %}
-
+    {% if page.specific.hide_header == True %}
+        {# No header #}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
 {% endblock footer %}

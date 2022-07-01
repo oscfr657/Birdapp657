@@ -6,7 +6,7 @@
 
 ### 1 Jul 2022 ###
 
-    Menu search icon. Search translated. Build 0.1.1b2.
+    Menu search icon. Search translated. Build 0.1.1b2. Template bug fix and improvements. Build 0.1.1b3.
 
 ### 9 Apr 2022 ###
 
