@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from django.db import models
 from django.shortcuts import render
 from django import forms
@@ -8,26 +6,23 @@ from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
 
-from wagtail.search.models import Query
 from wagtail.search import index
 
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     StreamFieldPanel,
     InlinePanel,
-    PageChooserPanel,
 )
 
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-from wagtail.documents.models import Document
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 
 from wagtail.contrib.forms.models import AbstractForm, AbstractFormField
 from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
 
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -35,7 +30,6 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 
 from taggit.models import TaggedItemBase
 
-from .forms import SearchBirdForm
 from .blocks import (
     HeroBirdBlock,
     HeroBTBirdBlock,
@@ -69,7 +63,7 @@ class FontFace(Orderable):
 
 
 @register_setting
-class BirdAppSettings(BaseSetting, ClusterableModel):
+class BirdAppSettings(BaseSiteSetting, ClusterableModel):
     icon = models.ForeignKey(
         'wagtailimages.Image',
         blank=True,
@@ -85,13 +79,6 @@ class BirdAppSettings(BaseSetting, ClusterableModel):
         related_name='+',
     )
     show_name = models.BooleanField(default=True)
-    mobile_menu_page = models.ForeignKey(
-        'wagtailcore.Page',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-    )
     lang_code = models.CharField(max_length=5, blank=True, null=True)
     extra_head = models.TextField(blank=True, null=True)
     extra_css = models.ForeignKey(
@@ -143,7 +130,6 @@ class BirdAppSettings(BaseSetting, ClusterableModel):
         ImageChooserPanel('icon'),
         ImageChooserPanel('logo'),
         FieldPanel('show_name'),
-        PageChooserPanel('mobile_menu_page'),
         FieldPanel('lang_code'),
         FieldPanel('extra_head'),
         DocumentChooserPanel('extra_css'),
@@ -195,7 +181,7 @@ class BirdMixin(models.Model):
     content_panels = [
         FieldPanel('owner'),
         ImageChooserPanel('image'),
-        FieldPanel('intro', classname="full"),
+        FieldPanel('intro'),
     ]
     settings_panels = [
         FieldPanel('show_breadcrumbs'),
@@ -287,68 +273,6 @@ class SoloBirdPage(Page, BirdMixin):
             return super(SoloBirdPage, self).get_sitemap_urls(request=request)
 
 
-class SearchBirdPage(Page, BirdMixin):
-
-    top_hero = StreamField(
-        [
-            ('hero', HeroBirdBlock(required=False, null=True)),
-        ],
-        blank=True,
-        null=True,
-    )
-
-    content_panels = (
-        Page.content_panels
-        + BirdMixin.content_panels
-        + [
-            StreamFieldPanel('top_hero'),
-        ]
-    )
-    settings_panels = Page.settings_panels + BirdMixin.settings_panels
-
-    def serve(self, request):
-        search_query = ''
-        if request.method == 'POST':
-            form = SearchBirdForm(request.POST)
-            if form.is_valid():
-                search_query = form.cleaned_data['search_query']
-                search_results = (
-                    self.get_parent()
-                    .get_descendants()
-                    .live()
-                    .public()
-                    .exclude(show_in_menus=True)
-                    .order_by('-first_published_at')
-                    .search(search_query, order_by_relevance=False)
-                )
-
-                Query.get(search_query).add_hit()
-
-                form = SearchBirdForm()
-            else:
-                search_results = Page.objects.none()
-        else:
-            form = SearchBirdForm()
-            search_results = Page.objects.none()
-
-        return render(
-            request,
-            'birdapp657/search_bird_page.html',
-            {
-                'page': self,
-                'form': form,
-                'search_query': search_query,
-                'search_results': search_results,
-            },
-        )
-
-    def get_sitemap_urls(self, request=None):
-        if self.exclude_from_sitemap:
-            return []
-        else:
-            return super(SearchBirdPage, self).get_sitemap_urls(request=request)
-
-
 class FormField(AbstractFormField):
     page = ParentalKey(
         'FormBirdPage', on_delete=models.CASCADE, related_name='form_fields'
@@ -427,7 +351,7 @@ class FormBirdPage(AbstractForm, BirdMixin):
             StreamFieldPanel('prolog'),
             #        FieldPanel('show_result'),
             InlinePanel('form_fields', label="Form fields"),
-            FieldPanel('thank_you_text', classname="full"),
+            FieldPanel('thank_you_text'),
             FormSubmissionsPanel(),
         ]
     )
@@ -470,9 +394,6 @@ class TiberiusBirdPageTag(TaggedItemBase):
 
 
 class TiberiusBirdPage(Page, BirdMixin):
-    header = StreamField([
-        ('header', HeaderBirdBlock(required=False, null=True)),
-    ], blank=True, null=True)
     body = StreamField([
         ('paragraph', blocks.RichTextBlock(
             required=False, null=True,
@@ -487,8 +408,6 @@ class TiberiusBirdPage(Page, BirdMixin):
         ('media', MediaFileBirdBlock(required=False, null=True)),
         ('html', HTMLBirdBlock(required=False, null=True)),
         ('code', BirdCodeBlock(required=False, null=True)),
-        ('racer', RacerBirdBlock(required=False, null=True)),
-        ('feed', FeedBirdBlock(required=False)),
     ], blank=True, null=True)
 
     tags = ClusterTaggableManager(through=TiberiusBirdPageTag, blank=True)

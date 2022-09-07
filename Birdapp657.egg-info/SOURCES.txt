@@ -96,7 +96,6 @@ setup.py
 ./templates/birdapp657_password_required.html
 ./templates/birdapp657/form_bird_page.html
 ./templates/birdapp657/form_bird_page_landing.html
-./templates/birdapp657/search_bird_page.html
 ./templates/birdapp657/search_results.html
 ./templates/birdapp657/solo_bird_page.html
 ./templates/blocks/code.html

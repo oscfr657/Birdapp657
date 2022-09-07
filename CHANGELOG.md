@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 8 Sep 2022 ###
+
+    Django 4 and Wagtail 4. Removed Search Page. HTML tag improvements. Build 0.1.2b0.
+
 ### 1 Jul 2022 ###
 
     Menu search icon. Search translated. Build 0.1.1b2. Template bug fix and improvements. Build 0.1.1b3.

@@ -380,7 +380,6 @@ body.transparent_header .footer {
 
 div.search {
     text-align: center;
-    border-bottom: solid 1px black;
     max-width: 100%;
     margin: auto;
     padding: 2rem 0 2rem 0;
@@ -417,6 +416,9 @@ div.search > form > button:hover {
     margin: auto;
     max-width: 100%;
     text-align: center;
+    display: grid;
+    width: var(--content-width);
+    grid-template-columns: repeat(3, auto);
 }
 .search_result h2 {
     text-align: center;
@@ -1099,6 +1101,10 @@ div.search > form > button:hover {
         text-align: center;
     }
 
+    .search_result {
+        grid-template-columns: repeat(2, auto);
+    }
+    
     form {
         max-width: calc(100% - 2em);
         margin: auto;
@@ -1181,6 +1187,10 @@ div.search > form > button:hover {
     .footer-row {
         grid-auto-flow: dense;
         grid-template-columns: 1fr;
+    }
+
+    .search_result {
+        grid-template-columns: repeat(1, auto);
     }
     
     .hero-bt h1,

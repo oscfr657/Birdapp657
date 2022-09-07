@@ -8,9 +8,9 @@ A small Wagtail app
 ### Tested with ###
 
 ``` Python
-django
-wagtail
-wagtailmedia
+django>=4.1.1
+wagtail>=4.0.1
+wagtailmedia>=0.11.0
 ```
 
 ## Installation ###
@@ -53,8 +53,6 @@ add to the INSTALLED_APPS
     'birdapp657',
     # birdapp657 media file block
     'wagtailmedia',
-    # birdapp657 default search backend requires postgresql
-    'wagtail.contrib.postgres_search',
 
 ```
 

@@ -31,7 +31,6 @@ def search(request):
                 Page.objects.in_site(site)
                 .live()
                 .public()
-                .filter()
                 .exclude(show_in_menus=True)
                 .order_by('-first_published_at')
                 .search(search_query, order_by_relevance=False)
