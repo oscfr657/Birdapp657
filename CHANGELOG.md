@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 10 Sep 2022 ###
+
+    Mobile menu bug on search result page fix. Build 0.1.2b1
+
 ### 8 Sep 2022 ###
 
     Django 4 and Wagtail 4. Removed Search Page. HTML tag improvements. Build 0.1.2b0.

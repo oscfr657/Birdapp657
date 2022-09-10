@@ -1074,16 +1074,6 @@ div.search > form > button:hover {
     #bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child > a:hover + .bird_menu_child_list {
         display: grid;
     }
-
-    #bird_mobile_menu_dropdown.active + .bird_menu a svg path,
-    #bird_mobile_menu_dropdown.active + .bird_menu a svg circle {
-        stroke: black;
-    }
-
-    #bird_mobile_menu_dropdown.active + .bird_menu a:hover svg path,
-    #bird_mobile_menu_dropdown.active + .bird_menu a:hover svg circle {
-        stroke: white;
-    }
     
     #bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child_list {
         display: block;
