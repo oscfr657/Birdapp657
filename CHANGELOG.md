@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 18 Sep 2022 ###
+
+    Migrations. Build 0.1.2b2.
+
 ### 10 Sep 2022 ###
 
     Mobile menu bug on search result page fix. Build 0.1.2b1

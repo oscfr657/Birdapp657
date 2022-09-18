@@ -99,12 +99,12 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/birdapp657/birdapp.css' %}" >
 
-{% block extra_head %}
-{% endblock extra_head %}
-
 {% if site_settings.extra_css %}
 <link rel="stylesheet" type="text/css" href="{{ site_settings.extra_css.url }}" >
 {% endif %}
+
+{% block extra_head %}
+{% endblock extra_head %}
 
 {% if site_settings.extra_head %}
 {{ site_settings.extra_head|safe }}
