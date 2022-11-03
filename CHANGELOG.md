@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 3 Oct 2022 ###
+
+    Mobile menu accesibility imporvements. Build 0.1.2b3.
+
 ### 18 Sep 2022 ###
 
     Migrations. Build 0.1.2b2.
