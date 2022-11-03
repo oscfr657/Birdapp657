@@ -141,9 +141,7 @@
                 </a>
             </div>
             {% if current_site.root_page.get_children.live.in_menu %}
-                <a id="bird_mobile_menu_dropdown" class="bird_mobile_menu"
-                    href="#">
-                </a>
+                <button id="bird_mobile_menu_dropdown" class="bird_mobile_menu" ></button>
             {% endif %}
             <nav class="bird_menu">
                 <ul class="bird_menu_list">
@@ -168,8 +166,7 @@
                     </li>
                     {% endfor %}
                     <li class="bird_menu_child">
-                        <a href="" class="{% if request.path == '/search/' %}active{% endif %}" onclick="openSearch(); return false;"
-                            class="" >
+                        <button rel="search" class="{% if request.path == '/search/' %}active{% endif %}" onclick="openSearch(); return false;">
                             <svg width="20" height="20">
                                 <circle
                                     style="fill:none;fill-opacity:1;stroke-width:2.000;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -181,7 +178,7 @@
                                     d="m 15.000,15.000 c 0,0 9.243915,9.344393 8.892245,8.892246"
                                     />
                             </svg>
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </nav>
