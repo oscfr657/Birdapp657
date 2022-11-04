@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 4 Oct 2022 ###
+
+    Aria-label for menu and search button. Build 0.1.2b4.
+
 ### 3 Oct 2022 ###
 
     Mobile menu accesibility imporvements. Build 0.1.2b3.

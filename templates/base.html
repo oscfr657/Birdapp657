@@ -141,7 +141,7 @@
                 </a>
             </div>
             {% if current_site.root_page.get_children.live.in_menu %}
-                <button id="bird_mobile_menu_dropdown" class="bird_mobile_menu" ></button>
+                <button aria-label="{% translate 'Menu' %}" id="bird_mobile_menu_dropdown" class="bird_mobile_menu" ></button>
             {% endif %}
             <nav class="bird_menu">
                 <ul class="bird_menu_list">
@@ -166,7 +166,7 @@
                     </li>
                     {% endfor %}
                     <li class="bird_menu_child">
-                        <button rel="search" class="{% if request.path == '/search/' %}active{% endif %}" onclick="openSearch(); return false;">
+                        <button aria-label="{% translate "Search" %}" class="{% if request.path == '/search/' %}active{% endif %}" onclick="openSearch(); return false;">
                             <svg width="20" height="20">
                                 <circle
                                     style="fill:none;fill-opacity:1;stroke-width:2.000;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
