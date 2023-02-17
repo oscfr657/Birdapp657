@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 17 Feb 2023 ###
+
+    README typo fix. Search button transparant menu css bug fix. Cloase search button ARIA fix. Build 0.1.3b0
+
 ### 4 Oct 2022 ###
 
     Aria-label for menu and search button. Build 0.1.2b4.
