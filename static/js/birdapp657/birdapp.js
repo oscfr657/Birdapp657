@@ -22,23 +22,30 @@ window.onscroll = function(e) {
             wraper.style.backgroundColor = 'white';
             if (transparent) {
                 document.getElementById("bird_mobile_menu_dropdown").style.border = 'solid 5px black';
-                wraper.getElementsByClassName("bird_logo")[0].getElementsByTagName('a')[0].style.color = 'black';
+                wraper.getElementsByClassName("bird_logo")[0].firstElementChild.style.color = 'black';
                 for (let el of wraper_list) {
-                    el.getElementsByTagName('a')[0].style.color = 'black';
+                    el.firstElementChild.style.color = 'black';
+                    for (let sv of el.getElementsByTagName('svg') ) {
+                        console.log(sv);
+                        for (let child of sv.children) {
+                            console.log(child);
+                            child.style.stroke = 'black';
+                        }
+                    }
                     if (el.getElementsByClassName('active').length > 0) {
                         el.getElementsByClassName('active')[0].style.setProperty('color', 'white');
                     }
                     el.addEventListener('mouseover',function(){
-                        el.getElementsByTagName('a')[0].style.color = 'white';
-                        el.getElementsByTagName('a')[0].style.backgroundColor = 'black';
+                        el.firstElementChild.style.color = 'white';
+                        el.firstElementChild.style.backgroundColor = 'black';
                         if (el.getElementsByClassName('active').length > 0) {
                             el.getElementsByClassName('active')[0].style.color = 'white';
                             el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
                         }
                     })
                      el.addEventListener('mouseleave',function(){
-                        el.getElementsByTagName('a')[0].style.color = 'black';
-                        el.getElementsByTagName('a')[0].style.backgroundColor = 'white';
+                        el.firstElementChild.style.color = 'black';
+                        el.firstElementChild.style.backgroundColor = 'white';
                         if (el.getElementsByClassName('active').length > 0) {
                             el.getElementsByClassName('active')[0].style.color = 'white';
                             el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
@@ -58,25 +65,31 @@ window.onscroll = function(e) {
         if (transparent) {
             wraper.style.backgroundColor = 'transparent';
             wraper.getElementsByClassName("bird_logo")[0].getElementsByTagName('a')[0].style.color = 'white';
-            document.getElementById("bird_mobile_menu_dropdown").style.border = 'solid 5px white';
             for (let el of wraper_list) {
-                el.getElementsByTagName('a')[0].style.color = 'white';
-                el.getElementsByTagName('a')[0].style.backgroundColor = 'transparent';
+                el.firstElementChild.style.color = 'white';
+                el.firstElementChild.style.backgroundColor = 'transparent';
+                for (let sv of el.getElementsByTagName('svg') ) {
+                    console.log(sv);
+                    for (let child of sv.children) {
+                        console.log(child);
+                        child.style.stroke = 'white';
+                    }
+                }
                 if (el.getElementsByClassName('active').length > 0) {
                     el.getElementsByClassName('active')[0].style.color = 'white';
                     el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
                 }
                 el.addEventListener('mouseover',function(){
-                    el.getElementsByTagName('a')[0].style.color = 'white';
-                    el.getElementsByTagName('a')[0].style.backgroundColor = 'black';
+                    el.firstElementChild.style.color = 'white';
+                    el.firstElementChild.style.backgroundColor = 'black';
                     if (el.getElementsByClassName('active').length > 0) {
                         el.getElementsByClassName('active')[0].style.color = 'white';
                         el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
                     }
                 })
                  el.addEventListener('mouseleave',function(){
-                    el.getElementsByTagName('a')[0].style.color = 'white';
-                    el.getElementsByTagName('a')[0].style.backgroundColor = 'transparent';
+                    el.firstElementChild.style.color = 'white';
+                    el.firstElementChild.style.backgroundColor = 'transparent';
                     if (el.getElementsByClassName('active').length > 0) {
                         el.getElementsByClassName('active')[0].style.color = 'white';
                         el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
@@ -97,23 +110,23 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
         document.getElementById("bird_mobile_menu_dropdown").style.border = 'solid 5px black';
         document.getElementById("bird_mobile_menu_dropdown").classList.add('active');
         for (let el of wraper_list) {
-            el.getElementsByTagName('a')[0].style.color = 'black';
-            el.getElementsByTagName('a')[0].style.backgroundColor = 'white';
+            el.firstElementChild.style.color = 'black';
+            el.firstElementChild.style.backgroundColor = 'white';
             if (el.getElementsByClassName('active').length > 0) {
                 el.getElementsByClassName('active')[0].style.color = 'white';
                 el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
             }
             el.addEventListener('mouseover',function(){
-                el.getElementsByTagName('a')[0].style.color = 'white';
-                el.getElementsByTagName('a')[0].style.backgroundColor = 'black';
+                el.firstElementChild.style.color = 'white';
+                el.firstElementChild.style.backgroundColor = 'black';
                 if (el.getElementsByClassName('active').length > 0) {
                     el.getElementsByClassName('active')[0].style.color = 'white';
                     el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
                 }
             })
              el.addEventListener('mouseleave',function(){
-                el.getElementsByTagName('a')[0].style.color = 'black';
-                el.getElementsByTagName('a')[0].style.backgroundColor = 'white';
+                el.firstElementChild.style.color = 'black';
+                el.firstElementChild.style.backgroundColor = 'white';
                 if (el.getElementsByClassName('active').length > 0) {
                     el.getElementsByClassName('active')[0].style.color = 'white';
                     el.getElementsByClassName('active')[0].style.backgroundColor = 'black';

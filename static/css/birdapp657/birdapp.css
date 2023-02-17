@@ -256,8 +256,14 @@ body.transparent_header .bird_top_wraper {
 body.transparent_header .bird_top_wraper .bird_top .bird_logo a {
     color: white;
 }
+body.transparent_header .bird_top_wraper .bird_top .bird_menu button.search,
 body.transparent_header .bird_top_wraper .bird_top .bird_menu a {
     background-color: transparent;
+    color: white;
+}
+body.transparent_header .bird_top_wraper .bird_top .bird_menu button.search.active,
+body.transparent_header .bird_top_wraper .bird_top .bird_menu button.search:hover {
+    background-color: black;
     color: white;
 }
 body.transparent_header .bird_top_wraper .bird_top .bird_menu_child > a.active,
