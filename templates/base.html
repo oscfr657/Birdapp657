@@ -186,16 +186,16 @@
     </header>
 
     <div id="BirdSearchOverlay" class="overlay" >
-        <span class="close-overlay" onclick="closeSearch(); return false;" title="Close Overlay">x</span>
         <div class="overlay-content">
             <form action="/search/" method="POST">
                 {% csrf_token %}
                 <input type="text" type="text" id="id_search_query" name="search_query"
-                    required="" placeholder="{% translate "Search" %}.." value="">
+                    required="" placeholder="{% translate 'Search' %}.." value="">
                 <button type="submit">
-                    {% translate "Search" %}
+                    {% translate 'Search' %}
                 </button>
             </form>
+            <button onclick="closeSearch(); return false;" title="{% translate 'Close' %}">{% translate 'Close' %}</button>
         </div>
     </div>
 

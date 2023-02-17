@@ -445,14 +445,6 @@ div.search > form > button:hover {
     left: 0;
     text-align: center;
 }
-.overlay .close-overlay {
-    position: absolute;
-    top: var(--top-height);
-    right: 15px;
-    font-size: 4em;
-    cursor: pointer;
-    color: white;
-}
 .overlay .close-overlay:hover {
     color: #ccc;
 }
