@@ -2,25 +2,21 @@ from django.db import models
 from django.shortcuts import render
 from django import forms
 
-from wagtail.core.models import Page, Orderable
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core import blocks
+from wagtail.models import Page, Orderable
+from wagtail.fields import RichTextField, StreamField
+from wagtail.blocks import RichTextBlock
 
 from wagtail.search import index
 
-from wagtail.admin.edit_handlers import (
+from wagtail.admin.panels import (
     FieldPanel,
-    StreamFieldPanel,
     InlinePanel,
 )
 
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.images.edit_handlers import ImageChooserPanel
-
-from wagtail.documents.edit_handlers import DocumentChooserPanel
 
 from wagtail.contrib.forms.models import AbstractForm, AbstractFormField
-from wagtail.contrib.forms.edit_handlers import FormSubmissionsPanel
+from wagtail.contrib.forms.panels import FormSubmissionsPanel
 
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
@@ -56,7 +52,7 @@ class FontFace(Orderable):
     font_family = models.CharField(max_length=50)
     font_format = models.CharField(max_length=50)
     panels = [
-        DocumentChooserPanel('src_file'),
+        FieldPanel('src_file'),
         FieldPanel('font_family'),
         FieldPanel('font_format'),
     ]
@@ -99,7 +95,7 @@ class BirdAppSettings(BaseSiteSetting, ClusterableModel):
         [
             (
                 'paragraph',
-                blocks.RichTextBlock(
+                RichTextBlock(
                     required=False,
                     null=True,
                     features=[
@@ -127,15 +123,15 @@ class BirdAppSettings(BaseSiteSetting, ClusterableModel):
     )
 
     panels = [
-        ImageChooserPanel('icon'),
-        ImageChooserPanel('logo'),
+        FieldPanel('icon'),
+        FieldPanel('logo'),
         FieldPanel('show_name'),
         FieldPanel('lang_code'),
         FieldPanel('extra_head'),
-        DocumentChooserPanel('extra_css'),
-        DocumentChooserPanel('extra_js'),
+        FieldPanel('extra_css'),
+        FieldPanel('extra_js'),
         InlinePanel('brand_fonts', label="Brand fontfaces"),
-        StreamFieldPanel('footer'),
+        FieldPanel('footer'),
     ]
 
 
@@ -180,7 +176,7 @@ class BirdMixin(models.Model):
     ]
     content_panels = [
         FieldPanel('owner'),
-        ImageChooserPanel('image'),
+        FieldPanel('image'),
         FieldPanel('intro'),
     ]
     settings_panels = [
@@ -202,7 +198,7 @@ class SoloBirdPage(Page, BirdMixin):
         [
             (
                 'paragraph',
-                blocks.RichTextBlock(
+                RichTextBlock(
                     required=False,
                     null=True,
                     features=[
@@ -258,7 +254,7 @@ class SoloBirdPage(Page, BirdMixin):
         Page.content_panels
         + BirdMixin.content_panels
         + [
-            StreamFieldPanel('body'),
+            FieldPanel('body'),
         ]
     )
     promote_panels = Page.promote_panels + [
@@ -285,7 +281,7 @@ class FormBirdPage(AbstractForm, BirdMixin):
         [
             (
                 'paragraph',
-                blocks.RichTextBlock(
+                RichTextBlock(
                     required=False,
                     null=True,
                     features=[
@@ -348,7 +344,7 @@ class FormBirdPage(AbstractForm, BirdMixin):
         AbstractForm.content_panels
         + BirdMixin.content_panels
         + [
-            StreamFieldPanel('prolog'),
+            FieldPanel('prolog'),
             #        FieldPanel('show_result'),
             InlinePanel('form_fields', label="Form fields"),
             FieldPanel('thank_you_text'),

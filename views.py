@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from wagtail.core.models import Page, Site
+from wagtail.models import Page, Site
 from wagtail.search.models import Query
 
 from .forms import SearchBirdForm

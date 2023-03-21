@@ -1,7 +1,7 @@
 {% load wagtailcore_tags %}
 
 <style>
-    .block-columns {
+    #block-{{block_number}}.block-columns {
     {% for column in value %}
         {% if column.block_type == 'bg_color' %}
         background-color: {% include_block column %};

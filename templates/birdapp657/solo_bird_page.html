@@ -22,7 +22,7 @@
     {% endif %}
     {% for block in page.specific.body %}
     <div id=block-{{ forloop.counter }} class=block-{{ block.block_type }}>
-        {{ block }}
+        {% include_block block with block_number=forloop.counter %}
     </div>
     {% endfor %}
 </div>

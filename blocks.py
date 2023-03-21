@@ -1,9 +1,6 @@
-# -*- coding: utf-8 -*-
-
 from django.core.exceptions import FieldError
-from django.utils.html import format_html
 
-from wagtail.core import blocks
+from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
 from wagtailmedia.blocks import AbstractMediaChooserBlock
