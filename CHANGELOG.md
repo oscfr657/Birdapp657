@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 22 Mars 2023 ###
+
+    get_context missing parent_context arg bug fix. Build 0.1.5b0
+
 ### 21 Mars 2023 ###
 
     Wagtail 5.0 prep, Block Columns styling bug fix. Build 0.1.4b0

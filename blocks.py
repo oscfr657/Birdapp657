@@ -166,7 +166,7 @@ class FeedBirdBlock(blocks.StructBlock):
         icon = 'list-ul'
         template = 'blocks/feed_bird_block.html'
 
-    def get_context(self, value):
+    def get_context(self, value, parent_context=None):
         context = super(FeedBirdBlock, self).get_context(value)
         if value['children'] == 'c':
             feed_posts = (
@@ -245,7 +245,7 @@ class GridBirdBlock(blocks.StructBlock):
         icon = 'list-ul'
         template = 'blocks/grid_bird_block.html'
 
-    def get_context(self, value):
+    def get_context(self, value, parent_context=None):
         context = super(GridBirdBlock, self).get_context(value)
         if value['children'] == 'c':
             grid_posts = (
