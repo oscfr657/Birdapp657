@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 29 Mars 2023 ###
+
+    Minor CSS fixes. Build 0.1.6b0
+
 ### 22 Mars 2023 ###
 
     get_context missing parent_context arg bug fix. Build 0.1.5b0

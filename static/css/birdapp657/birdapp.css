@@ -314,7 +314,7 @@ body.transparent_header > div + div {
 .content .meta,
 .content .cover {
     margin: 1em auto;
-    width: 900px;
+    width: var(--content-width);
     max-width: 100%;
 }
 .content .meta {
@@ -337,7 +337,7 @@ body.transparent_header > div + div {
 
 
 .password-required {
-    width: 900px;
+    width: var(--content-width);
     max-width: 100%;
     margin: auto;
     text-align: center;
@@ -370,7 +370,7 @@ body.transparent_header .footer {
     margin: auto;
     padding: 2em 0;
     width: var(--footer-width);
-    max-width: calc(100vw - 2em);
+    max-width: calc(100vw - 4em);
 }
 
 
@@ -490,16 +490,15 @@ div.search > form > button:hover {
 
 /* blocks */
 /** Ugly **/
-.content .rich-text img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+.content .richtext-image.left {
+    margin: 0 auto 0 0;
 }
 .content .richtext-image.right {
     margin: 0 0 0 auto;
 }
 .content .richtext-image.full-width {
     width: 100%;
+    max-height: fit-content;
 }
 
 .content .responsive-object {
@@ -606,7 +605,7 @@ div.search > form > button:hover {
     max-width: calc(100% - 2em);
 }
 .block-columns .columns-content > img {
-    max-width: calc(100% - 2em);
+    max-width: 100%;
     height: auto;
 }
 @media (min-width: 900px) {
@@ -1209,6 +1208,9 @@ div.search > form > button:hover {
     }
     .racer.simple .inner_racer .racer_image {
         margin: 1em 0 0 0;
+    }
+    .racer.simple .inner_racer .racer_image img {
+        margin: 0px 0px -5px 0px;
     }
     .racer .inner_racer .racer_text {
         padding: 50px 0;
