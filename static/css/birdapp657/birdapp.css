@@ -956,7 +956,7 @@ div.search > form > button:hover {
 .racer .racer_image img {
     width: 100%;
     max-width: 100%;
-    margin: 0px 0px -6px 0px;
+    margin: 0px 0px -5px 0px;
 }
 .racer .inner_racer .racer_text {
     margin: auto 0;
