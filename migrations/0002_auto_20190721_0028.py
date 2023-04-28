@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -34,16 +34,16 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='birdbasepage',
             name='intro',
-            field=wagtail.core.fields.RichTextField(blank=True, null=True),
+            field=wagtail.fields.RichTextField(blank=True, null=True),
         ),
         migrations.AlterField(
             model_name='birdpage',
             name='body',
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         'paragraph',
-                        wagtail.core.blocks.RichTextBlock(null=True, required=False),
+                        wagtail.blocks.RichTextBlock(null=True, required=False),
                     ),
                     (
                         'image',

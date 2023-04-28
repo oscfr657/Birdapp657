@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -31,14 +31,14 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ('author', models.CharField(blank=True, max_length=255, null=True)),
-                ('intro', wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ('intro', wagtail.fields.RichTextField(blank=True, null=True)),
                 (
                     'body',
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 'paragraph',
-                                wagtail.core.blocks.RichTextBlock(
+                                wagtail.blocks.RichTextBlock(
                                     features=[
                                         'h2',
                                         'h3',
@@ -68,11 +68,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 'code',
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             'code',
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=True
                                             ),
                                         )
@@ -83,11 +83,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 'racer',
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     [
                                         (
                                             'text',
-                                            wagtail.core.blocks.RichTextBlock(
+                                            wagtail.blocks.RichTextBlock(
                                                 features=[
                                                     'h2',
                                                     'h3',
@@ -111,20 +111,20 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             'right',
-                                            wagtail.core.blocks.BooleanBlock(
+                                            wagtail.blocks.BooleanBlock(
                                                 help_text='Image to the right else left',
                                                 required=False,
                                             ),
                                         ),
                                         (
                                             'bg_color',
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 default='#fff', label='Background color'
                                             ),
                                         ),
                                         (
                                             'text_color',
-                                            wagtail.core.blocks.CharBlock(
+                                            wagtail.blocks.CharBlock(
                                                 default='#000', label='Text color'
                                             ),
                                         ),
@@ -169,7 +169,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ('author', models.CharField(blank=True, max_length=255, null=True)),
-                ('intro', wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ('intro', wagtail.fields.RichTextField(blank=True, null=True)),
                 (
                     'coverImage',
                     models.ForeignKey(

@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -38,11 +38,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='birdpage',
             name='body',
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         'paragraph',
-                        wagtail.core.blocks.RichTextBlock(
+                        wagtail.blocks.RichTextBlock(
                             features=[
                                 'h2',
                                 'h3',
@@ -72,8 +72,8 @@ class Migration(migrations.Migration):
                     ),
                     (
                         'code',
-                        wagtail.core.blocks.StructBlock(
-                            [('code', wagtail.core.blocks.TextBlock(required=True))],
+                        wagtail.blocks.StructBlock(
+                            [('code', wagtail.blocks.TextBlock(required=True))],
                             null=True,
                             required=False,
                         ),

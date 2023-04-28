@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ('author', models.CharField(blank=True, max_length=255)),
-                ('intro', wagtail.core.fields.RichTextField(blank=True)),
+                ('intro', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
@@ -54,17 +54,17 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'body',
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         [
                             (
                                 'heading',
-                                wagtail.core.blocks.CharBlock(
+                                wagtail.blocks.CharBlock(
                                     classname='full title', required=False
                                 ),
                             ),
                             (
                                 'paragraph',
-                                wagtail.core.blocks.RichTextBlock(required=False),
+                                wagtail.blocks.RichTextBlock(required=False),
                             ),
                             (
                                 'image',

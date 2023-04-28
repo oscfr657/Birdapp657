@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ('author', models.CharField(blank=True, max_length=255, null=True)),
-                ('intro', wagtail.core.fields.RichTextField(blank=True, null=True)),
+                ('intro', wagtail.fields.RichTextField(blank=True, null=True)),
                 ('html', models.TextField(blank=True, null=True)),
                 (
                     'coverImage',

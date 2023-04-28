@@ -3,7 +3,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -30,8 +30,8 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ('author', models.CharField(blank=True, max_length=255, null=True)),
-                ('intro', wagtail.core.fields.RichTextField(blank=True, null=True)),
-                ('thank_you_text', wagtail.core.fields.RichTextField(blank=True)),
+                ('intro', wagtail.fields.RichTextField(blank=True, null=True)),
+                ('thank_you_text', wagtail.fields.RichTextField(blank=True)),
                 (
                     'coverImage',
                     models.ForeignKey(
