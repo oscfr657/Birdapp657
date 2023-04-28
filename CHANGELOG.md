@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 29 April 2023 ###
+
+    Racer image CSS fix. Form template fix. Wagtail 5.0 prep. Tested with update. Build 0.1.7b0.
+
 ### 29 Mars 2023 ###
 
     Minor CSS fixes. Build 0.1.6b0
