@@ -54,10 +54,15 @@
             {% else %}
             <div >
                 {{ field.errors }}
-                {% if field.widget_type == 'text' %}
-                <input type="text" name="{{ field.name }}" maxlength="255" {% if field.field.required %}required="required"{% endif %} id="{{ field.id_for_label }}" placeholder="{{ field.label }}">
+                {% if field.widget_type in 'text date' %}
+                <label>{{ field.label }}</label><br />
+                <input type="{{ field.widget_type|lower }}" name="{{ field.name }}" maxlength="255" {% if field.field.required %}required="required"{% endif %} id="{{ field.id_for_label }}" >
+                {% elif field.widget_type == 'datetime' %}
+                <label>{{ field.label }}</label><br />
+                <input type="datetime-local" name="{{ field.name }}" {% if field.field.required %}required="required"{% endif %} id="{{ field.id_for_label }}" >
                 {% else %}
-                <input type="{{ field.widget_type|lower }}" name="{{ field.name }}" maxlength="255" {% if field.field.required %}required="required"{% endif %} id="{{ field.id_for_label }}" placeholder="{{ field.label }}">
+                <label>{{ field.label }}</label><br />
+                    {{ field }}
                 {% endif %}
             </div>
             {% endif %}
