@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 30 April 2023 ###
+
+    The possibility to use reCaptha was added to the form. Build 0.2.0b0.
+
 ### 29 April 2023 ###
 
     Racer image CSS fix. Form template fix. Wagtail 5.0 prep. Tested with update. Build 0.1.7b0.
