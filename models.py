@@ -1,3 +1,4 @@
+import requests
 from django.db import models
 from django.shortcuts import render
 from django import forms
@@ -338,17 +339,20 @@ class FormBirdPage(AbstractForm, BirdMixin):
             'image',
         ],
     )
-    # show_result = models.BooleanField(default=False)
+    reCaptcha_key = models.CharField(max_length=50, blank=True, null=True)
+    reCaptcha_secret = models.CharField(max_length=50, blank=True, null=True)
+    # post_scriptum = StreamField(...
 
     content_panels = (
         AbstractForm.content_panels
         + BirdMixin.content_panels
         + [
             FieldPanel('prolog'),
-            #        FieldPanel('show_result'),
             InlinePanel('form_fields', label="Form fields"),
             FieldPanel('thank_you_text'),
             FormSubmissionsPanel(),
+            FieldPanel('reCaptcha_key'),
+            FieldPanel('reCaptcha_secret'),
         ]
     )
     settings_panels = Page.settings_panels + BirdMixin.settings_panels
@@ -366,6 +370,16 @@ class FormBirdPage(AbstractForm, BirdMixin):
             )
             if form.data.get('bird_pot'):
                 return self.render_landing_page(request, None, *args, **kwargs)
+            if self.reCaptcha_key and form.is_valid():
+                if not form.data.get('g-recaptcha-response'):
+                    return self.render_landing_page(request, None, *args, **kwargs)
+                recaptcha_response = requests.post(
+                    'https://www.google.com/recaptcha/api/siteverify',
+                    data={
+                        'secret': self.reCaptcha_secret,
+                        'response': form.data.get('g-recaptcha-response')})
+                if recaptcha_response.status_code != 200 and not recaptcha_response.json()['success']:
+                    return self.render_landing_page(request, None, *args, **kwargs)
             if form.is_valid():
                 form_submission = self.process_form_submission(form)
                 return self.render_landing_page(
@@ -373,12 +387,7 @@ class FormBirdPage(AbstractForm, BirdMixin):
                 )
         else:
             form = self.get_form(page=self, user=request.user)
-            form.fields["bird_pot"] = forms.CharField(
-                # initial='bird' % time.now().format(),  # Time of creation and check time at submission ?
-                # empty_value='bird',  # Time of creation and check time at submission ?
-                # validators=[validate_honey_pot, forms.CharField.default_validators],  # Does not work. :/
-                required=False
-            )
+            form.fields["bird_pot"] = forms.CharField(required=False)
         context = self.get_context(request)
         context['form'] = form
         return render(request, self.get_template(request), context)

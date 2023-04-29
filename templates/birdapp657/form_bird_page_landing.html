@@ -33,8 +33,15 @@
     </div>
     {% endif %}
 
+    {% if page.specific.intro %}
+    <div class="intro">{{ page.specific.intro|richtext }}</div>
+    {% endif %}
+
+    {{ page.specific.prolog }}
+
     {% if page.specific.thank_you_text %}
     <div class="thank_you">{{ page.specific.thank_you_text|richtext }}</div>
     {% endif %}
+
 </div>
 {% endblock %}

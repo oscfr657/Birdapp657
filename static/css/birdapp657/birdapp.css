@@ -87,7 +87,7 @@ form {
     margin: auto;
     padding: 2rem 0;
 }
-form div {
+form > div {
     width: 900px;
     max-width: 100%;
     padding: 0 0 1rem 0;

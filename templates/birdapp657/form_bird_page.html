@@ -3,6 +3,15 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 
+{% block extra_head %}
+    {{ block.super }}
+
+    {% if page.specific.reCaptcha_key %}
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {% endif %}
+{% endblock extra_head %}
+
+
 {% block header %}
 
 {% if page.specific.hide_header == True %}
@@ -55,18 +64,23 @@
             <div >
                 {{ field.errors }}
                 {% if field.widget_type in 'text date' %}
-                <label>{{ field.label }}</label><br />
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label><br />
                 <input type="{{ field.widget_type|lower }}" name="{{ field.name }}" maxlength="255" {% if field.field.required %}required="required"{% endif %} id="{{ field.id_for_label }}" >
                 {% elif field.widget_type == 'datetime' %}
-                <label>{{ field.label }}</label><br />
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label><br />
                 <input type="datetime-local" name="{{ field.name }}" {% if field.field.required %}required="required"{% endif %} id="{{ field.id_for_label }}" >
                 {% else %}
-                <label>{{ field.label }}</label><br />
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label><br />
                     {{ field }}
                 {% endif %}
             </div>
             {% endif %}
         {% endfor %}
+
+        {% if page.specific.reCaptcha_key %}
+        <div class="g-recaptcha" data-sitekey="{{ page.specific.reCaptcha_key }}"></div>
+        {% endif %}
+
         <input type="submit" value="Submit">
     </form>
     </div>
