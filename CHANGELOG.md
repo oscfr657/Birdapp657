@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 4 May 2023 ###
+
+    Wagtail 5.0 fixes. Build 0.2.1b0.
+
 ### 30 April 2023 ###
 
     The possibility to use reCaptha was added to the form. Build 0.2.0b0.

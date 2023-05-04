@@ -121,6 +121,7 @@ class BirdAppSettings(BaseSiteSetting, ClusterableModel):
         ],
         blank=True,
         null=True,
+        use_json_field=True,
     )
 
     panels = [
@@ -238,6 +239,7 @@ class SoloBirdPage(Page, BirdMixin):
         ],
         blank=True,
         null=True,
+        use_json_field=True,
     )
 
     tags = ClusterTaggableManager(through=SoloBirdPageTag, blank=True)
@@ -315,6 +317,7 @@ class FormBirdPage(AbstractForm, BirdMixin):
         ],
         blank=True,
         null=True,
+        use_json_field=True,
     )
 
     thank_you_text = RichTextField(
@@ -348,11 +351,11 @@ class FormBirdPage(AbstractForm, BirdMixin):
         + BirdMixin.content_panels
         + [
             FieldPanel('prolog'),
-            InlinePanel('form_fields', label="Form fields"),
-            FieldPanel('thank_you_text'),
-            FormSubmissionsPanel(),
             FieldPanel('reCaptcha_key'),
             FieldPanel('reCaptcha_secret'),
+            FieldPanel('thank_you_text'),
+            InlinePanel('form_fields', label="Form fields"),
+            FormSubmissionsPanel(),
         ]
     )
     settings_panels = Page.settings_panels + BirdMixin.settings_panels
