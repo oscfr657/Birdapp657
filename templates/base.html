@@ -141,8 +141,8 @@
                 </a>
             </div>
             {% if current_site.root_page.get_children.live.in_menu %}
-                <button aria-label="{% translate 'Menu' %}" id="bird_mobile_menu_dropdown" class="bird_mobile_menu" ></button>
-            {% endif %}
+            <button aria-label="{% translate 'Menu' %}" id="bird_mobile_menu_dropdown" class="bird_mobile_menu" ></button>
+            
             <nav class="bird_menu">
                 <ul class="bird_menu_list">
                     {% for child in current_site.root_page.get_children.live.in_menu %}
@@ -182,6 +182,7 @@
                     </li>
                 </ul>
             </nav>
+            {% endif %}
         </div>
     </header>
 

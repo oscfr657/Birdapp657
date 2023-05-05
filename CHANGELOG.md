@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 5 May 2023 ###
+
+    Mobile menu bug fixes. Build 0.2.2b0.
+
 ### 4 May 2023 ###
 
     Wagtail 5.0 fixes. Build 0.2.1b0.

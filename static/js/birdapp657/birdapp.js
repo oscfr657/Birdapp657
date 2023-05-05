@@ -1,5 +1,3 @@
-
-
 var prevScrollpos = window.pageYOffset;
 var currentScrollPos = window.pageYOffset;
 var wraper = document.getElementsByClassName("bird_top_wraper")[0];
@@ -26,9 +24,7 @@ window.onscroll = function(e) {
                 for (let el of wraper_list) {
                     el.firstElementChild.style.color = 'black';
                     for (let sv of el.getElementsByTagName('svg') ) {
-                        console.log(sv);
                         for (let child of sv.children) {
-                            console.log(child);
                             child.style.stroke = 'black';
                         }
                     }
@@ -69,9 +65,7 @@ window.onscroll = function(e) {
                 el.firstElementChild.style.color = 'white';
                 el.firstElementChild.style.backgroundColor = 'transparent';
                 for (let sv of el.getElementsByTagName('svg') ) {
-                    console.log(sv);
                     for (let child of sv.children) {
-                        console.log(child);
                         child.style.stroke = 'white';
                     }
                 }
@@ -116,12 +110,22 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
                 el.getElementsByClassName('active')[0].style.color = 'white';
                 el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
             }
+            for (let sv of el.getElementsByTagName('svg') ) {
+                for (let child of sv.children) {
+                    child.style.stroke = 'black';
+                }
+            }
             el.addEventListener('mouseover',function(){
                 el.firstElementChild.style.color = 'white';
                 el.firstElementChild.style.backgroundColor = 'black';
                 if (el.getElementsByClassName('active').length > 0) {
                     el.getElementsByClassName('active')[0].style.color = 'white';
                     el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
+                }
+                for (let sv of el.getElementsByTagName('svg') ) {
+                    for (let child of sv.children) {
+                        child.style.stroke = 'white';
+                    }
                 }
             })
              el.addEventListener('mouseleave',function(){
@@ -131,14 +135,17 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
                     el.getElementsByClassName('active')[0].style.color = 'white';
                     el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
                 }
+                for (let sv of el.getElementsByTagName('svg') ) {
+                    for (let child of sv.children) {
+                        child.style.stroke = 'black';
+                    }
+                }
             })
         }
     } else {
         active_dropdown = false;
-        if (transparent && currentScrollPos == 0) {
-            document.getElementById("bird_mobile_menu_dropdown").style.border = 'solid 5px white';
+        if (transparent) {
             wraper.style.backgroundColor = 'transparent';
-            wraper.getElementsByClassName("bird_logo")[0].getElementsByTagName('a')[0].style.setProperty('color', 'white');
         }
         document.getElementById("bird_mobile_menu_dropdown").classList.remove('active');
     }
@@ -146,15 +153,11 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
 }
 
 function birdPlay(element) {
-    //console.log('birdPlay');
-    //console.log(element.parentNode.parentNode.getElementsByTagName('video')[0]);
     element.parentNode.parentNode.getElementsByTagName('video')[0].play();
     element.nextElementSibling.style.display = 'block';
     element.style.display = 'none';
 }
 function birdPause(element) {
-    //console.log('birdPause');
-    //console.log(element.previusSibling);
     element.parentNode.parentNode.getElementsByTagName('video')[0].pause()
     element.previousElementSibling.style.display = 'block';
     element.style.display = 'none';

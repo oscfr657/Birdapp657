@@ -178,7 +178,7 @@ li.bird_menu_child {
     position: absolute;
     right: 14px;
     top: 14px;
-    background-color: white;
+    background-color: transparent;
 }
 
 #bird_mobile_menu_dropdown:hover,
