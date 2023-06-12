@@ -381,7 +381,7 @@ class FormBirdPage(AbstractForm, BirdMixin):
                     data={
                         'secret': self.reCaptcha_secret,
                         'response': form.data.get('g-recaptcha-response')})
-                if recaptcha_response.status_code != 200 and not recaptcha_response.json()['success']:
+                if recaptcha_response.status_code != 200 or not recaptcha_response.json()['success']:
                     return self.render_landing_page(request, None, *args, **kwargs)
             if form.is_valid():
                 form_submission = self.process_form_submission(form)

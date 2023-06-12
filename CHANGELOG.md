@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 12 Jun 2023 ###
+
+    ReCaptcha bug fixes. Build 0.2.3b0.
+
 ### 5 May 2023 ###
 
     Mobile menu bug fixes. Build 0.2.2b0.
