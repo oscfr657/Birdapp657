@@ -171,29 +171,67 @@ li.bird_menu_child {
 
 #bird_mobile_menu_dropdown {
     display: block;
+    cursor: pointer;
     width: 3em;
     height: 3em;
     margin: auto;
-    border: solid 5px black;
+    border: none;
     position: absolute;
     right: 14px;
     top: 14px;
     background-color: transparent;
 }
 
-#bird_mobile_menu_dropdown:hover,
-#bird_mobile_menu_dropdown.active {
-    background-color: black;
+#bird_mobile_menu_dropdown {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}  
+#bird_mobile_menu_dropdown .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
 }
-#bird_mobile_menu_dropdown.active + .bird_menu li.bird_menu_child {
-    margin: 2em auto 0 auto;
+#bird_mobile_menu_dropdown .line1 {
+    background: black;
+    transform-origin: 0% 0%;
 }
-.bird_top_wraper.breadcrumbs #bird_mobile_menu_dropdown.active + .bird_menu {
-    top: 80px;
+#bird_mobile_menu_dropdown .line2 {
+    height: 3px;
+    background: white;
+    transition: transform 0.4s ease-in-out;
 }
-#bird_mobile_menu_dropdown.active + .bird_menu li.bird_menu_child {
-    margin: 2em auto 0 auto;
+#bird_mobile_menu_dropdown .line3 {
+    background: black;
+    transition: transform 0.4s ease-in-out;
 }
+#bird_mobile_menu_dropdown .line4 {
+    height: 3px;
+    background: white;
+    transition: transform 0.4s ease-in-out;
+}
+#bird_mobile_menu_dropdown .line5 {
+    background: black;
+    transform-origin: 0% 100%;
+}
+#bird_mobile_menu_dropdown.active .line1 {
+    width: 130%;
+    transform: rotate(45deg);
+}
+#bird_mobile_menu_dropdown.active .line2,
+#bird_mobile_menu_dropdown.active .line3,
+#bird_mobile_menu_dropdown.active .line4 {
+    transform: scaleX(0);
+}
+#bird_mobile_menu_dropdown.active .line5 {
+    width: 130%;
+    transform: rotate(-45deg);
+}
+
+
 #bird_mobile_menu_dropdown.active + .bird_menu {
     position: fixed;
     top: calc(var(--top-height) - 1px);
@@ -202,6 +240,12 @@ li.bird_menu_child {
     left: 0;
     height: auto;
     background-color: white;
+}
+#bird_mobile_menu_dropdown.active + .bird_menu li.bird_menu_child {
+    margin: 2em auto 0 auto;
+}
+#bird_mobile_menu_dropdown.active + .bird_menu li.bird_menu_child {
+    margin: 2em auto 0 auto;
 }
 .bird_top .bird_menu a {
     text-decoration: none;

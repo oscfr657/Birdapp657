@@ -1,5 +1,5 @@
-var prevScrollpos = window.pageYOffset;
-var currentScrollPos = window.pageYOffset;
+var prevScrollpos = window.scrollY;
+var currentScrollPos = window.scrollY;
 var wraper = document.getElementsByClassName("bird_top_wraper")[0];
 var wraper_list = wraper.getElementsByClassName("bird_menu_child");
 var transparent = document.body.classList.contains('transparent_header');
@@ -11,7 +11,7 @@ window.onscroll = function(e) {
         e.preventDefault();
         return false;
     }
-    currentScrollPos = window.pageYOffset;
+    currentScrollPos = window.scrollY;
     if (prevScrollpos > currentScrollPos) {
         if (!active_menu) {
             active_menu = true;
@@ -19,7 +19,6 @@ window.onscroll = function(e) {
             wraper.style.opacity = 1;
             wraper.style.backgroundColor = 'white';
             if (transparent) {
-                document.getElementById("bird_mobile_menu_dropdown").style.border = 'solid 5px black';
                 wraper.getElementsByClassName("bird_logo")[0].firstElementChild.style.color = 'black';
                 for (let el of wraper_list) {
                     el.firstElementChild.style.color = 'black';
@@ -101,7 +100,6 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
         active_dropdown = true;
         wraper.style.backgroundColor = 'white';
         wraper.getElementsByClassName("bird_logo")[0].getElementsByTagName('a')[0].style.color = 'black';
-        document.getElementById("bird_mobile_menu_dropdown").style.border = 'solid 5px black';
         document.getElementById("bird_mobile_menu_dropdown").classList.add('active');
         for (let el of wraper_list) {
             el.firstElementChild.style.color = 'black';
@@ -144,7 +142,7 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
         }
     } else {
         active_dropdown = false;
-        if (transparent) {
+        if (currentScrollPos == 0 & transparent) {
             wraper.style.backgroundColor = 'transparent';
         }
         document.getElementById("bird_mobile_menu_dropdown").classList.remove('active');

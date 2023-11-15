@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Birdapp657
-Version: 0.2.3b0
+Version: 0.2.4b0
 Summary: A small Wagtail app.
 Home-page: https://github.com/oscfr657/Birdapp657
 Author: Oscar F
@@ -22,6 +22,9 @@ Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
 Requires-Python: >=3.6
 Description-Content-Type: text/markdown
 License-File: LICENSE.md
+Requires-Dist: django
+Requires-Dist: wagtail
+Requires-Dist: wagtailmedia
 
 
 # Birdapp 657 #

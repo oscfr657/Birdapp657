@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 16 November 2023 ###
+
+    Updated animated mobile menu button. License update. Build 0.2.4b0.
+
 ### 12 Jun 2023 ###
 
     ReCaptcha bug fixes. Build 0.2.3b0.
