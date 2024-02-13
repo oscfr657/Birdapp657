@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 13 February 2024 ###
+
+    Template improvements. Query imported from wagtail.contrib.search_promotions.models. License year update. Build 0.2.5b0.
+
 ### 16 November 2023 ###
 
     Updated animated mobile menu button. License update. Build 0.2.4b0.

@@ -87,3 +87,12 @@
     
 </div>
 {% endblock content %}
+
+
+{% block footer %}
+    {% if page.specific.hide_header == True %}
+        {# No header #}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock footer %}

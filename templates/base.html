@@ -1,17 +1,13 @@
+<!DOCTYPE html>
+<html >
+
+{% block head %}
+<head>
 {% load wagtailcore_tags wagtailuserbar wagtailimages_tags %}
 {% load static %}
 {% load i18n %}
 {% wagtail_site as current_site %}
-
-
 {% with settings.birdapp657.BirdAppSettings as site_settings %}
-
-
-<!DOCTYPE html>
-<html lang="{{ site_settings.lang_code|default:'en' }}">
-
-
-<head>
 
 <meta charset="UTF-8">
 <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' *.{{ current_site.hostname }}">-->
@@ -54,6 +50,8 @@
 {% endif %}
 
 <meta name="twitter:card" content="summary_large_image" />
+
+<meta property="og:locale" content="{{ site_settings.lang_code|default:'en' }}" />
 
 {% if page.seo_title %}
 <meta property="og:title" content="{{ page.seo_title }}"/>
@@ -110,9 +108,17 @@
 {{ site_settings.extra_head|safe }}
 {% endif %}
 
+{% endwith %}
 </head>
+{% endblock head %}
 
 
+{% block body %}
+{% load wagtailcore_tags wagtailuserbar wagtailimages_tags %}
+{% load static %}
+{% load i18n %}
+{% wagtail_site as current_site %}
+{% with settings.birdapp657.BirdAppSettings as site_settings %}
 <body class="{{ page.slug }} {% if page.specific.transparent_header %}transparent_header{% endif %}">
 
     {% wagtailuserbar %}
@@ -231,19 +237,16 @@
         </div>
     </footer>
     {% endif %}
-    {% endblock footer %}
-
-
     <script src="{% static 'js/birdapp657/birdapp.js' %}" async=""></script>
 
 
     {% if site_settings.extra_js %}
     <script src="{{ site_settings.extra_js.url }}" async=""></script>
     {% endif %}
-
+    {% endblock footer %}
 
 </body>
+{% endwith %}
+{% endblock body %}
 
 </html>
-
-{% endwith %}

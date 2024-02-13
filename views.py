@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from wagtail.models import Page, Site
-from wagtail.search.models import Query
+from wagtail.contrib.search_promotions.models import Query
 
 from .forms import SearchBirdForm
 

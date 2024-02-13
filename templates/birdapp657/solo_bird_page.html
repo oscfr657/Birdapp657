@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
-
 {% block header %}
+    {% load wagtailcore_tags %}
     {% if page.specific.hide_header == True %}
         {# No header #}
     {% else %}
@@ -11,6 +10,7 @@
 {% endblock header %}
 
 {% block content %}
+{% load wagtailcore_tags %}
 <div class="content ">
     {% if page.specific.show_breadcrumbs %}
     <div class="breadcrumbs">
@@ -29,6 +29,7 @@
 {% endblock %}
 
 {% block footer %}
+    {% load wagtailcore_tags %}
     {% if page.specific.hide_header == True %}
         {# No header #}
     {% else %}

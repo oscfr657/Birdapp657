@@ -16,7 +16,7 @@ Licensor: Oscar Fröberg
 
 ----
 
-## Birdapp657 Copyright (2023) Oscar Fröberg(“Licensor”) ##
+## Birdapp657 Copyright (2024) Oscar Fröberg(“Licensor”) ##
 
 ## Hippocratic License Version Number: 2.1 ##
 

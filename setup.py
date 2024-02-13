@@ -11,7 +11,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="Birdapp657",
-    version='0.2.4b0',
+    version='0.2.5b0',
     description='A small Wagtail app.',
     long_description=long_description,
     long_description_content_type='text/markdown',
