@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 18 April 2024 ###
+
+    Setting base template html lang. Build 0.3.0b0.
+
 ### 13 February 2024 ###
 
     Template improvements. Query imported from wagtail.contrib.search_promotions.models. License year update. Build 0.2.5b0.

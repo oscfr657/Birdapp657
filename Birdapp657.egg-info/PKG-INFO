@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Birdapp657
-Version: 0.2.5b0
+Version: 0.3.0b0
 Summary: A small Wagtail app.
 Home-page: https://github.com/oscfr657/Birdapp657
 Author: Oscar F
@@ -36,9 +36,9 @@ A small Wagtail app
 ### Tested with ###
 
 ``` Python
-django==4.2.1 
-wagtail==5.0
-wagtailmedia==0.14.0
+django==4.2.10
+wagtail==6.0
+wagtailmedia==0.15.1
 ```
 
 ## Installation ###
