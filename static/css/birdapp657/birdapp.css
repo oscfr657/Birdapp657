@@ -138,16 +138,12 @@ form input[type=submit] {
     height: 40px;
     transform: translateY(14px);
 }
+.bird_menu {
+    display: none;
+}
 .bird_top .bird_menu {
     float: right;
     height: var(--top-height);
-}
-.bird_top .bird_menu_list {
-    margin: 0;
-    display: block;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
 }
 .bird_top .bird_menu_child {
     display: inline-block;
@@ -169,6 +165,21 @@ li.bird_menu_child {
     background-color: white;
 }
 
+.bird_top_wraper .bird_menu ul.bird_menu_list {
+    display: grid;
+    top: 0;
+    transform: none;
+}
+.bird_top_wraper .bird_menu_child {
+    text-align: center;
+}
+.bird_top {
+    display: grid;
+    grid-auto-columns: auto auto;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
+
 #bird_mobile_menu_dropdown {
     display: block;
     cursor: pointer;
@@ -177,8 +188,8 @@ li.bird_menu_child {
     margin: auto;
     border: none;
     position: absolute;
-    right: 14px;
-    top: 14px;
+    right: 2rem;
+    top: 1.5rem;
     background-color: transparent;
 }
 
@@ -187,10 +198,10 @@ li.bird_menu_child {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-}  
+}
 #bird_mobile_menu_dropdown .line {
     display: block;
-    height: 4px;
+    height: 1px;
     width: 100%;
     border-radius: 10px;
     transition: transform 0.2s ease-in-out;
@@ -200,7 +211,6 @@ li.bird_menu_child {
     transform-origin: 0% 0%;
 }
 #bird_mobile_menu_dropdown .line2 {
-    height: 3px;
     background: white;
     transition: transform 0.4s ease-in-out;
 }
@@ -209,7 +219,6 @@ li.bird_menu_child {
     transition: transform 0.4s ease-in-out;
 }
 #bird_mobile_menu_dropdown .line4 {
-    height: 3px;
     background: white;
     transition: transform 0.4s ease-in-out;
 }
@@ -218,7 +227,7 @@ li.bird_menu_child {
     transform-origin: 0% 100%;
 }
 #bird_mobile_menu_dropdown.active .line1 {
-    width: 130%;
+    width: 38px;
     transform: rotate(45deg);
 }
 #bird_mobile_menu_dropdown.active .line2,
@@ -227,7 +236,7 @@ li.bird_menu_child {
     transform: scaleX(0);
 }
 #bird_mobile_menu_dropdown.active .line5 {
-    width: 130%;
+    width: 38px;
     transform: rotate(-45deg);
 }
 
@@ -247,6 +256,20 @@ li.bird_menu_child {
 #bird_mobile_menu_dropdown.active + .bird_menu li.bird_menu_child {
     margin: 2em auto 0 auto;
 }
+#bird_mobile_menu_dropdown.active + .bird_menu {
+    display: block;
+}
+#bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child > a:hover + .bird_menu_child_list {
+    display: grid;
+}
+#bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child_list {
+    display: block;
+    position: relative;
+}
+#bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child_list:hover {
+    display: grid;
+}
+
 .bird_top .bird_menu a {
     text-decoration: none;
     padding: 7px 15px 2px 15px;
@@ -1050,8 +1073,18 @@ div.search > form > button:hover {
     h4, h5, h6 {
         font-size: 20px;
     }
+    .bird_menu {
+        display: block;
+    }
     #bird_mobile_menu_dropdown {
         display: none;
+    }
+    .bird_top_wraper .bird_menu ul.bird_menu_list {
+        margin: 0;
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
 
@@ -1105,37 +1138,6 @@ div.search > form > button:hover {
 }
 
 @media (max-width: 900px) {
-    .bird_top {
-        display: grid;
-        grid-auto-columns: auto auto;
-        grid-template-columns: auto auto;
-        justify-content: space-between;
-    }
-    .bird_menu {
-        display: none;
-    }
-    #bird_mobile_menu_dropdown.active + .bird_menu {
-        display: block;
-    }
-    #bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child > a:hover + .bird_menu_child_list {
-        display: grid;
-    }
-    
-    #bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child_list {
-        display: block;
-        position: relative;
-    }
-    #bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child_list:hover {
-        display: grid;
-    }
-    .bird_top_wraper .bird_menu ul.bird_menu_list {
-        display: grid;
-        top: 0;
-        transform: none;
-    }
-    .bird_top_wraper .bird_menu_child {
-        text-align: center;
-    }
 
     .search_result {
         grid-template-columns: repeat(2, auto);

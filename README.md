@@ -119,16 +119,6 @@ WAGTAILIMAGES_FORMAT_CONVERSIONS = {
 }
 ```
 
-### Database configuration ###
-
-> python3 manage.py migrate
-
-### Search Index setup ###
-
-``` Python
-python3 manage.py update_index
-```
-
 ### Django url ###
 
 To the django projects' url.py add
@@ -163,6 +153,16 @@ urlpatterns += [
 handler403 = 'birdapp657.views.bird_page_403'
 handler404 = 'birdapp657.views.bird_page_404'
 handler500 = 'birdapp657.views.bird_page_500'
+```
+
+### Database configuration ###
+
+> python3 manage.py migrate
+
+### Search Index setup ###
+
+``` Python
+python3 manage.py update_index
 ```
 
 ### Collectstatic ###

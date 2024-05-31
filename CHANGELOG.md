@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 31 May 2024 ###
+
+    Thinner mobile hamburger menu. Build 0.3.1b0.
+
 ### 18 April 2024 ###
 
     Setting base template html lang. Build 0.3.0b0.
