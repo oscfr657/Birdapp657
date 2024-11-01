@@ -7,6 +7,7 @@
 ### 1 Nov 2024 ###
 
     Smaller h3 size. Added some ARIA labels. Build 0.3.2b0.
+    Use pycontrol.toml for build. Build 0.3.3b0.
 
 ### 31 May 2024 ###
 
