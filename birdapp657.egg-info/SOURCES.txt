@@ -1,4 +1,5 @@
 LICENSE.md
+MANIFEST.in
 README.md
 __init__.py
 admin.py
@@ -6,7 +7,7 @@ apps.py
 blocks.py
 forms.py
 models.py
-setup.py
+pyproject.toml
 tests.py
 views.py
 ./__init__.py
@@ -121,11 +122,11 @@ views.py
 ./templates/blocks/racer.html
 ./templates/blocks/simple_grid_bird_block.html
 ./templates/blocks/simple_racer.html
-Birdapp657.egg-info/PKG-INFO
-Birdapp657.egg-info/SOURCES.txt
-Birdapp657.egg-info/dependency_links.txt
-Birdapp657.egg-info/requires.txt
-Birdapp657.egg-info/top_level.txt
+birdapp657.egg-info/PKG-INFO
+birdapp657.egg-info/SOURCES.txt
+birdapp657.egg-info/dependency_links.txt
+birdapp657.egg-info/requires.txt
+birdapp657.egg-info/top_level.txt
 migrations/0001_initial.py
 migrations/0002_auto_20190721_0028.py
 migrations/0003_auto_20190803_0037.py
