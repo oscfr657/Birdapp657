@@ -60,7 +60,7 @@
 {% endif %}
 
 {% if page.search_description %}
-<meta name="description" content="{{ page.search_description }}">
+<meta name="description" content="{{ page.specific.search_description|default:''|striptags }}">
 {% endif %}
 
 {% if page.specific.tags.count > 1 %}
@@ -204,11 +204,11 @@
                 {% csrf_token %}
                 <input type="text" type="text" id="id_search_query" name="search_query"
                     required="" placeholder="{% translate 'Search' %}.." value="">
-                <button type="submit">
+                <button aria-label="{% translate 'Search' %}" type="submit">
                     {% translate 'Search' %}
                 </button>
             </form>
-            <button onclick="closeSearch(); return false;" title="{% translate 'Close' %}">{% translate 'Close' %}</button>
+            <button aria-label="{% translate 'Close' %}" onclick="closeSearch(); return false;" title="{% translate 'Close' %}">{% translate 'Close' %}</button>
         </div>
     </div>
 

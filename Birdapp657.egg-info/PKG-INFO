@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Birdapp657
-Version: 0.3.1b0
+Version: 0.3.2b0
 Summary: A small Wagtail app.
 Home-page: https://github.com/oscfr657/Birdapp657
 Author: Oscar F
@@ -266,10 +266,22 @@ if settings.DEBUG:
 ### Build a new release ###
 
 ``` bash
-    pip install black
-    black . --skip-string-normalization
+    python3 -m venv env
+    source env/bin/activate
+    python3 -m pip install black
+    python3 -m black . -S -t py310 -t py311 -t py312 --diff
+    python3 -m black . -S -t py310 -t py311 -t py312
 ```
 
-``` python
-python3 -m build --sdist
+Update version in setup.cfg
+
+Update CHANGELOG.md
+
+``` bash
+    python3 -m pip install build
+    python3 -m build --sdist
 ```
+
+```Git
+   git commit -a -m 'Cangelog message.'
+   git push

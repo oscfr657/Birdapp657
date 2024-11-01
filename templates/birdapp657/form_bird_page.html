@@ -65,10 +65,10 @@
                 {{ field.errors }}
                 {% if field.widget_type in 'text date' %}
                 <label for="{{ field.id_for_label }}">{{ field.label }}</label><br />
-                <input type="{{ field.widget_type|lower }}" name="{{ field.name }}" maxlength="255" {% if field.field.required %}required="required"{% endif %} id="{{ field.id_for_label }}" >
+                <input type="{{ field.widget_type|lower }}" name="{{ field.name }}" maxlength="255" {% if field.field.required %}required="required" aria-required="true"{% endif %} id="{{ field.id_for_label }}" >
                 {% elif field.widget_type == 'datetime' %}
                 <label for="{{ field.id_for_label }}">{{ field.label }}</label><br />
-                <input type="datetime-local" name="{{ field.name }}" {% if field.field.required %}required="required"{% endif %} id="{{ field.id_for_label }}" >
+                <input type="datetime-local" name="{{ field.name }}" {% if field.field.required %}required="required" aria-required="true"{% endif %} id="{{ field.id_for_label }}" >
                 {% else %}
                 <label for="{{ field.id_for_label }}">{{ field.label }}</label><br />
                     {{ field }}
