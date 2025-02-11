@@ -1,6 +1,7 @@
 LICENSE.md
 MANIFEST.in
 README.md
+VERSION.txt
 __init__.py
 admin.py
 apps.py
@@ -8,6 +9,7 @@ blocks.py
 forms.py
 models.py
 pyproject.toml
+tasks.py
 tests.py
 views.py
 ./__init__.py
@@ -16,6 +18,7 @@ views.py
 ./blocks.py
 ./forms.py
 ./models.py
+./tasks.py
 ./tests.py
 ./views.py
 ./migrations/0001_initial.py

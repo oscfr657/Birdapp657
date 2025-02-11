@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "birdapp657"
-version = "0.3.3b0"
+dynamic = ["version"]
 authors = [
   { name="Oscar F" },
 ]
@@ -14,9 +14,9 @@ readme = "README.md"
 license = { text = "Hippocratic License Version Number: 2.1 with Commons Clause License Condition v1.0" }
 requires-python = ">= 3.10"
 dependencies = [
-    "django >= 5.1",
-    "wagtail >= 6.2.2",
-    "wagtailmedia >= 0.15.2",
+    "django",
+    "wagtail",
+    "wagtailmedia",
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -50,3 +50,6 @@ birdapp657 = [
   './templates/*',
   './templates/*/*',
   ]
+
+[tool.setuptools.dynamic]
+version = {file = "VERSION.txt"}
