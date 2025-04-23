@@ -1,5 +1,5 @@
-[bild-system]
-requires = ["setuptools>=61.0"]
+[build-system]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
 
 
@@ -11,7 +11,10 @@ authors = [
 ]
 description = "A small Wagtail app."
 readme = "README.md"
-license = { text = "Hippocratic License Version Number: 2.1 with Commons Clause License Condition v1.0" }
+license = "MIT"
+license-files = [
+  "LICENSE.md",
+]
 requires-python = ">= 3.10"
 dependencies = [
     "django",

@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 23 April 2025 ###
+
+    feature: Dark color scheme. MIT License. Build 0.4.0b0
+
 ### 11 Feb 2025 ###
 
     Improved pyproject.toml with dynamic version. Build 0.3.4b0

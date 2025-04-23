@@ -1,9 +1,9 @@
-Metadata-Version: 2.2
+Metadata-Version: 2.4
 Name: birdapp657
-Version: 0.3.4b0
+Version: 0.4.0b0
 Summary: A small Wagtail app.
 Author: Oscar F
-License: Hippocratic License Version Number: 2.1 with Commons Clause License Condition v1.0
+License-Expression: MIT
 Project-URL: repository, https://github.com/oscfr657/birdapp657.git
 Classifier: Development Status :: 3 - Alpha
 Classifier: Environment :: Web Environment
@@ -25,6 +25,7 @@ License-File: LICENSE.md
 Requires-Dist: django
 Requires-Dist: wagtail
 Requires-Dist: wagtailmedia
+Dynamic: license-file
 
 
 # Birdapp 657 #
