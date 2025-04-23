@@ -4,10 +4,19 @@
 
 ## commits ##
 
+### 23 April 2025 ###
+
+    feature: Dark color scheme. MIT License. Build 0.4.0b0
+
+### 11 Feb 2025 ###
+
+    Improved pyproject.toml with dynamic version. Build 0.3.4b0
+    Added tasks publish_scheduled and searchpromotions_garbage_collect.
+
 ### 1 Nov 2024 ###
 
+    Use pyproject.toml for build. Build 0.3.3b0.
     Smaller h3 size. Added some ARIA labels. Build 0.3.2b0.
-    Use pycontrol.toml for build. Build 0.3.3b0.
 
 ### 31 May 2024 ###
 

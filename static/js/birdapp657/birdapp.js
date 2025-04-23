@@ -1,5 +1,7 @@
 var prevScrollpos = window.scrollY;
 var currentScrollPos = window.scrollY;
+const darkThemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+var darkTheme = false;
 var wraper = document.getElementsByClassName("bird_top_wraper")[0];
 var wraper_list = wraper.getElementsByClassName("bird_menu_child");
 var transparent = document.body.classList.contains('transparent_header');
@@ -7,6 +9,19 @@ var active_menu = true;
 var active_dropdown = false;
 
 window.onscroll = function(e) {
+    if (darkThemeMediaQuery.matches) {
+        darkTheme = true;
+    } else {
+        darkTheme = false;
+    }
+    darkThemeMediaQuery.addEventListener("change", e => {
+        if (e.matches) {
+            darkTheme = true;
+        } else {
+            darkTheme = false;
+        }
+    });
+
     if (active_dropdown) {
         e.preventDefault();
         return false;
@@ -17,33 +32,88 @@ window.onscroll = function(e) {
             active_menu = true;
             wraper.style.visibility = 'visible';
             wraper.style.opacity = 1;
-            wraper.style.backgroundColor = 'white';
+            if (darkTheme) {
+                wraper.style.backgroundColor = 'black';
+            } else {
+                wraper.style.backgroundColor = 'white';
+            }
             if (transparent) {
-                wraper.getElementsByClassName("bird_logo")[0].firstElementChild.style.color = 'black';
+                if (darkTheme) {
+                    wraper.getElementsByClassName("bird_logo")[0].firstElementChild.style.color = 'white';
+                } else {
+                    wraper.getElementsByClassName("bird_logo")[0].firstElementChild.style.color = 'black';
+                }
                 for (let el of wraper_list) {
-                    el.firstElementChild.style.color = 'black';
+                    if (darkTheme) {
+                        el.firstElementChild.style.color = 'white';
+                    } else {
+                        el.firstElementChild.style.color = 'black';
+                    }
                     for (let sv of el.getElementsByTagName('svg') ) {
                         for (let child of sv.children) {
-                            child.style.stroke = 'black';
+                            if (darkTheme) {
+                                child.style.stroke = 'white';
+                            } else {
+                                child.style.stroke = 'black';
+                            }
                         }
                     }
                     if (el.getElementsByClassName('active').length > 0) {
-                        el.getElementsByClassName('active')[0].style.setProperty('color', 'white');
-                    }
-                    el.addEventListener('mouseover',function(){
-                        el.firstElementChild.style.color = 'white';
-                        el.firstElementChild.style.backgroundColor = 'black';
-                        if (el.getElementsByClassName('active').length > 0) {
+                        if (darkTheme) {
+                            el.getElementsByClassName('active')[0].style.color = 'black';
+                            el.getElementsByClassName('active')[0].style.backgroundColor = 'white';
+                        } else {
                             el.getElementsByClassName('active')[0].style.color = 'white';
                             el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
                         }
+                    }
+                    el.addEventListener('mouseover',function(){
+                        if (darkTheme) {
+                            el.firstElementChild.style.color = 'black';
+                            el.firstElementChild.style.backgroundColor = 'white';
+                            if (el.getElementsByClassName('active').length > 0) {
+                                el.getElementsByClassName('active')[0].style.color = 'black';
+                                el.getElementsByClassName('active')[0].style.backgroundColor = 'white';
+                            }
+                            for (let sv of el.getElementsByTagName('svg') ) {
+                                for (let child of sv.children) {
+                                    child.style.stroke = 'black';
+                                }
+                            }
+                        } else {
+                            el.firstElementChild.style.color = 'white';
+                            el.firstElementChild.style.backgroundColor = 'black';
+                            if (el.getElementsByClassName('active').length > 0) {
+                                el.getElementsByClassName('active')[0].style.color = 'white';
+                                el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
+                            }
+                        }
                     })
                      el.addEventListener('mouseleave',function(){
-                        el.firstElementChild.style.color = 'black';
-                        el.firstElementChild.style.backgroundColor = 'white';
-                        if (el.getElementsByClassName('active').length > 0) {
-                            el.getElementsByClassName('active')[0].style.color = 'white';
-                            el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
+                        if (darkTheme) {
+                            el.firstElementChild.style.color = 'white';
+                            el.firstElementChild.style.backgroundColor = 'black';
+                            if (el.getElementsByClassName('active').length > 0) {
+                                el.getElementsByClassName('active')[0].style.color = 'black';
+                                el.getElementsByClassName('active')[0].style.backgroundColor = 'white';
+                            }
+                            for (let sv of el.getElementsByTagName('svg') ) {
+                                for (let child of sv.children) {
+                                    child.style.stroke = 'white';
+                                }
+                            }
+                        } else {
+                            el.firstElementChild.style.color = 'black';
+                            el.firstElementChild.style.backgroundColor = 'white';
+                            if (el.getElementsByClassName('active').length > 0) {
+                                el.getElementsByClassName('active')[0].style.color = 'white';
+                                el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
+                            }
+                            for (let sv of el.getElementsByTagName('svg') ) {
+                                for (let child of sv.children) {
+                                    child.style.stroke = 'black';
+                                }
+                            }
                         }
                     })
                 }
@@ -79,6 +149,11 @@ window.onscroll = function(e) {
                         el.getElementsByClassName('active')[0].style.color = 'white';
                         el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
                     }
+                    for (let sv of el.getElementsByTagName('svg') ) {
+                        for (let child of sv.children) {
+                            child.style.stroke = 'white';
+                        }
+                    }
                 })
                  el.addEventListener('mouseleave',function(){
                     el.firstElementChild.style.color = 'white';
@@ -86,6 +161,11 @@ window.onscroll = function(e) {
                     if (el.getElementsByClassName('active').length > 0) {
                         el.getElementsByClassName('active')[0].style.color = 'white';
                         el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
+                    }
+                    for (let sv of el.getElementsByTagName('svg') ) {
+                        for (let child of sv.children) {
+                            child.style.stroke = 'white';
+                        }
                     }
                 })
             }

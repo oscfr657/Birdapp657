@@ -19,12 +19,27 @@ body  {
     grid-template-rows: 1fr auto;
     min-height: 100vh;
 }
+:root {
+    color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        color: white;
+        background-color: black;
+    }
+}
+
 
 svg path,
 svg circle {
     stroke: black;
 }
-
+@media (prefers-color-scheme: dark) {
+    svg path,
+    svg circle {
+        stroke: white;
+    }
+}
 .wagtail-userbar-reset {
     display: contents !important;
 }
@@ -113,6 +128,13 @@ form input[type=submit] {
     z-index: 2;
     transition: visibility 0s, opacity 0.5s linear;
 }
+@media (prefers-color-scheme: dark) {
+    .bird_top_wraper {
+        color: white;
+        background-color: black;
+    }
+}
+
 .bird_top {
     margin: auto;
     width: var(--top-width);
@@ -278,6 +300,14 @@ li.bird_menu_child {
     color: white;
     background-color: black;
 }
+@media (prefers-color-scheme: dark) {    
+    .bird_top .bird_menu a.active,
+    .bird_top .bird_menu a:hover,
+    .bird_top .bird_menu a:active {
+        color: black;
+        background-color: white;
+    }
+}
 .bird_top .bird_menu button,
 .bird_top .bird_menu .active svg path,
 .bird_top .bird_menu button:hover svg path,
@@ -285,15 +315,37 @@ li.bird_menu_child {
 .bird_top .bird_menu button:hover svg circle {
     stroke: white;
 }
+
+@media (prefers-color-scheme: dark) {    
+    .bird_top .bird_menu button,
+    .bird_top .bird_menu .active svg path,
+    .bird_top .bird_menu button:hover svg path,
+    .bird_top .bird_menu button.active svg circle,le,
+    .bird_top .bird_menu button:hover svg circle {
+        stroke: black;
+    }
+}
 .bird_top .bird_menu button {
     padding: 9px 15px 5px 15px;
     background-color: white;
     border: none;
 }
+@media (prefers-color-scheme: dark) {    
+    .bird_top .bird_menu button {
+        background-color: black;
+    }
+}
 .bird_top .bird_menu button.active,
 .bird_top .bird_menu button:hover {
     background-color: black;
     color: white;
+}
+@media (prefers-color-scheme: dark) {    
+    .bird_top .bird_menu button.active,
+    .bird_top .bird_menu button:hover {
+        background-color: white;
+        color: black;
+    }
 }
 .bird_top .bird_menu_grand_child {
     display: inline-block;

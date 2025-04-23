@@ -1,7 +1,7 @@
 
 # Birdapp 657 #
 
-A small Wagtail app
+A base Wagtail app
 
 ## Compatible ##
 
@@ -29,14 +29,14 @@ add to the INSTALLED_APPS
 
 ``` Python
 
-    'django.contrib.sites',  # extra
-    'django.contrib.sitemaps',  # extra
+    'django.contrib.sites',  # added
+    'django.contrib.sitemaps',  # added
 
     # wagtail
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
-    'wagtail.contrib.settings',  # extra
-    'wagtail.contrib.search_promotions',  # extra
+    'wagtail.contrib.settings',  # added
+    'wagtail.contrib.search_promotions',  # added
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -173,14 +173,43 @@ python3 manage.py collectstatic
 
 ### [Management commands](https://docs.wagtail.io/en/stable/reference/management_commands.html) ###
 
-Some commands is good to have in cron to run once every hour.
+Some commands is good to run once or twice every hour with Celery beat or cron.
+
+#### CELERY_BEAT_SCHEDULE ####
+
+##### Requirements ######
+
+redis
+celery[redis]
+django-celery-beat
+
+##### settings.py ######
+
+``` python
+
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
+
+CELERY_BEAT_SCHEDULE = {
+    'birdapp657_publish_scheduled': {
+        'task': 'birdapp657.tasks.publish_scheduled',
+        'schedule': crontab(minutes='1,31'),  # Schedule the task to run twice every hour
+    },
+    'birdapp657_searchpromotions_garbage_collect': {
+        'task': 'birdapp657.tasks.searchpromotions_garbage_collect',
+        'schedule': crontab(minutes='1,31'),  # Schedule the task to run twice every hour
+    }
+}
+```
+
+#### Cron ####
 
 ``` bash
 crontab -e
 
-0 * * * * /path/to/env/bin/python3 /path/to/project/manage.py publish_scheduled_pages
+1,31 * * * * /path/to/env/bin/python3 /path/to/project/manage.py publish_scheduled
 
-0 * * * * /path/to/env/bin/python3 /path/to/project/manage.py search_garbage_collect
+1,31 * * * * /path/to/env/bin/python3 /path/to/project/manage.py search_garbage_collect
 
 crontab -l
 ```
