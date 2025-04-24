@@ -526,6 +526,12 @@ div.search > form > button:hover {
     font-size: 1.5em;
     max-width: calc(100% - 2rem);
 }
+@media (prefers-color-scheme: dark) {
+    #id_search_query {
+        color: black;
+    }
+}
+
 .search_result {
     margin: auto;
     max-width: 100%;

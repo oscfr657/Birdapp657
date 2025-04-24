@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 25 April 2025 ###
+
+    fix: search button dark color scheme. Build 0.4.2b0
+
 ### 24 April 2025 ###
 
     fix: more dark color scheme. Build 0.4.1b0
