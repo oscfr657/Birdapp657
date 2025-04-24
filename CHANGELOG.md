@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 24 April 2025 ###
+
+    fix: more dark color scheme. Build 0.4.1b0
+
 ### 23 April 2025 ###
 
     feature: Dark color scheme. MIT License. Build 0.4.0b0
