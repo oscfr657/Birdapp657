@@ -365,6 +365,7 @@ body.transparent_header .bird_top_wraper .bird_mobile_menu {
 }
 body.transparent_header .bird_top_wraper {
     background-color: transparent;
+    background-image: linear-gradient(to bottom, black, #00000052, transparent);
 }
 body.transparent_header .bird_top_wraper .bird_top .bird_logo a {
     color: white;
@@ -817,9 +818,22 @@ div.search > form > button:hover {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
 }
 .hero-pause {
     display: none;
+    text-align: right;
+}
+.hero-play {
+    text-align: right;
+}
+.hero-mute {
+    display: none;
+    text-align: left;
+}
+.hero-sound {
+    text-align: left;
 }
 .hero video {
     width: 100%;

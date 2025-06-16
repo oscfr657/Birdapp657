@@ -134,7 +134,9 @@
     <![endif]-->
         <div class="bird_top">
             <div class="bird_logo">
+                {% if current_site.root_page %}
                 <a href="{% pageurl current_site.root_page %}" >
+                {% endif %}
                     {% if site_settings.logo %}
                         {% image site_settings.logo height-64 as site_logo %}
                     <img src="{{ site_logo.url }}" alt="{{ site_logo.alt }}" class="logo_img" itemprop="logo" />
@@ -144,7 +146,9 @@
                         {{ current_site.site_name|default:'' }}
                     </span>
                     {% endif %}
+                {% if current_site.root_page %}
                 </a>
+                {% endif %}
             </div>
             {% if current_site.root_page.get_children.live.in_menu %}
             <button aria-label="{% translate 'Menu' %}" id="bird_mobile_menu_dropdown" class="bird_mobile_menu" >

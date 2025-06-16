@@ -36,6 +36,7 @@ window.onscroll = function(e) {
                 wraper.style.backgroundColor = 'black';
             } else {
                 wraper.style.backgroundColor = 'white';
+                wraper.style.backgroundImage = 'none';
             }
             if (transparent) {
                 if (darkTheme) {
@@ -128,6 +129,11 @@ window.onscroll = function(e) {
     }
     if (currentScrollPos == 0 & prevScrollpos != currentScrollPos) {
         if (transparent) {
+            if (darkTheme) {
+                wraper.style.backgroundColor = 'black';
+            } else {
+                wraper.style.backgroundImage = 'linear-gradient(to bottom, black, #00000052, transparent)';
+            }
             wraper.style.backgroundColor = 'transparent';
             wraper.getElementsByClassName("bird_logo")[0].getElementsByTagName('a')[0].style.color = 'white';
             for (let el of wraper_list) {
@@ -230,13 +236,47 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
     return false;
 }
 
+document.addEventListener("DOMContentLoaded", function(event) {
+    try {
+        let hero_video = document.getElementsByClassName('hero')[0].getElementsByTagName('video')[0];
+        let hero_player = document.getElementsByClassName('hero')[0].getElementsByClassName('hero-player')[0];
+        if (hero_video.autoplay == true & hero_player != null) {
+            hero_player.getElementsByClassName('hero-play')[0].style.display = 'none';
+            hero_player.getElementsByClassName('hero-pause')[0].style.display = 'block';
+        } else if (hero_player != null) {
+            hero_player.getElementsByClassName('hero-play')[0].style.display = 'block';
+            hero_player.getElementsByClassName('hero-pause')[0].style.display = 'none';
+        }
+        if (hero_video.muted == true & hero_player != null) {
+            hero_player.getElementsByClassName('hero-mute')[0].style.display = 'block';
+            hero_player.getElementsByClassName('hero-sound')[0].style.display = 'none';
+        } else if (hero_player != null) {
+            hero_player.getElementsByClassName('hero-mute')[0].style.display = 'none';
+            hero_player.getElementsByClassName('hero-sound')[0].style.display = 'block';
+        }
+    }
+    catch(err) {
+        console.log('No video on this page.');
+    }
+});
+
 function birdPlay(element) {
     element.parentNode.parentNode.getElementsByTagName('video')[0].play();
     element.nextElementSibling.style.display = 'block';
     element.style.display = 'none';
 }
 function birdPause(element) {
-    element.parentNode.parentNode.getElementsByTagName('video')[0].pause()
+    element.parentNode.parentNode.getElementsByTagName('video')[0].pause();
+    element.previousElementSibling.style.display = 'block';
+    element.style.display = 'none';
+}
+function birdMute(element) {
+    element.parentNode.parentNode.getElementsByTagName('video')[0].muted = true;
+    element.nextElementSibling.style.display = 'block';
+    element.style.display = 'none';
+}
+function birdSound(element) {
+    element.parentNode.parentNode.getElementsByTagName('video')[0].muted = false;
     element.previousElementSibling.style.display = 'block';
     element.style.display = 'none';
 }

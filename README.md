@@ -91,7 +91,7 @@ WAGTAIL_SITE_NAME = 'Birdapp657'
 the password required template
 
 ``` python
-PASSWORD_REQUIRED_TEMPLATE = 'birdapp657_password_required.html'
+WAGTAIL_PASSWORD_REQUIRED_TEMPLATE = 'birdapp657_password_required.html'
 ```
 
 #### I recommend ####

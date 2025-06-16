@@ -34,19 +34,35 @@
     </div>
 {% endif %}
 
-{% if value.block_media.type == 'video' and value.controls %}
+{% if value.block_media.type == 'video' and value.controls or value.block_media and not value.muted %}
     <div class="hero-player" >
         <div class="hero-play" onclick="birdPlay(this);">
             <svg height="50" width="50" >
-                <circle cx="25" cy="25" r="25"  fill="{{ value.bg_color }}" />
                 <polygon points="15,10 15,40 45,25" style="fill:{{ value.font_color }};" />
             </svg>
         </div>
         <div class="hero-pause" onclick="birdPause(this);">
             <svg width="50" height="50">
-                <circle cx="25" cy="25" r="25"  fill="{{ value.bg_color }}" />
-                <rect x="12.5" y="12.5" width="25" height="25"
+                <rect x="12.5" y="12.5" width="25" height="10"
                 style="fill:{{ value.font_color }};" />
+                <rect x="12.5" y="27.5" width="25" height="10"
+                style="fill:{{ value.font_color }};" />
+            </svg>
+        </div>
+        <div class="hero-mute " onclick="birdMute(this);">
+            <svg width="50" height="50">
+                <rect style="fill: {{ value.font_color }};" width="5" x="15" y="15" height="20"></rect>
+                <polygon style="fill: {{ value.font_color }};" points="15,25 27.5,40 27.5,10"></polygon>
+                <path style="stroke: {{ value.font_color }}; stroke-width: 2px; fill: none; fill-rule: nonzero;" d="M 30 12.5 S 45 25 30 37.5"></path>
+                <path style="fill: {{ value.font_color }}; stroke: {{ value.font_color }}; stroke-width: 3px;"
+                d="M 10 10 L 40 40"></path>
+            </svg>
+        </div>
+        <div class="hero-sound " onclick="birdSound(this);">
+            <svg width="50" height="50">
+                <rect style="fill: {{ value.font_color }};" width="5" x="15" y="15" height="20"></rect>
+                <polygon style="fill: {{ value.font_color }};" points="15,25 27.5,40 27.5,10"></polygon>
+                <path style="stroke: {{ value.font_color }}; stroke-width: 2px; fill: none; fill-rule: nonzero;" d="M 30 12.5 S 45 25 30 37.5"></path>
             </svg>
         </div>
     </div>

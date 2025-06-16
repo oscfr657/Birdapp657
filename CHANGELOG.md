@@ -4,6 +4,10 @@
 
 ## commits ##
 
+### 17 June 2025 ##
+
+    feature: Added mute/unmute button to hero block. Gradient transparent header. Build 0.5.0b0.
+
 ### 25 April 2025 ###
 
     fix: search button dark color scheme. Build 0.4.2b0

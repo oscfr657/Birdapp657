@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: birdapp657
-Version: 0.4.2b0
+Version: 0.5.0b0
 Summary: A small Wagtail app.
 Author: Oscar F
 License-Expression: MIT
@@ -120,7 +120,7 @@ WAGTAIL_SITE_NAME = 'Birdapp657'
 the password required template
 
 ``` python
-PASSWORD_REQUIRED_TEMPLATE = 'birdapp657_password_required.html'
+WAGTAIL_PASSWORD_REQUIRED_TEMPLATE = 'birdapp657_password_required.html'
 ```
 
 #### I recommend ####
