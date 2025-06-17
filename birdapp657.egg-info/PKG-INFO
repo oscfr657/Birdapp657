@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: birdapp657
-Version: 0.5.0b0
+Version: 0.5.1b0
 Summary: A small Wagtail app.
 Author: Oscar F
 License-Expression: MIT
@@ -303,7 +303,7 @@ if settings.DEBUG:
     python3 -m black . -S -t py310 -t py311 -t py312
 ```
 
-Update version in setup.cfg
+Update version in VERSION.txt
 
 Update CHANGELOG.md
 

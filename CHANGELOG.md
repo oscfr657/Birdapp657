@@ -6,6 +6,7 @@
 
 ### 17 June 2025 ##
 
+    fix: Hero block player mute button fix. Build 0.5.1b0.
     feature: Added mute/unmute button to hero block. Gradient transparent header. Build 0.5.0b0.
 
 ### 25 April 2025 ###

@@ -127,7 +127,7 @@ window.onscroll = function(e) {
         }
         active_menu = false;
     }
-    if (currentScrollPos == 0 & prevScrollpos != currentScrollPos) {
+    if (currentScrollPos == 0 && prevScrollpos != currentScrollPos) {
         if (transparent) {
             if (darkTheme) {
                 wraper.style.backgroundColor = 'black';
@@ -228,7 +228,7 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
         }
     } else {
         active_dropdown = false;
-        if (currentScrollPos == 0 & transparent) {
+        if (currentScrollPos == 0 && transparent) {
             wraper.style.backgroundColor = 'transparent';
         }
         document.getElementById("bird_mobile_menu_dropdown").classList.remove('active');
@@ -236,29 +236,39 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
     return false;
 }
 
-document.addEventListener("DOMContentLoaded", function(event) {
+if (document.readyState !== 'loading') {
+    console.log('document is already ready, just execute code here');
+    myInitCode();
+} else {
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('document was not ready, place code here');
+        myInitCode();
+    });
+}
+function myInitCode() {
     try {
+        console.log('myInitCode');
         let hero_video = document.getElementsByClassName('hero')[0].getElementsByTagName('video')[0];
         let hero_player = document.getElementsByClassName('hero')[0].getElementsByClassName('hero-player')[0];
-        if (hero_video.autoplay == true & hero_player != null) {
+        if (hero_player != null && hero_video.autoplay == true) {
             hero_player.getElementsByClassName('hero-play')[0].style.display = 'none';
             hero_player.getElementsByClassName('hero-pause')[0].style.display = 'block';
         } else if (hero_player != null) {
             hero_player.getElementsByClassName('hero-play')[0].style.display = 'block';
             hero_player.getElementsByClassName('hero-pause')[0].style.display = 'none';
         }
-        if (hero_video.muted == true & hero_player != null) {
-            hero_player.getElementsByClassName('hero-mute')[0].style.display = 'block';
+        if (hero_player != null && hero_video.muted == true ) {
+            hero_player.getElementsByClassName('hero-muted')[0].style.display = 'block';
             hero_player.getElementsByClassName('hero-sound')[0].style.display = 'none';
         } else if (hero_player != null) {
-            hero_player.getElementsByClassName('hero-mute')[0].style.display = 'none';
+            hero_player.getElementsByClassName('hero-muted')[0].style.display = 'none';
             hero_player.getElementsByClassName('hero-sound')[0].style.display = 'block';
         }
     }
     catch(err) {
         console.log('No video on this page.');
     }
-});
+};
 
 function birdPlay(element) {
     element.parentNode.parentNode.getElementsByTagName('video')[0].play();
@@ -270,13 +280,13 @@ function birdPause(element) {
     element.previousElementSibling.style.display = 'block';
     element.style.display = 'none';
 }
-function birdMute(element) {
-    element.parentNode.parentNode.getElementsByTagName('video')[0].muted = true;
+function birdSound(element) {
+    element.parentNode.parentNode.getElementsByTagName('video')[0].muted = false;
     element.nextElementSibling.style.display = 'block';
     element.style.display = 'none';
 }
-function birdSound(element) {
-    element.parentNode.parentNode.getElementsByTagName('video')[0].muted = false;
+function birdMute(element) {
+    element.parentNode.parentNode.getElementsByTagName('video')[0].muted = true;
     element.previousElementSibling.style.display = 'block';
     element.style.display = 'none';
 }

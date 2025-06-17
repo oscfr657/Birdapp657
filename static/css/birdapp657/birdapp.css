@@ -828,7 +828,7 @@ div.search > form > button:hover {
 .hero-play {
     text-align: right;
 }
-.hero-mute {
+.hero-muted {
     display: none;
     text-align: left;
 }

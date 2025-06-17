@@ -274,7 +274,7 @@ if settings.DEBUG:
     python3 -m black . -S -t py310 -t py311 -t py312
 ```
 
-Update version in setup.cfg
+Update version in VERSION.txt
 
 Update CHANGELOG.md
 
