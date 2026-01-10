@@ -125,7 +125,7 @@
 
     {% block header %}
 
-    <header class="bird_top_wraper ">
+    <header role="banner" class="bird_top_wraper ">
     <!--[if IE]>
     <div class="browser-alert">
         You are using an <strong>outdated</strong> browser.
@@ -159,7 +159,7 @@
                 <span class="line line5"></span>
             </button>
             
-            <nav class="bird_menu">
+            <nav role="navigation" class="bird_menu">
                 <ul class="bird_menu_list">
                     {% for child in current_site.root_page.get_children.live.in_menu %}
                     <li class="bird_menu_child">
@@ -218,14 +218,14 @@
 
     {% endblock header %}
 
-
+    <main role="main">
     {% block content %}
     {% endblock content %}
-
+    </main>
 
     {% block footer %}
     {% if site_settings.footer %}
-    <footer class="footer">
+    <footer role="contentinfo" class="footer">
         <style>
         @media (min-width: 900px) {
             .footer-row {
