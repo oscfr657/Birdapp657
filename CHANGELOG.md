@@ -4,6 +4,14 @@
 
 ## commits ##
 
+### 10 January 2026 ###
+
+    doc: Updated CHANGELOG.md.
+    ci: Build 0.5.2b0.
+    fix: MediaFileBirdBlock template video source type fix.
+    fix: hero block template video css size and poster fix.
+    feat: Base template ARIA improvement and added main tag.
+
 ### 17 June 2025 ##
 
     fix: Hero block player mute button fix. Build 0.5.1b0.
