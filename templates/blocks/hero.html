@@ -13,7 +13,7 @@
 {% if value.block_media.type == 'video' %}
     <!--#TODO: But what about webm and ogg ? sad_face -->
     <video id="hero_video" {% if value.muted %}muted{% endif %} {% if value.autoplay %}autoplay{% endif %} {% if value.loop %}loop{% endif %} 
-            preload="auto" {% if value.block_media.thumbnail %}poster="{{ value.block_media.thumbnail.url }}"{% endif %} >
+            preload="auto" {% if value.image %}poster="{{ value.image.file.url }}"{% endif %} >
         <source src="{{ value.block_media.file.url }}" type="{{value.block_media.type }}/{{ value.block_media.file_extension }}">
         <!-- #TODO: <track kind="subtitles" src="subtitles.vtt" srclang="en"> -->
         <p>Your browser doesn't support HTML video. Here is a <a href="{{ value.block_media.file.url }}">link to the video</a> instead.</p>

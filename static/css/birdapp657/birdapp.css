@@ -749,6 +749,9 @@ div.search > form > button:hover {
     }
 }
 
+.hero {
+    max-height: 41vw;
+}
 .hero-bt,
 .hero {
     position: relative;
@@ -776,7 +779,7 @@ div.search > form > button:hover {
     .hero-bt h2,
     .hero-bt h3,
     .hero-bt h4 {
-        font-size: 5vw;
+        font-size: 4vw;
     }
 }
 .hero-bt.full_screen,
@@ -836,7 +839,8 @@ div.search > form > button:hover {
     text-align: left;
 }
 .hero video {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: 100%;
     object-fit: cover;
 }
