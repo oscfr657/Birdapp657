@@ -4,6 +4,12 @@
 
 ## commits ##
 
+### 20 January 2026 ###
+
+    doc: Updated CHANGELOG.md.
+    ci: Build 0.5.3b0
+    fix: footer css bug fix.
+
 ### 10 January 2026 ###
 
     doc: Updated CHANGELOG.md.
