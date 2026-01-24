@@ -26,6 +26,10 @@ body  {
         color: white;
         background-color: black;
     }
+    body.transparent_header header, 
+    body.transparent_header nav {
+        color: white;
+    }
 }
 
 svg path,
@@ -116,35 +120,39 @@ form input[type=submit] {
 }
 
 
-.bird_top_wraper {
+header {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    left:0;
+    right: 50%;
     height: var(--top-height);
     background-color: white;
+    color: black;
     z-index: 2;
     transition: visibility 0s, opacity 0.5s linear;
 }
-@media (prefers-color-scheme: dark) {
-    .bird_top_wraper {
-        color: white;
-        background-color: black;
-    }
+body.transparent_header header,
+body.transparent_header nav {
+    background-color: transparent;
+    color: white;
 }
-
-.bird_top {
-    margin: auto;
-    width: var(--top-width);
+body.transparent_header.mobile_menu header,
+body.transparent_header.mobile_menu nav {
+    background-color: white;
+}
+header .bird_logo {
+    position: absolute;
+    right:0;
+    width: calc(var(--top-width) /2);
     max-width: calc(100% - 2em);
 }
-.bird_top .bird_logo {
-    float: left;
-}
-.bird_top .bird_logo a {
+header a {
     text-decoration: None;
 }
-.bird_top .bird_logo .site_name {
+body.transparent_header header .bird_logo a {
+    color: white;
+}
+header .site_name {
     font-family: var(--main-font);
     font-weight: normal;
     font-size: var(--site-name-font-size);
@@ -153,28 +161,45 @@ form input[type=submit] {
     transform: translate(0, 6px);
     position: absolute;
 }
-.bird_top .bird_logo img {
+.bird_logo img {
     height: 40px;
+}
+
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    right:0;
+    height: var(--top-height);
+    background-color: white;
+    z-index: 2;
+    transition: visibility 0s, opacity 0.5s linear;
+    font-family: var(--main-font);
+    font-weight: normal;
+    font-size: var(--site-name-font-size);
 }
 .bird_menu {
     display: none;
+    background-color: white;
+    width: 100%;
+    max-width: 100%;
+    position: fixed;
+    top: calc(var(--top-height) - 1px);
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: auto;
 }
-.bird_top .bird_menu {
-    float: right;
-    height: var(--top-height);
-}
-.bird_top .bird_menu_child {
+.bird_menu_child {
     display: inline-block;
 }
-li.bird_menu_child {
-    font-family: var(--main-font);
-}
-.bird_top .bird_menu_child:hover .bird_menu_child_list {
+.bird_menu_child:hover .bird_menu_child_list {
     display: grid;
     text-align: left;
     box-shadow: 2px 2px 4px black;
 }
-.bird_top .bird_menu_child_list {
+.bird_menu_child_list {
     display: none;
     position: absolute;
     padding: 0;
@@ -182,22 +207,119 @@ li.bird_menu_child {
     width: max-content;
     background-color: white;
 }
-
-.bird_top_wraper .bird_menu ul.bird_menu_list {
+.bird_menu .bird_menu_list {
     display: grid;
     top: 0;
+    padding: 0;
     transform: none;
 }
-.bird_top_wraper .bird_menu_child {
+.bird_menu_child {
     text-align: center;
 }
-.bird_top {
-    display: grid;
-    grid-auto-columns: auto auto;
-    grid-template-columns: auto auto;
-    justify-content: space-between;
-    margin: 1rem auto;
+
+.bird_menu li.bird_menu_child {
+    margin: 2em auto 0 auto;
 }
+.bird_menu li.bird_menu_child {
+    margin: 2em auto 0 auto;
+}
+.bird_menu .bird_menu_child > a:hover + .bird_menu_child_list {
+    display: grid;
+}
+.bird_menu .bird_menu_child_list {
+    display: block;
+    position: relative;
+}
+.bird_menu .bird_menu_child_list:hover {
+    display: grid;
+}
+.bird_menu a {
+    text-decoration: none;
+    padding: 7px 15px 2px 15px;
+    white-space: nowrap;
+    font-size: 1.3em;
+}
+.bird_menu a.active,
+.bird_menu a:hover,
+.bird_menu a:active {
+    color: white;
+    background-color: black;
+}
+.bird_menu svg path,
+.bird_menu svg circle {
+    stroke: black;
+}
+.bird_menu button,
+.bird_menu .active svg path,
+.bird_menu button:hover svg path,
+.bird_menu button.active svg circle,le,
+.bird_menu button:hover svg circle {
+    stroke: white;
+}
+.bird_menu button {
+    padding: 9px 15px 5px 15px;
+    background-color: white;
+    border: none;
+}
+.bird_menu button.active,
+.bird_menu button:hover {
+    background-color: black;
+    color: white;
+}
+nav .bird_menu_grand_child {
+    display: inline-block;
+    margin: 0px 1.5em 0 0px;
+    z-index: 1;
+}
+.bird_menu_grand_child {
+    font-family: var(--main-font);
+}
+.bird_menu_grand_child a {
+    width: 100%;
+    display: inline-block;
+    margin: 0px -30px 0 0;
+}
+
+
+body.transparent_header nav .bird_menu button.search,
+body.transparent_header nav .bird_menu a {
+    background-color: transparent;
+    color: black;
+}
+body.transparent_header nav .bird_menu button.search.active,
+body.transparent_header nav .bird_menu button.search:hover {
+    background-color: black;
+    color: white;
+}
+body.transparent_header nav .bird_menu_child > a.active,
+body.transparent_header nav .bird_menu_child > a:hover,
+body.transparent_header nav .bird_menu_child > a:active {
+    background-color: black;
+    color: white;
+}
+body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a {
+    background-color: black;
+    color: white;
+}
+body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:active,
+body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a.active,
+body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:hover {
+    background-color: black;
+    color: white;
+}
+
+
+
+.mobile_menu .bird_menu {
+    display: block;
+}
+.mobile_menu.transparent_header header,
+.mobile_menu.transparent_header nav {
+    background-color: white;
+    color: black;
+    background-image: none;
+}
+
 
 #bird_mobile_menu_dropdown {
     display: block;
@@ -208,7 +330,6 @@ li.bird_menu_child {
     border: none;
     background-color: transparent;
 }
-
 #bird_mobile_menu_dropdown {
     z-index: 2;
     display: flex;
@@ -257,150 +378,6 @@ li.bird_menu_child {
 }
 
 
-#bird_mobile_menu_dropdown.active + .bird_menu {
-    position: fixed;
-    top: calc(var(--top-height) - 1px);
-    bottom: 0;
-    right: 0;
-    left: 0;
-    height: auto;
-    background-color: white;
-}
-#bird_mobile_menu_dropdown.active + .bird_menu li.bird_menu_child {
-    margin: 2em auto 0 auto;
-}
-#bird_mobile_menu_dropdown.active + .bird_menu li.bird_menu_child {
-    margin: 2em auto 0 auto;
-}
-#bird_mobile_menu_dropdown.active + .bird_menu {
-    display: block;
-}
-#bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child > a:hover + .bird_menu_child_list {
-    display: grid;
-}
-#bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child_list {
-    display: block;
-    position: relative;
-}
-#bird_mobile_menu_dropdown.active + .bird_menu .bird_menu_child_list:hover {
-    display: grid;
-}
-
-.bird_top .bird_menu a {
-    text-decoration: none;
-    padding: 7px 15px 2px 15px;
-    white-space: nowrap;
-    font-size: 1.3em;
-}
-.bird_top .bird_menu a.active,
-.bird_top .bird_menu a:hover,
-.bird_top .bird_menu a:active {
-    color: white;
-    background-color: black;
-}
-@media (prefers-color-scheme: dark) {    
-    .bird_top .bird_menu a.active,
-    .bird_top .bird_menu a:hover,
-    .bird_top .bird_menu a:active {
-        color: black;
-        background-color: white;
-    }
-}
-.bird_top .bird_menu button,
-.bird_top .bird_menu .active svg path,
-.bird_top .bird_menu button:hover svg path,
-.bird_top .bird_menu button.active svg circle,le,
-.bird_top .bird_menu button:hover svg circle {
-    stroke: white;
-}
-
-@media (prefers-color-scheme: dark) {    
-    .bird_top .bird_menu button,
-    .bird_top .bird_menu .active svg path,
-    .bird_top .bird_menu button:hover svg path,
-    .bird_top .bird_menu button.active svg circle,le,
-    .bird_top .bird_menu button:hover svg circle {
-        stroke: black;
-    }
-}
-.bird_top .bird_menu button {
-    padding: 9px 15px 5px 15px;
-    background-color: white;
-    border: none;
-}
-@media (prefers-color-scheme: dark) {    
-    .bird_top .bird_menu button {
-        background-color: black;
-    }
-}
-.bird_top .bird_menu button.active,
-.bird_top .bird_menu button:hover {
-    background-color: black;
-    color: white;
-}
-@media (prefers-color-scheme: dark) {    
-    .bird_top .bird_menu button.active,
-    .bird_top .bird_menu button:hover {
-        background-color: white;
-        color: black;
-    }
-}
-.bird_top .bird_menu_grand_child {
-    display: inline-block;
-    margin: 0px 1.5em 0 0px;
-    z-index: 1;
-}
-li.bird_menu_grand_child {
-    font-family: var(--main-font);
-}
-.bird_menu_grand_child a {
-    width: 100%;
-    display: inline-block;
-    margin: 0px -30px 0 0;
-}
-
-
-body.transparent_header .bird_top_wraper .bird_mobile_menu {
-    border: solid 5px white;
-}
-body.transparent_header .bird_top_wraper {
-    background-color: transparent;
-    background-image: linear-gradient(to bottom, black, #00000052, transparent);
-}
-body.transparent_header .bird_top_wraper .bird_top .bird_logo a {
-    color: white;
-}
-body.transparent_header .bird_top_wraper .bird_top .bird_menu button.search,
-body.transparent_header .bird_top_wraper .bird_top .bird_menu a {
-    background-color: transparent;
-    color: white;
-}
-body.transparent_header .bird_top_wraper .bird_top .bird_menu button.search.active,
-body.transparent_header .bird_top_wraper .bird_top .bird_menu button.search:hover {
-    background-color: black;
-    color: white;
-}
-body.transparent_header .bird_top_wraper .bird_top .bird_menu_child > a.active,
-body.transparent_header .bird_top_wraper .bird_top .bird_menu_child > a:hover,
-body.transparent_header .bird_top_wraper .bird_top .bird_menu_child > a:active {
-    color: white;
-    background-color: black;
-}
-body.transparent_header .bird_top_wraper .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a {
-    color: black;
-}
-body.transparent_header .bird_top_wraper .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:active,
-body.transparent_header .bird_top_wraper .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a.active,
-body.transparent_header .bird_top_wraper .bird_top .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:hover {
-    color: white;
-    background-color: black;
-}
-
-body.transparent_header .bird_top .bird_menu svg path,
-body.transparent_header .bird_top .bird_menu svg circle {
-    stroke: white;
-}
-
 main {
     top: var(--top-height);
     position: relative;
@@ -420,9 +397,6 @@ body.transparent_header main {
     text-decoration: none;
 }
 
-body.transparent_header > div + div {
-    top: 0;
-}
 .content {
     position: relative;
     margin: 0;
@@ -1146,6 +1120,70 @@ div.search > form > button:hover {
 }
 
 
+@media (prefers-color-scheme: dark) {
+    header {
+        color: white;
+        background-color: black;
+    }
+    nav {
+        color: white;
+        background-color: black;
+    }
+    #bird_mobile_menu_dropdown.active .line1 {
+        background: white;
+        transform-origin: 0% 0%;
+    }
+    #bird_mobile_menu_dropdown.active .line5 {
+        background: white;
+        transform-origin: 0% 100%;
+    }
+    nav .bird_menu a.active,
+    nav .bird_menu a:hover,
+    nav .bird_menu a:active {
+        color: black;
+        background-color: white;
+    }
+    nav .bird_menu button,
+    nav .bird_menu .active svg path,
+    nav .bird_menu button:hover svg path,
+    nav .bird_menu button.active svg circle,le,
+    nav .bird_menu button:hover svg circle {
+        stroke: black;
+    }
+
+    body.transparent_header nav .bird_menu button.search,
+    body.transparent_header nav .bird_menu a {
+        color: white;
+    }
+    body.transparent_header nav .bird_menu button.search.active,
+    body.transparent_header nav .bird_menu button.search:hover {
+        background-color: white;
+        color: black;
+    }
+    body.transparent_header nav .bird_menu_child > a.active,
+    body.transparent_header nav .bird_menu_child > a:hover,
+    body.transparent_header nav .bird_menu_child > a:active {
+        background-color: white;
+        color: black;
+    }
+    nav .bird_menu button.active,
+    nav .bird_menu button:hover {
+        background-color: white;
+        color: black;
+    }
+
+    .bird_menu svg path,
+    .bird_menu svg circle {
+        stroke: white;
+    }
+
+    .bird_menu button {
+        background-color: black;
+    }
+}
+
+
+
 @media (min-width: 1200px) {
     h1 {
         font-size: 40px;
@@ -1159,19 +1197,166 @@ div.search > form > button:hover {
     h4, h5, h6 {
         font-size: 20px;
     }
-    .bird_menu {
+
+    nav .bird_menu {
         display: block;
+        position: absolute;
+        top: 0;
+        height: var(--top-height);
+        width: calc(var(--top-width) /2);
+        max-width: calc(100% - 2em);
     }
+    nav .bird_menu .active svg path,
+    nav .bird_menu button:hover svg path,
+    nav .bird_menu button.active svg circle,le,
+    nav .bird_menu button:hover svg circle {
+        stroke: white;
+    }
+    nav .bird_menu .bird_menu_list {
+        margin: auto;
+        display: block;
+        position: relative;
+        top: 30%;
+        transform: translateY(-50%);
+        width: fit-content;
+        max-width: calc(100% - 2em);
+    }
+
+    body.transparent_header nav .bird_menu {
+        background-color: transparent;
+    }
+    body.transparent_header header,
+    body.transparent_header nav {
+        background-color: transparent;
+        background-image: linear-gradient(to bottom, black, #00000052, transparent);
+    }
+    body.transparent_header .bird_menu svg path,
+    body.transparent_header .bird_menu svg circle {
+        stroke: white;
+    }
+    body.transparent_header.scrollUp .bird_menu svg path,
+    body.transparent_header.scrollUp .bird_menu svg circle {
+        stroke: black;
+    }
+    body.transparent_header nav .bird_menu button,
+    body.transparent_header nav .bird_menu .active svg path,
+    body.transparent_header nav .bird_menu button:hover svg path,
+    body.transparent_header nav .bird_menu button.active svg circle,le,
+    body.transparent_header nav .bird_menu button:hover svg circle {
+        stroke: white;
+    }
+    body.transparent_header nav .bird_menu button.search,
+    body.transparent_header nav .bird_menu a {
+        background-color: transparent;
+        color: white;
+    }
+    body.transparent_header.scrollUp nav .bird_menu button.search,
+    body.transparent_header.scrollUp nav .bird_menu a {
+        color: black;
+    }
+    body.transparent_header nav .bird_menu button.search.active,
+    body.transparent_header nav .bird_menu button.search:hover {
+        background-color: black;
+        color: white;
+    }
+    body.transparent_header nav .bird_menu_child > a.active,
+    body.transparent_header nav .bird_menu_child > a:hover,
+    body.transparent_header nav .bird_menu_child > a:active {
+        background-color: black;
+        color: white;
+    }
+    body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a {
+        background-color: white;
+        color: black;
+    }
+    body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:active,
+    body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a.active,
+    body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:hover {
+        background-color: white;
+        color: black;
+    }
+
     #bird_mobile_menu_dropdown {
         display: none;
     }
-    .bird_top_wraper .bird_menu ul.bird_menu_list {
-        margin: 0;
-        display: block;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+
+    @media (prefers-color-scheme: dark) {
+
+        nav .bird_menu {
+            background-color: black;
+        }
+        nav .bird_menu a.active,
+        nav .bird_menu a:hover,
+        nav .bird_menu a:active {
+            color: black;
+            background-color: white;
+        }
+        nav .bird_menu .active svg path,
+        nav .bird_menu button:hover svg path,
+        nav .bird_menu button.active svg circle,le,
+        nav .bird_menu button:hover svg circle {
+            stroke: black;
+        }
+        .bird_menu button {
+            background-color: black;
+        }
+        .bird_menu svg path,
+        .bird_menu svg circle {
+            stroke: white;
+        }
+        nav .bird_menu button.active,
+        nav .bird_menu button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        body.transparent_header .bird_menu svg path,
+        body.transparent_header .bird_menu svg circle {
+            stroke: white;
+        }
+        body.transparent_header.scrollUp .bird_menu svg path,
+        body.transparent_header.scrollUp .bird_menu svg circle {
+            stroke: white;
+        }
+        body.transparent_header nav .bird_menu button,
+        body.transparent_header nav .bird_menu .active svg path,
+        body.transparent_header nav .bird_menu button:hover svg path,
+        body.transparent_header nav .bird_menu button.active svg circle,le,
+        body.transparent_header nav .bird_menu button:hover svg circle {
+            stroke: black;
+        }
+        body.transparent_header nav .bird_menu button.search,
+        body.transparent_header nav .bird_menu a {
+            background-color: transparent;
+            color: white;
+        }
+        body.transparent_header.scrollUp nav .bird_menu button.search,
+        body.transparent_header.scrollUp nav .bird_menu a {
+            color: white;
+        }
+        body.transparent_header nav .bird_menu button.search.active,
+        body.transparent_header nav .bird_menu button.search:hover {
+            background-color: white;
+            color: black;
+        }
+        body.transparent_header nav .bird_menu_child > a.active,
+        body.transparent_header nav .bird_menu_child > a:hover,
+        body.transparent_header nav .bird_menu_child > a:active {
+            background-color: white;
+            color: black;
+        }
+        body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a {
+            background-color: white;
+            color: black;
+        }
+        body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:active,
+        body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a.active,
+        body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:hover {
+            background-color: white;
+            color: black;
+        }
     }
+
 }
 
 @media (max-width: 1200px) {
@@ -1200,24 +1385,20 @@ div.search > form > button:hover {
         display: block;
         position: relative;
     }
-    .bird_top .bird_menu_grand_child {
+    nav .bird_menu_grand_child {
         display: block;
     }
-    .bird_top .bird_menu_child:hover .bird_menu_child_list,
-    .bird_top .bird_menu_child .bird_menu_child_list {
+    nav .bird_menu_child:hover .bird_menu_child_list,
+    nav .bird_menu_child .bird_menu_child_list {
         display: grid;
         text-align: center;
         box-shadow: none;
         border-top: solid 1px black;
       }
-    body.transparent_header .bird_top_wraper .bird_top .bird_menu a {
-        color: black;
-        background-color: white;
-    }
     
-    body.transparent_header .bird_top_wraper .bird_top .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a:active,
-    body.transparent_header .bird_top_wraper .bird_top .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a.active,
-    body.transparent_header .bird_top_wraper .bird_top .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a:hover {
+    body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a:active,
+    body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a.active,
+    body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a:hover {
         color: white;
         background-color: black;
     }

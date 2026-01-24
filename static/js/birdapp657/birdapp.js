@@ -2,239 +2,134 @@ var prevScrollpos = window.scrollY;
 var currentScrollPos = window.scrollY;
 const darkThemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 var darkTheme = false;
-var wraper = document.getElementsByClassName("bird_top_wraper")[0];
-var wraper_list = wraper.getElementsByClassName("bird_menu_child");
+var header = document.getElementsByTagName("header")[0];
+var nav = document.getElementsByTagName("nav")[0];
+var menu = nav.getElementsByClassName("bird_menu")[0];
+var menu_list = nav.getElementsByClassName("bird_menu_list");
 var transparent = document.body.classList.contains('transparent_header');
+var bodyTag = document.body;
 var active_menu = true;
 var active_dropdown = false;
 
-window.onscroll = function(e) {
+window.onload = function(e) {
     if (darkThemeMediaQuery.matches) {
         darkTheme = true;
+        bodyTag.classList.add("darkTheme");
     } else {
         darkTheme = false;
+        bodyTag.classList.remove("darkTheme");
     }
     darkThemeMediaQuery.addEventListener("change", e => {
         if (e.matches) {
             darkTheme = true;
+            bodyTag.classList.add("darkTheme");
         } else {
             darkTheme = false;
+            bodyTag.classList.remove("darkTheme");
         }
     });
+}
 
+window.onscroll = function(e) {
     if (active_dropdown) {
         e.preventDefault();
         return false;
     }
     currentScrollPos = window.scrollY;
     if (prevScrollpos > currentScrollPos) {
+        //console.log('scroll up');
         if (!active_menu) {
             active_menu = true;
-            wraper.style.visibility = 'visible';
-            wraper.style.opacity = 1;
-            if (darkTheme) {
-                wraper.style.backgroundColor = 'black';
-            } else {
-                wraper.style.backgroundColor = 'white';
-                wraper.style.backgroundImage = 'none';
-            }
+            header.style.visibility = 'visible';
+            header.style.opacity = 1;
+            nav.style.visibility = 'visible';
+            nav.style.opacity = 1;
+            bodyTag.classList.add("scrollUp");
             if (transparent) {
+                header.style.backgroundImage = 'none';
+                nav.style.backgroundImage = 'none';
                 if (darkTheme) {
-                    wraper.getElementsByClassName("bird_logo")[0].firstElementChild.style.color = 'white';
+                    header.style.backgroundColor = 'black';
+                    nav.style.backgroundColor = 'black';
+                    header.style.color = 'white';
+                    nav.style.color = 'white';
+                    header.getElementsByTagName("a")[0].style.color = 'white';
                 } else {
-                    wraper.getElementsByClassName("bird_logo")[0].firstElementChild.style.color = 'black';
+                    header.style.backgroundColor = 'white';
+                    nav.style.backgroundColor = 'white';
+                    header.style.color = 'black';
+                    nav.style.color = 'black';
+                    header.getElementsByTagName("a")[0].style.color = 'black';
                 }
-                for (let el of wraper_list) {
-                    if (darkTheme) {
-                        el.firstElementChild.style.color = 'white';
-                    } else {
-                        el.firstElementChild.style.color = 'black';
-                    }
-                    for (let sv of el.getElementsByTagName('svg') ) {
-                        for (let child of sv.children) {
-                            if (darkTheme) {
-                                child.style.stroke = 'white';
-                            } else {
-                                child.style.stroke = 'black';
-                            }
-                        }
-                    }
-                    if (el.getElementsByClassName('active').length > 0) {
-                        if (darkTheme) {
-                            el.getElementsByClassName('active')[0].style.color = 'black';
-                            el.getElementsByClassName('active')[0].style.backgroundColor = 'white';
-                        } else {
-                            el.getElementsByClassName('active')[0].style.color = 'white';
-                            el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
-                        }
-                    }
-                    el.addEventListener('mouseover',function(){
-                        if (darkTheme) {
-                            el.firstElementChild.style.color = 'black';
-                            el.firstElementChild.style.backgroundColor = 'white';
-                            if (el.getElementsByClassName('active').length > 0) {
-                                el.getElementsByClassName('active')[0].style.color = 'black';
-                                el.getElementsByClassName('active')[0].style.backgroundColor = 'white';
-                            }
-                            for (let sv of el.getElementsByTagName('svg') ) {
-                                for (let child of sv.children) {
-                                    child.style.stroke = 'black';
-                                }
-                            }
-                        } else {
-                            el.firstElementChild.style.color = 'white';
-                            el.firstElementChild.style.backgroundColor = 'black';
-                            if (el.getElementsByClassName('active').length > 0) {
-                                el.getElementsByClassName('active')[0].style.color = 'white';
-                                el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
-                            }
-                        }
-                    })
-                     el.addEventListener('mouseleave',function(){
-                        if (darkTheme) {
-                            el.firstElementChild.style.color = 'white';
-                            el.firstElementChild.style.backgroundColor = 'black';
-                            if (el.getElementsByClassName('active').length > 0) {
-                                el.getElementsByClassName('active')[0].style.color = 'black';
-                                el.getElementsByClassName('active')[0].style.backgroundColor = 'white';
-                            }
-                            for (let sv of el.getElementsByTagName('svg') ) {
-                                for (let child of sv.children) {
-                                    child.style.stroke = 'white';
-                                }
-                            }
-                        } else {
-                            el.firstElementChild.style.color = 'black';
-                            el.firstElementChild.style.backgroundColor = 'white';
-                            if (el.getElementsByClassName('active').length > 0) {
-                                el.getElementsByClassName('active')[0].style.color = 'white';
-                                el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
-                            }
-                            for (let sv of el.getElementsByTagName('svg') ) {
-                                for (let child of sv.children) {
-                                    child.style.stroke = 'black';
-                                }
-                            }
-                        }
-                    })
-                }
-            }
-        }
-    } else {
-        if (active_menu) {
-            wraper.style.visibility = 'hidden';
-            wraper.style.opacity = 0;
-        }
-        active_menu = false;
-    }
-    if (currentScrollPos == 0 && prevScrollpos != currentScrollPos) {
-        if (transparent) {
-            if (darkTheme) {
-                wraper.style.backgroundColor = 'black';
-            } else {
-                wraper.style.backgroundImage = 'linear-gradient(to bottom, black, #00000052, transparent)';
-            }
-            wraper.style.backgroundColor = 'transparent';
-            wraper.getElementsByClassName("bird_logo")[0].getElementsByTagName('a')[0].style.color = 'white';
-            for (let el of wraper_list) {
-                el.firstElementChild.style.color = 'white';
-                el.firstElementChild.style.backgroundColor = 'transparent';
-                for (let sv of el.getElementsByTagName('svg') ) {
-                    for (let child of sv.children) {
-                        child.style.stroke = 'white';
-                    }
-                }
-                if (el.getElementsByClassName('active').length > 0) {
-                    el.getElementsByClassName('active')[0].style.color = 'white';
-                    el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
-                }
-                el.addEventListener('mouseover',function(){
-                    el.firstElementChild.style.color = 'white';
-                    el.firstElementChild.style.backgroundColor = 'black';
-                    if (el.getElementsByClassName('active').length > 0) {
-                        el.getElementsByClassName('active')[0].style.color = 'white';
-                        el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
-                    }
-                    for (let sv of el.getElementsByTagName('svg') ) {
-                        for (let child of sv.children) {
-                            child.style.stroke = 'white';
-                        }
-                    }
-                })
-                 el.addEventListener('mouseleave',function(){
-                    el.firstElementChild.style.color = 'white';
-                    el.firstElementChild.style.backgroundColor = 'transparent';
-                    if (el.getElementsByClassName('active').length > 0) {
-                        el.getElementsByClassName('active')[0].style.color = 'white';
-                        el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
-                    }
-                    for (let sv of el.getElementsByTagName('svg') ) {
-                        for (let child of sv.children) {
-                            child.style.stroke = 'white';
-                        }
-                    }
-                })
             }
         }
         active_menu = true;
+    } else {
+        //console.log('scroll down');
+        if (active_menu) {
+            header.style.visibility = 'hidden';
+            header.style.opacity = 0;
+            nav.style.visibility = 'hidden';
+            nav.style.opacity = 0;
+        }
+        active_menu = false;
+        bodyTag.classList.remove("scrollUp");
     }
+    if (currentScrollPos == 0 && prevScrollpos != currentScrollPos) {
+        bodyTag.classList.remove("scrollUp");
+        if (transparent ) {
+            header.style.backgroundImage = 'linear-gradient(to bottom, black, #00000052, transparent)';
+            nav.style.backgroundImage = 'linear-gradient(to bottom, black, #00000052, transparent)';
+            header.style.backgroundColor = 'transparent';
+            nav.style.backgroundColor = 'transparent';
+            header.getElementsByTagName("a")[0].style.color = 'white';
+            nav.getElementsByTagName("a")[0].style.color = '';
+        }
+        active_menu = true;
+    } 
     prevScrollpos = currentScrollPos;
 }
 
 document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
+    if (darkTheme) {
+        header.style.backgroundColor = 'black';
+        nav.style.backgroundColor = 'black';
+        nav.style.color = 'white';
+        menu.style.backgroundColor = 'black';
+    } else {
+        header.style.backgroundColor = 'white';
+        nav.style.backgroundColor = 'white';
+        nav.style.color = 'black';
+        menu.style.backgroundColor = 'white';
+    }
     if (!active_dropdown) {
         active_dropdown = true;
-        wraper.style.backgroundColor = 'white';
-        wraper.getElementsByClassName("bird_logo")[0].getElementsByTagName('a')[0].style.color = 'black';
+        bodyTag.classList.add("mobile_menu");
         document.getElementById("bird_mobile_menu_dropdown").classList.add('active');
-        for (let el of wraper_list) {
-            el.firstElementChild.style.color = 'black';
-            el.firstElementChild.style.backgroundColor = 'white';
-            if (el.getElementsByClassName('active').length > 0) {
-                el.getElementsByClassName('active')[0].style.color = 'white';
-                el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
-            }
-            for (let sv of el.getElementsByTagName('svg') ) {
-                for (let child of sv.children) {
-                    child.style.stroke = 'black';
-                }
-            }
-            el.addEventListener('mouseover',function(){
-                el.firstElementChild.style.color = 'white';
-                el.firstElementChild.style.backgroundColor = 'black';
-                if (el.getElementsByClassName('active').length > 0) {
-                    el.getElementsByClassName('active')[0].style.color = 'white';
-                    el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
-                }
-                for (let sv of el.getElementsByTagName('svg') ) {
-                    for (let child of sv.children) {
-                        child.style.stroke = 'white';
-                    }
-                }
-            })
-             el.addEventListener('mouseleave',function(){
-                el.firstElementChild.style.color = 'black';
-                el.firstElementChild.style.backgroundColor = 'white';
-                if (el.getElementsByClassName('active').length > 0) {
-                    el.getElementsByClassName('active')[0].style.color = 'white';
-                    el.getElementsByClassName('active')[0].style.backgroundColor = 'black';
-                }
-                for (let sv of el.getElementsByTagName('svg') ) {
-                    for (let child of sv.children) {
-                        child.style.stroke = 'black';
-                    }
-                }
-            })
+        if (darkTheme) {
+            header.getElementsByTagName("a")[0].style.color = 'white';
+        } else {
+            header.getElementsByTagName("a")[0].style.color = 'black';
         }
     } else {
+        //console.log('active_dropdown');
         active_dropdown = false;
-        if (currentScrollPos == 0 && transparent) {
-            wraper.style.backgroundColor = 'transparent';
-        }
+        bodyTag.classList.remove("mobile_menu");
         document.getElementById("bird_mobile_menu_dropdown").classList.remove('active');
+        if (transparent) {
+            header.style.backgroundColor = 'transparent';
+            nav.style.backgroundColor = 'transparent';
+            header.getElementsByTagName("a")[0].style.color = 'white';
+            if (darkTheme) {
+                header.getElementsByTagName("a")[0].style.color = 'white';
+            } else {
+                header.getElementsByTagName("a")[0].style.color = 'black';
+            }
+        }
     }
     return false;
 }
+
 
 if (document.readyState !== 'loading') {
     console.log('document is already ready, just execute code here');
@@ -247,7 +142,7 @@ if (document.readyState !== 'loading') {
 }
 function myInitCode() {
     try {
-        console.log('myInitCode');
+        //console.log('myInitCode');
         let hero_video = document.getElementsByClassName('hero')[0].getElementsByTagName('video')[0];
         let hero_player = document.getElementsByClassName('hero')[0].getElementsByClassName('hero-player')[0];
         if (hero_player != null && hero_video.autoplay == true) {
