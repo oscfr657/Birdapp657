@@ -4,8 +4,15 @@
 
 ## commits ##
 
+### 24 January 2026 ###
+
+    doc: Updated CHANGELOG.md.
+    ci: Build 0.5.4b0
+    refactory: Moved nav tag out of header tag, required js and css changes.
+
 ### 20 January 2026 ###
 
+    fix: Hidden Breadcrumbs bug with main and footer css fix.
     doc: Updated CHANGELOG.md.
     ci: Build 0.5.3b0
     fix: footer css bug fix.
