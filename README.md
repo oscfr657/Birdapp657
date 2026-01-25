@@ -270,8 +270,8 @@ if settings.DEBUG:
     python3 -m venv env
     source env/bin/activate
     python3 -m pip install black
-    python3 -m black . -S -t py310 -t py311 -t py312 --diff
-    python3 -m black . -S -t py310 -t py311 -t py312
+    python3 -m black . -S -t py310 -t py311 -t py312 --extend-exclude .migrations --diff
+    python3 -m black . -S -t py310 -t py311 -t py312 --extend-exclude .migrations
 ```
 
 Update version in VERSION.txt
