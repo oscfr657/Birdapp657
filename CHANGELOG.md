@@ -7,6 +7,10 @@
 ### 24 January 2026 ###
 
     doc: Updated CHANGELOG.md.
+    ci: Build 0.5.5b0
+    ci: Black
+    fix: Header site name transparent bug.
+    doc: Updated CHANGELOG.md.
     ci: Build 0.5.4b0
     refactory: Moved nav tag out of header tag, required js and css changes.
 
