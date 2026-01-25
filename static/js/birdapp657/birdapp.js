@@ -120,6 +120,7 @@ document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
             header.style.backgroundColor = 'transparent';
             nav.style.backgroundColor = 'transparent';
             header.getElementsByTagName("a")[0].style.color = 'white';
+        } else {
             if (darkTheme) {
                 header.getElementsByTagName("a")[0].style.color = 'white';
             } else {
