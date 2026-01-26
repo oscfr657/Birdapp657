@@ -4,12 +4,24 @@
 
 ## commits ##
 
-### 24 January 2026 ###
+### 26 January 2026 ###
+
+    doc: Updated CHANGELOG.md.
+    ci: Build 0.5.6b0
+    refactory: Less JS more CSS.
+
+### 26 January 2026 ###
 
     doc: Updated CHANGELOG.md.
     ci: Build 0.5.5b0
+
+### 25 January 2026 ###
+
     ci: Black
     fix: Header site name transparent bug.
+
+### 24 January 2026 ###
+
     doc: Updated CHANGELOG.md.
     ci: Build 0.5.4b0
     refactory: Moved nav tag out of header tag, required js and css changes.
