@@ -45,23 +45,6 @@ window.onscroll = function(e) {
             nav.style.visibility = 'visible';
             nav.style.opacity = 1;
             bodyTag.classList.add("scrollUp");
-            if (transparent) {
-                header.style.backgroundImage = 'none';
-                nav.style.backgroundImage = 'none';
-                if (darkTheme) {
-                    header.style.backgroundColor = 'black';
-                    nav.style.backgroundColor = 'black';
-                    header.style.color = 'white';
-                    nav.style.color = 'white';
-                    header.getElementsByTagName("a")[0].style.color = 'white';
-                } else {
-                    header.style.backgroundColor = 'white';
-                    nav.style.backgroundColor = 'white';
-                    header.style.color = 'black';
-                    nav.style.color = 'black';
-                    header.getElementsByTagName("a")[0].style.color = 'black';
-                }
-            }
         }
         active_menu = true;
     } else {
@@ -77,56 +60,21 @@ window.onscroll = function(e) {
     }
     if (currentScrollPos == 0 && prevScrollpos != currentScrollPos) {
         bodyTag.classList.remove("scrollUp");
-        if (transparent ) {
-            header.style.backgroundImage = 'linear-gradient(to bottom, black, #00000052, transparent)';
-            nav.style.backgroundImage = 'linear-gradient(to bottom, black, #00000052, transparent)';
-            header.style.backgroundColor = 'transparent';
-            nav.style.backgroundColor = 'transparent';
-            header.getElementsByTagName("a")[0].style.color = 'white';
-            nav.getElementsByTagName("a")[0].style.color = '';
-        }
         active_menu = true;
     } 
     prevScrollpos = currentScrollPos;
 }
 
 document.getElementById("bird_mobile_menu_dropdown").onclick = function() {
-    if (darkTheme) {
-        header.style.backgroundColor = 'black';
-        nav.style.backgroundColor = 'black';
-        nav.style.color = 'white';
-        menu.style.backgroundColor = 'black';
-    } else {
-        header.style.backgroundColor = 'white';
-        nav.style.backgroundColor = 'white';
-        nav.style.color = 'black';
-        menu.style.backgroundColor = 'white';
-    }
     if (!active_dropdown) {
         active_dropdown = true;
         bodyTag.classList.add("mobile_menu");
         document.getElementById("bird_mobile_menu_dropdown").classList.add('active');
-        if (darkTheme) {
-            header.getElementsByTagName("a")[0].style.color = 'white';
-        } else {
-            header.getElementsByTagName("a")[0].style.color = 'black';
-        }
     } else {
-        //console.log('active_dropdown');
+        console.log('active_dropdown');
         active_dropdown = false;
         bodyTag.classList.remove("mobile_menu");
         document.getElementById("bird_mobile_menu_dropdown").classList.remove('active');
-        if (transparent) {
-            header.style.backgroundColor = 'transparent';
-            nav.style.backgroundColor = 'transparent';
-            header.getElementsByTagName("a")[0].style.color = 'white';
-        } else {
-            if (darkTheme) {
-                header.getElementsByTagName("a")[0].style.color = 'white';
-            } else {
-                header.getElementsByTagName("a")[0].style.color = 'black';
-            }
-        }
     }
     return false;
 }

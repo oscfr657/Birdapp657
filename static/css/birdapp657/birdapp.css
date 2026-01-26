@@ -133,12 +133,17 @@ header {
 }
 body.transparent_header header,
 body.transparent_header nav {
+    background-image: linear-gradient(to bottom, black, #00000052, transparent);
     background-color: transparent;
     color: white;
 }
+body.transparent_header.scrollUp header,
+body.transparent_header.scrollUp nav,
 body.transparent_header.mobile_menu header,
 body.transparent_header.mobile_menu nav {
+    background-image: none;
     background-color: white;
+    color: black;
 }
 header .bird_logo {
     position: absolute;
@@ -151,6 +156,10 @@ header a {
 }
 body.transparent_header header .bird_logo a {
     color: white;
+}
+body.transparent_header.mobile_menu header .bird_logo a,
+body.transparent_header.scrollUp header .bird_logo a {
+    color: black;
 }
 header .site_name {
     font-family: var(--main-font);
@@ -203,7 +212,7 @@ nav {
     display: none;
     position: absolute;
     padding: 0;
-    margin: 0px;
+    margin: 1px auto auto auto;
     width: max-content;
     background-color: white;
 }
@@ -294,16 +303,6 @@ body.transparent_header nav .bird_menu button.search:hover {
 body.transparent_header nav .bird_menu_child > a.active,
 body.transparent_header nav .bird_menu_child > a:hover,
 body.transparent_header nav .bird_menu_child > a:active {
-    background-color: black;
-    color: white;
-}
-body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a {
-    background-color: black;
-    color: white;
-}
-body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:active,
-body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a.active,
-body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:hover {
     background-color: black;
     color: white;
 }
@@ -1119,11 +1118,43 @@ div.search > form > button:hover {
     justify-self: left;
 }
 
+.bird_menu .bird_menu_child_list {
+    display: block;
+    position: relative;
+}
+nav .bird_menu_grand_child {
+    display: block;
+}
+nav .bird_menu_child:hover .bird_menu_child_list,
+nav .bird_menu_child .bird_menu_child_list {
+    display: grid;
+    text-align: center;
+    box-shadow: none;
+    border-top: solid 1px black;
+}
+body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a:active,
+body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a.active,
+body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a:hover {
+    color: white;
+    background-color: black;
+}
 
 @media (prefers-color-scheme: dark) {
     header {
         color: white;
         background-color: black;
+    }
+    body.transparent_header.scrollUp header,
+    body.transparent_header.scrollUp nav,
+    body.transparent_header.mobile_menu header,
+    body.transparent_header.mobile_menu nav {
+        background-image: none;
+        background-color: black;
+        color: white;
+    }
+    body.transparent_header.mobile_menu header .bird_logo a,
+    body.transparent_header.scrollUp header .bird_logo a {
+        color: white;
     }
     nav {
         color: white;
@@ -1136,6 +1167,9 @@ div.search > form > button:hover {
     #bird_mobile_menu_dropdown.active .line5 {
         background: white;
         transform-origin: 0% 100%;
+    }
+    .bird_menu {
+        background-color: black;
     }
     nav .bird_menu a.active,
     nav .bird_menu a:hover,
@@ -1150,9 +1184,9 @@ div.search > form > button:hover {
     nav .bird_menu button:hover svg circle {
         stroke: black;
     }
-
     body.transparent_header nav .bird_menu button.search,
     body.transparent_header nav .bird_menu a {
+        background-color: black;
         color: white;
     }
     body.transparent_header nav .bird_menu button.search.active,
@@ -1171,14 +1205,31 @@ div.search > form > button:hover {
         background-color: white;
         color: black;
     }
-
     .bird_menu svg path,
     .bird_menu svg circle {
         stroke: white;
     }
-
     .bird_menu button {
         background-color: black;
+    }
+    .bird_menu_grand_child a {
+        background-color: black;
+    }
+    .bird_menu_child_list {
+        background-color: black;
+    }
+    nav .bird_menu_child:hover .bird_menu_child_list,
+    nav .bird_menu_child .bird_menu_child_list {
+        border-top: solid 1px white;
+    }
+    .bird_menu .bird_menu_child > a:hover + .bird_menu_child_list {
+        position: relative;
+    }
+    body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a:active,
+    body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a.active,
+    body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a:hover {
+        color: black;
+        background-color: white;
     }
 }
 
@@ -1265,17 +1316,26 @@ div.search > form > button:hover {
         background-color: black;
         color: white;
     }
-    body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a {
+    body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a {
         background-color: white;
         color: black;
     }
     body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:active,
     body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a.active,
     body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:hover {
-        background-color: white;
-        color: black;
+        background-color: black;
+        color: white;
     }
-
+    nav .bird_menu_child .bird_menu_child_list {
+        display: none;
+    }
+    nav .bird_menu_child:hover .bird_menu_child_list {
+        display: grid;
+        position: absolute;
+    }
+    .bird_menu .bird_menu_child > a:hover + .bird_menu_child_list {
+        position: absolute;
+    }
     #bird_mobile_menu_dropdown {
         display: none;
     }
@@ -1346,8 +1406,8 @@ div.search > form > button:hover {
             color: black;
         }
         body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a {
-            background-color: white;
-            color: black;
+            background-color: black;
+            color: white;
         }
         body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a:active,
         body.transparent_header nav .bird_menu_child:hover .bird_menu_child_list .bird_menu_grand_child > a.active,
@@ -1356,7 +1416,6 @@ div.search > form > button:hover {
             color: black;
         }
     }
-
 }
 
 @media (max-width: 1200px) {
@@ -1364,61 +1423,30 @@ div.search > form > button:hover {
         max-width: calc(100% - 2em);
         margin: auto;
     }
-
     .hero-bt h1,
     .hero-bt h2,
     .hero-bt h3,
     .hero-bt h4 {
         font-size: 9vw;
     }
-
     .simple_grid_block {
         padding: 1em 0;
         row-gap: 1em;
         column-gap: 1em;
     }
-
-    .bird_menu_list .bird_menu_child > a > span {
-        display: none;
-    }
-    .bird_menu .bird_menu_child_list {
-        display: block;
-        position: relative;
-    }
-    nav .bird_menu_grand_child {
-        display: block;
-    }
-    nav .bird_menu_child:hover .bird_menu_child_list,
-    nav .bird_menu_child .bird_menu_child_list {
-        display: grid;
-        text-align: center;
-        box-shadow: none;
-        border-top: solid 1px black;
-      }
-    
-    body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a:active,
-    body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a.active,
-    body.transparent_header nav .bird_menu_child .bird_menu_child_list .bird_menu_grand_child > a:hover {
-        color: white;
-        background-color: black;
-    }
 }
 
 @media (max-width: 900px) {
-
     .search_result {
         grid-template-columns: repeat(2, auto);
     }
-    
     form {
         max-width: calc(100% - 2em);
         margin: auto;
     }
-
     .breadcrumbs_wraper .breadcrumbs {
         margin: auto 1em;
     }
-
     .footer {
         display: block;
     }
@@ -1426,7 +1454,6 @@ div.search > form > button:hover {
         grid-auto-flow: dense;
         grid-template-columns: 1fr 1fr;
     }
-
     .content .thank_you,
     .content .intro,
     .content .title,
@@ -1438,27 +1465,22 @@ div.search > form > button:hover {
         font-size: 1.2em;
         max-width: calc(100% - 1.5em);
     }
-
     .block-image {
         max-width: calc(100% - 2em);
     }
-
     .block-media .media {
         max-width: calc(100% - 2em);
     }
-    
     .hero-bt h1,
     .hero-bt h2,
     .hero-bt h3,
     .hero-bt h4 {
         font-size: 15vw;
     }
-
     .feed_block {
         width: 900px;
         max-width: calc(100% - 2em);
     }
-
     .racer.simple .inner_racer {
         max-width: calc(100% - 2em);
     }
@@ -1470,7 +1492,6 @@ div.search > form > button:hover {
     .racer.simple .inner_racer .racer_image {
         margin: 2em 0;
     }
-
     .grid_block {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1480,31 +1501,25 @@ div.search > form > button:hover {
     .high_grid_block {
         grid-template-columns: repeat(2, 1fr);
     }
-    
 }
 
 @media (max-width: 600px) {
-
     .content .responsive-object {
         height: 320px;
     }
-
     .footer-row {
         grid-auto-flow: dense;
         grid-template-columns: 1fr;
     }
-
     .search_result {
         grid-template-columns: repeat(1, auto);
     }
-    
     .hero-bt h1,
     .hero-bt h2,
     .hero-bt h3,
     .hero-bt h4 {
         font-size: 20vw;
     }
-
     .racer .inner_racer {
         display: flex;
     }
@@ -1528,7 +1543,6 @@ div.search > form > button:hover {
     .racer .inner_racer .racer_text {
         padding: 50px 0;
     }
-
     .grid_block {
         grid-template-columns: 1fr;
     }
@@ -1541,5 +1555,4 @@ div.search > form > button:hover {
     .high_grid_block {
         grid-template-columns: 1fr;
     }
-
 }
