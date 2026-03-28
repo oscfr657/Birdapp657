@@ -87,6 +87,18 @@ class HeroBTBirdBlock(blocks.StructBlock):
         group = 'Heroes'
 
 
+class HeroSliderBirdBlock(blocks.StructBlock):
+    slider = blocks.ListBlock(
+        HeroBirdBlock(), required=False, default=[]
+    )
+
+    class Meta:
+        label = 'HeroSlider'
+        icon = 'image'
+        template = 'blocks/hero_slider.html'
+        group = 'Heroes'
+
+
 class RacerBirdBlock(blocks.StructBlock):
     text = blocks.RichTextBlock(
         required=False,

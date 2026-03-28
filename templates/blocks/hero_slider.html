@@ -1,0 +1,70 @@
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="hero-slider">
+{% for slide in value.slider %}
+    <div class="hero slide {{ slide.block_class|default:'' }}
+        {%if slide.full_screen %} full_screen{% endif %}" style="color: {{ slide.font_color }}; 
+                            background-color: {{ slide.bg_color }};
+                            text-align: {{ slide.text_align }};
+                            {% if slide.image %}background-image: url('{{ slide.image.file.url }}');{% endif %}">
+    {% if slide.block_media.type == 'video' %}
+        <!--#TODO: But what about webm and ogg ? sad_face -->
+        <video id="hero_video" {% if slide.muted %}muted{% endif %} {% if slide.autoplay %}autoplay{% endif %} {% if slide.loop %}loop{% endif %} 
+                preload="auto" {% if slide.image %}poster="{{ slide.image.file.url }}"{% endif %} >
+            <source src="{{ slide.block_media.file.url }}" type="{{slide.block_media.type }}/{{ slide.block_media.file_extension }}">
+            <!-- #TODO: <track kind="subtitles" src="subtitles.vtt" srclang="en"> -->
+            <p>Your browser doesn't support HTML video. Here is a <a href="{{ slide.block_media.file.url }}">link to the video</a> instead.</p>
+        </video>
+    {% elif slide.block_media.type == 'audio' %}
+        <audio {% if slide.muted %}muted{% endif %} {% if slide.autoplay %}autoplay{% endif %} {% if slide.loop %}loop{% endif %} {% if slide.controls %}controls{% endif %} preload="auto" >
+            <source src="{{ slide.block_media.file.url }}" type="{{slide.block_media.type }}/{{ slide.block_media.file_extension }}">
+            <p>Your browser doesn't support HTML audio. Here is a <a href="{{ slide.block_media.file.url }}">link to the audio</a> instead.</p>
+        </audio>
+    {% endif %}
+    {% if slide.block_media.type == 'video' and slide.controls or slide.block_media %}
+        <div class="hero-player" >
+            <div class="hero-play" onclick="birdPlay(this);">
+                <svg height="50" width="50" >
+                    <polygon points="15,10 15,40 45,25" style="fill:{{ slide.font_color }};" />
+                </svg>
+            </div>
+            <div class="hero-pause" onclick="birdPause(this);">
+                <svg width="50" height="50">
+                    <rect x="12.5" y="12.5" width="25" height="10"
+                    style="fill:{{ slide.font_color }};" />
+                    <rect x="12.5" y="27.5" width="25" height="10"
+                    style="fill:{{ slide.font_color }};" />
+                </svg>
+            </div>
+            <div class="hero-muted " onclick="birdSound(this);">
+                <svg width="50" height="50">
+                    <rect style="fill: {{ slide.font_color }};" width="5" x="15" y="15" height="20"></rect>
+                    <polygon style="fill: {{ slide.font_color }};" points="15,25 27.5,40 27.5,10"></polygon>
+                    <path style="stroke: {{ slide.font_color }}; stroke-width: 2px; fill: none; fill-rule: nonzero;" d="M 30 12.5 S 45 25 30 37.5"></path>
+                    <path style="fill: {{ slide.font_color }}; stroke: {{ slide.font_color }}; stroke-width: 3px;"
+                    d="M 10 10 L 40 40"></path>
+                </svg>
+            </div>
+            <div class="hero-sound " onclick="birdMute(this);">
+                <svg width="50" height="50">
+                    <rect style="fill: {{ slide.font_color }};" width="5" x="15" y="15" height="20"></rect>
+                    <polygon style="fill: {{ slide.font_color }};" points="15,25 27.5,40 27.5,10"></polygon>
+                    <path style="stroke: {{ slide.font_color }}; stroke-width: 2px; fill: none; fill-rule: nonzero;" d="M 30 12.5 S 45 25 30 37.5"></path>
+                </svg>
+            </div>
+        </div>
+    {% endif %}
+    {% if slide.text or slide.button_link %}
+        <div class="hero-content " style="color: {{ slide.font_color }}; background-color: {{ slide.bg_color }};">
+            <div class="hero-content-text {{ slide.text_align }}">
+            {{ slide.text|richtext }}
+            {% include_block slide.button_link %}
+            </div>
+        </div>
+    {% endif %}
+    </div>
+{% endfor %}
+    <button class="button-left" onclick="minusDivs(this)">&#10094;</button>
+    <button class="button-right" onclick="plusDivs(this)">&#10095;</button>
+</div>

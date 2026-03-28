@@ -30,6 +30,7 @@ from taggit.models import TaggedItemBase
 from .blocks import (
     HeroBirdBlock,
     HeroBTBirdBlock,
+    HeroSliderBirdBlock,
     BirdCodeBlock,
     HTMLBirdBlock,
     MediaFileBirdBlock,
@@ -230,6 +231,7 @@ class SoloBirdPage(Page, BirdMixin):
             ('html', HTMLBirdBlock(required=False, null=True)),
             ('hero', HeroBirdBlock(required=False, null=True)),
             ('hero_bt', HeroBTBirdBlock(required=False, null=True)),
+            ('hero_slider', HeroSliderBirdBlock(required=False, null=True)),
             ('feed', FeedBirdBlock(required=False)),
             ('grid', GridBirdBlock(required=False)),
             ('simplegrid', SimpleGridBirdBlock(required=False)),

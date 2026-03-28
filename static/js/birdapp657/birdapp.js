@@ -92,24 +92,35 @@ if (document.readyState !== 'loading') {
 function myInitCode() {
     try {
         //console.log('myInitCode');
-        let hero_video = document.getElementsByClassName('hero')[0].getElementsByTagName('video')[0];
-        let hero_player = document.getElementsByClassName('hero')[0].getElementsByClassName('hero-player')[0];
-        if (hero_player != null && hero_video.autoplay == true) {
-            hero_player.getElementsByClassName('hero-play')[0].style.display = 'none';
-            hero_player.getElementsByClassName('hero-pause')[0].style.display = 'block';
-        } else if (hero_player != null) {
-            hero_player.getElementsByClassName('hero-play')[0].style.display = 'block';
-            hero_player.getElementsByClassName('hero-pause')[0].style.display = 'none';
+        let heroSliders = document.getElementsByClassName('hero-slider');
+        for (let i = 0; i < heroSliders.length; i++) {
+            let slides = heroSliders[i].getElementsByClassName('hero');
+            heroSliders[i].setAttribute("data-slideindex", 1);
+            showSlide(slides, 1)
         }
-        if (hero_player != null && hero_video.muted == true ) {
-            hero_player.getElementsByClassName('hero-muted')[0].style.display = 'block';
-            hero_player.getElementsByClassName('hero-sound')[0].style.display = 'none';
-        } else if (hero_player != null) {
-            hero_player.getElementsByClassName('hero-muted')[0].style.display = 'none';
-            hero_player.getElementsByClassName('hero-sound')[0].style.display = 'block';
+        let heros = document.getElementsByClassName('hero');
+        for (let i = 0; i < heros.length; i++) {
+            let hero = heros[i];
+            let hero_video = hero.getElementsByTagName('video')[0];
+            let hero_player = hero.getElementsByClassName('hero-player')[0];
+            if (hero_player != null && hero_video.autoplay == true) {
+                hero_player.getElementsByClassName('hero-play')[0].style.display = 'none';
+                hero_player.getElementsByClassName('hero-pause')[0].style.display = 'block';
+            } else if (hero_player != null) {
+                hero_player.getElementsByClassName('hero-play')[0].style.display = 'block';
+                hero_player.getElementsByClassName('hero-pause')[0].style.display = 'none';
+            }
+            if (hero_player != null && hero_video.muted == true ) {
+                hero_player.getElementsByClassName('hero-muted')[0].style.display = 'block';
+                hero_player.getElementsByClassName('hero-sound')[0].style.display = 'none';
+            } else if (hero_player != null) {
+                hero_player.getElementsByClassName('hero-muted')[0].style.display = 'none';
+                hero_player.getElementsByClassName('hero-sound')[0].style.display = 'block';
+            }
         }
     }
     catch(err) {
+        console.log(err);
         console.log('No video on this page.');
     }
 };
@@ -143,4 +154,26 @@ function openSearch() {
 function closeSearch() {
   document.getElementById("BirdSearchOverlay").style.display = "none";
   return false;
+}
+
+function minusDivs(b) {
+    slideIndex = parseInt(b.parentNode.dataset.slideindex) - 1;
+    slides = b.parentNode.getElementsByClassName('hero');
+    slideIndex = showSlide(slides, slideIndex);
+    b.parentNode.setAttribute("data-slideindex", slideIndex);
+}
+function plusDivs(b) {
+    slideIndex = parseInt(b.parentNode.dataset.slideindex) + 1;
+    slides = b.parentNode.getElementsByClassName('hero');
+    slideIndex = showSlide(slides, slideIndex);
+    b.parentNode.setAttribute("data-slideindex", slideIndex);
+}
+function showSlide(slides, slideIndex) {
+    if (slideIndex > slides.length) {slideIndex = 1};
+    if (slideIndex < 1) {slideIndex = slides.length};
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "flex";
+    return slideIndex
 }
