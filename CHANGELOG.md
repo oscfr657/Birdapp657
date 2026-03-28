@@ -4,6 +4,13 @@
 
 ## commits ##
 
+### 28 Mars 2026 ###
+
+    doc: Updated CHANGELOG.md.
+    ci: Build 0.6.0b0
+    ci: Black
+    feat: Created a HeroSlider block and added it to SoloBirdPage.
+
 ### 26 January 2026 ###
 
     doc: Updated CHANGELOG.md.
