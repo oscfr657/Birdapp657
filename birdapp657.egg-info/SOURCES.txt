@@ -118,6 +118,7 @@ views.py
 ./templates/blocks/grid_bird_block.html
 ./templates/blocks/hero.html
 ./templates/blocks/hero_bt.html
+./templates/blocks/hero_slider.html
 ./templates/blocks/high_grid_bird_block.html
 ./templates/blocks/html_bird_block.html
 ./templates/blocks/link.html
@@ -227,6 +228,7 @@ templates/blocks/feed_bird_block.html
 templates/blocks/grid_bird_block.html
 templates/blocks/hero.html
 templates/blocks/hero_bt.html
+templates/blocks/hero_slider.html
 templates/blocks/high_grid_bird_block.html
 templates/blocks/html_bird_block.html
 templates/blocks/link.html
