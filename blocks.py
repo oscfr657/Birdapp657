@@ -88,9 +88,7 @@ class HeroBTBirdBlock(blocks.StructBlock):
 
 
 class HeroSliderBirdBlock(blocks.StructBlock):
-    slider = blocks.ListBlock(
-        HeroBirdBlock(), required=False, default=[]
-    )
+    slider = blocks.ListBlock(HeroBirdBlock(), required=False, default=[])
 
     class Meta:
         label = 'HeroSlider'
