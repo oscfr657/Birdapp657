@@ -8,9 +8,9 @@ A base Wagtail app
 ### Tested with ###
 
 ``` Python
-django==4.2.10
-wagtail==6.0
-wagtailmedia==0.15.1
+django==6.0.3
+wagtail==7.3.1
+wagtailmedia==0.17.2
 ```
 
 ## Installation ###
@@ -106,7 +106,13 @@ WAGTAILSEARCH_BACKENDS = {
 }
 ```
 
-and set the WAGTAILIMAGES_FORMAT_CONVERSIONS setting
+\!NB [wagtailsearch-backends](https://docs.wagtail.org/en/stable/topics/search/backends.html#wagtailsearch-backends)
+
+    "If you use the PostgreSQL database backend, you must add django.contrib.postgres to your INSTALLED_APPS setting."
+
+----
+
+Set the WAGTAILIMAGES_FORMAT_CONVERSIONS setting
 
 ``` python
 WAGTAILIMAGES_FORMAT_CONVERSIONS = {
@@ -265,6 +271,14 @@ if settings.DEBUG:
 ```
 
 ### Build a new release ###
+
+Make migrations
+
+``` bash
+    python3 manage.py makemigrations
+```
+
+Run black
 
 ``` bash
     python3 -m venv env
