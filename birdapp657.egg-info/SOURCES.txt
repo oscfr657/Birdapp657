@@ -99,6 +99,7 @@ views.py
 ./migrations/0076_alter_formfield_choices_and_more.py
 ./migrations/0077_remove_birdappsettings_mobile_menu_page_and_more.py
 ./migrations/0078_formbirdpage_recaptcha_key_and_more.py
+./migrations/0079_alter_solobirdpage_body.py
 ./migrations/__init__.py
 ./static/css/birdapp657/birdapp.css
 ./static/js/birdapp657/birdapp.js
@@ -209,6 +210,7 @@ migrations/0075_alter_solobirdpagetag_tag.py
 migrations/0076_alter_formfield_choices_and_more.py
 migrations/0077_remove_birdappsettings_mobile_menu_page_and_more.py
 migrations/0078_formbirdpage_recaptcha_key_and_more.py
+migrations/0079_alter_solobirdpage_body.py
 migrations/__init__.py
 static/css/birdapp657/birdapp.css
 static/js/birdapp657/birdapp.js
