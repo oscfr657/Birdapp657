@@ -4,6 +4,13 @@
 
 ## commits ##
 
+### 11 April 2026 ###
+
+    doc: Updated CHANGELOG.md.
+    ci: Build 0.6.1b0
+    doc: Improved README.md; Tested with, wagtailsearch-backends and make migrations added to build.
+    chore: Added migration for HeroSlider.
+
 ### 28 Mars 2026 ###
 
     doc: Updated CHANGELOG.md.
